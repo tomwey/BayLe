@@ -1,0 +1,374 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9734C2D01BFD5C5D005E0E5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C2CF1BFD5C5D005E0E5E /* main.m */; };
+		9734C2D31BFD5C5D005E0E5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C2D21BFD5C5D005E0E5E /* AppDelegate.m */; };
+		9734C2DB1BFD5C5D005E0E5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9734C2DA1BFD5C5D005E0E5E /* Assets.xcassets */; };
+		9734C2EF1BFD5EAA005E0E5E /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C2EE1BFD5EAA005E0E5E /* Aspects.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		9734C2F61BFD5F35005E0E5E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9734C2F41BFD5F35005E0E5E /* Default-568h@2x.png */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9734C2CB1BFD5C5D005E0E5E /* BayLe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BayLe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9734C2CF1BFD5C5D005E0E5E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9734C2D11BFD5C5D005E0E5E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9734C2D21BFD5C5D005E0E5E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9734C2DA1BFD5C5D005E0E5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9734C2DF1BFD5C5D005E0E5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9734C2ED1BFD5EAA005E0E5E /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
+		9734C2EE1BFD5EAA005E0E5E /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
+		9734C2F41BFD5F35005E0E5E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9734C2C81BFD5C5D005E0E5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9734C2C21BFD5C5D005E0E5E = {
+			isa = PBXGroup;
+			children = (
+				9734C2CD1BFD5C5D005E0E5E /* BayLe */,
+				9734C2CC1BFD5C5D005E0E5E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9734C2CC1BFD5C5D005E0E5E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9734C2CB1BFD5C5D005E0E5E /* BayLe.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9734C2CD1BFD5C5D005E0E5E /* BayLe */ = {
+			isa = PBXGroup;
+			children = (
+				9734C2E51BFD5C90005E0E5E /* Components */,
+				9734C2E61BFD5C90005E0E5E /* Controllers */,
+				9734C2E71BFD5C90005E0E5E /* Models */,
+				9734C2E81BFD5C90005E0E5E /* Views */,
+				9734C2D11BFD5C5D005E0E5E /* AppDelegate.h */,
+				9734C2D21BFD5C5D005E0E5E /* AppDelegate.m */,
+				9734C2E91BFD5CED005E0E5E /* Resources */,
+				9734C2DA1BFD5C5D005E0E5E /* Assets.xcassets */,
+				9734C2DF1BFD5C5D005E0E5E /* Info.plist */,
+				9734C2CE1BFD5C5D005E0E5E /* Supporting Files */,
+			);
+			path = BayLe;
+			sourceTree = "<group>";
+		};
+		9734C2CE1BFD5C5D005E0E5E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9734C2CF1BFD5C5D005E0E5E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9734C2E51BFD5C90005E0E5E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				9734C2EB1BFD5E9D005E0E5E /* External */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		9734C2E61BFD5C90005E0E5E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		9734C2E71BFD5C90005E0E5E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9734C2E81BFD5C90005E0E5E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9734C2E91BFD5CED005E0E5E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9734C2EA1BFD5D98005E0E5E /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9734C2EA1BFD5D98005E0E5E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				9734C2F21BFD5F35005E0E5E /* AppIcons */,
+				9734C2F31BFD5F35005E0E5E /* LaunchImages */,
+				9734C2F51BFD5F35005E0E5E /* UI */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		9734C2EB1BFD5E9D005E0E5E /* External */ = {
+			isa = PBXGroup;
+			children = (
+				9734C2EC1BFD5E9D005E0E5E /* Aspects */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		9734C2EC1BFD5E9D005E0E5E /* Aspects */ = {
+			isa = PBXGroup;
+			children = (
+				9734C2ED1BFD5EAA005E0E5E /* Aspects.h */,
+				9734C2EE1BFD5EAA005E0E5E /* Aspects.m */,
+			);
+			path = Aspects;
+			sourceTree = "<group>";
+		};
+		9734C2F21BFD5F35005E0E5E /* AppIcons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AppIcons;
+			sourceTree = "<group>";
+		};
+		9734C2F31BFD5F35005E0E5E /* LaunchImages */ = {
+			isa = PBXGroup;
+			children = (
+				9734C2F41BFD5F35005E0E5E /* Default-568h@2x.png */,
+			);
+			path = LaunchImages;
+			sourceTree = "<group>";
+		};
+		9734C2F51BFD5F35005E0E5E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9734C2CA1BFD5C5D005E0E5E /* BayLe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9734C2E21BFD5C5D005E0E5E /* Build configuration list for PBXNativeTarget "BayLe" */;
+			buildPhases = (
+				9734C2C71BFD5C5D005E0E5E /* Sources */,
+				9734C2C81BFD5C5D005E0E5E /* Frameworks */,
+				9734C2C91BFD5C5D005E0E5E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BayLe;
+			productName = BayLe;
+			productReference = 9734C2CB1BFD5C5D005E0E5E /* BayLe.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9734C2C31BFD5C5D005E0E5E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = tangwei1;
+				TargetAttributes = {
+					9734C2CA1BFD5C5D005E0E5E = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = 9734C2C61BFD5C5D005E0E5E /* Build configuration list for PBXProject "BayLe" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9734C2C21BFD5C5D005E0E5E;
+			productRefGroup = 9734C2CC1BFD5C5D005E0E5E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9734C2CA1BFD5C5D005E0E5E /* BayLe */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9734C2C91BFD5C5D005E0E5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9734C2DB1BFD5C5D005E0E5E /* Assets.xcassets in Resources */,
+				9734C2F61BFD5F35005E0E5E /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9734C2C71BFD5C5D005E0E5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9734C2D31BFD5C5D005E0E5E /* AppDelegate.m in Sources */,
+				9734C2D01BFD5C5D005E0E5E /* main.m in Sources */,
+				9734C2EF1BFD5EAA005E0E5E /* Aspects.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		9734C2E01BFD5C5D005E0E5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9734C2E11BFD5C5D005E0E5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9734C2E31BFD5C5D005E0E5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				INFOPLIST_FILE = BayLe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kekestudio.BayLe;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9734C2E41BFD5C5D005E0E5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				INFOPLIST_FILE = BayLe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kekestudio.BayLe;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9734C2C61BFD5C5D005E0E5E /* Build configuration list for PBXProject "BayLe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9734C2E01BFD5C5D005E0E5E /* Debug */,
+				9734C2E11BFD5C5D005E0E5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9734C2E21BFD5C5D005E0E5E /* Build configuration list for PBXNativeTarget "BayLe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9734C2E31BFD5C5D005E0E5E /* Debug */,
+				9734C2E41BFD5C5D005E0E5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9734C2C31BFD5C5D005E0E5E /* Project object */;
+}
