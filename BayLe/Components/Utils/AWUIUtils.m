@@ -39,7 +39,7 @@ NSString* AWDeviceSizeString()
     NSUInteger width = AWFullScreenWidth() * scale;
     NSUInteger height = AWFullScreenHeight() * scale;
     
-    return [NSString stringWithFormat:@"%dx%d", width, height];
+    return [NSString stringWithFormat:@"%ldx%ld", width, height];
 }
 
 /**
@@ -218,134 +218,80 @@ void AWSetAllTouchesDisabled(BOOL yesOrNo)
     }
 }
 
-//AWButton* AWCreateImageButton(NSString* imageName, id target, SEL action)
-//{
-//    return AWCreateImageButtonWithSize(imageName, CGSizeZero, target, action);
-//}
-//
-//CommandButton* AWCreateImageCommandButton(NSString* imageName, Command* aCommand)
-//{
-//    return AWCreateImageCommandButtonWithSize(imageName, CGSizeZero, aCommand);
-//}
-//
-//AWButton* AWCreateImageButtonWithSize(NSString* imageName, CGSize size, id target, SEL action)
-//{
-//    AWButton* button = [AWButton buttonWithType:UIButtonTypeCustom];
-//    [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-//    [button sizeToFit];
-//    
-//    button.exclusiveTouch = YES;
-//    
-//    CGRect bounds = CGRectMake(0, 0, size.width, size.height);
-//    if ( CGRectContainsRect(bounds, button.bounds) ) {
-//        button.bounds = bounds;
-//    }
-//    
-//    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
-//    
-//    return button;
-//}
-//
-//AWButton* AWCreateBackgroundImageAndTitleButton(NSString* backgroundImageName, NSString* title, id target, SEL action)
-//{
-//    AWButton* button = [AWButton buttonWithType:UIButtonTypeCustom];
-//    
-//    UIImage* backgroundImage = [UIImage imageNamed:backgroundImageName];
-//    
-//    [button setBackgroundImage:backgroundImage forState:UIControlStateNormal];
-//    [button setTitle:title forState:UIControlStateNormal];
-//    
-//    if ( backgroundImage ) {
-//        [[button titleLabel] setFont:AWSystemFontWithSize(backgroundImage.size.height * 0.3, NO)];
-//    } else {
-//        [[button titleLabel] setFont:AWSystemFontWithSize(24, NO)];
-//    }
-//    
-//    button.frame = CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height);
-//    
-//    button.exclusiveTouch = YES;
-//    
-//    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
-//    
-//    return button;
-//}
+UIButton* AWCreateImageButton(NSString* imageName, id target, SEL action)
+{
+    return AWCreateImageButtonWithSize(imageName, CGSizeZero, target, action);
+}
 
-//CommandButton* AWCreateImageCommandButtonWithSize(NSString* imageName, CGSize size, Command* aCommand)
-//{
-//    CommandButton* button = [CommandButton buttonWithType:UIButtonTypeCustom];
-//    [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-//    [button sizeToFit];
-//    
-//    button.exclusiveTouch = YES;
-//    
-//    button.command = aCommand;
-//    
-//    CGRect bounds = CGRectMake(0, 0, size.width, size.height);
-//    if ( CGRectContainsRect(bounds, button.bounds) ) {
-//        button.bounds = bounds;
-//    }
-//    
-//    [button addTarget:[CommandTarget sharedInstance]
-//               action:@selector(btnClicked:)
-//     forControlEvents:UIControlEventTouchUpInside];
-//    
-//    return button;
-//}
-//
-//AWButton* AWCreateTextButton(CGRect frame, NSString* title, UIColor* titleColor, id target, SEL action)
-//{
-//    AWButton* button = [AWButton buttonWithType:UIButtonTypeCustom];
-//    [button setTitle:title forState:UIControlStateNormal];
-//    [button setTitleColor:titleColor forState:UIControlStateNormal];
-//    
-//    button.frame = frame;
-//    
-//    button.exclusiveTouch = YES;
-//    
-//    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
-//    
-//    return button;
-//}
-//
-//CommandButton* AWCreateTextCommandButton(CGRect frame, NSString* title, UIColor* titleColor, Command* aCommand)
-//{
-//    CommandButton* button = [CommandButton buttonWithType:UIButtonTypeCustom];
-//    [button setTitle:title forState:UIControlStateNormal];
-//    [button setTitleColor:titleColor forState:UIControlStateNormal];
-//    
-//    button.frame = frame;
-//    
-//    button.exclusiveTouch = YES;
-//    
-//    [button addTarget:[CommandTarget sharedInstance]
-//               action:@selector(btnClicked:)
-//     forControlEvents:UIControlEventTouchUpInside];
-//    
-//    return button;
-//}
+UIButton* AWCreateImageButtonWithSize(NSString* imageName, CGSize size, id target, SEL action)
+{
+    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    [button sizeToFit];
+    
+    button.exclusiveTouch = YES;
+    
+    CGRect bounds = CGRectMake(0, 0, size.width, size.height);
+    if ( CGRectContainsRect(bounds, button.bounds) ) {
+        button.bounds = bounds;
+    }
+    
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    return button;
+}
 
-//UIBarButtonItem* AWCreateImageBarButtonItem(NSString* imageName, id target, SEL action)
-//{
-//    UIBarButtonItem* item = [[[UIBarButtonItem alloc] initWithCustomView:AWCreateImageButton(imageName, target, action)] autorelease];
-//    return item;
-//}
-//
-//UIBarButtonItem* AWCreateImageBarButtonItemWithCommand(NSString* imageName, Command* aCommand)
-//{
-//    return [[[UIBarButtonItem alloc] initWithCustomView:AWCreateImageCommandButton(imageName, aCommand)] autorelease];
-//}
-//
-//UIBarButtonItem* AWCreateImageBarButtonItemWithSize(NSString* imageName, CGSize size, id target, SEL action)
-//{
-//    UIBarButtonItem* item =
-//    [[[UIBarButtonItem alloc] initWithCustomView:AWCreateImageButtonWithSize(imageName, size, target, action)] autorelease];
-//    return item;
-//}
-//
-//UIBarButtonItem* AWCreateImageBarButtonItemWithCommandWithSize(NSString* imageName, CGSize size, Command* aCommand)
-//{
-//    return [[[UIBarButtonItem alloc] initWithCustomView:AWCreateImageCommandButtonWithSize(imageName, size, aCommand)] autorelease];
-//}
+UIButton* AWCreateBackgroundImageAndTitleButton(NSString* backgroundImageName, NSString* title, id target, SEL action)
+{
+    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    UIImage* backgroundImage = [UIImage imageNamed:backgroundImageName];
+    
+    [button setBackgroundImage:backgroundImage forState:UIControlStateNormal];
+    [button setTitle:title forState:UIControlStateNormal];
+    
+    if ( backgroundImage ) {
+        [[button titleLabel] setFont:AWSystemFontWithSize(backgroundImage.size.height * 0.3, NO)];
+    } else {
+        [[button titleLabel] setFont:AWSystemFontWithSize(24, NO)];
+    }
+    
+    button.frame = CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height);
+    
+    button.exclusiveTouch = YES;
+    
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    return button;
+}
+
+UIButton* AWCreateTextButton(CGRect frame, NSString* title, UIColor* titleColor, id target, SEL action)
+{
+    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitleColor:titleColor forState:UIControlStateNormal];
+    
+    button.frame = frame;
+    
+    button.exclusiveTouch = YES;
+    
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    return button;
+}
+
+UIBarButtonItem* AWCreateImageBarButtonItem(NSString* imageName, id target, SEL action)
+{
+    UIBarButtonItem* item = [[[UIBarButtonItem alloc] initWithCustomView:AWCreateImageButton(imageName, target, action)] autorelease];
+    return item;
+}
+
+UIBarButtonItem* AWCreateImageBarButtonItemWithSize(NSString* imageName, CGSize size, id target, SEL action)
+{
+    UIBarButtonItem* item =
+    [[[UIBarButtonItem alloc] initWithCustomView:AWCreateImageButtonWithSize(imageName, size, target, action)] autorelease];
+    return item;
+}
 
 UIImageView* AWCreateImageView(NSString* imageName)
 {

@@ -140,27 +140,63 @@ UIImage* AWSimpleResizeImage(UIImage* srcImage, CGSize newSize);
 void AWAppRateus(NSString* appId);
 
 /**
- * 创建按钮
+ * 创建图片按钮
+ * @param imageName 图片名字
+ * @param target 按钮点击事件目标
+ * @param action 按钮点击时间响应方法
+ * @return 返回一个图片大小的按钮
  */
-//UIButton* AWCreateImageButton(NSString* imageName, id target, SEL action);
-//CommandButton* AWCreateImageCommandButton(NSString* imageName, Command* aCommand);
-//
-//UIButton* AWCreateImageButtonWithSize(NSString* imageName, CGSize size, id target, SEL action);
-//CommandButton* AWCreateImageCommandButtonWithSize(NSString* imageName, CGSize size, Command* aCommand);
-//
-//UIButton* AWCreateBackgroundImageAndTitleButton(NSString* backgroundImageName, NSString* title, id target, SEL action);
-//
-//UIButton* AWCreateTextButton(CGRect frame, NSString* title, UIColor* titleColor, id target, SEL action);
-//CommandButton* AWCreateTextCommandButton(CGRect frame, NSString* title, UIColor* titleColor, Command* aCommand);
+UIButton* AWCreateImageButton(NSString* imageName, id target, SEL action);
 
 /**
- * 创建UIBarButtonItem
+ * 创建指定大小的图片按钮
+ * @param imageName 图片名字
+ * @param size 图片按钮大小
+ * @param target 按钮点击事件目标
+ * @param action 按钮点击时间响应方法
+ * @return 返回一个指定大小的图片按钮
  */
-//UIBarButtonItem* AWCreateImageBarButtonItem(NSString* imageName, id target, SEL action);
-//UIBarButtonItem* AWCreateImageBarButtonItemWithCommand(NSString* imageName, Command* aCommand);
-//
-//UIBarButtonItem* AWCreateImageBarButtonItemWithSize(NSString* imageName, CGSize size, id target, SEL action);
-//UIBarButtonItem* AWCreateImageBarButtonItemWithCommandWithSize(NSString* imageName, CGSize size, Command* aCommand);
+UIButton* AWCreateImageButtonWithSize(NSString* imageName, CGSize size, id target, SEL action);
+
+/**
+ * 创建一个带背景图以及用文字标题的按钮
+ * @param backgroundImageName 背景图片名字
+ * @param title 文字标题
+ * @param target 按钮点击事件目标
+ * @param action 按钮点击时间响应方法
+ * @return 返回一个与背景图片一样大小的按钮
+ */
+UIButton* AWCreateBackgroundImageAndTitleButton(NSString* backgroundImageName, NSString* title, id target, SEL action);
+
+/**
+ * 创建一个纯文字的按钮
+ * @param frame 按钮位置大小
+ * @param title 按钮标题
+ * @param titleColor 标题颜色
+ * @param target 按钮点击事件目标
+ * @param action 按钮点击时间响应方法
+ * @return 返回指定大小的文字按钮
+ */
+UIButton* AWCreateTextButton(CGRect frame, NSString* title, UIColor* titleColor, id target, SEL action);
+
+/**
+ * 创建带图片的UIBarButtonItem
+ * @param imageName 图片名字
+ * @param target 事件目标
+ * @param action 事件方法
+ * @return
+ */
+UIBarButtonItem* AWCreateImageBarButtonItem(NSString* imageName, id target, SEL action);
+
+/**
+ * 创建带图片的并且指定大小的UIBarButtonItem
+ * @param imageName 图片名字
+ * @param size 大小
+ * @param target 事件目标
+ * @param action 事件方法
+ * @return
+ */
+UIBarButtonItem* AWCreateImageBarButtonItemWithSize(NSString* imageName, CGSize size, id target, SEL action);
 
 /**
  * 创建UIImageView
