@@ -6,6 +6,10 @@
 //  Copyright (c) 2015年 tangwei1. All rights reserved.
 //
 
+/***********************************************************
+ 注意：此文件需要引用AWMacros.h和AWLocale.h
+ ***********************************************************/
+
 #import <Foundation/Foundation.h>
 
 @interface NSDate (AWCategory)

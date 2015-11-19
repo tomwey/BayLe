@@ -20,6 +20,13 @@
 		9734C3121BFD650D005E0E5E /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C30E1BFD650D005E0E5E /* NSStringAdditions.m */; settings = {ASSET_TAGS = (); }; };
 		9734C3161BFD656C005E0E5E /* AWEntityTables.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C3151BFD656C005E0E5E /* AWEntityTables.m */; settings = {ASSET_TAGS = (); }; };
 		9734C3191BFD6576005E0E5E /* AWMarkupStripper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C3181BFD6576005E0E5E /* AWMarkupStripper.m */; settings = {ASSET_TAGS = (); }; };
+		9734C31D1BFD6CC8005E0E5E /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C31C1BFD6CC8005E0E5E /* HomeViewController.m */; settings = {ASSET_TAGS = (); }; };
+		9734C3201BFD6CDA005E0E5E /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C31F1BFD6CDA005E0E5E /* FavoritesViewController.m */; settings = {ASSET_TAGS = (); }; };
+		9734C3231BFD6CED005E0E5E /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C3221BFD6CED005E0E5E /* MessagesViewController.m */; settings = {ASSET_TAGS = (); }; };
+		9734C3261BFD6D11005E0E5E /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C3251BFD6D11005E0E5E /* UserViewController.m */; settings = {ASSET_TAGS = (); }; };
+		9734C3291BFD6D30005E0E5E /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C3281BFD6D30005E0E5E /* PublishViewController.m */; settings = {ASSET_TAGS = (); }; };
+		9734C32D1BFD750D005E0E5E /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C32C1BFD750D005E0E5E /* CustomTabBarController.m */; settings = {ASSET_TAGS = (); }; };
+		9734C3301BFD895F005E0E5E /* UITabBarController+CustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C32F1BFD895F005E0E5E /* UITabBarController+CustomTabBar.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +60,20 @@
 		9734C3151BFD656C005E0E5E /* AWEntityTables.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWEntityTables.m; sourceTree = "<group>"; };
 		9734C3171BFD6576005E0E5E /* AWMarkupStripper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWMarkupStripper.h; sourceTree = "<group>"; };
 		9734C3181BFD6576005E0E5E /* AWMarkupStripper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWMarkupStripper.m; sourceTree = "<group>"; };
+		9734C31B1BFD6CC8005E0E5E /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		9734C31C1BFD6CC8005E0E5E /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		9734C31E1BFD6CDA005E0E5E /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
+		9734C31F1BFD6CDA005E0E5E /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
+		9734C3211BFD6CED005E0E5E /* MessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesViewController.h; sourceTree = "<group>"; };
+		9734C3221BFD6CED005E0E5E /* MessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesViewController.m; sourceTree = "<group>"; };
+		9734C3241BFD6D11005E0E5E /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
+		9734C3251BFD6D11005E0E5E /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
+		9734C3271BFD6D30005E0E5E /* PublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishViewController.h; sourceTree = "<group>"; };
+		9734C3281BFD6D30005E0E5E /* PublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishViewController.m; sourceTree = "<group>"; };
+		9734C32B1BFD750D005E0E5E /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
+		9734C32C1BFD750D005E0E5E /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
+		9734C32E1BFD895F005E0E5E /* UITabBarController+CustomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+CustomTabBar.h"; sourceTree = "<group>"; };
+		9734C32F1BFD895F005E0E5E /* UITabBarController+CustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+CustomTabBar.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,9 +108,9 @@
 			children = (
 				9734C2E51BFD5C90005E0E5E /* Components */,
 				9734C2FA1BFD623A005E0E5E /* Utils */,
-				9734C2E61BFD5C90005E0E5E /* Controllers */,
 				9734C2E71BFD5C90005E0E5E /* Models */,
 				9734C2E81BFD5C90005E0E5E /* Views */,
+				9734C2E61BFD5C90005E0E5E /* Controllers */,
 				9734C2D11BFD5C5D005E0E5E /* AppDelegate.h */,
 				9734C2D21BFD5C5D005E0E5E /* AppDelegate.m */,
 				9734C2F91BFD60D6005E0E5E /* Defines.h */,
@@ -112,6 +133,8 @@
 		9734C2E51BFD5C90005E0E5E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				9734C32A1BFD6EB7005E0E5E /* UIKit Additions */,
+				9734C31A1BFD6ACC005E0E5E /* CustomTabBarController */,
 				9734C3061BFD64F4005E0E5E /* Foundation Additions */,
 				9734C2FF1BFD632B005E0E5E /* Localize */,
 				9734C3001BFD632B005E0E5E /* Utils */,
@@ -125,6 +148,16 @@
 			isa = PBXGroup;
 			children = (
 				9734C2FC1BFD625A005E0E5E /* Controllers.h */,
+				9734C31B1BFD6CC8005E0E5E /* HomeViewController.h */,
+				9734C31C1BFD6CC8005E0E5E /* HomeViewController.m */,
+				9734C31E1BFD6CDA005E0E5E /* FavoritesViewController.h */,
+				9734C31F1BFD6CDA005E0E5E /* FavoritesViewController.m */,
+				9734C3211BFD6CED005E0E5E /* MessagesViewController.h */,
+				9734C3221BFD6CED005E0E5E /* MessagesViewController.m */,
+				9734C3241BFD6D11005E0E5E /* UserViewController.h */,
+				9734C3251BFD6D11005E0E5E /* UserViewController.m */,
+				9734C3271BFD6D30005E0E5E /* PublishViewController.h */,
+				9734C3281BFD6D30005E0E5E /* PublishViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -262,6 +295,24 @@
 			path = "HTML Stripper";
 			sourceTree = "<group>";
 		};
+		9734C31A1BFD6ACC005E0E5E /* CustomTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				9734C32B1BFD750D005E0E5E /* CustomTabBarController.h */,
+				9734C32C1BFD750D005E0E5E /* CustomTabBarController.m */,
+				9734C32E1BFD895F005E0E5E /* UITabBarController+CustomTabBar.h */,
+				9734C32F1BFD895F005E0E5E /* UITabBarController+CustomTabBar.m */,
+			);
+			path = CustomTabBarController;
+			sourceTree = "<group>";
+		};
+		9734C32A1BFD6EB7005E0E5E /* UIKit Additions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "UIKit Additions";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -333,14 +384,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				9734C3111BFD650D005E0E5E /* NSObjectAdditions.m in Sources */,
+				9734C3301BFD895F005E0E5E /* UITabBarController+CustomTabBar.m in Sources */,
+				9734C3231BFD6CED005E0E5E /* MessagesViewController.m in Sources */,
 				9734C2D31BFD5C5D005E0E5E /* AppDelegate.m in Sources */,
+				9734C3201BFD6CDA005E0E5E /* FavoritesViewController.m in Sources */,
 				9734C30F1BFD650D005E0E5E /* NSDataAdditions.m in Sources */,
 				9734C3161BFD656C005E0E5E /* AWEntityTables.m in Sources */,
 				9734C3191BFD6576005E0E5E /* AWMarkupStripper.m in Sources */,
+				9734C3261BFD6D11005E0E5E /* UserViewController.m in Sources */,
+				9734C3291BFD6D30005E0E5E /* PublishViewController.m in Sources */,
 				9734C3101BFD650D005E0E5E /* NSDateAdditions.m in Sources */,
+				9734C31D1BFD6CC8005E0E5E /* HomeViewController.m in Sources */,
 				9734C3051BFD638F005E0E5E /* AWLocale.m in Sources */,
 				9734C3121BFD650D005E0E5E /* NSStringAdditions.m in Sources */,
 				9734C2D01BFD5C5D005E0E5E /* main.m in Sources */,
+				9734C32D1BFD750D005E0E5E /* CustomTabBarController.m in Sources */,
 				9734C2EF1BFD5EAA005E0E5E /* Aspects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,6 +531,7 @@
 				9734C2E41BFD5C5D005E0E5E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

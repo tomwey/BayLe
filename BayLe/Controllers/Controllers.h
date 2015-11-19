@@ -10,5 +10,10 @@
 #define Controllers_h
 
 // 导入项目控制器相关的头文件
+#import "HomeViewController.h"
+#import "FavoritesViewController.h"
+#import "MessagesViewController.h"
+#import "PublishViewController.h"
+#import "UserViewController.h"
 
 #endif /* Controllers_h */

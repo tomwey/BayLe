@@ -21,11 +21,35 @@
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    [self initRootUIs];
+    
     [self.window makeKeyAndVisible];
     
-    NSLog(@"123");
-    
     return YES;
+}
+
+- (void)initRootUIs
+{
+    CustomTabBarController* tabBarController = [[[CustomTabBarController alloc] init] autorelease];
+    
+    tabBarController.selectedItemTintColor = [UIColor colorWithRed:230/255.0 green:0 blue:0 alpha:1.0];
+    
+    NSArray* controllerNames = @[@"Home", @"Favorites", @"Messages", @"Publish", @"User"];
+    NSArray* images = @[@"discovery", @"wishlists", @"publish", @"inbox", @"more"];
+    NSMutableArray* controllers = [NSMutableArray arrayWithCapacity:[controllerNames count]];
+    for (int i=0; i<[controllerNames count]; i++) {
+        UIViewController* controller = [[[NSClassFromString([NSString stringWithFormat:@"%@ViewController", controllerNames[i]]) alloc] init] autorelease];
+        UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"tab_%@_icon", images[i]]];
+        controller.customTabBarItem = [[[CustomTabBarItem alloc] initWithTitle:nil
+                                                                         image:image
+                                                                 selectedImage:nil] autorelease];
+        [controllers addObject:controller];
+    }
+    
+    tabBarController.viewControllers = controllers;
+    
+    self.window.rootViewController = tabBarController;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
