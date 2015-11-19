@@ -119,7 +119,7 @@ static char kCustomTabBarControllerKey;
     }
 }
 
-- (void)setViewControllers:(NSArray<__kindof UIViewController *> *)viewControllers
+- (void)setViewControllers:(NSArray *)viewControllers
 {
     [super setViewControllers:viewControllers];
     

@@ -138,10 +138,10 @@
 }
 
 - (void)setImageWithURLRequest:(NSURLRequest *)urlRequest
-              placeholderImage:(nullable UIImage *)placeholderImage
-                       success:(nullable void (^)(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image))success
-                       failure:(nullable void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error))failure
-         downloadProgressBlock:(nullable void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))downloadProgressBlock
+              placeholderImage:(UIImage *)placeholderImage
+                       success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image))success
+                       failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error))failure
+         downloadProgressBlock:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))downloadProgressBlock
 {
     [self cancelImageRequestOperation];
     

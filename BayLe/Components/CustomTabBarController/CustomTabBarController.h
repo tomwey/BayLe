@@ -49,7 +49,7 @@ typedef UIImageView CustomTabBar;
 
 @property (nonatomic, copy) NSString* title;
 
-- (id)initWithTitle:(NSString *)title image:(UIImage *)image selectedImage:(nullable UIImage *)selectedImage;
+- (id)initWithTitle:(NSString *)title image:(UIImage *)image selectedImage:(UIImage *)selectedImage;
 
 @end
 
