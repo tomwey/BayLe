@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0367D2A3-0B6C-47CE-A84B-649E057504EB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>BayLe</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>50AC625655D5735F2092DEF778964EDB57AFB1FA</key>
+		<string>https://github.com/tomwey/BayLe.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>BayLe.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>50AC625655D5735F2092DEF778964EDB57AFB1FA</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/tomwey/BayLe.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>50AC625655D5735F2092DEF778964EDB57AFB1FA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>50AC625655D5735F2092DEF778964EDB57AFB1FA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BayLe</string>
+		</dict>
+	</array>
+</dict>
+</plist>
