@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Defines.h"
 
 @interface AppDelegate ()
 
@@ -21,6 +22,8 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    NSLog(@"123");
     
     return YES;
 }

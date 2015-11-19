@@ -12,6 +12,14 @@
 		9734C2DB1BFD5C5D005E0E5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9734C2DA1BFD5C5D005E0E5E /* Assets.xcassets */; };
 		9734C2EF1BFD5EAA005E0E5E /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C2EE1BFD5EAA005E0E5E /* Aspects.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9734C2F61BFD5F35005E0E5E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9734C2F41BFD5F35005E0E5E /* Default-568h@2x.png */; settings = {ASSET_TAGS = (); }; };
+		9734C3021BFD6365005E0E5E /* AWLocalize.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9734C3011BFD6365005E0E5E /* AWLocalize.bundle */; settings = {ASSET_TAGS = (); }; };
+		9734C3051BFD638F005E0E5E /* AWLocale.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C3041BFD638F005E0E5E /* AWLocale.m */; settings = {ASSET_TAGS = (); }; };
+		9734C30F1BFD650D005E0E5E /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C3081BFD650D005E0E5E /* NSDataAdditions.m */; settings = {ASSET_TAGS = (); }; };
+		9734C3101BFD650D005E0E5E /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C30A1BFD650D005E0E5E /* NSDateAdditions.m */; settings = {ASSET_TAGS = (); }; };
+		9734C3111BFD650D005E0E5E /* NSObjectAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C30C1BFD650D005E0E5E /* NSObjectAdditions.m */; settings = {ASSET_TAGS = (); }; };
+		9734C3121BFD650D005E0E5E /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C30E1BFD650D005E0E5E /* NSStringAdditions.m */; settings = {ASSET_TAGS = (); }; };
+		9734C3161BFD656C005E0E5E /* AWEntityTables.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C3151BFD656C005E0E5E /* AWEntityTables.m */; settings = {ASSET_TAGS = (); }; };
+		9734C3191BFD6576005E0E5E /* AWMarkupStripper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C3181BFD6576005E0E5E /* AWMarkupStripper.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +32,27 @@
 		9734C2ED1BFD5EAA005E0E5E /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
 		9734C2EE1BFD5EAA005E0E5E /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
 		9734C2F41BFD5F35005E0E5E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9734C2F81BFD6070005E0E5E /* AWMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AWMacros.h; sourceTree = "<group>"; };
+		9734C2F91BFD60D6005E0E5E /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
+		9734C2FB1BFD624C005E0E5E /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		9734C2FC1BFD625A005E0E5E /* Controllers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Controllers.h; sourceTree = "<group>"; };
+		9734C2FD1BFD6263005E0E5E /* Models.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Models.h; sourceTree = "<group>"; };
+		9734C2FE1BFD626D005E0E5E /* Views.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Views.h; sourceTree = "<group>"; };
+		9734C3011BFD6365005E0E5E /* AWLocalize.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AWLocalize.bundle; sourceTree = "<group>"; };
+		9734C3031BFD638F005E0E5E /* AWLocale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWLocale.h; sourceTree = "<group>"; };
+		9734C3041BFD638F005E0E5E /* AWLocale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWLocale.m; sourceTree = "<group>"; };
+		9734C3071BFD650D005E0E5E /* NSDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataAdditions.h; sourceTree = "<group>"; };
+		9734C3081BFD650D005E0E5E /* NSDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataAdditions.m; sourceTree = "<group>"; };
+		9734C3091BFD650D005E0E5E /* NSDateAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateAdditions.h; sourceTree = "<group>"; };
+		9734C30A1BFD650D005E0E5E /* NSDateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateAdditions.m; sourceTree = "<group>"; };
+		9734C30B1BFD650D005E0E5E /* NSObjectAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObjectAdditions.h; sourceTree = "<group>"; };
+		9734C30C1BFD650D005E0E5E /* NSObjectAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectAdditions.m; sourceTree = "<group>"; };
+		9734C30D1BFD650D005E0E5E /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
+		9734C30E1BFD650D005E0E5E /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
+		9734C3141BFD656C005E0E5E /* AWEntityTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEntityTables.h; sourceTree = "<group>"; };
+		9734C3151BFD656C005E0E5E /* AWEntityTables.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWEntityTables.m; sourceTree = "<group>"; };
+		9734C3171BFD6576005E0E5E /* AWMarkupStripper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWMarkupStripper.h; sourceTree = "<group>"; };
+		9734C3181BFD6576005E0E5E /* AWMarkupStripper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWMarkupStripper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,11 +86,13 @@
 			isa = PBXGroup;
 			children = (
 				9734C2E51BFD5C90005E0E5E /* Components */,
+				9734C2FA1BFD623A005E0E5E /* Utils */,
 				9734C2E61BFD5C90005E0E5E /* Controllers */,
 				9734C2E71BFD5C90005E0E5E /* Models */,
 				9734C2E81BFD5C90005E0E5E /* Views */,
 				9734C2D11BFD5C5D005E0E5E /* AppDelegate.h */,
 				9734C2D21BFD5C5D005E0E5E /* AppDelegate.m */,
+				9734C2F91BFD60D6005E0E5E /* Defines.h */,
 				9734C2E91BFD5CED005E0E5E /* Resources */,
 				9734C2DA1BFD5C5D005E0E5E /* Assets.xcassets */,
 				9734C2DF1BFD5C5D005E0E5E /* Info.plist */,
@@ -81,6 +112,10 @@
 		9734C2E51BFD5C90005E0E5E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				9734C3061BFD64F4005E0E5E /* Foundation Additions */,
+				9734C2FF1BFD632B005E0E5E /* Localize */,
+				9734C3001BFD632B005E0E5E /* Utils */,
+				9734C2F71BFD6030005E0E5E /* Macros */,
 				9734C2EB1BFD5E9D005E0E5E /* External */,
 			);
 			path = Components;
@@ -89,6 +124,7 @@
 		9734C2E61BFD5C90005E0E5E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9734C2FC1BFD625A005E0E5E /* Controllers.h */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -96,6 +132,7 @@
 		9734C2E71BFD5C90005E0E5E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9734C2FD1BFD6263005E0E5E /* Models.h */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -103,6 +140,7 @@
 		9734C2E81BFD5C90005E0E5E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9734C2FE1BFD626D005E0E5E /* Views.h */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -164,6 +202,66 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		9734C2F71BFD6030005E0E5E /* Macros */ = {
+			isa = PBXGroup;
+			children = (
+				9734C2F81BFD6070005E0E5E /* AWMacros.h */,
+			);
+			path = Macros;
+			sourceTree = "<group>";
+		};
+		9734C2FA1BFD623A005E0E5E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9734C2FB1BFD624C005E0E5E /* Utils.h */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		9734C2FF1BFD632B005E0E5E /* Localize */ = {
+			isa = PBXGroup;
+			children = (
+				9734C3011BFD6365005E0E5E /* AWLocalize.bundle */,
+				9734C3031BFD638F005E0E5E /* AWLocale.h */,
+				9734C3041BFD638F005E0E5E /* AWLocale.m */,
+			);
+			path = Localize;
+			sourceTree = "<group>";
+		};
+		9734C3001BFD632B005E0E5E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9734C3131BFD654F005E0E5E /* HTML Stripper */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		9734C3061BFD64F4005E0E5E /* Foundation Additions */ = {
+			isa = PBXGroup;
+			children = (
+				9734C3071BFD650D005E0E5E /* NSDataAdditions.h */,
+				9734C3081BFD650D005E0E5E /* NSDataAdditions.m */,
+				9734C3091BFD650D005E0E5E /* NSDateAdditions.h */,
+				9734C30A1BFD650D005E0E5E /* NSDateAdditions.m */,
+				9734C30B1BFD650D005E0E5E /* NSObjectAdditions.h */,
+				9734C30C1BFD650D005E0E5E /* NSObjectAdditions.m */,
+				9734C30D1BFD650D005E0E5E /* NSStringAdditions.h */,
+				9734C30E1BFD650D005E0E5E /* NSStringAdditions.m */,
+			);
+			path = "Foundation Additions";
+			sourceTree = "<group>";
+		};
+		9734C3131BFD654F005E0E5E /* HTML Stripper */ = {
+			isa = PBXGroup;
+			children = (
+				9734C3141BFD656C005E0E5E /* AWEntityTables.h */,
+				9734C3151BFD656C005E0E5E /* AWEntityTables.m */,
+				9734C3171BFD6576005E0E5E /* AWMarkupStripper.h */,
+				9734C3181BFD6576005E0E5E /* AWMarkupStripper.m */,
+			);
+			path = "HTML Stripper";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -221,6 +319,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9734C3021BFD6365005E0E5E /* AWLocalize.bundle in Resources */,
 				9734C2DB1BFD5C5D005E0E5E /* Assets.xcassets in Resources */,
 				9734C2F61BFD5F35005E0E5E /* Default-568h@2x.png in Resources */,
 			);
@@ -233,7 +332,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9734C3111BFD650D005E0E5E /* NSObjectAdditions.m in Sources */,
 				9734C2D31BFD5C5D005E0E5E /* AppDelegate.m in Sources */,
+				9734C30F1BFD650D005E0E5E /* NSDataAdditions.m in Sources */,
+				9734C3161BFD656C005E0E5E /* AWEntityTables.m in Sources */,
+				9734C3191BFD6576005E0E5E /* AWMarkupStripper.m in Sources */,
+				9734C3101BFD650D005E0E5E /* NSDateAdditions.m in Sources */,
+				9734C3051BFD638F005E0E5E /* AWLocale.m in Sources */,
+				9734C3121BFD650D005E0E5E /* NSStringAdditions.m in Sources */,
 				9734C2D01BFD5C5D005E0E5E /* main.m in Sources */,
 				9734C2EF1BFD5EAA005E0E5E /* Aspects.m in Sources */,
 			);
