@@ -27,6 +27,24 @@
 		9734C3291BFD6D30005E0E5E /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C3281BFD6D30005E0E5E /* PublishViewController.m */; settings = {ASSET_TAGS = (); }; };
 		9734C32D1BFD750D005E0E5E /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C32C1BFD750D005E0E5E /* CustomTabBarController.m */; settings = {ASSET_TAGS = (); }; };
 		9734C3301BFD895F005E0E5E /* UITabBarController+CustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C32F1BFD895F005E0E5E /* UITabBarController+CustomTabBar.m */; settings = {ASSET_TAGS = (); }; };
+		97BD119A1BFDAD5D00641C79 /* AWUIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11991BFDAD5D00641C79 /* AWUIUtils.m */; settings = {ASSET_TAGS = (); }; };
+		97BD11A01BFDAF6300641C79 /* UIWindowAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD119F1BFDAF6300641C79 /* UIWindowAdditions.m */; settings = {ASSET_TAGS = (); }; };
+		97BD11A71BFDB69100641C79 /* UIImageAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11A21BFDB69100641C79 /* UIImageAdditions.m */; settings = {ASSET_TAGS = (); }; };
+		97BD11A81BFDB69100641C79 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11A41BFDB69100641C79 /* UIViewAdditions.m */; settings = {ASSET_TAGS = (); }; };
+		97BD11AD1BFDBBA900641C79 /* UITableViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11AB1BFDBBA900641C79 /* UITableViewAdditions.m */; settings = {ASSET_TAGS = (); }; };
+		97BD11B31BFDC2D900641C79 /* AWBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11B21BFDC2D900641C79 /* AWBaseViewController.m */; settings = {ASSET_TAGS = (); }; };
+		97BD11C21BFDC2F300641C79 /* AWCustomNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11B51BFDC2F300641C79 /* AWCustomNavBar.m */; settings = {ASSET_TAGS = (); }; };
+		97BD11C31BFDC2F300641C79 /* AWCommandButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11B71BFDC2F300641C79 /* AWCommandButton.m */; settings = {ASSET_TAGS = (); }; };
+		97BD11C41BFDC2F300641C79 /* AWTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11B91BFDC2F300641C79 /* AWTableView.m */; settings = {ASSET_TAGS = (); }; };
+		97BD11C51BFDC2F300641C79 /* AWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11BB1BFDC2F300641C79 /* AWTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		97BD11C61BFDC2F300641C79 /* AWButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11BD1BFDC2F300641C79 /* AWButton.m */; settings = {ASSET_TAGS = (); }; };
+		97BD11C71BFDC2F300641C79 /* AWMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11BF1BFDC2F300641C79 /* AWMaskView.m */; settings = {ASSET_TAGS = (); }; };
+		97BD11C81BFDC2F300641C79 /* AWBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11C11BFDC2F300641C79 /* AWBaseView.m */; settings = {ASSET_TAGS = (); }; };
+		97BD11D01BFDC5BA00641C79 /* Command.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11CB1BFDC5BA00641C79 /* Command.m */; settings = {ASSET_TAGS = (); }; };
+		97BD11D11BFDC5BA00641C79 /* ShareCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11CD1BFDC5BA00641C79 /* ShareCommand.m */; settings = {ASSET_TAGS = (); }; };
+		97BD11D21BFDC5BA00641C79 /* SendMailCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11CF1BFDC5BA00641C79 /* SendMailCommand.m */; settings = {ASSET_TAGS = (); }; };
+		97BD11D71BFDC61800641C79 /* AWToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11D41BFDC61800641C79 /* AWToast.m */; settings = {ASSET_TAGS = (); }; };
+		97BD11D81BFDC61800641C79 /* AWModalAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11D61BFDC61800641C79 /* AWModalAlert.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +92,42 @@
 		9734C32C1BFD750D005E0E5E /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
 		9734C32E1BFD895F005E0E5E /* UITabBarController+CustomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+CustomTabBar.h"; sourceTree = "<group>"; };
 		9734C32F1BFD895F005E0E5E /* UITabBarController+CustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+CustomTabBar.m"; sourceTree = "<group>"; };
+		97BD11981BFDAD5D00641C79 /* AWUIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWUIUtils.h; sourceTree = "<group>"; };
+		97BD11991BFDAD5D00641C79 /* AWUIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWUIUtils.m; sourceTree = "<group>"; };
+		97BD119E1BFDAF6300641C79 /* UIWindowAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIWindowAdditions.h; sourceTree = "<group>"; };
+		97BD119F1BFDAF6300641C79 /* UIWindowAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIWindowAdditions.m; sourceTree = "<group>"; };
+		97BD11A11BFDB69100641C79 /* UIImageAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageAdditions.h; sourceTree = "<group>"; };
+		97BD11A21BFDB69100641C79 /* UIImageAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageAdditions.m; sourceTree = "<group>"; };
+		97BD11A31BFDB69100641C79 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
+		97BD11A41BFDB69100641C79 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
+		97BD11AB1BFDBBA900641C79 /* UITableViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITableViewAdditions.m; sourceTree = "<group>"; };
+		97BD11AC1BFDBBA900641C79 /* UITableViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITableViewAdditions.h; sourceTree = "<group>"; };
+		97BD11B11BFDC2D900641C79 /* AWBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWBaseViewController.h; sourceTree = "<group>"; };
+		97BD11B21BFDC2D900641C79 /* AWBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWBaseViewController.m; sourceTree = "<group>"; };
+		97BD11B41BFDC2F300641C79 /* AWCustomNavBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWCustomNavBar.h; sourceTree = "<group>"; };
+		97BD11B51BFDC2F300641C79 /* AWCustomNavBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWCustomNavBar.m; sourceTree = "<group>"; };
+		97BD11B61BFDC2F300641C79 /* AWCommandButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWCommandButton.h; sourceTree = "<group>"; };
+		97BD11B71BFDC2F300641C79 /* AWCommandButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWCommandButton.m; sourceTree = "<group>"; };
+		97BD11B81BFDC2F300641C79 /* AWTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWTableView.h; sourceTree = "<group>"; };
+		97BD11B91BFDC2F300641C79 /* AWTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWTableView.m; sourceTree = "<group>"; };
+		97BD11BA1BFDC2F300641C79 /* AWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWTableViewCell.h; sourceTree = "<group>"; };
+		97BD11BB1BFDC2F300641C79 /* AWTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWTableViewCell.m; sourceTree = "<group>"; };
+		97BD11BC1BFDC2F300641C79 /* AWButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWButton.h; sourceTree = "<group>"; };
+		97BD11BD1BFDC2F300641C79 /* AWButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWButton.m; sourceTree = "<group>"; };
+		97BD11BE1BFDC2F300641C79 /* AWMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWMaskView.h; sourceTree = "<group>"; };
+		97BD11BF1BFDC2F300641C79 /* AWMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWMaskView.m; sourceTree = "<group>"; };
+		97BD11C01BFDC2F300641C79 /* AWBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWBaseView.h; sourceTree = "<group>"; };
+		97BD11C11BFDC2F300641C79 /* AWBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWBaseView.m; sourceTree = "<group>"; };
+		97BD11CA1BFDC5BA00641C79 /* Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Command.h; sourceTree = "<group>"; };
+		97BD11CB1BFDC5BA00641C79 /* Command.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Command.m; sourceTree = "<group>"; };
+		97BD11CC1BFDC5BA00641C79 /* ShareCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareCommand.h; sourceTree = "<group>"; };
+		97BD11CD1BFDC5BA00641C79 /* ShareCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareCommand.m; sourceTree = "<group>"; };
+		97BD11CE1BFDC5BA00641C79 /* SendMailCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMailCommand.h; sourceTree = "<group>"; };
+		97BD11CF1BFDC5BA00641C79 /* SendMailCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMailCommand.m; sourceTree = "<group>"; };
+		97BD11D31BFDC61800641C79 /* AWToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWToast.h; sourceTree = "<group>"; };
+		97BD11D41BFDC61800641C79 /* AWToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWToast.m; sourceTree = "<group>"; };
+		97BD11D51BFDC61800641C79 /* AWModalAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWModalAlert.h; sourceTree = "<group>"; };
+		97BD11D61BFDC61800641C79 /* AWModalAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWModalAlert.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +187,9 @@
 		9734C2E51BFD5C90005E0E5E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				97BD119B1BFDAE0700641C79 /* Controllers */,
+				97BD119C1BFDAE0700641C79 /* Models */,
+				97BD119D1BFDAE0700641C79 /* Views */,
 				9734C32A1BFD6EB7005E0E5E /* UIKit Additions */,
 				9734C31A1BFD6ACC005E0E5E /* CustomTabBarController */,
 				9734C3061BFD64F4005E0E5E /* Foundation Additions */,
@@ -265,6 +322,8 @@
 			isa = PBXGroup;
 			children = (
 				9734C3131BFD654F005E0E5E /* HTML Stripper */,
+				97BD11981BFDAD5D00641C79 /* AWUIUtils.h */,
+				97BD11991BFDAD5D00641C79 /* AWUIUtils.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -309,8 +368,79 @@
 		9734C32A1BFD6EB7005E0E5E /* UIKit Additions */ = {
 			isa = PBXGroup;
 			children = (
+				97BD11AA1BFDBB8800641C79 /* UITableViewAdditions */,
+				97BD11A11BFDB69100641C79 /* UIImageAdditions.h */,
+				97BD11A21BFDB69100641C79 /* UIImageAdditions.m */,
+				97BD11A31BFDB69100641C79 /* UIViewAdditions.h */,
+				97BD11A41BFDB69100641C79 /* UIViewAdditions.m */,
+				97BD119E1BFDAF6300641C79 /* UIWindowAdditions.h */,
+				97BD119F1BFDAF6300641C79 /* UIWindowAdditions.m */,
 			);
 			path = "UIKit Additions";
+			sourceTree = "<group>";
+		};
+		97BD119B1BFDAE0700641C79 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				97BD11B11BFDC2D900641C79 /* AWBaseViewController.h */,
+				97BD11B21BFDC2D900641C79 /* AWBaseViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		97BD119C1BFDAE0700641C79 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				97BD11C91BFDC5B000641C79 /* Commands */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		97BD119D1BFDAE0700641C79 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				97BD11D31BFDC61800641C79 /* AWToast.h */,
+				97BD11D41BFDC61800641C79 /* AWToast.m */,
+				97BD11D51BFDC61800641C79 /* AWModalAlert.h */,
+				97BD11D61BFDC61800641C79 /* AWModalAlert.m */,
+				97BD11B41BFDC2F300641C79 /* AWCustomNavBar.h */,
+				97BD11B51BFDC2F300641C79 /* AWCustomNavBar.m */,
+				97BD11B61BFDC2F300641C79 /* AWCommandButton.h */,
+				97BD11B71BFDC2F300641C79 /* AWCommandButton.m */,
+				97BD11B81BFDC2F300641C79 /* AWTableView.h */,
+				97BD11B91BFDC2F300641C79 /* AWTableView.m */,
+				97BD11BA1BFDC2F300641C79 /* AWTableViewCell.h */,
+				97BD11BB1BFDC2F300641C79 /* AWTableViewCell.m */,
+				97BD11BC1BFDC2F300641C79 /* AWButton.h */,
+				97BD11BD1BFDC2F300641C79 /* AWButton.m */,
+				97BD11BE1BFDC2F300641C79 /* AWMaskView.h */,
+				97BD11BF1BFDC2F300641C79 /* AWMaskView.m */,
+				97BD11C01BFDC2F300641C79 /* AWBaseView.h */,
+				97BD11C11BFDC2F300641C79 /* AWBaseView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		97BD11AA1BFDBB8800641C79 /* UITableViewAdditions */ = {
+			isa = PBXGroup;
+			children = (
+				97BD11AB1BFDBBA900641C79 /* UITableViewAdditions.m */,
+				97BD11AC1BFDBBA900641C79 /* UITableViewAdditions.h */,
+			);
+			path = UITableViewAdditions;
+			sourceTree = "<group>";
+		};
+		97BD11C91BFDC5B000641C79 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				97BD11CA1BFDC5BA00641C79 /* Command.h */,
+				97BD11CB1BFDC5BA00641C79 /* Command.m */,
+				97BD11CC1BFDC5BA00641C79 /* ShareCommand.h */,
+				97BD11CD1BFDC5BA00641C79 /* ShareCommand.m */,
+				97BD11CE1BFDC5BA00641C79 /* SendMailCommand.h */,
+				97BD11CF1BFDC5BA00641C79 /* SendMailCommand.m */,
+			);
+			path = Commands;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,22 +514,40 @@
 			buildActionMask = 2147483647;
 			files = (
 				9734C3111BFD650D005E0E5E /* NSObjectAdditions.m in Sources */,
+				97BD11D21BFDC5BA00641C79 /* SendMailCommand.m in Sources */,
+				97BD11A01BFDAF6300641C79 /* UIWindowAdditions.m in Sources */,
+				97BD11D71BFDC61800641C79 /* AWToast.m in Sources */,
+				97BD11A81BFDB69100641C79 /* UIViewAdditions.m in Sources */,
+				97BD11AD1BFDBBA900641C79 /* UITableViewAdditions.m in Sources */,
 				9734C3301BFD895F005E0E5E /* UITabBarController+CustomTabBar.m in Sources */,
+				97BD11C51BFDC2F300641C79 /* AWTableViewCell.m in Sources */,
 				9734C3231BFD6CED005E0E5E /* MessagesViewController.m in Sources */,
+				97BD11D01BFDC5BA00641C79 /* Command.m in Sources */,
 				9734C2D31BFD5C5D005E0E5E /* AppDelegate.m in Sources */,
 				9734C3201BFD6CDA005E0E5E /* FavoritesViewController.m in Sources */,
+				97BD11C81BFDC2F300641C79 /* AWBaseView.m in Sources */,
 				9734C30F1BFD650D005E0E5E /* NSDataAdditions.m in Sources */,
 				9734C3161BFD656C005E0E5E /* AWEntityTables.m in Sources */,
 				9734C3191BFD6576005E0E5E /* AWMarkupStripper.m in Sources */,
 				9734C3261BFD6D11005E0E5E /* UserViewController.m in Sources */,
 				9734C3291BFD6D30005E0E5E /* PublishViewController.m in Sources */,
+				97BD11D81BFDC61800641C79 /* AWModalAlert.m in Sources */,
 				9734C3101BFD650D005E0E5E /* NSDateAdditions.m in Sources */,
 				9734C31D1BFD6CC8005E0E5E /* HomeViewController.m in Sources */,
 				9734C3051BFD638F005E0E5E /* AWLocale.m in Sources */,
 				9734C3121BFD650D005E0E5E /* NSStringAdditions.m in Sources */,
 				9734C2D01BFD5C5D005E0E5E /* main.m in Sources */,
+				97BD11B31BFDC2D900641C79 /* AWBaseViewController.m in Sources */,
 				9734C32D1BFD750D005E0E5E /* CustomTabBarController.m in Sources */,
+				97BD11C31BFDC2F300641C79 /* AWCommandButton.m in Sources */,
+				97BD11C71BFDC2F300641C79 /* AWMaskView.m in Sources */,
+				97BD11A71BFDB69100641C79 /* UIImageAdditions.m in Sources */,
 				9734C2EF1BFD5EAA005E0E5E /* Aspects.m in Sources */,
+				97BD11D11BFDC5BA00641C79 /* ShareCommand.m in Sources */,
+				97BD11C41BFDC2F300641C79 /* AWTableView.m in Sources */,
+				97BD11C61BFDC2F300641C79 /* AWButton.m in Sources */,
+				97BD11C21BFDC2F300641C79 /* AWCustomNavBar.m in Sources */,
+				97BD119A1BFDAD5D00641C79 /* AWUIUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

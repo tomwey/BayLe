@@ -13,6 +13,7 @@
 
 // 共用宏
 #import "AWMacros.h"
+#import "AWUIUtils.h"
 #import "CustomTabBarController.h"
 
 

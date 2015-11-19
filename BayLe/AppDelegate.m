@@ -33,7 +33,7 @@
 {
     CustomTabBarController* tabBarController = [[[CustomTabBarController alloc] init] autorelease];
     
-    tabBarController.selectedItemTintColor = [UIColor colorWithRed:230/255.0 green:0 blue:0 alpha:1.0];
+    tabBarController.selectedItemTintColor = AWColorFromRGB(251, 64, 78);
     
     NSArray* controllerNames = @[@"Home", @"Favorites", @"Messages", @"Publish", @"User"];
     NSArray* images = @[@"discovery", @"wishlists", @"publish", @"inbox", @"more"];
