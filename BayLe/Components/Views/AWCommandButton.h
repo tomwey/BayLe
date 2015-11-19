@@ -11,6 +11,7 @@
 
 @interface AWCommandButton : UIButton
 
+/** 设置一个命令对象 */
 @property (nonatomic, retain) IBOutlet Command* command;
 
 @end
