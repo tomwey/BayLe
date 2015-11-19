@@ -15,7 +15,7 @@
     UILabel*     _titleLabel;
 }
 
-@dynamic backgroudColor, backgroundImage, title;
+@dynamic backgroundColor, backgroundImage, title;
 
 @synthesize contentView = _contentView;
 
@@ -56,12 +56,12 @@
     [self sendSubviewToBack:_contentView];
 }
 
-- (void)setBackgroudColor:(UIColor *)backgroudColor
+- (void)setBackgroundColor:(UIColor *)backgroundColor
 {
-    _contentView.backgroundColor = backgroudColor;
+    _contentView.backgroundColor = backgroundColor;
 }
 
-- (UIColor *)backgroudColor { return _contentView.backgroundColor; }
+- (UIColor *)backgroundColor { return _contentView.backgroundColor; }
 
 - (void)setBackgroundImage:(UIImage *)backgroundImage
 {

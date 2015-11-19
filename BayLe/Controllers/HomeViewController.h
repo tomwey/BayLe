@@ -6,8 +6,8 @@
 //  Copyright © 2015年 tangwei1. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface HomeViewController : UIViewController
+@interface HomeViewController : BaseViewController
 
 @end

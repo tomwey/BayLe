@@ -18,6 +18,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    [MAMapServices sharedServices].apiKey = MAMAP_API_KEY;
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.window.backgroundColor = [UIColor whiteColor];
@@ -33,17 +36,24 @@
 {
     CustomTabBarController* tabBarController = [[[CustomTabBarController alloc] init] autorelease];
     
-    tabBarController.selectedItemTintColor = AWColorFromRGB(251, 64, 78);
+    tabBarController.selectedItemTintColor = MAIN_COLOR;
     
     NSArray* controllerNames = @[@"Home", @"Favorites", @"Messages", @"Publish", @"User"];
     NSArray* images = @[@"discovery", @"wishlists", @"publish", @"inbox", @"more"];
     NSMutableArray* controllers = [NSMutableArray arrayWithCapacity:[controllerNames count]];
     for (int i=0; i<[controllerNames count]; i++) {
         UIViewController* controller = [[[NSClassFromString([NSString stringWithFormat:@"%@ViewController", controllerNames[i]]) alloc] init] autorelease];
+        
+        if ( i == 0 ) {
+            controller = [[[UINavigationController alloc] initWithRootViewController:controller] autorelease];
+        }
+        
         UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"tab_%@_icon", images[i]]];
         controller.customTabBarItem = [[[CustomTabBarItem alloc] initWithTitle:nil
                                                                          image:image
                                                                  selectedImage:nil] autorelease];
+        
+
         [controllers addObject:controller];
     }
     

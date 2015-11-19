@@ -11,7 +11,7 @@
 @interface AWCustomNavBar : UIView
 
 /** 设置导航条背景颜色 */
-@property (nonatomic, retain) UIColor* backgroudColor;
+@property (nonatomic, retain) UIColor* backgroundColor;
 
 /** 设置导航条背景图片 */
 @property (nonatomic, retain) UIImage* backgroundImage;

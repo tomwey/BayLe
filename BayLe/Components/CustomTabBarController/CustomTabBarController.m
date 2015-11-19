@@ -32,8 +32,6 @@
 
 @synthesize viewControllers = _viewControllers;
 
-static char kCustomTabBarControllerKey;
-
 #pragma mark Getters and Setters
 - (void)setTabBarBackgroundImage:(UIImage *)tabBarBackgroundImage
 {
