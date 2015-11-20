@@ -17,13 +17,16 @@
 #import "AWCustomTabBarController.h"
 #import "AWCustomNavBar.h"
 #import "UIViewAdditions.h"
+#import "UILabelTextSize.h"
 #import "AWCaret.h"
 
 
 #pragma mark ------------------------------- 跟项目相关的宏定义 -------------------------------
 
 // App亮色
-#define MAIN_COLOR AWColorFromRGB(251, 64, 78)
+#define MAIN_RED_COLOR AWColorFromRGB(251, 64, 78)
+// 浅灰色
+#define MAIN_LIGHT_GRAY_COLOR [UIColor lightGrayColor]
 
 // 高德地图API Key
 #define MAMAP_API_KEY @"14f062a0bc5bac1a8bfd247a8db0aac5"

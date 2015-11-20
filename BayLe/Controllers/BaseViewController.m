@@ -32,7 +32,7 @@
     if ( !self.navBarHidden ) {
         self.navBar = [[[AWCustomNavBar alloc] init] autorelease];
         [self.view addSubview:self.navBar];
-        self.navBar.backgroundColor = MAIN_COLOR;
+        self.navBar.backgroundColor = MAIN_RED_COLOR;
     }
     
     // 添加内容视图

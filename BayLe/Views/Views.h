@@ -10,5 +10,6 @@
 #define Views_h
 
 // 导入项目中视图头文件
+#import "HomeTitleView.h"
 
 #endif /* Views_h */

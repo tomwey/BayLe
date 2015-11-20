@@ -66,6 +66,8 @@
 		97BD12171BFDCF7800641C79 /* UIImageView+ProgressIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD12151BFDCF7800641C79 /* UIImageView+ProgressIndicator.m */; };
 		97BD121B1BFDCFC100641C79 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD121A1BFDCFC100641C79 /* MBProgressHUD.m */; };
 		97BD12211BFEFEE900641C79 /* AWCaret.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD12201BFEFEE900641C79 /* AWCaret.m */; settings = {ASSET_TAGS = (); }; };
+		97BD12241BFF024800641C79 /* HomeTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD12231BFF024800641C79 /* HomeTitleView.m */; settings = {ASSET_TAGS = (); }; };
+		97BD12271BFF125900641C79 /* UILabelTextSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD12261BFF125900641C79 /* UILabelTextSize.m */; settings = {ASSET_TAGS = (); }; };
 		9930B5FF1BFE0A9300A109F2 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9930B5FE1BFE0A9300A109F2 /* BaseViewController.m */; };
 		9930B6081BFE0F2C00A109F2 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9930B6021BFE0F2C00A109F2 /* AMapSearchKit.framework */; };
 		9930B6091BFE0F2C00A109F2 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9930B6031BFE0F2C00A109F2 /* MAMapKit.framework */; };
@@ -200,6 +202,10 @@
 		97BD121A1BFDCFC100641C79 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		97BD121F1BFEFEE900641C79 /* AWCaret.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWCaret.h; sourceTree = "<group>"; };
 		97BD12201BFEFEE900641C79 /* AWCaret.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWCaret.m; sourceTree = "<group>"; };
+		97BD12221BFF024800641C79 /* HomeTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTitleView.h; sourceTree = "<group>"; };
+		97BD12231BFF024800641C79 /* HomeTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTitleView.m; sourceTree = "<group>"; };
+		97BD12251BFF125900641C79 /* UILabelTextSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UILabelTextSize.h; sourceTree = "<group>"; };
+		97BD12261BFF125900641C79 /* UILabelTextSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UILabelTextSize.m; sourceTree = "<group>"; };
 		9930B5FD1BFE0A9300A109F2 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		9930B5FE1BFE0A9300A109F2 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		9930B6021BFE0F2C00A109F2 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
@@ -323,6 +329,8 @@
 			isa = PBXGroup;
 			children = (
 				9734C2FE1BFD626D005E0E5E /* Views.h */,
+				97BD12221BFF024800641C79 /* HomeTitleView.h */,
+				97BD12231BFF024800641C79 /* HomeTitleView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -467,6 +475,8 @@
 				97BD11A41BFDB69100641C79 /* UIViewAdditions.m */,
 				97BD119E1BFDAF6300641C79 /* UIWindowAdditions.h */,
 				97BD119F1BFDAF6300641C79 /* UIWindowAdditions.m */,
+				97BD12251BFF125900641C79 /* UILabelTextSize.h */,
+				97BD12261BFF125900641C79 /* UILabelTextSize.m */,
 			);
 			path = "UIKit Additions";
 			sourceTree = "<group>";
@@ -743,6 +753,8 @@
 				97BD11A01BFDAF6300641C79 /* UIWindowAdditions.m in Sources */,
 				97BD120F1BFDCEF900641C79 /* UIWebView+AFNetworking.m in Sources */,
 				97BD11D71BFDC61800641C79 /* AWToast.m in Sources */,
+				97BD12271BFF125900641C79 /* UILabelTextSize.m in Sources */,
+				97BD12241BFF024800641C79 /* HomeTitleView.m in Sources */,
 				97BD11A81BFDB69100641C79 /* UIViewAdditions.m in Sources */,
 				97BD11AD1BFDBBA900641C79 /* UITableViewAdditions.m in Sources */,
 				9734C3301BFD895F005E0E5E /* UITabBarController+CustomTabBar.m in Sources */,

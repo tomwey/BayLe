@@ -36,9 +36,10 @@
 {
     AWCustomTabBarController* tabBarController = [[[AWCustomTabBarController alloc] init] autorelease];
     
-    tabBarController.selectedItemTintColor = MAIN_COLOR;
+    tabBarController.itemTintColor = MAIN_LIGHT_GRAY_COLOR;
+    tabBarController.selectedItemTintColor = MAIN_RED_COLOR;
     
-    NSArray* controllerNames = @[@"Home", @"Favorites", @"Messages", @"Publish", @"User"];
+    NSArray* controllerNames = @[@"Home", @"Favorites",@"Publish", @"Messages", @"User"];
     NSArray* images = @[@"discovery", @"wishlists", @"publish", @"inbox", @"more"];
     NSMutableArray* controllers = [NSMutableArray arrayWithCapacity:[controllerNames count]];
     for (int i=0; i<[controllerNames count]; i++) {
