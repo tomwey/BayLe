@@ -68,6 +68,7 @@
 		97BD12211BFEFEE900641C79 /* AWCaret.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD12201BFEFEE900641C79 /* AWCaret.m */; settings = {ASSET_TAGS = (); }; };
 		97BD12241BFF024800641C79 /* HomeTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD12231BFF024800641C79 /* HomeTitleView.m */; settings = {ASSET_TAGS = (); }; };
 		97BD12271BFF125900641C79 /* UILabelTextSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD12261BFF125900641C79 /* UILabelTextSize.m */; settings = {ASSET_TAGS = (); }; };
+		97BD122A1BFF1BEE00641C79 /* PagerTabStripper.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD12291BFF1BEE00641C79 /* PagerTabStripper.m */; settings = {ASSET_TAGS = (); }; };
 		9930B5FF1BFE0A9300A109F2 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9930B5FE1BFE0A9300A109F2 /* BaseViewController.m */; };
 		9930B6081BFE0F2C00A109F2 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9930B6021BFE0F2C00A109F2 /* AMapSearchKit.framework */; };
 		9930B6091BFE0F2C00A109F2 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9930B6031BFE0F2C00A109F2 /* MAMapKit.framework */; };
@@ -206,6 +207,8 @@
 		97BD12231BFF024800641C79 /* HomeTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTitleView.m; sourceTree = "<group>"; };
 		97BD12251BFF125900641C79 /* UILabelTextSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UILabelTextSize.h; sourceTree = "<group>"; };
 		97BD12261BFF125900641C79 /* UILabelTextSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UILabelTextSize.m; sourceTree = "<group>"; };
+		97BD12281BFF1BEE00641C79 /* PagerTabStripper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagerTabStripper.h; sourceTree = "<group>"; };
+		97BD12291BFF1BEE00641C79 /* PagerTabStripper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagerTabStripper.m; sourceTree = "<group>"; };
 		9930B5FD1BFE0A9300A109F2 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		9930B5FE1BFE0A9300A109F2 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		9930B6021BFE0F2C00A109F2 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
@@ -331,6 +334,8 @@
 				9734C2FE1BFD626D005E0E5E /* Views.h */,
 				97BD12221BFF024800641C79 /* HomeTitleView.h */,
 				97BD12231BFF024800641C79 /* HomeTitleView.m */,
+				97BD12281BFF1BEE00641C79 /* PagerTabStripper.h */,
+				97BD12291BFF1BEE00641C79 /* PagerTabStripper.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -771,6 +776,7 @@
 				9734C3191BFD6576005E0E5E /* AWMarkupStripper.m in Sources */,
 				9734C3261BFD6D11005E0E5E /* UserViewController.m in Sources */,
 				9734C3291BFD6D30005E0E5E /* PublishViewController.m in Sources */,
+				97BD122A1BFF1BEE00641C79 /* PagerTabStripper.m in Sources */,
 				97BD11D81BFDC61800641C79 /* AWModalAlert.m in Sources */,
 				9734C3101BFD650D005E0E5E /* NSDateAdditions.m in Sources */,
 				97BD12031BFDCEF900641C79 /* AFNetworkReachabilityManager.m in Sources */,
