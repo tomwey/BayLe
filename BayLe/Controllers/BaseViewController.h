@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class AWCustomNavBar;
 @interface BaseViewController : UIViewController
 
 @property (nonatomic, retain, readonly) UIView* contentView;
 
 @property (nonatomic, assign) BOOL navBarHidden;
+
+@property (nonatomic, assign, readonly) AWCustomNavBar* navBar;
 
 + (UIViewController *)viewControllerWithClassName:(NSString *)className;
 

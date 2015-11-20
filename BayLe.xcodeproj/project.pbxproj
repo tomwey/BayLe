@@ -25,7 +25,7 @@
 		9734C3231BFD6CED005E0E5E /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C3221BFD6CED005E0E5E /* MessagesViewController.m */; };
 		9734C3261BFD6D11005E0E5E /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C3251BFD6D11005E0E5E /* UserViewController.m */; };
 		9734C3291BFD6D30005E0E5E /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C3281BFD6D30005E0E5E /* PublishViewController.m */; };
-		9734C32D1BFD750D005E0E5E /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C32C1BFD750D005E0E5E /* CustomTabBarController.m */; };
+		9734C32D1BFD750D005E0E5E /* AWCustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C32C1BFD750D005E0E5E /* AWCustomTabBarController.m */; };
 		9734C3301BFD895F005E0E5E /* UITabBarController+CustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C32F1BFD895F005E0E5E /* UITabBarController+CustomTabBar.m */; };
 		97BD119A1BFDAD5D00641C79 /* AWUIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11991BFDAD5D00641C79 /* AWUIUtils.m */; };
 		97BD11A01BFDAF6300641C79 /* UIWindowAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD119F1BFDAF6300641C79 /* UIWindowAdditions.m */; };
@@ -65,6 +65,7 @@
 		97BD12161BFDCF7800641C79 /* MACircleProgressIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD12131BFDCF7800641C79 /* MACircleProgressIndicator.m */; };
 		97BD12171BFDCF7800641C79 /* UIImageView+ProgressIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD12151BFDCF7800641C79 /* UIImageView+ProgressIndicator.m */; };
 		97BD121B1BFDCFC100641C79 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD121A1BFDCFC100641C79 /* MBProgressHUD.m */; };
+		97BD12211BFEFEE900641C79 /* AWCaret.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD12201BFEFEE900641C79 /* AWCaret.m */; settings = {ASSET_TAGS = (); }; };
 		9930B5FF1BFE0A9300A109F2 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9930B5FE1BFE0A9300A109F2 /* BaseViewController.m */; };
 		9930B6081BFE0F2C00A109F2 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9930B6021BFE0F2C00A109F2 /* AMapSearchKit.framework */; };
 		9930B6091BFE0F2C00A109F2 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9930B6031BFE0F2C00A109F2 /* MAMapKit.framework */; };
@@ -115,8 +116,8 @@
 		9734C3251BFD6D11005E0E5E /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 		9734C3271BFD6D30005E0E5E /* PublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishViewController.h; sourceTree = "<group>"; };
 		9734C3281BFD6D30005E0E5E /* PublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishViewController.m; sourceTree = "<group>"; };
-		9734C32B1BFD750D005E0E5E /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
-		9734C32C1BFD750D005E0E5E /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
+		9734C32B1BFD750D005E0E5E /* AWCustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWCustomTabBarController.h; sourceTree = "<group>"; };
+		9734C32C1BFD750D005E0E5E /* AWCustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWCustomTabBarController.m; sourceTree = "<group>"; };
 		9734C32E1BFD895F005E0E5E /* UITabBarController+CustomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+CustomTabBar.h"; sourceTree = "<group>"; };
 		9734C32F1BFD895F005E0E5E /* UITabBarController+CustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+CustomTabBar.m"; sourceTree = "<group>"; };
 		97BD11981BFDAD5D00641C79 /* AWUIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWUIUtils.h; sourceTree = "<group>"; };
@@ -197,6 +198,8 @@
 		97BD12151BFDCF7800641C79 /* UIImageView+ProgressIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ProgressIndicator.m"; sourceTree = "<group>"; };
 		97BD12191BFDCFC100641C79 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		97BD121A1BFDCFC100641C79 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		97BD121F1BFEFEE900641C79 /* AWCaret.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWCaret.h; sourceTree = "<group>"; };
+		97BD12201BFEFEE900641C79 /* AWCaret.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWCaret.m; sourceTree = "<group>"; };
 		9930B5FD1BFE0A9300A109F2 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		9930B5FE1BFE0A9300A109F2 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		9930B6021BFE0F2C00A109F2 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
@@ -446,8 +449,8 @@
 		9734C31A1BFD6ACC005E0E5E /* CustomTabBarController */ = {
 			isa = PBXGroup;
 			children = (
-				9734C32B1BFD750D005E0E5E /* CustomTabBarController.h */,
-				9734C32C1BFD750D005E0E5E /* CustomTabBarController.m */,
+				9734C32B1BFD750D005E0E5E /* AWCustomTabBarController.h */,
+				9734C32C1BFD750D005E0E5E /* AWCustomTabBarController.m */,
 				9734C32E1BFD895F005E0E5E /* UITabBarController+CustomTabBar.h */,
 				9734C32F1BFD895F005E0E5E /* UITabBarController+CustomTabBar.m */,
 			);
@@ -506,6 +509,8 @@
 				97BD11BF1BFDC2F300641C79 /* AWMaskView.m */,
 				97BD11C01BFDC2F300641C79 /* AWBaseView.h */,
 				97BD11C11BFDC2F300641C79 /* AWBaseView.m */,
+				97BD121F1BFEFEE900641C79 /* AWCaret.h */,
+				97BD12201BFEFEE900641C79 /* AWCaret.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -749,6 +754,7 @@
 				97BD11C81BFDC2F300641C79 /* AWBaseView.m in Sources */,
 				9734C30F1BFD650D005E0E5E /* NSDataAdditions.m in Sources */,
 				97BD12091BFDCEF900641C79 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				97BD12211BFEFEE900641C79 /* AWCaret.m in Sources */,
 				9734C3161BFD656C005E0E5E /* AWEntityTables.m in Sources */,
 				9734C3191BFD6576005E0E5E /* AWMarkupStripper.m in Sources */,
 				9734C3261BFD6D11005E0E5E /* UserViewController.m in Sources */,
@@ -768,7 +774,7 @@
 				97BD11B31BFDC2D900641C79 /* AWBaseViewController.m in Sources */,
 				97BD121B1BFDCFC100641C79 /* MBProgressHUD.m in Sources */,
 				97BD12161BFDCF7800641C79 /* MACircleProgressIndicator.m in Sources */,
-				9734C32D1BFD750D005E0E5E /* CustomTabBarController.m in Sources */,
+				9734C32D1BFD750D005E0E5E /* AWCustomTabBarController.m in Sources */,
 				97BD11C31BFDC2F300641C79 /* AWCommandButton.m in Sources */,
 				97BD11C71BFDC2F300641C79 /* AWMaskView.m in Sources */,
 				97BD12171BFDCF7800641C79 /* UIImageView+ProgressIndicator.m in Sources */,
@@ -875,6 +881,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BayLe/3rdLibs/GaoDeMap",
@@ -896,6 +903,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BayLe/3rdLibs/GaoDeMap",

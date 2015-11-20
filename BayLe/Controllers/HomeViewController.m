@@ -30,11 +30,7 @@
 {
     [super viewDidLoad];
     
-    self.title = @"绿地世纪城 附近3个宝贝";
-    
-    self.locationManager = [[[CLLocationManager alloc] init] autorelease];
-    self.locationManager.delegate = self;
-    [self.locationManager startUpdatingLocation];
+//    self.title = @"绿地世纪城 附近3个宝贝";
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations

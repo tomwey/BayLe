@@ -14,9 +14,10 @@
 // 共用宏
 #import "AWMacros.h"
 #import "AWUIUtils.h"
-#import "CustomTabBarController.h"
+#import "AWCustomTabBarController.h"
 #import "AWCustomNavBar.h"
 #import "UIViewAdditions.h"
+#import "AWCaret.h"
 
 
 #pragma mark ------------------------------- 跟项目相关的宏定义 -------------------------------

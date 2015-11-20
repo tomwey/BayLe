@@ -34,7 +34,7 @@
 
 - (void)initRootUIs
 {
-    CustomTabBarController* tabBarController = [[[CustomTabBarController alloc] init] autorelease];
+    AWCustomTabBarController* tabBarController = [[[AWCustomTabBarController alloc] init] autorelease];
     
     tabBarController.selectedItemTintColor = MAIN_COLOR;
     

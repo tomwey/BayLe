@@ -21,6 +21,7 @@
 }
 
 @synthesize contentView = _contentView;
+@synthesize navBar = _navBar;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,7 +36,7 @@
     }
     
     // 添加内容视图
-    CGFloat tabBarHeight = [(CustomTabBarController *)self.tabBarController customTabBar].height;
+    CGFloat tabBarHeight = [(AWCustomTabBarController *)self.tabBarController customTabBar].height;
     _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navBar.bottom,
                                                             self.view.width,
                                                             AWFullScreenHeight() -

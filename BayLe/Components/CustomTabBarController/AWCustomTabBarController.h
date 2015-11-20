@@ -18,7 +18,7 @@ typedef UIImageView CustomTabBar;
 
 @class CustomTabBarItem;
 
-@interface CustomTabBarController : UITabBarController
+@interface AWCustomTabBarController : UITabBarController
 
 @property (nonatomic, retain) UIImage* tabBarBackgroundImage;
 @property (nonatomic, retain, readonly) CustomTabBar* customTabBar;

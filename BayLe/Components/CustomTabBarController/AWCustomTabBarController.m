@@ -6,7 +6,7 @@
 //  Copyright © 2015年 tangwei1. All rights reserved.
 //
 
-#import "CustomTabBarController.h"
+#import "AWCustomTabBarController.h"
 #import <objc/runtime.h>
 
 @interface ViewHolder : UIView
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation CustomTabBarController
+@implementation AWCustomTabBarController
 {
     CustomTabBar*   _customTabBar;
     NSMutableArray* _viewHolderGroup;
