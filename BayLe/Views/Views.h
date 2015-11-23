@@ -11,5 +11,6 @@
 
 // 导入项目中视图头文件
 #import "HomeTitleView.h"
+#import "PagerTabStripper.h"
 
 #endif /* Views_h */

@@ -41,33 +41,37 @@
     [self setupCategories];
 }
 
+#pragma mark --- Target Action Methods ---
+- (void)tabStripperDidSelect:(PagerTabStripper *)stripper
+{
+    
+}
+
+- (void)changeLocation
+{
+    
+}
+
+- (void)gotoSearch
+{
+    
+}
+
+#pragma mark --- Private Methods ---
 - (void)setupCategories
 {
-    UIScrollView* scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, AWFullScreenWidth(), 37)];
-    [self.contentView addSubview:scrollView];
-    [scrollView release];
+    PagerTabStripper* tabStripper = [[[PagerTabStripper alloc] init] autorelease];
+    [self.contentView addSubview:tabStripper];
+    tabStripper.frame = CGRectMake(0, 0, AWFullScreenWidth(), 37);
     
-    NSArray* strings = @[@"儿童玩具", @"儿童读物"];
-    for (int i=0; i<2; i++) {
-        UILabel* label = AWCreateLabel(CGRectMake(AWFullScreenWidth() / 2 * i, 0, AWFullScreenWidth() / 2, 37), nil,
-                                       NSTextAlignmentCenter,
-                                       [UIFont systemFontOfSize:14],
-                                       MAIN_LIGHT_GRAY_COLOR);
-        [scrollView addSubview:label];
-        
-        label.text = strings[i];
-        
-        UIView* indicator = [[UIView alloc] initWithFrame:CGRectMake(label.left, 35, label.width, 2)];
-        indicator.backgroundColor = [UIColor clearColor];
-        [scrollView addSubview:indicator];
-        [indicator release];
-        
-        if ( i == 0 ) {
-            label.textColor = indicator.backgroundColor = MAIN_RED_COLOR;
-        }
-    }
+    tabStripper.titleColor = MAIN_LIGHT_GRAY_COLOR;
+    tabStripper.selectedTitleColor = tabStripper.selectedIndicatorColor = MAIN_RED_COLOR;
     
-    scrollView.backgroundColor = AWColorFromRGB(245, 245, 245);
+    tabStripper.titles = @[@"儿童玩具", @"儿童读物", @"儿童玩具", @"儿童读物"];
+    
+    tabStripper.backgroundColor = AWColorFromRGB(245, 245, 245);
+    
+    [tabStripper bindTarget:self forAction:@selector(tabStripperDidSelect:)];
 }
 
 - (void)setupRightButton
@@ -106,16 +110,6 @@
     changeLocationBtn.frame = CGRectMake(0, 0, MIN(titleView.width, [_locationLabel textSizeForConstrainedSize:titleView.contentSize].width), titleView.height);
     changeLocationBtn.center = CGPointMake(titleView.width / 2, titleView.height / 2);
     [titleView addSubview:changeLocationBtn];
-}
-
-- (void)changeLocation
-{
-    
-}
-
-- (void)gotoSearch
-{
-    
 }
 
 @end
