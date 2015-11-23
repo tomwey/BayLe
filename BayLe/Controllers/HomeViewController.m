@@ -8,12 +8,13 @@
 
 #import "HomeViewController.h"
 #import "Defines.h"
-#import <CoreLocation/CLLocation.h>
 
-@interface HomeViewController () <CLLocationManagerDelegate>
+@interface HomeViewController () <AWPageViewDataSource, AWPageViewDelegate>
 {
     UILabel* _locationLabel;
     AWCaret* _caret;
+    PagerTabStripper* _tabStripper;
+    AWPageView* _pageView;
 }
 @end
 
@@ -39,12 +40,15 @@
     
     // 添加类别
     [self setupCategories];
+    
+    // 添加水平翻页视图
+    [self setupPageView];
 }
 
 #pragma mark --- Target Action Methods ---
 - (void)tabStripperDidSelect:(PagerTabStripper *)stripper
 {
-    
+    [_pageView showPageForIndex:stripper.selectedIndex animated:YES];
 }
 
 - (void)changeLocation
@@ -57,7 +61,55 @@
     
 }
 
+#pragma mark --- AWPageView Delegate ---
+- (void)pageView:(AWPageView *)pageView didShowPage:(AWPageViewCell *)page atIndex:(NSInteger)index
+{
+    NSLog(@"show index: %d", index);
+    _tabStripper.selectedIndex = index;
+}
+
+#pragma mark --- AWPageView DataSource ---
+- (NSUInteger)numberOfPages:(AWPageView *)pageView
+{
+    return 10;
+}
+
+- (AWPageViewCell *)pageView:(AWPageView *)pageView cellAtIndex:(NSInteger)index
+{
+    AWPageViewCell* cell = [pageView dequeueReusablePageForIndex:index];
+    
+    if ( !cell ) {
+        cell = [[[AWPageViewCell alloc] init] autorelease];
+    }
+    
+    UILabel* label = (UILabel *)[cell viewWithTag:10000];
+    if ( !label ) {
+        label = AWCreateLabel(CGRectMake(10, 10, 100, 30), nil, NSTextAlignmentLeft,
+                              AWSystemFontWithSize(15, NO),
+                              [UIColor blackColor]);
+        [cell addSubview:label];
+        label.tag = 10000;
+    }
+    
+    label.text = [NSString stringWithFormat:@"%d", index+1];
+    NSLog(@"显示index:%d", index);
+    
+    return cell;
+}
+
 #pragma mark --- Private Methods ---
+- (void)setupPageView
+{
+    AWPageView* pageView = [[[AWPageView alloc] init] autorelease];
+    [self.contentView addSubview:pageView];
+    pageView.frame = CGRectMake(0, _tabStripper.bottom, AWFullScreenWidth(), self.contentView.height - _tabStripper.height);
+    
+    pageView.dataSource = self;
+    pageView.delegate = self;
+    
+    _pageView = pageView;
+}
+
 - (void)setupCategories
 {
     PagerTabStripper* tabStripper = [[[PagerTabStripper alloc] init] autorelease];
@@ -67,11 +119,13 @@
     tabStripper.titleColor = MAIN_LIGHT_GRAY_COLOR;
     tabStripper.selectedTitleColor = tabStripper.selectedIndicatorColor = MAIN_RED_COLOR;
     
-    tabStripper.titles = @[@"儿童玩具", @"儿童读物", @"儿童玩具", @"儿童读物"];
+    tabStripper.titles = @[@"儿童玩具", @"儿童读物",@"儿童玩具", @"儿童读物",@"儿童玩具", @"儿童读物",@"儿童玩具", @"儿童读物",@"儿童玩具", @"儿童读物"];
     
     tabStripper.backgroundColor = AWColorFromRGB(245, 245, 245);
     
     [tabStripper bindTarget:self forAction:@selector(tabStripperDidSelect:)];
+    
+    _tabStripper = tabStripper;
 }
 
 - (void)setupRightButton

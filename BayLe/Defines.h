@@ -19,6 +19,7 @@
 #import "UIViewAdditions.h"
 #import "UILabelTextSize.h"
 #import "AWCaret.h"
+#import "AWPageView.h"
 
 
 #pragma mark ------------------------------- 跟项目相关的宏定义 -------------------------------
