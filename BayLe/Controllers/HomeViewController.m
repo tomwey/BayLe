@@ -119,7 +119,7 @@
     tabStripper.titleColor = MAIN_LIGHT_GRAY_COLOR;
     tabStripper.selectedTitleColor = tabStripper.selectedIndicatorColor = MAIN_RED_COLOR;
     
-    tabStripper.titles = @[@"儿童玩具", @"儿童读物",@"儿童玩具", @"儿童读物",@"儿童玩具", @"儿童读物",@"儿童玩具", @"儿童读物",@"儿童玩具", @"儿童读物"];
+    tabStripper.titles = @[@"儿童", @"儿童读物",@"童玩具", @"儿童读物dddddsssssssss",@"儿童sssss", @"儿童读物",@"儿童具", @"儿童读",@"玩具", @"儿童读物"];
     
     tabStripper.backgroundColor = AWColorFromRGB(245, 245, 245);
     

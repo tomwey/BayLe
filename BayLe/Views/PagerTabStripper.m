@@ -11,13 +11,13 @@
 @implementation PagerTabStripper
 {
     UIScrollView* _scrollView;
+    UIView*       _indicator;
     
     id  _target;
     SEL _action;
 }
 
 #define kTitleLabelTag 100
-#define kIndicatorTag  101
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -54,7 +54,6 @@
     [_scrollView release];
     
     _scrollView.showsHorizontalScrollIndicator = _scrollView.showsVerticalScrollIndicator = NO;
-//    _scrollView.bounces = NO;
 }
 
 - (void)dealloc
@@ -81,25 +80,23 @@
         cellWidth = CGRectGetWidth(self.bounds) * 0.382;
     }
     
+    // 默认宽度为容器的宽度，高度为2
+    if ( CGSizeEqualToSize(_selectedIndicatorSize, CGSizeZero) ) {
+        _selectedIndicatorSize = CGSizeMake(cellWidth, 2);
+    }
+    
+    _indicator.frame = CGRectMake(0, CGRectGetHeight(_scrollView.frame) - _selectedIndicatorSize.height,
+                                  _selectedIndicatorSize.width,
+                                  _selectedIndicatorSize.height);
+    
     // 设置每个tab的frame
     NSInteger count = [[_scrollView subviews] count];
     for (int i=0; i<count; i++) {
-        UIView* view = [[_scrollView subviews] objectAtIndex:i];
-        view.frame = CGRectMake(i * cellWidth, 0, cellWidth, CGRectGetHeight(_scrollView.frame));
+        UIView* view = [_scrollView viewWithTag:1000 + i];
+        view.frame = CGRectMake(i * cellWidth, 0, cellWidth,
+                                CGRectGetHeight(_scrollView.frame));
         
-        // 设置标题视图的frame
         [[view viewWithTag:kTitleLabelTag] setFrame:view.bounds];
-        
-        // 默认宽度为容器的宽度，高度为2
-        if ( CGSizeEqualToSize(_selectedIndicatorSize, CGSizeZero) ) {
-            _selectedIndicatorSize = CGSizeMake(CGRectGetWidth(view.frame), 2);
-        }
-        
-        // 设置选中标志的frame
-        [[view viewWithTag:kIndicatorTag] setFrame:CGRectMake(0,
-                                                              CGRectGetHeight(self.bounds) - _selectedIndicatorSize.height,
-                                                              _selectedIndicatorSize.width,
-                                                              _selectedIndicatorSize.height)];
     }
     
     _scrollView.contentSize = CGSizeMake(cellWidth * count, CGRectGetHeight(_scrollView.bounds));
@@ -138,8 +135,6 @@
 {
     UIView* view = [_scrollView viewWithTag:1000 + _selectedIndex];
     
-    [[view viewWithTag:kIndicatorTag] setHidden:YES];
-    
     UILabel* titleLabel = (UILabel *)[view viewWithTag:kTitleLabelTag];
     titleLabel.font = _titleFont;
     titleLabel.textColor = _titleColor;
@@ -149,14 +144,19 @@
 {
     UIView* view = [_scrollView viewWithTag:1000 + _selectedIndex];
     
-    [[view viewWithTag:kIndicatorTag] setHidden:!_allowShowIndicator];
-    [[view viewWithTag:kIndicatorTag] setBackgroundColor:_selectedIndicatorColor];
-    
     UILabel* titleLabel = (UILabel *)[view viewWithTag:kTitleLabelTag];
     titleLabel.font = _titleFont;
     titleLabel.textColor = _selectedTitleColor;
     
-    [_scrollView scrollRectToVisible:view.frame animated:YES];
+    _indicator.backgroundColor = _selectedIndicatorColor;
+    
+    CGRect frame = _indicator.frame;
+    frame.origin.x = view.frame.origin.x;
+    
+    [UIView animateWithDuration:.3 animations:^{
+        _indicator.frame = frame;
+        [_scrollView scrollRectToVisible:view.frame animated:NO];
+    }];
 }
 
 - (void)updateContents
@@ -188,14 +188,6 @@
         
         titleLabel.text = title;
         
-        // 添加选中标识
-        UIView* indicator = [[UIView alloc] initWithFrame:CGRectZero];
-        indicator.backgroundColor = [UIColor clearColor];
-        [container addSubview:indicator];
-        [indicator release];
-        
-        indicator.tag = kIndicatorTag;
-        
         // 添加点击按钮
         UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = container.bounds;
@@ -207,10 +199,15 @@
         
         // 默认第一个选中
         if ( _selectedIndex == 0 && _selectedIndex == i ) {
-            indicator.backgroundColor = _selectedIndicatorColor;
             titleLabel.textColor      = _selectedTitleColor;
         }
     }
+    
+    _indicator = [[UIView alloc] initWithFrame:CGRectZero];
+    [_scrollView addSubview:_indicator];
+    [_indicator release];
+    
+    _indicator.backgroundColor = _selectedIndicatorColor;
     
     [self setNeedsLayout];
 }
