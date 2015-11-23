@@ -145,8 +145,19 @@
     return [NSArray arrayWithArray:self.visiblePages_];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if ( [self.delegate respondsToSelector:@selector(pageView:didScrollDelta:)] ) {
+        [self.delegate pageView:self didScrollDelta:scrollView.contentOffset.x / scrollView.contentSize.width];
+    }
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+//    if ( [self.delegate respondsToSelector:@selector(pageView:didScrollDelta:)] ) {
+//        [self.delegate pageView:self didScrollDelta:scrollView.contentOffset.x / scrollView.contentSize.width];
+//    }
+    
     NSInteger index = scrollView.contentOffset.x / CGRectGetWidth(scrollView.frame);
     
     self.currentIndex = index;

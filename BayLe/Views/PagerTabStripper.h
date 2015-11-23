@@ -37,5 +37,7 @@
 /** 绑定选中事件 */
 - (void)bindTarget:(id)target forAction:(SEL)action;
 
+- (void)scrollTo:(CGFloat)dt;
+
 @end
 

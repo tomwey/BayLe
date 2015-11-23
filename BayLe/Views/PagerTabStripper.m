@@ -110,6 +110,13 @@
     _scrollView.contentSize = CGSizeMake(originX, CGRectGetHeight(_scrollView.frame));
 }
 
+- (void)scrollTo:(CGFloat)dt
+{
+//    CGRect frame = _indicator.frame;
+//    frame.origin.x = dt * _scrollView.contentSize.width;
+//    _indicator.frame = frame;
+}
+
 - (void)bindTarget:(id)target forAction:(SEL)action;
 {
     _target = target;

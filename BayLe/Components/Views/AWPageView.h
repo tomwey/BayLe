@@ -68,6 +68,8 @@
 
 - (void)pageView:(AWPageView *)pageView didShowPage:(AWPageViewCell *)page atIndex:(NSInteger)index;
 
+- (void)pageView:(AWPageView *)pageView didScrollDelta:(CGFloat)dt;
+
 @end
 
 @interface AWPageViewCell : UIView
