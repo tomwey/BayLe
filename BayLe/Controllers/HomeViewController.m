@@ -71,7 +71,7 @@
 #pragma mark --- AWPageView DataSource ---
 - (NSUInteger)numberOfPages:(AWPageView *)pageView
 {
-    return 10;
+    return [_tabStripper.titles count];
 }
 
 - (AWPageViewCell *)pageView:(AWPageView *)pageView cellAtIndex:(NSInteger)index
@@ -117,9 +117,13 @@
     tabStripper.frame = CGRectMake(0, 0, AWFullScreenWidth(), 37);
     
     tabStripper.titleColor = MAIN_LIGHT_GRAY_COLOR;
+    tabStripper.titleFont  = [UIFont systemFontOfSize:14];
+    
+    tabStripper.selectedIndicatorSize = 1.1;
     tabStripper.selectedTitleColor = tabStripper.selectedIndicatorColor = MAIN_RED_COLOR;
     
-    tabStripper.titles = @[@"儿童", @"儿童读物",@"童玩具", @"儿童读物dddddsssssssss",@"儿童sssss", @"儿童读物",@"儿童具", @"儿童读",@"玩具", @"儿童读物"];
+    tabStripper.titles = @[@"儿童玩具", @"儿童读物",@"自行车",
+                           @"帐篷",@"烧烤架", @"数码相机"];
     
     tabStripper.backgroundColor = AWColorFromRGB(245, 245, 245);
     
@@ -147,7 +151,7 @@
     _locationLabel = AWCreateLabel(CGRectMake(0, 0, titleView.width, 37),
                                    nil,
                                    NSTextAlignmentCenter,
-                                   AWSystemFontWithSize(14, YES),
+                                   AWSystemFontWithSize(15, YES),
                                    [UIColor whiteColor]);
     [titleView addSubview:_locationLabel];
     

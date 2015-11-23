@@ -42,7 +42,7 @@
     _selectedIndex = 0;
     _allowShowIndicator = YES;
     _selectedIndicatorColor = [[UIColor blackColor] retain];
-    _selectedIndicatorSize = CGSizeZero;
+    _selectedIndicatorSize = 2;
     
     _titleFont = [[UIFont systemFontOfSize:15] retain];
     _titleColor = [[UIColor blackColor] retain];
@@ -80,32 +80,50 @@
         cellWidth = CGRectGetWidth(self.bounds) * 0.382;
     }
     
-    // 默认宽度为容器的宽度，高度为2
-    if ( CGSizeEqualToSize(_selectedIndicatorSize, CGSizeZero) ) {
-        _selectedIndicatorSize = CGSizeMake(cellWidth, 2);
-    }
-    
-    _indicator.frame = CGRectMake(0, CGRectGetHeight(_scrollView.frame) - _selectedIndicatorSize.height,
-                                  _selectedIndicatorSize.width,
-                                  _selectedIndicatorSize.height);
-    
     // 设置每个tab的frame
     NSInteger count = [[_scrollView subviews] count];
+    CGFloat originX = 0;
     for (int i=0; i<count; i++) {
         UIView* view = [_scrollView viewWithTag:1000 + i];
-        view.frame = CGRectMake(i * cellWidth, 0, cellWidth,
+        
+        UILabel* titleLabel = (UILabel *)[view viewWithTag:kTitleLabelTag];
+        titleLabel.font = _titleFont;
+        
+        CGSize size = [titleLabel.text sizeWithFont:titleLabel.font
+                                  constrainedToSize:CGSizeMake(5000, 1000)];
+        CGFloat width = size.width + 10;
+        view.frame = CGRectMake(originX, 0, width,
                                 CGRectGetHeight(_scrollView.frame));
         
         [[view viewWithTag:kTitleLabelTag] setFrame:view.bounds];
+        originX += width + 8;
+        
+        if ( i == 0 ) {
+            // 默认宽度为容器的宽度，高度为2
+            
+            _indicator.frame = CGRectMake(0,
+                                          CGRectGetHeight(_scrollView.frame) - _selectedIndicatorSize,
+                                          width,_selectedIndicatorSize);
+        }
     }
     
-    _scrollView.contentSize = CGSizeMake(cellWidth * count, CGRectGetHeight(_scrollView.bounds));
+    _scrollView.contentSize = CGSizeMake(originX, CGRectGetHeight(_scrollView.frame));
 }
 
 - (void)bindTarget:(id)target forAction:(SEL)action;
 {
     _target = target;
     _action = action;
+}
+
+- (void)setTitleFont:(UIFont *)titleFont
+{
+    if ( _titleFont != titleFont ) {
+        [_titleFont release];
+        _titleFont = [titleFont retain];
+        
+        [self setNeedsLayout];
+    }
 }
 
 - (void)setTitles:(NSArray *)titles
@@ -152,6 +170,7 @@
     
     CGRect frame = _indicator.frame;
     frame.origin.x = view.frame.origin.x;
+    frame.size.width = view.frame.size.width;
     
     [UIView animateWithDuration:.3 animations:^{
         _indicator.frame = frame;

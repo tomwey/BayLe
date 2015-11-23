@@ -25,8 +25,8 @@
 /** 设置选中的指示标志颜色，默认为黑色 */
 @property (nonatomic, retain) UIColor* selectedIndicatorColor;
 
-/** 选中标识的大小，默认宽度为每个tab的宽度，高度为2 */
-@property (nonatomic, assign) CGSize selectedIndicatorSize;
+/** 选中标识的高度，默认为2 */
+@property (nonatomic, assign) CGFloat selectedIndicatorSize;
 
 /** 标题数组，数组中的元素为字符串类型 */
 @property (nonatomic, copy) NSArray* titles;
