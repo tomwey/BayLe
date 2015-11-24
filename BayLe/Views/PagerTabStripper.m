@@ -107,7 +107,7 @@
         }
     }
     
-    _scrollView.contentSize = CGSizeMake(originX, CGRectGetHeight(_scrollView.frame));
+    _scrollView.contentSize = CGSizeMake(originX - 8, CGRectGetHeight(_scrollView.frame));
 }
 
 - (void)scrollTo:(CGFloat)dt

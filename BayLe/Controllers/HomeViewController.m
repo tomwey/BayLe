@@ -71,7 +71,7 @@
 - (void)pageView:(AWPageView *)pageView didScrollDelta:(CGFloat)dt
 {
 //    NSLog(@"Delta: %f", dt);
-    [_tabStripper scrollTo:dt];
+//    [_tabStripper scrollTo:dt];
 }
 
 #pragma mark --- AWPageView DataSource ---
