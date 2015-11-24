@@ -36,6 +36,7 @@
 
 /** 服务器API接口 **/
 #define API_TAGS @"/v1/tags.json"
+#define API_LOAD_ITEMS @"/v1/items/nearby.json"
 
 #pragma mark ------------------------------- 下面是项目相关的库 -------------------------------
 

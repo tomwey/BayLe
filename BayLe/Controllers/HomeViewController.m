@@ -114,6 +114,8 @@
         listView.frame = pageView.bounds;
     }
     
+    listView.tagID = [[[self.tags objectAtIndex:index] objectForKey:@"id"] integerValue];
+    
     return cell;
 }
 

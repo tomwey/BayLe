@@ -7,10 +7,12 @@
 //
 
 #import "ItemListView.h"
+#import "Defines.h"
 
-@interface ItemListView ()
+@interface ItemListView () <APIManagerDelegate>
 
 @property (nonatomic, retain) UITableView* tableView;
+@property (nonatomic, retain) APIManager*  itemsAPIManager;
 
 @end
 
@@ -31,6 +33,8 @@
     self.tableView.dataSource = nil;
     self.tableView = nil;
     
+    self.itemsAPIManager = nil;
+    
 //    [_catalog release];
     
     [super dealloc];
@@ -45,6 +49,30 @@
     _tagID = tagID;
     
     // TODO：加载数据
+    [self loadData];
+}
+
+- (void)loadData
+{
+    if ( !self.itemsAPIManager ) {
+        self.itemsAPIManager = [APIManager apiManagerWithDelegate:self];
+    }
+    
+    [self.itemsAPIManager sendRequest:APIRequestCreate(API_LOAD_ITEMS, RequestMethodGet, @{@"location": @"120.123455,34.098763",
+                                                                                           @"tag_id": @(_tagID)
+                                                                                           })];
+}
+
+/** 网络请求成功回调 */
+- (void)apiManagerDidSuccess:(APIManager *)manager
+{
+    NSLog(@"result: %@", [manager fetchDataWithReformer:nil]);
+}
+
+/** 网络请求失败回调 */
+- (void)apiManagerDidFailure:(APIManager *)manager
+{
+    NSLog(@"Error: %@", manager.apiError);
 }
 
 //- (void)setCatalog:(NSString *)catalog
