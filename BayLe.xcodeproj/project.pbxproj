@@ -77,6 +77,8 @@
 		97BD153A1C04011F00641C79 /* APIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD15391C04011F00641C79 /* APIRequest.m */; settings = {ASSET_TAGS = (); }; };
 		97BD153D1C04012B00641C79 /* APIError.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD153C1C04012B00641C79 /* APIError.m */; settings = {ASSET_TAGS = (); }; };
 		97BD15401C04363400641C79 /* APIFileParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD153F1C04363400641C79 /* APIFileParam.m */; settings = {ASSET_TAGS = (); }; };
+		97BD15431C04484A00641C79 /* APIEntityReformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD15421C04484A00641C79 /* APIEntityReformer.m */; settings = {ASSET_TAGS = (); }; };
+		97BD15471C044D3900641C79 /* APIDictionaryReformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD15461C044D3900641C79 /* APIDictionaryReformer.m */; settings = {ASSET_TAGS = (); }; };
 		9930B5FF1BFE0A9300A109F2 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9930B5FE1BFE0A9300A109F2 /* BaseViewController.m */; };
 		9930B6081BFE0F2C00A109F2 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9930B6021BFE0F2C00A109F2 /* AMapSearchKit.framework */; };
 		9930B6091BFE0F2C00A109F2 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9930B6031BFE0F2C00A109F2 /* MAMapKit.framework */; };
@@ -233,6 +235,11 @@
 		97BD153C1C04012B00641C79 /* APIError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIError.m; sourceTree = "<group>"; };
 		97BD153E1C04363400641C79 /* APIFileParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIFileParam.h; sourceTree = "<group>"; };
 		97BD153F1C04363400641C79 /* APIFileParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIFileParam.m; sourceTree = "<group>"; };
+		97BD15411C04484A00641C79 /* APIEntityReformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIEntityReformer.h; sourceTree = "<group>"; };
+		97BD15421C04484A00641C79 /* APIEntityReformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIEntityReformer.m; sourceTree = "<group>"; };
+		97BD15441C04488100641C79 /* APIReformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIReformer.h; sourceTree = "<group>"; };
+		97BD15451C044D3900641C79 /* APIDictionaryReformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIDictionaryReformer.h; sourceTree = "<group>"; };
+		97BD15461C044D3900641C79 /* APIDictionaryReformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIDictionaryReformer.m; sourceTree = "<group>"; };
 		9930B5FD1BFE0A9300A109F2 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		9930B5FE1BFE0A9300A109F2 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		9930B6021BFE0F2C00A109F2 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
@@ -684,6 +691,11 @@
 				97BD153C1C04012B00641C79 /* APIError.m */,
 				97BD153E1C04363400641C79 /* APIFileParam.h */,
 				97BD153F1C04363400641C79 /* APIFileParam.m */,
+				97BD15411C04484A00641C79 /* APIEntityReformer.h */,
+				97BD15421C04484A00641C79 /* APIEntityReformer.m */,
+				97BD15451C044D3900641C79 /* APIDictionaryReformer.h */,
+				97BD15461C044D3900641C79 /* APIDictionaryReformer.m */,
+				97BD15441C04488100641C79 /* APIReformer.h */,
 			);
 			path = APIManager;
 			sourceTree = "<group>";
@@ -806,6 +818,7 @@
 				97BD11A01BFDAF6300641C79 /* UIWindowAdditions.m in Sources */,
 				97BD153D1C04012B00641C79 /* APIError.m in Sources */,
 				97BD120F1BFDCEF900641C79 /* UIWebView+AFNetworking.m in Sources */,
+				97BD15431C04484A00641C79 /* APIEntityReformer.m in Sources */,
 				97BD11D71BFDC61800641C79 /* AWToast.m in Sources */,
 				97BD12271BFF125900641C79 /* UILabelTextSize.m in Sources */,
 				97BD12241BFF024800641C79 /* HomeTitleView.m in Sources */,
@@ -823,6 +836,7 @@
 				97BD12211BFEFEE900641C79 /* AWCaret.m in Sources */,
 				97BD15371C0400F200641C79 /* APIConfig.m in Sources */,
 				9734C3161BFD656C005E0E5E /* AWEntityTables.m in Sources */,
+				97BD15471C044D3900641C79 /* APIDictionaryReformer.m in Sources */,
 				9734C3191BFD6576005E0E5E /* AWMarkupStripper.m in Sources */,
 				97BD122E1C02A4FF00641C79 /* CompatibilityHandle.m in Sources */,
 				9734C3261BFD6D11005E0E5E /* UserViewController.m in Sources */,

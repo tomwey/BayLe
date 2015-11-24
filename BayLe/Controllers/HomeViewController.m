@@ -9,13 +9,21 @@
 #import "HomeViewController.h"
 #import "Defines.h"
 
-@interface HomeViewController () <AWPageViewDataSource, AWPageViewDelegate>
+@interface HomeViewController () <AWPageViewDataSource, AWPageViewDelegate, APIManagerDelegate>
 {
     UILabel* _locationLabel;
     AWCaret* _caret;
+    
+    UILabel* _cityLabel;
+    
     PagerTabStripper* _tabStripper;
-    AWPageView* _pageView;
+    AWPageView*       _pageView;
 }
+
+@property (nonatomic, retain) APIManager* tagsAPIManager;
+
+@property (nonatomic, copy) NSArray* tags;
+
 @end
 
 @implementation HomeViewController
@@ -38,11 +46,21 @@
     // 设置标题视图
     [self setupTitleView];
     
+    // 添加导航条左边位置显示
+    _cityLabel = AWCreateLabel(CGRectZero, nil, NSTextAlignmentLeft, _locationLabel.font, _locationLabel.textColor);
+    [self.navBar addSubview:_cityLabel];
+    _cityLabel.text = @"城市";
+    [_cityLabel sizeToFit];
+    _cityLabel.center = CGPointMake(15 + _cityLabel.width / 2, self.navBar.height - 22);
+    
     // 添加类别
     [self setupCategories];
     
     // 添加水平翻页视图
     [self setupPageView];
+    
+    // 加载数据
+    [self loadData];
 }
 
 #pragma mark --- Target Action Methods ---
@@ -88,22 +106,47 @@
         cell = [[[AWPageViewCell alloc] init] autorelease];
     }
     
-    UILabel* label = (UILabel *)[cell viewWithTag:10000];
-    if ( !label ) {
-        label = AWCreateLabel(CGRectMake(10, 10, 100, 30), nil, NSTextAlignmentLeft,
-                              AWSystemFontWithSize(15, NO),
-                              [UIColor blackColor]);
-        [cell addSubview:label];
-        label.tag = 10000;
+    ItemListView* listView = (ItemListView *)[cell viewWithTag:991];
+    if ( !listView ) {
+        listView = [[[ItemListView alloc] init] autorelease];
+        listView.tag = 991;
+        [cell addSubview:listView];
+        listView.frame = pageView.bounds;
     }
-    
-    label.text = [NSString stringWithFormat:@"%d", index+1];
-    NSLog(@"显示index:%d", index);
     
     return cell;
 }
 
+#pragma mark --- APIManager Delegate ---
+/** 网络请求成功回调 */
+- (void)apiManagerDidSuccess:(APIManager *)manager
+{
+    NSLog(@"result: %@", [manager fetchDataWithReformer:nil]);
+    self.tags = [manager fetchDataWithReformer:[[[APIDictionaryReformer alloc] init] autorelease]];
+    NSMutableArray* titles = [NSMutableArray array];
+    for (id obj in self.tags) {
+        [titles addObject:[obj objectForKey:@"name"]];
+    }
+    
+    _tabStripper.titles = titles;
+    _tabStripper.hidden = NO;
+    
+    [_pageView reloadData];
+}
+
+/** 网络请求失败回调 */
+- (void)apiManagerDidFailure:(APIManager *)manager
+{
+    NSLog(@"error: %@", manager.apiError);
+}
+
 #pragma mark --- Private Methods ---
+- (void)loadData
+{
+    self.tagsAPIManager = [APIManager apiManagerWithDelegate:self];
+    [self.tagsAPIManager sendRequest:APIRequestCreate(API_TAGS, RequestMethodGet, nil)];
+}
+
 - (void)setupPageView
 {
     AWPageView* pageView = [[[AWPageView alloc] init] autorelease];
@@ -128,14 +171,16 @@
     tabStripper.selectedIndicatorSize = 1.1;
     tabStripper.selectedTitleColor = tabStripper.selectedIndicatorColor = MAIN_RED_COLOR;
     
-    tabStripper.titles = @[@"儿童玩具", @"儿童读物",@"自行车",
-                           @"帐篷",@"烧烤架", @"数码相机"];
+//    tabStripper.titles = @[@"儿童玩具", @"儿童读物",@"自行车",
+//                           @"帐篷",@"烧烤架", @"数码相机"];
     
     tabStripper.backgroundColor = AWColorFromRGB(245, 245, 245);
     
     [tabStripper bindTarget:self forAction:@selector(tabStripperDidSelect:)];
     
     _tabStripper = tabStripper;
+    
+    _tabStripper.hidden = YES;
 }
 
 - (void)setupRightButton

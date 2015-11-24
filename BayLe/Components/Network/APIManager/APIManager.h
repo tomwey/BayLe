@@ -10,18 +10,9 @@
 #import "APIConfig.h"
 #import "APIError.h"
 #import "APIRequest.h"
+#import "APIReformer.h"
 
 @class APIManager;
-
-//////////////////////////////////////////////////////////
-#pragma mark 数据转化协议
-//////////////////////////////////////////////////////////
-@protocol Reformer <NSObject>
-
-- (id)reformDataWithManager:(APIManager *)manager;
-
-@end
-
 //////////////////////////////////////////////////////////
 #pragma mark 网络请求结果回调
 //////////////////////////////////////////////////////////
@@ -97,10 +88,15 @@
 - (void)sendRequest:(APIRequest *)aRequest delegate:(id <APIManagerDelegate>)delegate;
 
 /**
+ * 取消请求
+ */
+- (void)cancelRequest;
+
+/**
  * 返回指定转化格式的数据对象
  * @param reformer 数据转化对象
  * @return 返回正确格式的数据
  */
-- (id)fetchDataWithReformer:(id <Reformer>)reformer;
+- (id)fetchDataWithReformer:(id <APIReformer>)reformer;
 
 @end

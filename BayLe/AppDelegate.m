@@ -22,6 +22,11 @@
     
     [MAMapServices sharedServices].apiKey = MAMAP_API_KEY;
     
+    // API配置
+    [[APIConfig sharedInstance] setStageServer:@"http://lease-goods-stage.afterwind.cn/api/"];
+    [[APIConfig sharedInstance] setProductionServer:@"http://lease-goods.afterwind.cn/api"];
+    [[APIConfig sharedInstance] setDebugMode:YES];
+    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.window.backgroundColor = [UIColor whiteColor];
     

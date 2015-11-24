@@ -121,7 +121,13 @@
     [self sendRequest:aRequest];
 }
 
-- (id)fetchDataWithReformer:(id <Reformer>)reformer
+- (void)cancelRequest
+{
+    [self.requestManager.operationQueue cancelAllOperations];
+    self.requestManager = nil;
+}
+
+- (id)fetchDataWithReformer:(id <APIReformer>)reformer
 {
     if ( !reformer ) {
         return self.rawData;
@@ -197,6 +203,17 @@
 
 - (void)handleSuccess:(id)responseObject
 {
+    if ( [responseObject objectForKey:@"code"] ) { // 如果是带有此种json数据结构，需要处理服务器逻辑错误
+        NSInteger code = [[responseObject objectForKey:@"code"] integerValue];
+        if ( code != 0 ) {
+            if ( [self.delegate respondsToSelector:@selector(apiManagerDidFailure:)] ) {
+                self.apiError = [APIError apiErrorWithCode:code message:[responseObject objectForKey:@"message"]];
+                [self.delegate apiManagerDidFailure:self];
+            }
+            return;
+        }
+    }
+    
     self.rawData = responseObject;
     
     if ( [self.delegate respondsToSelector:@selector(apiManagerDidSuccess:)] ) {
@@ -237,7 +254,7 @@
     // 处理服务器地址最后的“/”
     NSString* server = config.currentServer;
     if ( [server hasSuffix:@"/"] ) {
-        server = [server substringToIndex:server.length - 2];
+        server = [server substringToIndex:server.length - 1];
     }
     
     return [NSString stringWithFormat:@"%@/%@", server, [temp componentsJoinedByString:@"/"]];

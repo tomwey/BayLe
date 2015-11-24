@@ -30,4 +30,9 @@
     [super dealloc];
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"APIError(code=%d, message=%@)", self.code, self.message];
+}
+
 @end

@@ -20,6 +20,8 @@
 #import "UILabelTextSize.h"
 #import "AWCaret.h"
 #import "AWPageView.h"
+#import "APIManager.h"
+#import "APIDictionaryReformer.h"
 
 
 #pragma mark ------------------------------- 跟项目相关的宏定义 -------------------------------
@@ -31,6 +33,9 @@
 
 // 高德地图API Key
 #define MAMAP_API_KEY @"14f062a0bc5bac1a8bfd247a8db0aac5"
+
+/** 服务器API接口 **/
+#define API_TAGS @"/v1/tags.json"
 
 #pragma mark ------------------------------- 下面是项目相关的库 -------------------------------
 

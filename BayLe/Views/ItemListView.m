@@ -31,21 +31,32 @@
     self.tableView.dataSource = nil;
     self.tableView = nil;
     
-    [_catalog release];
+//    [_catalog release];
     
     [super dealloc];
 }
 
-- (void)setCatalog:(NSString *)catalog
+- (void)setTagID:(NSInteger)tagID
 {
-    if ( _catalog == catalog ) {
+    if (_tagID == tagID) {
         return;
     }
     
-    [_catalog release];
-    _catalog = [catalog copy];
+    _tagID = tagID;
     
-    // TODO: 加载数据
+    // TODO：加载数据
 }
+
+//- (void)setCatalog:(NSString *)catalog
+//{
+//    if ( _catalog == catalog ) {
+//        return;
+//    }
+//    
+//    [_catalog release];
+//    _catalog = [catalog copy];
+//    
+//    // TODO: 加载数据
+//}
 
 @end

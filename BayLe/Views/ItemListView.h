@@ -10,6 +10,6 @@
 
 @interface ItemListView : UIView
 
-@property (nonatomic, copy) NSString* catalog;
+@property (nonatomic, assign) NSInteger tagID;
 
 @end
