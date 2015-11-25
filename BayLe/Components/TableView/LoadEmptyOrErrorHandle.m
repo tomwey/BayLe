@@ -123,9 +123,8 @@ static char kLoadEmptyOrErrorHandleGestureKey;
 
 - (void)handleEmptyOrErrorTap
 {
-    [self removeErrorOrEmptyTips];
-    
     if ( [self.reloadDelegate respondsToSelector:@selector(reloadDataForErrorOrEmpty)] ) {
+        [self removeErrorOrEmptyTips];
         [self.reloadDelegate reloadDataForErrorOrEmpty];
     }
 }
@@ -144,9 +143,11 @@ static char kLoadEmptyOrErrorHandleGestureKey;
  * 显示纯文本提示
  * @param message 提示文字
  */
-- (void)showErrorOrEmptyMessage:(NSString *)message
+- (void)showErrorOrEmptyMessage:(NSString *)message reloadDelegate:(id <ReloadDelegate>)delegate
 {
     [self removeErrorOrEmptyTips];
+    
+    self.reloadDelegate = delegate;
     
     self.hidden = YES;
     
@@ -173,9 +174,11 @@ static char kLoadEmptyOrErrorHandleGestureKey;
  * 显示图片提示
  * 提示图片
  */
-- (void)showErrorOrEmptyImage:(UIImage *)image
+- (void)showErrorOrEmptyImage:(UIImage *)image reloadDelegate:(id<ReloadDelegate>)delegate
 {
     [self removeErrorOrEmptyTips];
+    
+    self.reloadDelegate = delegate;
     
     self.hidden = YES;
     

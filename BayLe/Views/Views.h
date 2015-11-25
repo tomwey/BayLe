@@ -13,5 +13,6 @@
 #import "HomeTitleView.h"
 #import "PagerTabStripper.h"
 #import "ItemListView.h"
+#import "ItemCell.h"
 
 #endif /* Views_h */

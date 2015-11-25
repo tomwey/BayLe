@@ -27,14 +27,16 @@
 /**
  * 显示纯文本提示，支持点击屏幕会响应ReloadDataProtocol接口方法
  * @param message 提示文字
+ * @param delegate 点击屏幕任意位置reload数据
  */
-- (void)showErrorOrEmptyMessage:(NSString *)message;
+- (void)showErrorOrEmptyMessage:(NSString *)message reloadDelegate:(id <ReloadDelegate>)delegate;
 
 /**
  * 显示图片提示，支持点击屏幕会响应ReloadDataProtocol接口方法
  * @param image 提示图片
+ * @param delegate 点击屏幕任意位置reload数据
  */
-- (void)showErrorOrEmptyImage:(UIImage *)image;
+- (void)showErrorOrEmptyImage:(UIImage *)image reloadDelegate:(id <ReloadDelegate>)delegate;
 
 @end
 
