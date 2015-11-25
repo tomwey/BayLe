@@ -11,7 +11,7 @@
 
 @interface BaseViewController ()
 
-@property (nonatomic, retain) AWCustomNavBar* navBar;
+@property (nonatomic, retain, readwrite) AWCustomNavBar* navBar;
 
 @end
 

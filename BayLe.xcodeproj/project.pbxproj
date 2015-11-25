@@ -82,9 +82,7 @@
 		97D5F5D31C045A6F007D75D6 /* LoadEmptyOrErrorHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5D21C045A6F007D75D6 /* LoadEmptyOrErrorHandle.m */; };
 		97D5F5D61C05459D007D75D6 /* InverseColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5D51C05459D007D75D6 /* InverseColor.m */; };
 		97D5F5D91C054EB0007D75D6 /* AWTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5D81C054EB0007D75D6 /* AWTableViewDataSource.m */; };
-		97D5F5DC1C0556CB007D75D6 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5DB1C0556CB007D75D6 /* ItemCell.m */; };
 		97D5F5DF1C057049007D75D6 /* RemoveBlankCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5DE1C057049007D75D6 /* RemoveBlankCells.m */; };
-		97D5F5E21C058105007D75D6 /* ItemCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5E11C058105007D75D6 /* ItemCollectionCell.m */; };
 		97D5F5E51C058D94007D75D6 /* AWMultipleColumnTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5E41C058D94007D75D6 /* AWMultipleColumnTableViewDataSource.m */; };
 		97D5F5E91C058E93007D75D6 /* SimpleItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5E81C058E93007D75D6 /* SimpleItemView.m */; };
 		97D5F5ED1C05A963007D75D6 /* RemoveBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5EC1C05A963007D75D6 /* RemoveBackground.m */; };
@@ -255,12 +253,8 @@
 		97D5F5D51C05459D007D75D6 /* InverseColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InverseColor.m; sourceTree = "<group>"; };
 		97D5F5D71C054EB0007D75D6 /* AWTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWTableViewDataSource.h; sourceTree = "<group>"; };
 		97D5F5D81C054EB0007D75D6 /* AWTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWTableViewDataSource.m; sourceTree = "<group>"; };
-		97D5F5DA1C0556CB007D75D6 /* ItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCell.h; sourceTree = "<group>"; };
-		97D5F5DB1C0556CB007D75D6 /* ItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCell.m; sourceTree = "<group>"; };
 		97D5F5DD1C057049007D75D6 /* RemoveBlankCells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveBlankCells.h; sourceTree = "<group>"; };
 		97D5F5DE1C057049007D75D6 /* RemoveBlankCells.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveBlankCells.m; sourceTree = "<group>"; };
-		97D5F5E01C058105007D75D6 /* ItemCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCollectionCell.h; sourceTree = "<group>"; };
-		97D5F5E11C058105007D75D6 /* ItemCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCollectionCell.m; sourceTree = "<group>"; };
 		97D5F5E31C058D94007D75D6 /* AWMultipleColumnTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWMultipleColumnTableViewDataSource.h; sourceTree = "<group>"; };
 		97D5F5E41C058D94007D75D6 /* AWMultipleColumnTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWMultipleColumnTableViewDataSource.m; sourceTree = "<group>"; };
 		97D5F5E71C058E93007D75D6 /* SimpleItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleItemView.h; sourceTree = "<group>"; };
@@ -397,10 +391,6 @@
 				97BD12291BFF1BEE00641C79 /* PagerTabStripper.m */,
 				97BD152D1C03F51D00641C79 /* ItemListView.h */,
 				97BD152E1C03F51D00641C79 /* ItemListView.m */,
-				97D5F5DA1C0556CB007D75D6 /* ItemCell.h */,
-				97D5F5DB1C0556CB007D75D6 /* ItemCell.m */,
-				97D5F5E01C058105007D75D6 /* ItemCollectionCell.h */,
-				97D5F5E11C058105007D75D6 /* ItemCollectionCell.m */,
 				97D5F5E71C058E93007D75D6 /* SimpleItemView.h */,
 				97D5F5E81C058E93007D75D6 /* SimpleItemView.m */,
 			);
@@ -874,7 +864,6 @@
 				97BD11AD1BFDBBA900641C79 /* UITableViewAdditions.m in Sources */,
 				9734C3301BFD895F005E0E5E /* UITabBarController+CustomTabBar.m in Sources */,
 				97BD11C51BFDC2F300641C79 /* AWTableViewCell.m in Sources */,
-				97D5F5DC1C0556CB007D75D6 /* ItemCell.m in Sources */,
 				9734C3231BFD6CED005E0E5E /* MessagesViewController.m in Sources */,
 				97BD11D01BFDC5BA00641C79 /* Command.m in Sources */,
 				97D5F5D91C054EB0007D75D6 /* AWTableViewDataSource.m in Sources */,
@@ -932,7 +921,6 @@
 				97BD153A1C04011F00641C79 /* APIRequest.m in Sources */,
 				97BD11C61BFDC2F300641C79 /* AWButton.m in Sources */,
 				97BD11C21BFDC2F300641C79 /* AWCustomNavBar.m in Sources */,
-				97D5F5E21C058105007D75D6 /* ItemCollectionCell.m in Sources */,
 				97BD119A1BFDAD5D00641C79 /* AWUIUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

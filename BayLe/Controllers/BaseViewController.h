@@ -15,7 +15,7 @@
 
 @property (nonatomic, assign) BOOL navBarHidden;
 
-@property (nonatomic, assign, readonly) AWCustomNavBar* navBar;
+@property (nonatomic, retain, readonly) AWCustomNavBar* navBar;
 
 + (UIViewController *)viewControllerWithClassName:(NSString *)className;
 
