@@ -86,6 +86,7 @@
 		97D5F5E51C058D94007D75D6 /* AWMultipleColumnTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5E41C058D94007D75D6 /* AWMultipleColumnTableViewDataSource.m */; };
 		97D5F5E91C058E93007D75D6 /* SimpleItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5E81C058E93007D75D6 /* SimpleItemView.m */; };
 		97D5F5ED1C05A963007D75D6 /* RemoveBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5EC1C05A963007D75D6 /* RemoveBackground.m */; };
+		97D5F5F01C05AD79007D75D6 /* LoadNetworkData.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5EF1C05AD79007D75D6 /* LoadNetworkData.m */; };
 		9930B5FF1BFE0A9300A109F2 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9930B5FE1BFE0A9300A109F2 /* BaseViewController.m */; };
 		9930B6081BFE0F2C00A109F2 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9930B6021BFE0F2C00A109F2 /* AMapSearchKit.framework */; };
 		9930B6091BFE0F2C00A109F2 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9930B6031BFE0F2C00A109F2 /* MAMapKit.framework */; };
@@ -262,6 +263,8 @@
 		97D5F5EA1C058F36007D75D6 /* AWTableDataConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AWTableDataConfig.h; sourceTree = "<group>"; };
 		97D5F5EB1C05A963007D75D6 /* RemoveBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveBackground.h; sourceTree = "<group>"; };
 		97D5F5EC1C05A963007D75D6 /* RemoveBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveBackground.m; sourceTree = "<group>"; };
+		97D5F5EE1C05AD79007D75D6 /* LoadNetworkData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadNetworkData.h; sourceTree = "<group>"; };
+		97D5F5EF1C05AD79007D75D6 /* LoadNetworkData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadNetworkData.m; sourceTree = "<group>"; };
 		9930B5FD1BFE0A9300A109F2 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		9930B5FE1BFE0A9300A109F2 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		9930B6021BFE0F2C00A109F2 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
@@ -711,6 +714,8 @@
 				97D5F5EA1C058F36007D75D6 /* AWTableDataConfig.h */,
 				97D5F5EB1C05A963007D75D6 /* RemoveBackground.h */,
 				97D5F5EC1C05A963007D75D6 /* RemoveBackground.m */,
+				97D5F5EE1C05AD79007D75D6 /* LoadNetworkData.h */,
+				97D5F5EF1C05AD79007D75D6 /* LoadNetworkData.m */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -921,6 +926,7 @@
 				97BD153A1C04011F00641C79 /* APIRequest.m in Sources */,
 				97BD11C61BFDC2F300641C79 /* AWButton.m in Sources */,
 				97BD11C21BFDC2F300641C79 /* AWCustomNavBar.m in Sources */,
+				97D5F5F01C05AD79007D75D6 /* LoadNetworkData.m in Sources */,
 				97BD119A1BFDAD5D00641C79 /* AWUIUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

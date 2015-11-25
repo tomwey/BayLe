@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "APIConfig.h"
 #import "APIError.h"
 #import "APIRequest.h"
@@ -98,5 +99,19 @@
  * @return 返回正确格式的数据
  */
 - (id)fetchDataWithReformer:(id <APIReformer>)reformer;
+
+@end
+
+/***********************************************************************
+                    UITableView加载网络数据扩展
+ ***********************************************************************/
+@interface UITableView (LoadNetworkDataWithAPIManager)
+
+/** 设置数据接口，例如：/v1/tags.json */
+@property (nonatomic, copy) NSString* dataUri;
+
+- (void)loadDataWithAPIManager:(APIManager *)manager;
+
+- (void)loadNextPageData
 
 @end
