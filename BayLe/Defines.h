@@ -23,12 +23,19 @@
 #import "APIManager.h"
 #import "APIDictionaryReformer.h"
 #import "AWTableViewDataSource.h"
+#import "AWMultipleColumnTableViewDataSource.h"
 #import "LoadEmptyOrErrorHandle.h"
 #import "UIImageView+AFNetworking.h"
 #import "RemoveBlankCells.h"
 #import "CompatibilityHandle.h"
 
 #pragma mark ------------------------------- 跟项目相关的宏定义 -------------------------------
+
+// 首页产品列表相关的宏定义
+#define COLS_PER_ROW_FOR_HOME_ITEM_LIST 2
+#define SPACING_FOR_PER_ITEM            10
+#define TITLE_HEIGHT_FOR_PER_ITEM       25
+#define PRICE_HEIGHT_FOR_PER_ITEM       20
 
 // App亮色
 #define MAIN_RED_COLOR AWColorFromRGB(251, 64, 78)

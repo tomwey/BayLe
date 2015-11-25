@@ -84,6 +84,10 @@
 		97D5F5D91C054EB0007D75D6 /* AWTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5D81C054EB0007D75D6 /* AWTableViewDataSource.m */; };
 		97D5F5DC1C0556CB007D75D6 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5DB1C0556CB007D75D6 /* ItemCell.m */; };
 		97D5F5DF1C057049007D75D6 /* RemoveBlankCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5DE1C057049007D75D6 /* RemoveBlankCells.m */; };
+		97D5F5E21C058105007D75D6 /* ItemCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5E11C058105007D75D6 /* ItemCollectionCell.m */; };
+		97D5F5E51C058D94007D75D6 /* AWMultipleColumnTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5E41C058D94007D75D6 /* AWMultipleColumnTableViewDataSource.m */; };
+		97D5F5E91C058E93007D75D6 /* SimpleItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5E81C058E93007D75D6 /* SimpleItemView.m */; };
+		97D5F5ED1C05A963007D75D6 /* RemoveBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5EC1C05A963007D75D6 /* RemoveBackground.m */; };
 		9930B5FF1BFE0A9300A109F2 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9930B5FE1BFE0A9300A109F2 /* BaseViewController.m */; };
 		9930B6081BFE0F2C00A109F2 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9930B6021BFE0F2C00A109F2 /* AMapSearchKit.framework */; };
 		9930B6091BFE0F2C00A109F2 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9930B6031BFE0F2C00A109F2 /* MAMapKit.framework */; };
@@ -255,6 +259,15 @@
 		97D5F5DB1C0556CB007D75D6 /* ItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCell.m; sourceTree = "<group>"; };
 		97D5F5DD1C057049007D75D6 /* RemoveBlankCells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveBlankCells.h; sourceTree = "<group>"; };
 		97D5F5DE1C057049007D75D6 /* RemoveBlankCells.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveBlankCells.m; sourceTree = "<group>"; };
+		97D5F5E01C058105007D75D6 /* ItemCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCollectionCell.h; sourceTree = "<group>"; };
+		97D5F5E11C058105007D75D6 /* ItemCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCollectionCell.m; sourceTree = "<group>"; };
+		97D5F5E31C058D94007D75D6 /* AWMultipleColumnTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWMultipleColumnTableViewDataSource.h; sourceTree = "<group>"; };
+		97D5F5E41C058D94007D75D6 /* AWMultipleColumnTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWMultipleColumnTableViewDataSource.m; sourceTree = "<group>"; };
+		97D5F5E71C058E93007D75D6 /* SimpleItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleItemView.h; sourceTree = "<group>"; };
+		97D5F5E81C058E93007D75D6 /* SimpleItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleItemView.m; sourceTree = "<group>"; };
+		97D5F5EA1C058F36007D75D6 /* AWTableDataConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AWTableDataConfig.h; sourceTree = "<group>"; };
+		97D5F5EB1C05A963007D75D6 /* RemoveBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveBackground.h; sourceTree = "<group>"; };
+		97D5F5EC1C05A963007D75D6 /* RemoveBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveBackground.m; sourceTree = "<group>"; };
 		9930B5FD1BFE0A9300A109F2 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		9930B5FE1BFE0A9300A109F2 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		9930B6021BFE0F2C00A109F2 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
@@ -386,6 +399,10 @@
 				97BD152E1C03F51D00641C79 /* ItemListView.m */,
 				97D5F5DA1C0556CB007D75D6 /* ItemCell.h */,
 				97D5F5DB1C0556CB007D75D6 /* ItemCell.m */,
+				97D5F5E01C058105007D75D6 /* ItemCollectionCell.h */,
+				97D5F5E11C058105007D75D6 /* ItemCollectionCell.m */,
+				97D5F5E71C058E93007D75D6 /* SimpleItemView.h */,
+				97D5F5E81C058E93007D75D6 /* SimpleItemView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -695,10 +712,15 @@
 				97BD122D1C02A4FF00641C79 /* CompatibilityHandle.m */,
 				97D5F5D11C045A6F007D75D6 /* LoadEmptyOrErrorHandle.h */,
 				97D5F5D21C045A6F007D75D6 /* LoadEmptyOrErrorHandle.m */,
-				97D5F5D71C054EB0007D75D6 /* AWTableViewDataSource.h */,
-				97D5F5D81C054EB0007D75D6 /* AWTableViewDataSource.m */,
 				97D5F5DD1C057049007D75D6 /* RemoveBlankCells.h */,
 				97D5F5DE1C057049007D75D6 /* RemoveBlankCells.m */,
+				97D5F5D71C054EB0007D75D6 /* AWTableViewDataSource.h */,
+				97D5F5D81C054EB0007D75D6 /* AWTableViewDataSource.m */,
+				97D5F5E31C058D94007D75D6 /* AWMultipleColumnTableViewDataSource.h */,
+				97D5F5E41C058D94007D75D6 /* AWMultipleColumnTableViewDataSource.m */,
+				97D5F5EA1C058F36007D75D6 /* AWTableDataConfig.h */,
+				97D5F5EB1C05A963007D75D6 /* RemoveBackground.h */,
+				97D5F5EC1C05A963007D75D6 /* RemoveBackground.m */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -863,6 +885,7 @@
 				97BD12091BFDCEF900641C79 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				97BD12211BFEFEE900641C79 /* AWCaret.m in Sources */,
 				97BD15371C0400F200641C79 /* APIConfig.m in Sources */,
+				97D5F5E51C058D94007D75D6 /* AWMultipleColumnTableViewDataSource.m in Sources */,
 				9734C3161BFD656C005E0E5E /* AWEntityTables.m in Sources */,
 				97D5F5D61C05459D007D75D6 /* InverseColor.m in Sources */,
 				97BD15471C044D3900641C79 /* APIDictionaryReformer.m in Sources */,
@@ -889,6 +912,7 @@
 				97BD12161BFDCF7800641C79 /* MACircleProgressIndicator.m in Sources */,
 				9734C32D1BFD750D005E0E5E /* AWCustomTabBarController.m in Sources */,
 				97BD11C31BFDC2F300641C79 /* AWCommandButton.m in Sources */,
+				97D5F5E91C058E93007D75D6 /* SimpleItemView.m in Sources */,
 				97BD11C71BFDC2F300641C79 /* AWMaskView.m in Sources */,
 				97BD12171BFDCF7800641C79 /* UIImageView+ProgressIndicator.m in Sources */,
 				97BD15401C04363400641C79 /* APIFileParam.m in Sources */,
@@ -898,6 +922,7 @@
 				97BD120E1BFDCEF900641C79 /* UIRefreshControl+AFNetworking.m in Sources */,
 				97BD11A71BFDB69100641C79 /* UIImageAdditions.m in Sources */,
 				97BD152F1C03F51D00641C79 /* ItemListView.m in Sources */,
+				97D5F5ED1C05A963007D75D6 /* RemoveBackground.m in Sources */,
 				9734C2EF1BFD5EAA005E0E5E /* Aspects.m in Sources */,
 				97BD12001BFDCEF900641C79 /* AFHTTPRequestOperationManager.m in Sources */,
 				97BD11D11BFDC5BA00641C79 /* ShareCommand.m in Sources */,
@@ -907,6 +932,7 @@
 				97BD153A1C04011F00641C79 /* APIRequest.m in Sources */,
 				97BD11C61BFDC2F300641C79 /* AWButton.m in Sources */,
 				97BD11C21BFDC2F300641C79 /* AWCustomNavBar.m in Sources */,
+				97D5F5E21C058105007D75D6 /* ItemCollectionCell.m in Sources */,
 				97BD119A1BFDAD5D00641C79 /* AWUIUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,17 +9,17 @@
 #import "ItemListView.h"
 #import "Defines.h"
 
-@interface ItemListView () <APIManagerDelegate, ReloadDelegate, CellDataBind, UITableViewDelegate>
+@interface ItemListView () <APIManagerDelegate, ReloadDelegate>
 
 @property (nonatomic, retain) UITableView* tableView;
 @property (nonatomic, retain) APIManager*  itemsAPIManager;
 
-@property (nonatomic, retain) AWTableViewDataSource* tableViewDataSource;
+@property (nonatomic, retain) AWMultipleColumnTableViewDataSource* tableViewDataSource;
 
 @end
 
 #define ItemCellReuseIdentifier @"item.cell.identifier"
-#define CellClassName @"ItemCell"
+#define ItemCellClassName @"UITableViewCell"
 
 @implementation ItemListView
 
@@ -31,21 +31,27 @@
         [self addSubview:self.tableView];
         self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         
-        [self.tableView registerClass:NSClassFromString(CellClassName) forCellReuseIdentifier:ItemCellReuseIdentifier];
+        self.tableView.backgroundColor = [UIColor clearColor];
         
-        self.tableView.backgroundColor = AWColorFromRGB(245, 245, 245);
+        // 计算每列的宽度
+        CGFloat itemWidth =
+        ( AWFullScreenWidth() - ( COLS_PER_ROW_FOR_HOME_ITEM_LIST + 1 ) * SPACING_FOR_PER_ITEM ) / COLS_PER_ROW_FOR_HOME_ITEM_LIST;
+        CGFloat itemHeight = itemWidth + TITLE_HEIGHT_FOR_PER_ITEM + PRICE_HEIGHT_FOR_PER_ITEM;
         
-        self.tableView.rowHeight = 80;
+        self.tableView.rowHeight = itemHeight + SPACING_FOR_PER_ITEM;
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, SPACING_FOR_PER_ITEM, 0);
         
+        // 去除空白的cell
         [self.tableView removeBlankCells];
         [self.tableView removeCompatibility];
+        
+        [self.tableView resetForGridLayout];
     }
     return self;
 }
 
 - (void)dealloc
 {
-    self.tableView.dataSource = nil;
     self.tableView = nil;
     
     self.itemsAPIManager = nil;
@@ -80,22 +86,21 @@
                                                                                            })];
 }
 
-- (void)bindData:(id)data toCell:(UITableViewCell *)cell
-{
-    ItemCell* itemCell = (ItemCell *)cell;
-    itemCell.data = data;
-}
-
 /** 网络请求成功回调 */
 - (void)apiManagerDidSuccess:(APIManager *)manager
 {
     NSLog(@"result: %@", [manager fetchDataWithReformer:nil]);
     id data = [manager fetchDataWithReformer:[[[APIDictionaryReformer alloc] init] autorelease]];
+    
     if ( [data count] == 0 ) {
         [self.tableView showErrorOrEmptyMessage:@"喔，没有数据哦，快去创建吧！！！" reloadDelegate:nil];
     } else {
-        self.tableViewDataSource = AWTableViewDataSourceCreate(data, CellClassName, ItemCellReuseIdentifier);
-        self.tableViewDataSource.dataBind = self;
+        self.tableViewDataSource = AWMultipleColumnTableViewDataSourceCreate(data, nil, ItemCellReuseIdentifier);
+        self.tableViewDataSource.numberOfItemsPerRow = COLS_PER_ROW_FOR_HOME_ITEM_LIST;
+        self.tableViewDataSource.itemClass = @"SimpleItemView";
+        self.tableViewDataSource.offsetY = SPACING_FOR_PER_ITEM;
+        self.tableViewDataSource.itemSpacing = SPACING_FOR_PER_ITEM;
+        self.tableViewDataSource.itemSize = CGSizeMake(0, self.tableView.rowHeight - SPACING_FOR_PER_ITEM);
         self.tableView.dataSource = self.tableViewDataSource;
         [self.tableView reloadData];
     }
@@ -112,17 +117,5 @@
 {
     [self loadDataIfNeeded];
 }
-
-//- (void)setCatalog:(NSString *)catalog
-//{
-//    if ( _catalog == catalog ) {
-//        return;
-//    }
-//    
-//    [_catalog release];
-//    _catalog = [catalog copy];
-//    
-//    // TODO: 加载数据
-//}
 
 @end

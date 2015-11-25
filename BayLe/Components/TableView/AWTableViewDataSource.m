@@ -8,6 +8,13 @@
 
 #import "AWTableViewDataSource.h"
 
+// 此种作法仅仅是为了让编译器通过编译
+@interface UITableViewCell (AWTableDataConfig) <AWTableDataConfig>
+
+- (void)configData:(id)data;
+
+@end
+
 @implementation AWTableViewDataSource
 
 - (instancetype)initWithArray:(NSArray *)dataSource cellClass:(NSString *)className identifier:(NSString *)identifier
@@ -26,6 +33,11 @@
     return [[[self alloc] initWithArray:dataSource cellClass:className identifier:identifier] autorelease];
 }
 
+- (instancetype)init
+{
+    return [self initWithArray:nil cellClass:nil identifier:nil];
+}
+
 - (void)dealloc
 {
     self.dataSource = nil;
@@ -42,21 +54,28 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSAssert(!!self.cellClass, @"Cell类不能为空");
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:self.identifier];
+    NSAssert([cell conformsToProtocol:@protocol(AWTableDataConfig)], @"自定义Cell类必须实现AWTableDataConfig接口");
+    
     if ( cell == nil ) {
         cell = [[[NSClassFromString(self.cellClass) alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:self.identifier] autorelease];
     }
     
+    // 配置数据到视图
     id data = [self.dataSource objectAtIndex:indexPath.row];
-    
-    // 绑定数据到cell
-    if ( [self.dataBind respondsToSelector:@selector(bindData:toCell:)] ) {
-        [self.dataBind bindData:data toCell:cell];
-    }
-    
-    [cell sizeToFit];
+    [cell configData:data];
     
     return cell;
+}
+
+@end
+
+@implementation UITableViewCell (AWTableDataConfig)
+
+- (void)configData:(id)data
+{
+    // 仅仅是为了让编译器通过编译
 }
 
 @end

@@ -40,6 +40,8 @@
 {
     [super viewDidLoad];
     
+    self.contentView.backgroundColor = AWColorFromRGB(235, 235, 235);
+    
     // 设置右边导航按钮
     [self setupRightButton];
     
@@ -176,7 +178,7 @@
 //    tabStripper.titles = @[@"儿童玩具", @"儿童读物",@"自行车",
 //                           @"帐篷",@"烧烤架", @"数码相机"];
     
-    tabStripper.backgroundColor = AWColorFromRGB(245, 245, 245);
+    tabStripper.backgroundColor = [UIColor whiteColor];//AWColorFromRGB(221, 221, 221);
     
     [tabStripper bindTarget:self forAction:@selector(tabStripperDidSelect:)];
     

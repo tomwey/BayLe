@@ -14,5 +14,6 @@
 #import "PagerTabStripper.h"
 #import "ItemListView.h"
 #import "ItemCell.h"
+#import "ItemCollectionCell.h"
 
 #endif /* Views_h */
