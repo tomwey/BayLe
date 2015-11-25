@@ -80,6 +80,7 @@
 		97BD15431C04484A00641C79 /* APIEntityReformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD15421C04484A00641C79 /* APIEntityReformer.m */; };
 		97BD15471C044D3900641C79 /* APIDictionaryReformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD15461C044D3900641C79 /* APIDictionaryReformer.m */; };
 		97D5F5D31C045A6F007D75D6 /* LoadEmptyOrErrorHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5D21C045A6F007D75D6 /* LoadEmptyOrErrorHandle.m */; };
+		97D5F5D61C05459D007D75D6 /* InverseColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D5F5D51C05459D007D75D6 /* InverseColor.m */; };
 		9930B5FF1BFE0A9300A109F2 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9930B5FE1BFE0A9300A109F2 /* BaseViewController.m */; };
 		9930B6081BFE0F2C00A109F2 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9930B6021BFE0F2C00A109F2 /* AMapSearchKit.framework */; };
 		9930B6091BFE0F2C00A109F2 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9930B6031BFE0F2C00A109F2 /* MAMapKit.framework */; };
@@ -243,6 +244,8 @@
 		97BD15461C044D3900641C79 /* APIDictionaryReformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIDictionaryReformer.m; sourceTree = "<group>"; };
 		97D5F5D11C045A6F007D75D6 /* LoadEmptyOrErrorHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadEmptyOrErrorHandle.h; sourceTree = "<group>"; };
 		97D5F5D21C045A6F007D75D6 /* LoadEmptyOrErrorHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadEmptyOrErrorHandle.m; sourceTree = "<group>"; };
+		97D5F5D41C05459D007D75D6 /* InverseColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InverseColor.h; sourceTree = "<group>"; };
+		97D5F5D51C05459D007D75D6 /* InverseColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InverseColor.m; sourceTree = "<group>"; };
 		9930B5FD1BFE0A9300A109F2 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		9930B5FE1BFE0A9300A109F2 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		9930B6021BFE0F2C00A109F2 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
@@ -518,6 +521,8 @@
 				97BD119F1BFDAF6300641C79 /* UIWindowAdditions.m */,
 				97BD12251BFF125900641C79 /* UILabelTextSize.h */,
 				97BD12261BFF125900641C79 /* UILabelTextSize.m */,
+				97D5F5D41C05459D007D75D6 /* InverseColor.h */,
+				97D5F5D51C05459D007D75D6 /* InverseColor.m */,
 			);
 			path = "UIKit Additions";
 			sourceTree = "<group>";
@@ -841,6 +846,7 @@
 				97BD12211BFEFEE900641C79 /* AWCaret.m in Sources */,
 				97BD15371C0400F200641C79 /* APIConfig.m in Sources */,
 				9734C3161BFD656C005E0E5E /* AWEntityTables.m in Sources */,
+				97D5F5D61C05459D007D75D6 /* InverseColor.m in Sources */,
 				97BD15471C044D3900641C79 /* APIDictionaryReformer.m in Sources */,
 				9734C3191BFD6576005E0E5E /* AWMarkupStripper.m in Sources */,
 				97BD122E1C02A4FF00641C79 /* CompatibilityHandle.m in Sources */,

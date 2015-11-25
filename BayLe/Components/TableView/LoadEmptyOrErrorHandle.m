@@ -13,15 +13,18 @@
 
 static char kLoadEmptyOrErrorHandleCallbackKey;
 static char kLoadEmptyOrErrorHandleToastKey;
+static char kLoadEmptyOrErrorHandleMessageKey;
+static char kLoadEmptyOrErrorHandleImageKey;
+static char kLoadEmptyOrErrorHandleGestureKey;
 
-@dynamic reloadCallback;
+@dynamic reloadDelegate;
 
-- (void)setReloadCallback:(id<ReloadDataProtocol>)reloadCallback
+- (void)setReloadDelegate:(id<ReloadDelegate>)reloadDelegate
 {
-    objc_setAssociatedObject(self, &kLoadEmptyOrErrorHandleCallbackKey, reloadCallback, OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, &kLoadEmptyOrErrorHandleCallbackKey, reloadDelegate, OBJC_ASSOCIATION_ASSIGN);
 }
 
-- (id <ReloadDataProtocol>)reloadCallback
+- (id <ReloadDelegate>)reloadDelegate
 {
     return objc_getAssociatedObject(self, &kLoadEmptyOrErrorHandleCallbackKey);
 }
@@ -43,7 +46,7 @@ static char kLoadEmptyOrErrorHandleToastKey;
 }
 
 /** 显示吐司提示 */
-- (void)showToast:(NSString *)message
+- (void)showErrorOrEmptyToast:(NSString *)message
 {
     UILabel *toastLabel = [self toastLabel];
     [toastLabel bringSubviewToFront:toastLabel];
@@ -62,27 +65,149 @@ static char kLoadEmptyOrErrorHandleToastKey;
         [UIView animateWithDuration:.3 delay:1.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
             toastLabel.center = CGPointMake(CGRectGetWidth(self.frame) / 2, CGRectGetHeight(self.frame) + 10 + CGRectGetHeight(toastLabel.frame) / 2);
         } completion:^(BOOL finished) {
-            
+            [toastLabel removeFromSuperview];
+            objc_setAssociatedObject(self, &kLoadEmptyOrErrorHandleToastKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }];
     }];
+}
+
+- (UILabel *)messageLabel
+{
+    UILabel* messageLabel = objc_getAssociatedObject(self, &kLoadEmptyOrErrorHandleMessageKey);
+    if ( !messageLabel ) {
+        messageLabel = [[[UILabel alloc] init] autorelease];
+        objc_setAssociatedObject(self, &kLoadEmptyOrErrorHandleMessageKey, messageLabel, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        messageLabel.textAlignment = NSTextAlignmentCenter;
+        messageLabel.backgroundColor = [UIColor clearColor];
+        messageLabel.numberOfLines = 0;
+    }
+    return messageLabel;
+}
+
+- (UIColor *)inverseColor:(UIColor *)originColor
+{
+    CGColorRef oldCGColor = originColor.CGColor;
+    NSInteger numberOfComponents = CGColorGetNumberOfComponents(oldCGColor);
+    
+    if ( numberOfComponents <= 1 ) {
+        // 只有alpha
+        return [UIColor colorWithCGColor:oldCGColor];
+    }
+    
+    const CGFloat* oldComponentColors = CGColorGetComponents(oldCGColor);
+    CGFloat newComponentColors[numberOfComponents];
+    
+    int i = -1;
+    // 4
+    while (++i < numberOfComponents - 1) {
+        newComponentColors[i] = 1 - oldComponentColors[i];
+    }
+    newComponentColors[i] = oldComponentColors[i]; // alpha
+    
+    CGColorRef newCGColor = CGColorCreate(CGColorGetColorSpace(oldCGColor), newComponentColors);
+    UIColor* newColor = [UIColor colorWithCGColor:newCGColor];
+    CGColorRelease(newCGColor);
+    
+    return newColor;
+}
+
+- (UITapGestureRecognizer *)tapGesture
+{
+    UITapGestureRecognizer* gesture = objc_getAssociatedObject(self, &kLoadEmptyOrErrorHandleGestureKey);
+    if ( !gesture ) {
+        gesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleEmptyOrErrorTap)] autorelease];
+        objc_setAssociatedObject(self, &kLoadEmptyOrErrorHandleGestureKey, gesture, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return gesture;
+}
+
+- (void)handleEmptyOrErrorTap
+{
+    [self removeErrorOrEmptyTips];
+    
+    if ( [self.reloadDelegate respondsToSelector:@selector(reloadDataForErrorOrEmpty)] ) {
+        [self.reloadDelegate reloadDataForErrorOrEmpty];
+    }
+}
+
+- (UIImageView *)tipImageView
+{
+    UIImageView* imageView = objc_getAssociatedObject(self, &kLoadEmptyOrErrorHandleImageKey);
+    if ( !imageView ) {
+        imageView = [[[UIImageView alloc] init] autorelease];
+        objc_setAssociatedObject(self, &kLoadEmptyOrErrorHandleImageKey, imageView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return imageView;
 }
 
 /**
  * 显示纯文本提示
  * @param message 提示文字
  */
-- (void)showMessage:(NSString *)message
+- (void)showErrorOrEmptyMessage:(NSString *)message
 {
+    [self removeErrorOrEmptyTips];
     
+    self.hidden = YES;
+    
+    UILabel* label = [self messageLabel];
+    if ( !label.superview ) {
+        [self.superview addSubview:label];
+    }
+    
+    CGFloat width = CGRectGetWidth(self.superview.bounds) * 0.618;
+    CGSize size = [message sizeWithFont:label.font
+                      constrainedToSize:CGSizeMake(width, CGRectGetHeight(self.superview.bounds))
+                          lineBreakMode:label.lineBreakMode];
+    label.frame = CGRectMake(0, 0, width, size.height);
+    label.center = CGPointMake(CGRectGetWidth(self.superview.bounds) / 2, CGRectGetHeight(self.superview.bounds) / 2);
+    
+    label.text = message;
+    label.textColor = [self inverseColor:self.superview.backgroundColor];
+    
+    // 添加点击操作
+    [self.superview addGestureRecognizer:[self tapGesture]];
 }
 
 /**
  * 显示图片提示
  * 提示图片
  */
-- (void)showImage:(NSString *)image
+- (void)showErrorOrEmptyImage:(UIImage *)image
 {
+    [self removeErrorOrEmptyTips];
     
+    self.hidden = YES;
+    
+    UIImageView* imageView = [self tipImageView];
+    if ( !imageView.superview ) {
+        [self.superview addSubview:imageView];
+    }
+    
+    imageView.image = image;
+    [imageView sizeToFit];
+    
+    imageView.center = CGPointMake(CGRectGetWidth(self.superview.frame) / 2, CGRectGetHeight(self.superview.frame) / 2);
+    
+    // 添加点击操作
+    [self.superview addGestureRecognizer:[self tapGesture]];
+}
+
+- (void)removeErrorOrEmptyTips
+{
+    self.hidden = NO;
+    
+    // 移除点击手势
+    [self.superview removeGestureRecognizer:[self tapGesture]];
+    objc_setAssociatedObject(self, &kLoadEmptyOrErrorHandleGestureKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
+    // 移除文本提示
+    [[self messageLabel] removeFromSuperview];
+    objc_setAssociatedObject(self, &kLoadEmptyOrErrorHandleMessageKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
+    // 移除图片提示
+    [[self tipImageView] removeFromSuperview];
+    objc_setAssociatedObject(self, &kLoadEmptyOrErrorHandleImageKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end
