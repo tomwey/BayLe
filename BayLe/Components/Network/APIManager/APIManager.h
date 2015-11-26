@@ -112,6 +112,6 @@
 
 - (void)loadDataWithAPIManager:(APIManager *)manager;
 
-- (void)loadNextPageData
+- (void)loadNextPageData;
 
 @end

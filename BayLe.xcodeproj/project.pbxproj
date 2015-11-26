@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		971E5F511C06DDCE00F637C6 /* UIScrollView+AWRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5F501C06DDCE00F637C6 /* UIScrollView+AWRefresh.m */; };
+		971E5F571C06F07900F637C6 /* AWRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5F561C06F07900F637C6 /* AWRefreshBaseView.m */; };
 		9734C2D01BFD5C5D005E0E5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C2CF1BFD5C5D005E0E5E /* main.m */; };
 		9734C2D31BFD5C5D005E0E5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C2D21BFD5C5D005E0E5E /* AppDelegate.m */; };
 		9734C2DB1BFD5C5D005E0E5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9734C2DA1BFD5C5D005E0E5E /* Assets.xcassets */; };
@@ -97,6 +99,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		971E5F4E1C06B45F00F637C6 /* AWRefreshProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AWRefreshProtocol.h; sourceTree = "<group>"; };
+		971E5F4F1C06DDCE00F637C6 /* UIScrollView+AWRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+AWRefresh.h"; sourceTree = "<group>"; };
+		971E5F501C06DDCE00F637C6 /* UIScrollView+AWRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+AWRefresh.m"; sourceTree = "<group>"; };
+		971E5F551C06F07900F637C6 /* AWRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWRefreshBaseView.h; sourceTree = "<group>"; };
+		971E5F561C06F07900F637C6 /* AWRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWRefreshBaseView.m; sourceTree = "<group>"; };
 		9734C2CB1BFD5C5D005E0E5E /* BayLe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BayLe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9734C2CF1BFD5C5D005E0E5E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9734C2D11BFD5C5D005E0E5E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -292,6 +299,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		971E5F4D1C06B42D00F637C6 /* AWRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				971E5F4E1C06B45F00F637C6 /* AWRefreshProtocol.h */,
+				971E5F4F1C06DDCE00F637C6 /* UIScrollView+AWRefresh.h */,
+				971E5F501C06DDCE00F637C6 /* UIScrollView+AWRefresh.m */,
+				971E5F551C06F07900F637C6 /* AWRefreshBaseView.h */,
+				971E5F561C06F07900F637C6 /* AWRefreshBaseView.m */,
+			);
+			path = AWRefresh;
+			sourceTree = "<group>";
+		};
 		9734C2C21BFD5C5D005E0E5E = {
 			isa = PBXGroup;
 			children = (
@@ -340,6 +359,7 @@
 		9734C2E51BFD5C90005E0E5E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				971E5F4D1C06B42D00F637C6 /* AWRefresh */,
 				97BD122B1C02A4F400641C79 /* TableView */,
 				97BD11D91BFDCEB600641C79 /* Network */,
 				97BD119B1BFDAE0700641C79 /* Controllers */,
@@ -877,6 +897,7 @@
 				97BD11C81BFDC2F300641C79 /* AWBaseView.m in Sources */,
 				9734C30F1BFD650D005E0E5E /* NSDataAdditions.m in Sources */,
 				97BD12091BFDCEF900641C79 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				971E5F571C06F07900F637C6 /* AWRefreshBaseView.m in Sources */,
 				97BD12211BFEFEE900641C79 /* AWCaret.m in Sources */,
 				97BD15371C0400F200641C79 /* APIConfig.m in Sources */,
 				97D5F5E51C058D94007D75D6 /* AWMultipleColumnTableViewDataSource.m in Sources */,
@@ -891,6 +912,7 @@
 				97BD11D81BFDC61800641C79 /* AWModalAlert.m in Sources */,
 				9734C3101BFD650D005E0E5E /* NSDateAdditions.m in Sources */,
 				97BD12031BFDCEF900641C79 /* AFNetworkReachabilityManager.m in Sources */,
+				971E5F511C06DDCE00F637C6 /* UIScrollView+AWRefresh.m in Sources */,
 				97BD12061BFDCEF900641C79 /* AFURLRequestSerialization.m in Sources */,
 				9734C31D1BFD6CC8005E0E5E /* HomeViewController.m in Sources */,
 				97BD12071BFDCEF900641C79 /* AFURLResponseSerialization.m in Sources */,

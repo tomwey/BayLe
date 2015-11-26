@@ -46,6 +46,10 @@
         [self.tableView removeCompatibility];
         
         [self.tableView resetForGridLayout];
+        
+        UIRefreshControl* refreshControl = [[[UIRefreshControl alloc] init] autorelease];
+        [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+        [self.tableView addSubview:refreshControl];
     }
     return self;
 }
@@ -59,6 +63,14 @@
     self.tableViewDataSource = nil;
     
     [super dealloc];
+}
+
+- (void)refresh:(UIRefreshControl *)control
+{
+    NSLog(@"refresh");
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [control endRefreshing];
+    });
 }
 
 - (void)setTagID:(NSInteger)tagID
