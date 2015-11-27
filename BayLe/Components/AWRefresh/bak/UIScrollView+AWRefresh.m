@@ -11,8 +11,8 @@
 
 @interface UIScrollView (InternalProperty)
 
-@property (nonatomic, assign) AWRefreshBaseView* headerRefreshView;
-@property (nonatomic, assign) AWRefreshBaseView* footerLoadMoreView;
+@property (nonatomic, assign) UIView<AWRefreshProtocol>* headerRefreshView;
+@property (nonatomic, assign) UIView<AWRefreshProtocol>* footerLoadMoreView;
 
 @end
 
@@ -25,26 +25,26 @@
 static char AWRefreshHeaderViewKey;
 static char AWLoadMoreFooterViewKey;
 
-- (void)setHeaderRefreshView:(AWRefreshBaseView *)refreshView
+- (void)setHeaderRefreshView:(UIView<AWRefreshProtocol> *)refreshView
 {
     [self willChangeValueForKey:@"AWRefreshHeaderViewKey"];
     objc_setAssociatedObject(self, &AWRefreshHeaderViewKey, refreshView, OBJC_ASSOCIATION_ASSIGN);
     [self didChangeValueForKey:@"AWRefreshHeaderViewKey"];
 }
 
-- (AWRefreshBaseView*)headerRefreshView
+- (UIView<AWRefreshProtocol>*)headerRefreshView
 {
     return objc_getAssociatedObject(self, &AWRefreshHeaderViewKey);
 }
 
-- (void)setFooterLoadMoveView:(AWRefreshBaseView *)loadMoreView
+- (void)setFooterLoadMoveView:(UIView<AWRefreshProtocol> *)loadMoreView
 {
     [self willChangeValueForKey:@"AWLoadMoreFooterViewKey"];
     objc_setAssociatedObject(self, &AWLoadMoreFooterViewKey, loadMoreView, OBJC_ASSOCIATION_ASSIGN);
     [self didChangeValueForKey:@"AWLoadMoreFooterViewKey"];
 }
 
-- (AWRefreshBaseView*)footerLoadMoreView
+- (UIView<AWRefreshProtocol>*)footerLoadMoreView
 {
     return objc_getAssociatedObject(self, &AWLoadMoreFooterViewKey);
 }
@@ -52,7 +52,7 @@ static char AWLoadMoreFooterViewKey;
 ///////////////////////////////////////////////////////////////////////////////
 #pragma mark - 下拉刷新
 ///////////////////////////////////////////////////////////////////////////////
-- (void)addHeaderRefreshView:(AWRefreshBaseView *)refreshView withCallback:(void (^)())callback
+- (void)addHeaderRefreshView:(UIView<AWRefreshProtocol> *)refreshView withCallback:(void (^)())callback
 {
     self.headerRefreshView = refreshView;
     [self addSubview:refreshView];
@@ -65,7 +65,7 @@ static char AWLoadMoreFooterViewKey;
     self.headerRefreshView.beginRefreshingCallback = callback;
 }
 
-- (void)addHeaderRefreshView:(AWRefreshBaseView *)refreshView withTarget:(id)target action:(SEL)action
+- (void)addHeaderRefreshView:(UIView<AWRefreshProtocol> *)refreshView withTarget:(id)target action:(SEL)action
 {
     self.headerRefreshView = refreshView;
     [self addSubview:refreshView];
@@ -107,7 +107,7 @@ static char AWLoadMoreFooterViewKey;
 ///////////////////////////////////////////////////////////////////////////////
 #pragma mark - 上拉加载更多
 ///////////////////////////////////////////////////////////////////////////////
-- (void)addFooterLoadMoreView:(AWRefreshBaseView *)refreshView withCallback:(void (^)())callback
+- (void)addFooterLoadMoreView:(UIView<AWRefreshProtocol> *)refreshView withCallback:(void (^)())callback
 {
     self.footerLoadMoreView = refreshView;
     [self addSubview:self.footerLoadMoreView];
@@ -120,7 +120,7 @@ static char AWLoadMoreFooterViewKey;
     self.footerLoadMoreView.beginRefreshingCallback = callback;
 }
 
-- (void)addFooterLoadMoreView:(AWRefreshBaseView *)refreshView withTarget:(id)target action:(SEL)action
+- (void)addFooterLoadMoreView:(UIView<AWRefreshProtocol> *)refreshView withTarget:(id)target action:(SEL)action
 {
     self.footerLoadMoreView = refreshView;
     [self addSubview:self.footerLoadMoreView];

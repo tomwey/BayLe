@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AWRefreshBaseView.h"
+#import "AWRefreshProtocol.h"
 
 @interface UIScrollView (AWRefresh)
 
@@ -21,7 +21,7 @@
  * @param refreshView 刷新控件
  * @param callback 刷新回调
  */
-- (void)addHeaderRefreshView:(AWRefreshBaseView *)refreshView
+- (void)addHeaderRefreshView:(UIView<AWRefreshProtocol> *)refreshView
                 withCallback:(void (^)())callback;
 
 /**
@@ -31,7 +31,7 @@
  * @param target 目标
  * @param action 刷新回调方法
  */
-- (void)addHeaderRefreshView:(AWRefreshBaseView *)refreshView
+- (void)addHeaderRefreshView:(UIView<AWRefreshProtocol> *)refreshView
                   withTarget:(id)target
                       action:(SEL)action;
 
@@ -66,7 +66,7 @@
  * @param refreshView 刷新控件
  * @param callback 刷新回调
  */
-- (void)addFooterLoadMoreView:(AWRefreshBaseView *)refreshView
+- (void)addFooterLoadMoreView:(UIView<AWRefreshProtocol> *)refreshView
                  withCallback:(void (^)())callback;
 
 /**
@@ -76,7 +76,7 @@
  * @param target 目标
  * @param action 刷新回调方法
  */
-- (void)addFooterLoadMoreView:(AWRefreshBaseView *)refreshView
+- (void)addFooterLoadMoreView:(UIView<AWRefreshProtocol> *)refreshView
                    withTarget:(id)target
                        action:(SEL)action;
 
