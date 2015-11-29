@@ -60,9 +60,13 @@ FOUNDATION_EXTERN const CGFloat AWRefreshAnimationDuration;
 /////////////////////////////////////////////////////////////////
 - (void)releaseToRefresh;
 
-- (void)willBeginRefreshing;
+- (void)changeToRefresh;
 
 - (void)didEndRefreshing;
+
+- (void)updateOffset:(CGFloat)dty;
+
+- (void)backToNormalState;
 
 /** 子类重写此方法，返回正确的拖动刷新模式 */
 - (AWRefreshMode)refreshMode;

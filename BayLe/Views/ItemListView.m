@@ -47,9 +47,23 @@
         
         [self.tableView resetForGridLayout];
         
-        UIRefreshControl* refreshControl = [[[UIRefreshControl alloc] init] autorelease];
-        [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-        [self.tableView addSubview:refreshControl];
+        self.tableView.showsVerticalScrollIndicator = NO;
+        
+//        UIRefreshControl* refreshControl = [[[UIRefreshControl alloc] init] autorelease];
+//        [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+//        [self.tableView addSubview:refreshControl];
+//        
+//        refreshControl.tintColor = MAIN_RED_COLOR;
+        
+        RefreshHeaderView* header = [[[RefreshHeaderView alloc] init] autorelease];
+        [self.tableView addHeaderRefreshView:header withCallback:^{
+//            NSLog(@"开始刷新");
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [self.tableView headerRefreshViewEndRefreshing];
+                [self loadDataIfNeeded];
+            });
+        }];
+        
     }
     return self;
 }
@@ -82,7 +96,8 @@
     _tagID = tagID;
     
     // 加载数据
-    [self loadDataIfNeeded];
+//    [self loadDataIfNeeded];
+    [self.tableView headerRefreshViewBeginRefreshing];
 }
 
 - (void)loadDataIfNeeded
@@ -101,6 +116,8 @@
 /** 网络请求成功回调 */
 - (void)apiManagerDidSuccess:(APIManager *)manager
 {
+    [self.tableView headerRefreshViewEndRefreshing];
+    
     NSLog(@"result: %@", [manager fetchDataWithReformer:nil]);
     id data = [manager fetchDataWithReformer:[[[APIDictionaryReformer alloc] init] autorelease]];
     

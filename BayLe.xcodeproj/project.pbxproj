@@ -96,6 +96,7 @@
 		9930B60B1BFE0F2C00A109F2 /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9930B6071BFE0F2C00A109F2 /* PushConfig.plist */; };
 		9930B60F1BFE0F7C00A109F2 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9930B60E1BFE0F7C00A109F2 /* libstdc++.6.0.9.dylib */; };
 		9930B6111BFE0FB000A109F2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9930B6101BFE0FB000A109F2 /* libz.dylib */; };
+		995545A71C0A8E3D00BE5309 /* RefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 995545A61C0A8E3D00BE5309 /* RefreshHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -281,6 +282,8 @@
 		9930B6071BFE0F2C00A109F2 /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
 		9930B60E1BFE0F7C00A109F2 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		9930B6101BFE0FB000A109F2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		995545A51C0A8E3D00BE5309 /* RefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshHeaderView.h; sourceTree = "<group>"; };
+		995545A61C0A8E3D00BE5309 /* RefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshHeaderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -416,6 +419,8 @@
 				97BD152E1C03F51D00641C79 /* ItemListView.m */,
 				97D5F5E71C058E93007D75D6 /* SimpleItemView.h */,
 				97D5F5E81C058E93007D75D6 /* SimpleItemView.m */,
+				995545A51C0A8E3D00BE5309 /* RefreshHeaderView.h */,
+				995545A61C0A8E3D00BE5309 /* RefreshHeaderView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -887,6 +892,7 @@
 				97BD11A81BFDB69100641C79 /* UIViewAdditions.m in Sources */,
 				97D5F5DF1C057049007D75D6 /* RemoveBlankCells.m in Sources */,
 				97BD11AD1BFDBBA900641C79 /* UITableViewAdditions.m in Sources */,
+				995545A71C0A8E3D00BE5309 /* RefreshHeaderView.m in Sources */,
 				9734C3301BFD895F005E0E5E /* UITabBarController+CustomTabBar.m in Sources */,
 				97BD11C51BFDC2F300641C79 /* AWTableViewCell.m in Sources */,
 				9734C3231BFD6CED005E0E5E /* MessagesViewController.m in Sources */,

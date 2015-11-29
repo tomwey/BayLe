@@ -148,26 +148,26 @@ static NSString * const AWRefreshContentSize = @"contentSize";
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
-                        change:(NSDictionary<NSString *,id> *)change
+                        change:(NSDictionary *)change
                        context:(void *)context
 {
     if ( self.userInteractionEnabled == NO || self.alpha <= 0.0001 || self.hidden ) {
         return;
     }
     
-    NSLog(@"offsetY: %f", self.scrollView.contentOffset.y);
+//    NSLog(@"offsetY: %f", self.scrollView.contentOffset.y);
     
-    CGFloat deltaY = self.scrollView.contentOffset.y - _lastOffsetY;
+//    CGFloat deltaY = self.scrollView.contentOffset.y - _lastOffsetY;
     
     if ( self.state == AWRefreshStateRefreshing ) {
         CGFloat currentOffsetY = self.scrollView.contentOffset.y;
 //        NSLog(@"offsetY: %f", currentOffsetY);
         
         CGFloat dt = currentOffsetY + CGRectGetHeight(self.frame);
-        NSLog(@"dt: %f", dt);
+//        NSLog(@"dt: %f", dt);
         if ( dt >= 0 ) {
 //            [UIView animateWithDuration:AWRefreshAnimationDuration animations:^{
-                self.scrollView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.frame) - 1, 0, 0, 0);
+//                self.scrollView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.frame) - dt, 0, 0, 0);
 //            }];
         }
         
@@ -213,39 +213,32 @@ static NSString * const AWRefreshContentSize = @"contentSize";
             }
         }
     } else {
-//        NSLog(@"offsetY: %f", self.scrollView.contentOffset.y);
-        
         // 下拉刷新
         if ( [keyPath isEqualToString:AWRefreshContentOffset] ) {
             // 当前的contentOffset
             CGFloat currentOffsetY = self.scrollView.contentOffset.y;
-//            NSLog(@"offsetY: %f", currentOffsetY);
-            
+
             // 头部控件刚好出现的offsetY
             CGFloat happenOffsetY = - self.scrollViewOriginContentInset.top;
-            
-//            NSLog(@"happen offsetY: %f", happenOffsetY);
             
             // 如果是向上滚动到看不见头部控件，直接返回
             if (currentOffsetY >= happenOffsetY) return;
             
             // 普通 和 即将刷新 的临界点
             if (self.scrollView.isDragging) {
-//                NSLog(@"normal offsetY: %f", normal2pullingOffsetY);
                 CGFloat normal2pullingOffsetY = happenOffsetY - CGRectGetHeight(self.frame);
+                
+                [self updateOffset:currentOffsetY / normal2pullingOffsetY];
                 
                 if (self.state == AWRefreshStateNormal && currentOffsetY < normal2pullingOffsetY) {
                     // 转为即将刷新状态
-//                    NSLog(@"松开即将刷新状态");
                     self.state = AWRefreshStatePulling;
                 } else if (self.state == AWRefreshStatePulling && currentOffsetY >= normal2pullingOffsetY) {
                     // 转为普通状态
-//                    NSLog(@"转为普通状态");
                     self.state = AWRefreshStateNormal;
                 }
             } else if (self.state == AWRefreshStatePulling) {// 即将刷新 && 手松开
                 // 开始刷新
-//                NSLog(@"即将开始刷新");
                 self.state = AWRefreshStateRefreshing;
             }
         }
@@ -259,9 +252,9 @@ static NSString * const AWRefreshContentSize = @"contentSize";
 - (void)setState:(AWRefreshState)state
 {
     // 保存当前的contentInset
-//    if ( self.state != AWRefreshStateRefreshing ) {
-//        self.scrollViewOriginContentInset = self.scrollView.contentInset;
-//    }
+    if ( self.state != AWRefreshStateRefreshing ) {
+        self.scrollViewOriginContentInset = self.scrollView.contentInset;
+    }
     
     // 状态一样不处理
     if ( self.state == state ) {
@@ -271,6 +264,7 @@ static NSString * const AWRefreshContentSize = @"contentSize";
     switch (state) {
         case AWRefreshStateNormal:
         {
+            [self backToNormalState];
             if ( self.state == AWRefreshStateRefreshing ) {
                 
                 _state = AWRefreshStatePulling;
@@ -284,27 +278,27 @@ static NSString * const AWRefreshContentSize = @"contentSize";
             } else {
 //                NSLog(@"默认状态");
                 // self.state == AWRefreshStatePulling;
-                NSLog(@"即将回到正常状态");
-                _state = state;
+//                NSLog(@"即将回到正常状态");
+//                _state = state;
             }
         }
             break;
         case AWRefreshStatePulling:
         {
-            NSLog(@"松开即将刷新");
+//            NSLog(@"松开即将刷新");
             [self releaseToRefresh];
-            _state = state;
+//            _state = state;
         }
             break;
         case AWRefreshStateRefreshing:
         {
-            NSLog(@"开始刷新状态");
+//            NSLog(@"开始刷新状态");
             [self invokeRefresh];
             
             _state = state;
             
             // 调用钩子方法
-//            [self willBeginRefreshing];
+            [self changeToRefresh];
             
 //            __block UIEdgeInsets contentInset = self.scrollView.contentInset;
             
@@ -313,14 +307,14 @@ static NSString * const AWRefreshContentSize = @"contentSize";
 //            NSLog(@"top: %f", self.scrollView.contentInset.top);
             
 //            if ( self.refreshMode == AWRefreshModePulldownRefresh ) {
-//                [UIView animateWithDuration:AWRefreshAnimationDuration animations:^{
-//                    CGFloat top = self.scrollViewOriginContentInset.top + CGRectGetHeight(self.frame);
-////                    self.scrollView.contentInset = UIEdgeInsetsMake(top, 0, 0, 0);
-//                    
-//                    CGPoint offset = self.scrollView.contentOffset;
-//                    offset.y = - top;
-//                    self.scrollView.contentOffset = offset;
-//                }];
+                [UIView animateWithDuration:AWRefreshAnimationDuration animations:^{
+                    CGFloat top = self.scrollViewOriginContentInset.top + CGRectGetHeight(self.frame);
+                    self.scrollView.contentInset = UIEdgeInsetsMake(top, 0, 0, 0);
+
+                    CGPoint offset = self.scrollView.contentOffset;
+                    offset.y = - top;
+                    self.scrollView.contentOffset = offset;
+                }];
 //            } else {
 //                CGFloat bottom = CGRectGetHeight(self.frame) + self.scrollViewOriginContentInset.bottom;
 //                CGFloat deltaH = [self heightForContentBreakView];
@@ -339,7 +333,7 @@ static NSString * const AWRefreshContentSize = @"contentSize";
             break;
     }
     
-//    _state = state;
+    _state = state;
 }
 
 - (void)releaseToRefresh
@@ -347,12 +341,22 @@ static NSString * const AWRefreshContentSize = @"contentSize";
     
 }
 
-- (void)willBeginRefreshing
+- (void)changeToRefresh
 {
     
 }
 
 - (void)didEndRefreshing
+{
+    
+}
+
+- (void)updateOffset:(CGFloat)dty
+{
+    
+}
+
+- (void)backToNormalState
 {
     
 }

@@ -40,7 +40,7 @@
 {
     [super viewDidLoad];
     
-    self.contentView.backgroundColor = AWColorFromRGB(235, 235, 235);
+    self.contentView.backgroundColor = AWColorFromRGB(251, 251, 251);
     
     // 设置右边导航按钮
     [self setupRightButton];

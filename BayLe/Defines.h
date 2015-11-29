@@ -28,6 +28,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "RemoveBlankCells.h"
 #import "CompatibilityHandle.h"
+#import "UIScrollView+AWRefresh.h"
 
 #pragma mark ------------------------------- 跟项目相关的宏定义 -------------------------------
 
