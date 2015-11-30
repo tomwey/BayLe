@@ -18,20 +18,20 @@
 {
     if ( self = [super initWithFrame:frame] ) {
         _loadingView = AWCreateImageView(nil);
-        _loadingView.image = [UIImage imageNamed:@"loading_spinner_house_00000"];
+        _loadingView.image = [UIImage imageNamed:@"loading_v1_00000"];
         [_loadingView sizeToFit];
         [self addSubview:_loadingView];
         _loadingView.tintColor = MAIN_RED_COLOR;
         
         NSMutableArray* animationImages = [NSMutableArray array];
         for (int i=0; i<17; i++) {
-            NSString* imageName = [NSString stringWithFormat:@"loading_spinner_house_%05d", i];
+            NSString* imageName = [NSString stringWithFormat:@"loading_v1_%05d", i];
             UIImage* image = [UIImage imageNamed:imageName];
             [animationImages addObject:image];
         }
         
         _loadingView.animationImages = animationImages;
-        _loadingView.animationDuration = AWRefreshAnimationDuration;
+        _loadingView.animationDuration = AWRefreshAnimationDuration * 2;
         _loadingView.animationRepeatCount = NSIntegerMax;
         
     }
@@ -53,14 +53,14 @@
 - (void)releaseToRefresh
 {
     NSLog(@"松开刷新...");
-    _loadingView.transform = CGAffineTransformIdentity;
+//    _loadingView.transform = CGAffineTransformIdentity;
     [_loadingView startAnimating];
 }
 
 - (void)updateOffset:(CGFloat)dty
 {
     NSLog(@"update: %f", dty);
-    _loadingView.transform = CGAffineTransformMakeRotation(dty * 2);
+//    _loadingView.transform = CGAffineTransformMakeRotation(dty * 2);
 }
 
 - (void)backToNormalState

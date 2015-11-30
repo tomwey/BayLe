@@ -58,6 +58,9 @@
 // Models
 #import "Models.h"
 
+// Managers
+#import "Manager.h"
+
 // Views
 #import "Views.h"
 
@@ -66,5 +69,6 @@
 
 // 第三方库
 #import <MAMapKit/MAMapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 #endif /* Defines_h */

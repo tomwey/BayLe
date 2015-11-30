@@ -56,12 +56,9 @@
 //        refreshControl.tintColor = MAIN_RED_COLOR;
         
         RefreshHeaderView* header = [[[RefreshHeaderView alloc] init] autorelease];
+        __block ItemListView* me = self;
         [self.tableView addHeaderRefreshView:header withCallback:^{
-//            NSLog(@"开始刷新");
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                [self.tableView headerRefreshViewEndRefreshing];
-                [self loadDataIfNeeded];
-            });
+            [me loadDataIfNeeded];
         }];
         
     }
@@ -77,14 +74,6 @@
     self.tableViewDataSource = nil;
     
     [super dealloc];
-}
-
-- (void)refresh:(UIRefreshControl *)control
-{
-    NSLog(@"refresh");
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [control endRefreshing];
-    });
 }
 
 - (void)setTagID:(NSInteger)tagID
@@ -108,7 +97,7 @@
         self.itemsAPIManager = [APIManager apiManagerWithDelegate:self];
     }
     
-    [self.itemsAPIManager sendRequest:APIRequestCreate(API_LOAD_ITEMS, RequestMethodGet, @{@"location": @"120.123455,34.098763",
+    [self.itemsAPIManager sendRequest:APIRequestCreate(API_LOAD_ITEMS, RequestMethodGet, @{@"location": [[LBSManager sharedInstance] locationString],
                                                                                            @"tag_id": @(_tagID)
                                                                                            })];
 }
@@ -118,7 +107,7 @@
 {
     [self.tableView headerRefreshViewEndRefreshing];
     
-    NSLog(@"result: %@", [manager fetchDataWithReformer:nil]);
+//    NSLog(@"result: %@", [manager fetchDataWithReformer:nil]);
     id data = [manager fetchDataWithReformer:[[[APIDictionaryReformer alloc] init] autorelease]];
     
     if ( [data count] == 0 ) {

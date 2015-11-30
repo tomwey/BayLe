@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		971E5F511C06DDCE00F637C6 /* UIScrollView+AWRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5F501C06DDCE00F637C6 /* UIScrollView+AWRefresh.m */; };
 		971E5F571C06F07900F637C6 /* AWRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5F561C06F07900F637C6 /* AWRefreshBaseView.m */; };
+		971E5F891C0BE31C00F637C6 /* LBSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5F881C0BE31C00F637C6 /* LBSManager.m */; };
 		9734C2D01BFD5C5D005E0E5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C2CF1BFD5C5D005E0E5E /* main.m */; };
 		9734C2D31BFD5C5D005E0E5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C2D21BFD5C5D005E0E5E /* AppDelegate.m */; };
 		9734C2DB1BFD5C5D005E0E5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9734C2DA1BFD5C5D005E0E5E /* Assets.xcassets */; };
@@ -105,6 +106,9 @@
 		971E5F501C06DDCE00F637C6 /* UIScrollView+AWRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+AWRefresh.m"; sourceTree = "<group>"; };
 		971E5F551C06F07900F637C6 /* AWRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWRefreshBaseView.h; sourceTree = "<group>"; };
 		971E5F561C06F07900F637C6 /* AWRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWRefreshBaseView.m; sourceTree = "<group>"; };
+		971E5F871C0BE31C00F637C6 /* LBSManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBSManager.h; sourceTree = "<group>"; };
+		971E5F881C0BE31C00F637C6 /* LBSManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBSManager.m; sourceTree = "<group>"; };
+		971E5F8A1C0BE32600F637C6 /* Manager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Manager.h; sourceTree = "<group>"; };
 		9734C2CB1BFD5C5D005E0E5E /* BayLe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BayLe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9734C2CF1BFD5C5D005E0E5E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9734C2D11BFD5C5D005E0E5E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -314,6 +318,16 @@
 			path = AWRefresh;
 			sourceTree = "<group>";
 		};
+		971E5F861C0BE2FE00F637C6 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				971E5F871C0BE31C00F637C6 /* LBSManager.h */,
+				971E5F881C0BE31C00F637C6 /* LBSManager.m */,
+				971E5F8A1C0BE32600F637C6 /* Manager.h */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		9734C2C21BFD5C5D005E0E5E = {
 			isa = PBXGroup;
 			children = (
@@ -337,6 +351,7 @@
 				9734C2E51BFD5C90005E0E5E /* Components */,
 				9734C2FA1BFD623A005E0E5E /* Utils */,
 				9734C2E71BFD5C90005E0E5E /* Models */,
+				971E5F861C0BE2FE00F637C6 /* Managers */,
 				9734C2E81BFD5C90005E0E5E /* Views */,
 				9734C2E61BFD5C90005E0E5E /* Controllers */,
 				9930B6001BFE0EFD00A109F2 /* 3rdLibs */,
@@ -924,6 +939,7 @@
 				97BD12071BFDCEF900641C79 /* AFURLResponseSerialization.m in Sources */,
 				9734C3051BFD638F005E0E5E /* AWLocale.m in Sources */,
 				9734C3121BFD650D005E0E5E /* NSStringAdditions.m in Sources */,
+				971E5F891C0BE31C00F637C6 /* LBSManager.m in Sources */,
 				9930B5FF1BFE0A9300A109F2 /* BaseViewController.m in Sources */,
 				97BD12311C02BD6700641C79 /* AWPageView.m in Sources */,
 				9734C2D01BFD5C5D005E0E5E /* main.m in Sources */,

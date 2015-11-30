@@ -61,8 +61,16 @@
     // 添加水平翻页视图
     [self setupPageView];
     
-    // 加载数据
-    [self loadData];
+    [[LBSManager sharedInstance] startUpdatingLocation:^(Location *aLocation, NSError *error) {
+        _cityLabel.text = aLocation.city;
+        [_cityLabel sizeToFit];
+        _cityLabel.center = CGPointMake(15 + _cityLabel.width / 2, self.navBar.height - 22);
+        
+        _locationLabel.text = aLocation.placement;
+        
+        // 加载数据
+        [self loadData];
+    }];
 }
 
 #pragma mark --- Target Action Methods ---
@@ -147,7 +155,16 @@
 #pragma mark --- Private Methods ---
 - (void)loadData
 {
-    self.tagsAPIManager = [APIManager apiManagerWithDelegate:self];
+    if ( [self.tagsAPIManager isLoading] ) {
+        return;
+    }
+    
+    if ( !self.tagsAPIManager ) {
+        self.tagsAPIManager = [APIManager apiManagerWithDelegate:self];
+    }
+    
+    [self.tagsAPIManager cancelRequest];
+    
     [self.tagsAPIManager sendRequest:APIRequestCreate(API_TAGS, RequestMethodGet, nil)];
 }
 
@@ -174,9 +191,6 @@
     
     tabStripper.selectedIndicatorSize = 1.1;
     tabStripper.selectedTitleColor = tabStripper.selectedIndicatorColor = MAIN_RED_COLOR;
-    
-//    tabStripper.titles = @[@"儿童玩具", @"儿童读物",@"自行车",
-//                           @"帐篷",@"烧烤架", @"数码相机"];
     
     tabStripper.backgroundColor = [UIColor whiteColor];//AWColorFromRGB(221, 221, 221);
     
@@ -210,7 +224,7 @@
                                    [UIColor whiteColor]);
     [titleView addSubview:_locationLabel];
     
-    _locationLabel.text = @"绿地世纪城";
+    _locationLabel.text = @"定位中...";
     
     // 添加倒三角形
     _caret = [[[AWCaret alloc] init] autorelease];
