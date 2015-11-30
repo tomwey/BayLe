@@ -87,7 +87,9 @@ static char AWLoadMoreFooterViewKey;
 
 - (void)headerRefreshViewBeginRefreshing
 {
-    [self.headerRefreshView beginRefreshing];
+    if ( !self.headerRefreshView.isRefreshing ) {
+        [self.headerRefreshView beginRefreshing];
+    }
 }
 
 - (void)headerRefreshViewEndRefreshing

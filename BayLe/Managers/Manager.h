@@ -10,5 +10,6 @@
 #define Manager_h
 
 #import "LBSManager.h"
+#import "UserManager.h"
 
 #endif /* Manager_h */

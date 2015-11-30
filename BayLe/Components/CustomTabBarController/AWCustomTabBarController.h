@@ -18,10 +18,19 @@ typedef UIImageView CustomTabBar;
 
 @class CustomTabBarItem;
 
+@protocol CustomTabBarDelegate <NSObject>
+
+@optional
+- (void)customTabBar:(CustomTabBar *)tabBar didSelectAtIndex:(NSInteger)index;
+
+@end
+
 @interface AWCustomTabBarController : UITabBarController
 
 @property (nonatomic, retain) UIImage* tabBarBackgroundImage;
 @property (nonatomic, retain, readonly) CustomTabBar* customTabBar;
+
+@property (nonatomic, assign) id <CustomTabBarDelegate> customTabBarDelegate;
 
 /**
  * tabBar item的tintColor

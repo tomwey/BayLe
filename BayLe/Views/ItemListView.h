@@ -12,4 +12,6 @@
 
 @property (nonatomic, assign) NSInteger tagID;
 
+- (void)startLoadingItems;
+
 @end

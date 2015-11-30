@@ -40,6 +40,8 @@
 {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLocationDidChanged) name:LBSManagerUserLocationDidChangeNotification object:nil];
+    
     self.contentView.backgroundColor = AWColorFromRGB(251, 251, 251);
     
     // 设置右边导航按钮
@@ -61,16 +63,21 @@
     // 添加水平翻页视图
     [self setupPageView];
     
-    [[LBSManager sharedInstance] startUpdatingLocation:^(Location *aLocation, NSError *error) {
-        _cityLabel.text = aLocation.city;
-        [_cityLabel sizeToFit];
-        _cityLabel.center = CGPointMake(15 + _cityLabel.width / 2, self.navBar.height - 22);
-        
-        _locationLabel.text = aLocation.placement;
-        
-        // 加载数据
-        [self loadData];
-    }];
+    [[LBSManager sharedInstance] startUpdatingLocation];
+}
+
+- (void)userLocationDidChanged
+{
+    Location* aLocation = [[LBSManager sharedInstance] currentLocation];
+    
+    _cityLabel.text = aLocation.city;
+    [_cityLabel sizeToFit];
+    _cityLabel.center = CGPointMake(15 + _cityLabel.width / 2, self.navBar.height - 22);
+    
+    _locationLabel.text = aLocation.placement;
+    
+    // 加载数据
+    [self loadData];
 }
 
 #pragma mark --- Target Action Methods ---
@@ -94,6 +101,9 @@
 {
     NSLog(@"show index: %d", index);
     _tabStripper.selectedIndex = index;
+    
+    ItemListView* listView = (ItemListView *)[page viewWithTag:991];
+    [listView startLoadingItems];
 }
 
 - (void)pageView:(AWPageView *)pageView didScrollDelta:(CGFloat)dt

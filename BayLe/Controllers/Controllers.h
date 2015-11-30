@@ -15,5 +15,6 @@
 #import "MessagesViewController.h"
 #import "PublishViewController.h"
 #import "UserViewController.h"
+#import "LoginViewController.h"
 
 #endif /* Controllers_h */

@@ -14,7 +14,12 @@
 {
     [super viewDidLoad];
     
-    self.title = @"发布宝贝";
+    self.title = @"发布";
+}
+
+- (BOOL)shouldCheckLogin
+{
+    return YES;
 }
 
 @end

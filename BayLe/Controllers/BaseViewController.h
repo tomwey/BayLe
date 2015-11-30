@@ -19,4 +19,7 @@
 
 + (UIViewController *)viewControllerWithClassName:(NSString *)className;
 
+/** 是否需要进行用户登录检查 */
+- (BOOL)shouldCheckLogin;
+
 @end

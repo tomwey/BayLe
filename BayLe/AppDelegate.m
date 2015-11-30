@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "Defines.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <CustomTabBarDelegate>
 
 @end
 

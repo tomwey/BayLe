@@ -17,4 +17,9 @@
     self.title = @"我的";
 }
 
+- (BOOL)shouldCheckLogin
+{
+    return YES;
+}
+
 @end

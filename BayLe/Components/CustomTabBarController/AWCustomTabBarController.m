@@ -172,6 +172,10 @@
     viewHolder.selected = YES;
     
     self.selectedIndex = viewHolder.index;
+    
+    if ( [self.customTabBarDelegate respondsToSelector:@selector(customTabBar:didSelectAtIndex:)] ) {
+        [self.customTabBarDelegate customTabBar:self.customTabBar didSelectAtIndex:viewHolder.index];
+    }
 }
 
 @end

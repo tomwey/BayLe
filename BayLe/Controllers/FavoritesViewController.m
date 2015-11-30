@@ -17,4 +17,9 @@
     self.title = @"心愿单";
 }
 
+- (BOOL)shouldCheckLogin
+{
+    return YES;
+}
+
 @end

@@ -22,8 +22,6 @@
 @property (nonatomic, retain, readwrite) Location* currentLocation;
 @property (nonatomic, retain, readwrite) NSError* locationError;
 
-@property (nonatomic, copy) void (^locationHandleBlock)(Location* aLocation, NSError* aError);
-
 @end
 
 NSString * const LBSManagerUserLocationDidChangeNotification = @"LBSManagerUserLocationDidChangeNotification";
@@ -41,7 +39,7 @@ AW_SINGLETON_IMPL(LBSManager)
 /**
  * 打开定位
  */
-- (void)startUpdatingLocation:(void (^)(Location* aLocation, NSError* error))completion
+- (void)startUpdatingLocation
 {
     if ( !self.locationManager ) {
         self.locationManager = [[[CLLocationManager alloc] init] autorelease];
@@ -50,9 +48,7 @@ AW_SINGLETON_IMPL(LBSManager)
     if ( !self.locationManager.delegate ) {
         self.locationManager.delegate = self;
     }
-    
-    self.locationHandleBlock = completion;
-    
+
     [self.locationManager startUpdatingLocation];
 }
 
@@ -62,8 +58,6 @@ AW_SINGLETON_IMPL(LBSManager)
 - (void)stopUpdatingLocation
 {
     self.locationManager.delegate = nil;
-    self.locationHandleBlock = nil;
-    
     [self.locationManager stopUpdatingLocation];
 }
 
@@ -80,35 +74,28 @@ AW_SINGLETON_IMPL(LBSManager)
     NSLog(@"位置定位失败");
     self.locationError = [NSError errorWithDomain:@"位置定位失败" code:LocationErrorCodeNotFound userInfo:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:LBSManagerUserLocationDidChangeNotification object:nil];
-    
-    if ( self.locationHandleBlock ) {
-        self.locationHandleBlock(nil, self.locationError);
-    }
 }
 
 #pragma mark - APIManagerDelegate
 /** 网络请求成功回调 */
 - (void)apiManagerDidSuccess:(APIManager *)manager
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:LBSManagerUserLocationDidChangeNotification object:nil];
-    
     if ( manager == self.geocodeAPIManager ) {
 //        NSLog(@"result: %@", [manager fetchDataWithReformer:nil]);
         [self parseLocationInfo:[manager fetchDataWithReformer:nil]];
     } else if ( self.POISearchAPIManager == manager ) {
         
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:LBSManagerUserLocationDidChangeNotification object:nil];
 }
 
 /** 网络请求失败回调 */
 - (void)apiManagerDidFailure:(APIManager *)manager
 {
     if ( self.geocodeAPIManager == manager ) {
-        if ( self.locationHandleBlock ) {
-            // 位置解析失败
-            self.locationError = [NSError errorWithDomain:@"位置解析失败" code:LocationErrorCodeParseError userInfo:nil];
-            self.locationHandleBlock(nil, self.locationError);
-        }
+        // 位置解析失败
+        self.locationError = [NSError errorWithDomain:@"位置解析失败" code:LocationErrorCodeParseError userInfo:nil];
     } else if ( self.POISearchAPIManager == manager ) {
         // 位置搜索
     }
@@ -143,14 +130,10 @@ AW_SINGLETON_IMPL(LBSManager)
         self.currentLocation.city = city;
         self.currentLocation.placement = address;
         
-        if ( self.locationHandleBlock ) {
-            self.locationHandleBlock(self.currentLocation, nil);
-        }
     } else {
-        if (self.locationHandleBlock) {
-            NSString* message = [locationInfo objectForKey:@"message"];
-            self.locationHandleBlock(nil, [NSError errorWithDomain:message code:LocationErrorCodeParseError userInfo:nil]);
-        }
+        
+        NSString* message = [locationInfo objectForKey:@"message"];
+        self.locationError = [NSError errorWithDomain:message code:LocationErrorCodeParseError userInfo:nil];
     }
 }
 

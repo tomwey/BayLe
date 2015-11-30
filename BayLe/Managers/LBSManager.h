@@ -26,7 +26,7 @@ FOUNDATION_EXTERN NSString * const LBSManagerUserLocationDidChangeNotification;
  * 
  * @param completion 位置处理回调，如果解析成功，则返回正确的位置信息，否则位置信息为nil，并返回错误
  */
-- (void)startUpdatingLocation:(void (^)(Location* aLocation, NSError* error))completion;
+- (void)startUpdatingLocation;
 
 /**
  * 关闭定位

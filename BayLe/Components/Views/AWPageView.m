@@ -72,14 +72,14 @@
 {
     _dataSource = dataSource;
     
-    [self reloadData];
+//    [self reloadData];
 }
 
 - (void)setDelegate:(id<AWPageViewDelegate>)delegate
 {
     _delegate = delegate;
     
-    [self reloadData];
+//    [self reloadData];
 }
 
 /**

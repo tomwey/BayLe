@@ -76,16 +76,21 @@
     [super dealloc];
 }
 
-- (void)setTagID:(NSInteger)tagID
+//- (void)setTagID:(NSInteger)tagID
+//{
+//    if (_tagID == tagID) {
+//        return;
+//    }
+//    
+//    _tagID = tagID;
+//    
+//    // 加载数据
+////    [self loadDataIfNeeded];
+//    [self.tableView headerRefreshViewBeginRefreshing];
+//}
+
+- (void)startLoadingItems
 {
-    if (_tagID == tagID) {
-        return;
-    }
-    
-    _tagID = tagID;
-    
-    // 加载数据
-//    [self loadDataIfNeeded];
     [self.tableView headerRefreshViewBeginRefreshing];
 }
 
