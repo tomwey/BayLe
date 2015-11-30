@@ -15,6 +15,8 @@
     [super viewDidLoad];
     
     self.title = @"发布";
+    
+    
 }
 
 - (BOOL)shouldCheckLogin

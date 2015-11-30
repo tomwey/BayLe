@@ -67,6 +67,8 @@
 
 - (void)dealloc
 {
+    [self.tableView removeHeaderRefreshView];
+    
     self.tableView = nil;
     
     self.itemsAPIManager = nil;
@@ -76,18 +78,18 @@
     [super dealloc];
 }
 
-//- (void)setTagID:(NSInteger)tagID
-//{
-//    if (_tagID == tagID) {
-//        return;
-//    }
-//    
-//    _tagID = tagID;
-//    
-//    // 加载数据
-////    [self loadDataIfNeeded];
-//    [self.tableView headerRefreshViewBeginRefreshing];
-//}
+- (void)setTagID:(NSInteger)tagID
+{
+    if (_tagID == tagID) {
+        return;
+    }
+    
+    _tagID = tagID;
+    
+    // 加载数据
+//    [self loadDataIfNeeded];
+    [self.tableView headerRefreshViewBeginRefreshing];
+}
 
 - (void)startLoadingItems
 {
@@ -101,6 +103,8 @@
     if ( !self.itemsAPIManager ) {
         self.itemsAPIManager = [APIManager apiManagerWithDelegate:self];
     }
+    
+    [self.itemsAPIManager cancelRequest];
     
     [self.itemsAPIManager sendRequest:APIRequestCreate(API_LOAD_ITEMS, RequestMethodGet, @{@"location": [[LBSManager sharedInstance] locationString],
                                                                                            @"tag_id": @(_tagID)

@@ -102,8 +102,8 @@
     NSLog(@"show index: %d", index);
     _tabStripper.selectedIndex = index;
     
-    ItemListView* listView = (ItemListView *)[page viewWithTag:991];
-    [listView startLoadingItems];
+//    ItemListView* listView = (ItemListView *)[page viewWithTag:991];
+//    [listView startLoadingItems];
 }
 
 - (void)pageView:(AWPageView *)pageView didScrollDelta:(CGFloat)dt

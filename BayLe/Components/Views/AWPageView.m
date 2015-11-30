@@ -72,6 +72,7 @@
 {
     _dataSource = dataSource;
     
+    [self showContents2];
 //    [self reloadData];
 }
 
@@ -103,7 +104,16 @@
     [self.visiblePages_ removeAllObjects];
     [self.reusableDicts removeAllObjects];
     
+    [self showContents2];
+}
+
+- (void)showContents2
+{
     NSUInteger count = [self.dataSource numberOfPages:self];
+    
+    if ( count <= 0 ) {
+        return;
+    }
     
     self.pageScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.pageScrollView.frame) * count,
                                                  CGRectGetHeight(self.pageScrollView.frame));
