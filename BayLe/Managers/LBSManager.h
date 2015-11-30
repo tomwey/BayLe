@@ -28,6 +28,8 @@ FOUNDATION_EXTERN NSString * const LBSManagerUserLocationDidChangeNotification;
  */
 - (void)startUpdatingLocation;
 
+- (void)startUpdatingLocation:( void (^)(Location* aLocation, NSError* error) )completion;
+
 /**
  * 关闭定位
  */

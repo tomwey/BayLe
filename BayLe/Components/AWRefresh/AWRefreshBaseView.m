@@ -39,7 +39,7 @@ static NSString * const AWRefreshContentSize = @"contentSize";
         self.backgroundColor  = [UIColor clearColor];
         
         // 设置默认状态
-        self.state = AWRefreshStateNormal;
+        _state = AWRefreshStateNormal;
         
         _lastOffsetY = 0.0;
     }

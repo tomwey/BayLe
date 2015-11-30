@@ -22,6 +22,10 @@
 @property (nonatomic, retain, readwrite) Location* currentLocation;
 @property (nonatomic, retain, readwrite) NSError* locationError;
 
+@property (nonatomic, copy) void (^locationHandleBlock)(Location* location, NSError* error);
+
+@property (nonatomic, retain) CLLocation* currentCLLocation;
+
 @end
 
 NSString * const LBSManagerUserLocationDidChangeNotification = @"LBSManagerUserLocationDidChangeNotification";
@@ -52,12 +56,21 @@ AW_SINGLETON_IMPL(LBSManager)
     [self.locationManager startUpdatingLocation];
 }
 
+- (void)startUpdatingLocation:( void (^)(Location* aLocation, NSError* error) )completion
+{
+    self.locationHandleBlock = completion;
+    
+    [self startUpdatingLocation];
+}
+
 /**
  * 关闭定位
  */
 - (void)stopUpdatingLocation
 {
     self.locationManager.delegate = nil;
+    self.locationHandleBlock = nil;
+    
     [self.locationManager stopUpdatingLocation];
 }
 
@@ -65,7 +78,36 @@ AW_SINGLETON_IMPL(LBSManager)
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations
 {
-    [self geocodeLocation:[locations firstObject]];
+    CLLocation* newLocation = [locations lastObject];
+    
+    NSTimeInterval locationAge = - [newLocation.timestamp timeIntervalSinceNow];
+    if ( locationAge > 5.0 ) {
+        return;
+    }
+    
+    if ( newLocation.horizontalAccuracy < 0 ) {
+        return;
+    }
+    
+    if ( !self.currentCLLocation ) {
+        self.currentCLLocation = newLocation;
+        [self geocodeLocation:self.currentCLLocation];
+    } else {
+        CLLocation* loc1 = [[[CLLocation alloc] initWithLatitude:self.currentCLLocation.coordinate.latitude
+                                                       longitude:self.currentCLLocation.coordinate.longitude] autorelease];
+        CLLocation* loc2 = [[[CLLocation alloc] initWithLatitude:newLocation.coordinate.latitude
+                                                       longitude:newLocation.coordinate.longitude] autorelease];
+        
+        double distance = [loc1 distanceFromLocation:loc2];
+        
+        self.currentCLLocation = newLocation;
+        
+        if ( distance > 20 ) {
+            [self geocodeLocation:self.currentCLLocation];
+        } else {
+            NSLog(@"updated.");
+        }
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager
@@ -74,6 +116,10 @@ AW_SINGLETON_IMPL(LBSManager)
     NSLog(@"位置定位失败");
     self.locationError = [NSError errorWithDomain:@"位置定位失败" code:LocationErrorCodeNotFound userInfo:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:LBSManagerUserLocationDidChangeNotification object:nil];
+    
+    if ( self.locationHandleBlock ) {
+        self.locationHandleBlock(nil, self.locationError);
+    }
 }
 
 #pragma mark - APIManagerDelegate
@@ -101,6 +147,9 @@ AW_SINGLETON_IMPL(LBSManager)
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:LBSManagerUserLocationDidChangeNotification object:nil];
+    if ( self.locationHandleBlock ) {
+        self.locationHandleBlock(nil, self.locationError);
+    }
 }
 
 #pragma mark - Private Methods
@@ -130,10 +179,18 @@ AW_SINGLETON_IMPL(LBSManager)
         self.currentLocation.city = city;
         self.currentLocation.placement = address;
         
+        if ( self.locationHandleBlock ) {
+            self.locationHandleBlock(self.currentLocation, nil);
+        }
+        
     } else {
         
         NSString* message = [locationInfo objectForKey:@"message"];
         self.locationError = [NSError errorWithDomain:message code:LocationErrorCodeParseError userInfo:nil];
+        
+        if ( self.locationHandleBlock ) {
+            self.locationHandleBlock(nil, self.locationError);
+        }
     }
 }
 

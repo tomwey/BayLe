@@ -73,7 +73,6 @@
     _dataSource = dataSource;
     
     [self showContents2];
-//    [self reloadData];
 }
 
 - (void)setDelegate:(id<AWPageViewDelegate>)delegate
