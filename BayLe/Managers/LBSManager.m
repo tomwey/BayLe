@@ -114,6 +114,10 @@ AW_SINGLETON_IMPL(LBSManager)
        didFailWithError:(NSError *)error
 {
     NSLog(@"位置定位失败");
+    
+    [AWModalAlert say:@"定位服务已关闭" message:[NSString stringWithFormat:@"请到设置->隐私->定位服务中开启【%@】定位服务，以便能够准确获得您的位置信息",
+                                          [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"]]];
+    
     self.locationError = [NSError errorWithDomain:@"位置定位失败" code:LocationErrorCodeNotFound userInfo:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:LBSManagerUserLocationDidChangeNotification object:nil];
     

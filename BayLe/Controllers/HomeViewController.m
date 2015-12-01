@@ -62,14 +62,20 @@
     [self setupPageView];
     
     [[LBSManager sharedInstance] startUpdatingLocation:^(Location *aLocation, NSError *error) {
-        _cityLabel.text = aLocation.city;
-        [_cityLabel sizeToFit];
-        _cityLabel.center = CGPointMake(15 + _cityLabel.width / 2, self.navBar.height - 22);
         
-        _locationLabel.text = aLocation.placement;
+        if ( !error ) {
+            _cityLabel.text = aLocation.city;
+            [_cityLabel sizeToFit];
+            _cityLabel.center = CGPointMake(15 + _cityLabel.width / 2, self.navBar.height - 22);
+            
+            _locationLabel.text = aLocation.placement;
+            
+            // 加载数据
+            [self loadData];
+        } else {
+            _locationLabel.text = error.domain;
+        }
         
-        // 加载数据
-        [self loadData];
     }];
 }
 
