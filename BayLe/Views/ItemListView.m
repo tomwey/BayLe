@@ -75,6 +75,8 @@
     
     self.tableViewDataSource = nil;
     
+    self.location = nil;
+    
     [super dealloc];
 }
 
@@ -106,8 +108,13 @@
     
     [self.itemsAPIManager cancelRequest];
     
-    [self.itemsAPIManager sendRequest:APIRequestCreate(API_LOAD_ITEMS, RequestMethodGet, @{@"location": [[LBSManager sharedInstance] locationString],
-                                                                                           @"tag_id": @(_tagID)
+    Location* currentLocation = self.location;
+    if ( !currentLocation ) {
+        currentLocation = [[LBSManager sharedInstance] currentLocation];
+    }
+    
+    [self.itemsAPIManager sendRequest:APIRequestCreate(API_LOAD_ITEMS, RequestMethodGet, @{@"location" : [currentLocation locationString],
+                                                                                           @"tag_id" : @(_tagID)
                                                                                            })];
 }
 

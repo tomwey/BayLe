@@ -71,7 +71,9 @@
             _locationLabel.text = aLocation.placement;
             
             // 加载数据
-            [self loadData];
+            [self loadTagsData];
+            
+            self.navBar.titleView.userInteractionEnabled = YES;
         } else {
             _locationLabel.text = error.domain;
         }
@@ -87,7 +89,8 @@
 
 - (void)changeLocation
 {
-    
+    UIViewController* controller = [BaseViewController viewControllerWithClassName:@"SelectLocationViewController"];
+    [[AWAppWindow() rootViewController] presentViewController:controller animated:YES completion:nil];
 }
 
 - (void)gotoSearch
@@ -100,15 +103,6 @@
 {
     NSLog(@"show index: %d", index);
     _tabStripper.selectedIndex = index;
-    
-//    ItemListView* listView = (ItemListView *)[page viewWithTag:991];
-//    [listView startLoadingItems];
-}
-
-- (void)pageView:(AWPageView *)pageView didScrollDelta:(CGFloat)dt
-{
-//    NSLog(@"Delta: %f", dt);
-//    [_tabStripper scrollTo:dt];
 }
 
 #pragma mark --- AWPageView DataSource ---
@@ -142,15 +136,12 @@
 /** 网络请求成功回调 */
 - (void)apiManagerDidSuccess:(APIManager *)manager
 {
-    NSLog(@"result: %@", [manager fetchDataWithReformer:nil]);
-    self.tags = [manager fetchDataWithReformer:[[[APIDictionaryReformer alloc] init] autorelease]];
-    NSMutableArray* titles = [NSMutableArray array];
-    for (id obj in self.tags) {
-        [titles addObject:[obj objectForKey:@"name"]];
-    }
+//    NSLog(@"result: %@", [manager fetchDataWithReformer:nil]);
+    NSArray* tags = [manager fetchDataWithReformer:[[[APIDictionaryReformer alloc] init] autorelease]];
+
+    [[DataManager sharedInstance] saveTags:tags];
     
-    _tabStripper.titles = titles;
-    _tabStripper.hidden = NO;
+    [self updateTabStripperData];
     
     [_pageView reloadData];
 }
@@ -162,8 +153,28 @@
 }
 
 #pragma mark --- Private Methods ---
-- (void)loadData
+- (void)updateTabStripperData
 {
+    self.tags = [[DataManager sharedInstance] currentTags];
+    
+    NSMutableArray* titles = [NSMutableArray array];
+    for (id obj in self.tags) {
+        [titles addObject:[obj objectForKey:@"name"]];
+    }
+    
+    _tabStripper.titles = titles;
+    _tabStripper.hidden = NO;
+}
+
+- (void)loadTagsData
+{
+    if ( [[[DataManager sharedInstance] currentTags] count] > 0 ) {
+        
+        [self updateTabStripperData];
+        
+        return;
+    }
+    
     if ( [self.tagsAPIManager isLoading] ) {
         return;
     }
@@ -246,6 +257,9 @@
     changeLocationBtn.frame = CGRectMake(0, 0, MIN(titleView.width, [_locationLabel textSizeForConstrainedSize:titleView.contentSize].width), titleView.height);
     changeLocationBtn.center = CGPointMake(titleView.width / 2, titleView.height / 2);
     [titleView addSubview:changeLocationBtn];
+    
+    // 默认不允许点击位置切换
+    self.navBar.titleView.userInteractionEnabled = NO;
 }
 
 @end

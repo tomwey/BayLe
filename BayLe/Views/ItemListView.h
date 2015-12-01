@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class Location;
 @interface ItemListView : UIView
 
 @property (nonatomic, assign) NSInteger tagID;
+
+@property (nonatomic, retain) Location* location;
 
 - (void)startLoadingItems;
 

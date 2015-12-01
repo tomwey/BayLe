@@ -12,6 +12,12 @@
 		971E5F891C0BE31C00F637C6 /* LBSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5F881C0BE31C00F637C6 /* LBSManager.m */; };
 		971E5F8D1C0C2D7600F637C6 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5F8C1C0C2D7600F637C6 /* UserManager.m */; };
 		971E5F901C0C2E0C00F637C6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5F8F1C0C2E0C00F637C6 /* LoginViewController.m */; };
+		971E5F931C0D264F00F637C6 /* SelectLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5F921C0D264F00F637C6 /* SelectLocationViewController.m */; };
+		971E5F961C0D269C00F637C6 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5F951C0D269C00F637C6 /* SearchViewController.m */; };
+		971E5F981C0D299800F637C6 /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 971E5F971C0D299800F637C6 /* AMap.bundle */; };
+		971E5FA11C0D408C00F637C6 /* POICell.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5FA01C0D408C00F637C6 /* POICell.m */; };
+		971E5FA41C0D564500F637C6 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5FA31C0D564500F637C6 /* DataManager.m */; };
+		971E5FA71C0D5A3D00F637C6 /* ItemListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5FA61C0D5A3D00F637C6 /* ItemListViewController.m */; };
 		9734C2D01BFD5C5D005E0E5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C2CF1BFD5C5D005E0E5E /* main.m */; };
 		9734C2D31BFD5C5D005E0E5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C2D21BFD5C5D005E0E5E /* AppDelegate.m */; };
 		9734C2DB1BFD5C5D005E0E5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9734C2DA1BFD5C5D005E0E5E /* Assets.xcassets */; };
@@ -115,6 +121,17 @@
 		971E5F8C1C0C2D7600F637C6 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		971E5F8E1C0C2E0C00F637C6 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		971E5F8F1C0C2E0C00F637C6 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		971E5F911C0D264F00F637C6 /* SelectLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectLocationViewController.h; sourceTree = "<group>"; };
+		971E5F921C0D264F00F637C6 /* SelectLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectLocationViewController.m; sourceTree = "<group>"; };
+		971E5F941C0D269C00F637C6 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		971E5F951C0D269C00F637C6 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		971E5F971C0D299800F637C6 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap.bundle; sourceTree = "<group>"; };
+		971E5F9F1C0D408C00F637C6 /* POICell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POICell.h; sourceTree = "<group>"; };
+		971E5FA01C0D408C00F637C6 /* POICell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POICell.m; sourceTree = "<group>"; };
+		971E5FA21C0D564500F637C6 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		971E5FA31C0D564500F637C6 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		971E5FA51C0D5A3D00F637C6 /* ItemListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemListViewController.h; sourceTree = "<group>"; };
+		971E5FA61C0D5A3D00F637C6 /* ItemListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemListViewController.m; sourceTree = "<group>"; };
 		9734C2CB1BFD5C5D005E0E5E /* BayLe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BayLe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9734C2CF1BFD5C5D005E0E5E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9734C2D11BFD5C5D005E0E5E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -332,6 +349,8 @@
 				971E5F8A1C0BE32600F637C6 /* Manager.h */,
 				971E5F8B1C0C2D7600F637C6 /* UserManager.h */,
 				971E5F8C1C0C2D7600F637C6 /* UserManager.m */,
+				971E5FA21C0D564500F637C6 /* DataManager.h */,
+				971E5FA31C0D564500F637C6 /* DataManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -420,6 +439,12 @@
 				9734C3281BFD6D30005E0E5E /* PublishViewController.m */,
 				971E5F8E1C0C2E0C00F637C6 /* LoginViewController.h */,
 				971E5F8F1C0C2E0C00F637C6 /* LoginViewController.m */,
+				971E5F911C0D264F00F637C6 /* SelectLocationViewController.h */,
+				971E5F921C0D264F00F637C6 /* SelectLocationViewController.m */,
+				971E5F941C0D269C00F637C6 /* SearchViewController.h */,
+				971E5F951C0D269C00F637C6 /* SearchViewController.m */,
+				971E5FA51C0D5A3D00F637C6 /* ItemListViewController.h */,
+				971E5FA61C0D5A3D00F637C6 /* ItemListViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -446,6 +471,8 @@
 				97D5F5E81C058E93007D75D6 /* SimpleItemView.m */,
 				995545A51C0A8E3D00BE5309 /* RefreshHeaderView.h */,
 				995545A61C0A8E3D00BE5309 /* RefreshHeaderView.m */,
+				971E5F9F1C0D408C00F637C6 /* POICell.h */,
+				971E5FA01C0D408C00F637C6 /* POICell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -804,6 +831,7 @@
 		9930B6011BFE0F2C00A109F2 /* GaoDeMap */ = {
 			isa = PBXGroup;
 			children = (
+				971E5F971C0D299800F637C6 /* AMap.bundle */,
 				9930B6021BFE0F2C00A109F2 /* AMapSearchKit.framework */,
 				9930B6031BFE0F2C00A109F2 /* MAMapKit.framework */,
 			);
@@ -886,6 +914,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				971E5F981C0D299800F637C6 /* AMap.bundle in Resources */,
 				9930B60B1BFE0F2C00A109F2 /* PushConfig.plist in Resources */,
 				9734C3021BFD6365005E0E5E /* AWLocalize.bundle in Resources */,
 				9734C2DB1BFD5C5D005E0E5E /* Assets.xcassets in Resources */,
@@ -904,9 +933,11 @@
 				97BD12041BFDCEF900641C79 /* AFSecurityPolicy.m in Sources */,
 				97BD11FF1BFDCEF900641C79 /* AFHTTPRequestOperation.m in Sources */,
 				97BD12011BFDCEF900641C79 /* AFHTTPSessionManager.m in Sources */,
+				971E5F931C0D264F00F637C6 /* SelectLocationViewController.m in Sources */,
 				97BD120D1BFDCEF900641C79 /* UIProgressView+AFNetworking.m in Sources */,
 				9734C3111BFD650D005E0E5E /* NSObjectAdditions.m in Sources */,
 				97BD11D21BFDC5BA00641C79 /* SendMailCommand.m in Sources */,
+				971E5FA71C0D5A3D00F637C6 /* ItemListViewController.m in Sources */,
 				97BD11A01BFDAF6300641C79 /* UIWindowAdditions.m in Sources */,
 				97BD153D1C04012B00641C79 /* APIError.m in Sources */,
 				97BD120F1BFDCEF900641C79 /* UIWebView+AFNetworking.m in Sources */,
@@ -927,6 +958,7 @@
 				9734C3201BFD6CDA005E0E5E /* FavoritesViewController.m in Sources */,
 				97BD11C81BFDC2F300641C79 /* AWBaseView.m in Sources */,
 				9734C30F1BFD650D005E0E5E /* NSDataAdditions.m in Sources */,
+				971E5FA11C0D408C00F637C6 /* POICell.m in Sources */,
 				97BD12091BFDCEF900641C79 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				971E5F571C06F07900F637C6 /* AWRefreshBaseView.m in Sources */,
 				97BD12211BFEFEE900641C79 /* AWCaret.m in Sources */,
@@ -951,6 +983,7 @@
 				97BD12071BFDCEF900641C79 /* AFURLResponseSerialization.m in Sources */,
 				9734C3051BFD638F005E0E5E /* AWLocale.m in Sources */,
 				9734C3121BFD650D005E0E5E /* NSStringAdditions.m in Sources */,
+				971E5FA41C0D564500F637C6 /* DataManager.m in Sources */,
 				971E5F891C0BE31C00F637C6 /* LBSManager.m in Sources */,
 				9930B5FF1BFE0A9300A109F2 /* BaseViewController.m in Sources */,
 				97BD12311C02BD6700641C79 /* AWPageView.m in Sources */,
@@ -971,6 +1004,7 @@
 				97BD120B1BFDCEF900641C79 /* UIButton+AFNetworking.m in Sources */,
 				97BD120E1BFDCEF900641C79 /* UIRefreshControl+AFNetworking.m in Sources */,
 				97BD11A71BFDB69100641C79 /* UIImageAdditions.m in Sources */,
+				971E5F961C0D269C00F637C6 /* SearchViewController.m in Sources */,
 				97BD152F1C03F51D00641C79 /* ItemListView.m in Sources */,
 				97D5F5ED1C05A963007D75D6 /* RemoveBackground.m in Sources */,
 				9734C2EF1BFD5EAA005E0E5E /* Aspects.m in Sources */,

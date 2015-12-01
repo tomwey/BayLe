@@ -16,5 +16,8 @@
 #import "PublishViewController.h"
 #import "UserViewController.h"
 #import "LoginViewController.h"
+#import "SelectLocationViewController.h"
+#import "SearchViewController.h"
+#import "ItemListViewController.h"
 
 #endif /* Controllers_h */

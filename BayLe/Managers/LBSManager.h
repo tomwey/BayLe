@@ -12,6 +12,7 @@
 typedef NS_ENUM(NSInteger, LocationErrorCode) {
     LocationErrorCodeNotFound = -97,
     LocationErrorCodeParseError = -98,
+    LocationErrorCodePOISearchError = -99,
 };
 
 FOUNDATION_EXTERN NSString * const LBSManagerUserLocationDidChangeNotification;
@@ -35,14 +36,20 @@ FOUNDATION_EXTERN NSString * const LBSManagerUserLocationDidChangeNotification;
  */
 - (void)stopUpdatingLocation;
 
+/**
+ * POI数据搜索
+ *
+ * @param keyword 位置关键字
+ * @param completion 搜索完成的回调，回调参数locations为原生的位置数据
+ * @return
+ */
+- (void)POISearch:(NSString *)keyword completion:( void (^)(NSArray* locations, NSError* aError) )completion;
+
 /** 返回当前用户位置信息 */
 @property (nonatomic, retain, readonly) Location* currentLocation;
 
 /** 返回定位过程中的错误，包括解析错误 */
 @property (nonatomic, retain, readonly) NSError* locationError;
-
-/** 返回位置格式化字符串，格式为：120.344444,65.012345 */
-- (NSString *)locationString;
 
 @end
 
@@ -50,9 +57,17 @@ FOUNDATION_EXTERN NSString * const LBSManagerUserLocationDidChangeNotification;
 
 @property (nonatomic, copy) NSString* city;
 @property (nonatomic, copy) NSString* placement;
+@property (nonatomic, copy) NSString* address;
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
 
 - (id)initWithCity:(NSString *)city placement:(NSString *)placement;
 + (id)locationWithCity:(NSString *)city placement:(NSString *)placement;
+
+@end
+
+@interface Location (Wrapper)
+
+/** 返回位置格式化字符串，格式为：120.344444,65.012345 */
+- (NSString *)locationString;
 
 @end

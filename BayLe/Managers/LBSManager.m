@@ -24,6 +24,8 @@
 
 @property (nonatomic, copy) void (^locationHandleBlock)(Location* location, NSError* error);
 
+@property (nonatomic, copy) void (^POISearchCompletionBlock)(NSArray* locations, NSError* error);
+
 @property (nonatomic, retain) CLLocation* currentCLLocation;
 
 @end
@@ -32,10 +34,11 @@ NSString * const LBSManagerUserLocationDidChangeNotification = @"LBSManagerUserL
 
 @implementation LBSManager
 
-static NSString * const QQLBSServer      = @"http://apis.map.qq.com";
-static NSString * const QQGeoCoderAPIKey = @"5TXBZ-RDMH3-6GN36-3YZ6J-2QJYK-XIFZI";
+static NSString * const QQLBSServer        = @"http://apis.map.qq.com";
+static NSString * const QQLBSServiceAPIKey = @"5TXBZ-RDMH3-6GN36-3YZ6J-2QJYK-XIFZI";
 
-static NSString * const QQGeocodeAPI     = @"/ws/geocoder/v1";
+static NSString * const QQGeocodeAPI       = @"/ws/geocoder/v1";
+static NSString * const QQPOISearchAPI     = @"/ws/place/v1/search";
 
 AW_SINGLETON_IMPL(LBSManager)
 
@@ -72,6 +75,32 @@ AW_SINGLETON_IMPL(LBSManager)
     self.locationHandleBlock = nil;
     
     [self.locationManager stopUpdatingLocation];
+}
+
+- (void)POISearch:(NSString *)keyword completion:( void (^)(NSArray* locations, NSError* aError) )completion
+{
+    if ( [self.POISearchAPIManager isLoading] ) return;
+    
+    if ( self.POISearchAPIManager == nil ) {
+        self.POISearchAPIManager = [APIManager apiManagerWithDelegate:self];
+        APIConfig* config = [[[APIConfig alloc] init] autorelease];
+        config.stageServer = config.productionServer = QQLBSServer;
+        self.POISearchAPIManager.apiConfig = config;
+    }
+    
+    [self.POISearchAPIManager cancelRequest];
+    
+    self.POISearchCompletionBlock = completion;
+    
+    NSString *cityValue = [NSString stringWithFormat:@"region(%@,0)", self.currentLocation.city];
+    APIRequest* request = APIRequestCreate(QQPOISearchAPI, RequestMethodGet, @{@"keyword" : keyword,
+                                                                               @"boundary" : cityValue,
+                                                                               @"key" : QQLBSServiceAPIKey,
+                                                                               //@"orderby" : @"_distance",
+                                                                               @"page_index" : @(1),
+                                                                               @"page_size" : @(20),
+                                                                               });
+    [self.POISearchAPIManager sendRequest:request];
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -133,11 +162,12 @@ AW_SINGLETON_IMPL(LBSManager)
     if ( manager == self.geocodeAPIManager ) {
 //        NSLog(@"result: %@", [manager fetchDataWithReformer:nil]);
         [self parseLocationInfo:[manager fetchDataWithReformer:nil]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:LBSManagerUserLocationDidChangeNotification object:nil];
     } else if ( self.POISearchAPIManager == manager ) {
-        
+        [self parsePOIInfo:[manager fetchDataWithReformer:nil]];
     }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:LBSManagerUserLocationDidChangeNotification object:nil];
+//    NSLog(@"result: %@", [manager fetchDataWithReformer:nil]);
 }
 
 /** 网络请求失败回调 */
@@ -146,17 +176,37 @@ AW_SINGLETON_IMPL(LBSManager)
     if ( self.geocodeAPIManager == manager ) {
         // 位置解析失败
         self.locationError = [NSError errorWithDomain:@"位置解析失败" code:LocationErrorCodeParseError userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:LBSManagerUserLocationDidChangeNotification object:nil];
+        if ( self.locationHandleBlock ) {
+            self.locationHandleBlock(nil, self.locationError);
+        }
     } else if ( self.POISearchAPIManager == manager ) {
         // 位置搜索
-    }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:LBSManagerUserLocationDidChangeNotification object:nil];
-    if ( self.locationHandleBlock ) {
-        self.locationHandleBlock(nil, self.locationError);
+        if ( self.POISearchCompletionBlock ) {
+            self.POISearchCompletionBlock(nil, [NSError errorWithDomain:@"搜索位置数据失败"
+                                                                   code:LocationErrorCodePOISearchError
+                                                               userInfo:nil]);
+        }
     }
 }
 
 #pragma mark - Private Methods
+- (void)parsePOIInfo:(id)poiInfo
+{
+    NSInteger code = [[poiInfo objectForKey:@"status"] integerValue];
+    if ( code != 0 ) {
+        NSError* error = [NSError errorWithDomain:[poiInfo objectForKey:@"message"] code:LocationErrorCodePOISearchError userInfo:nil];
+        if ( self.POISearchCompletionBlock ) {
+            self.POISearchCompletionBlock(nil, error);
+        }
+    } else {
+        NSArray* locations = [poiInfo objectForKey:@"data"];
+        if ( self.POISearchCompletionBlock ) {
+            self.POISearchCompletionBlock(locations, nil);
+        }
+    }
+}
+
 - (void)parseLocationInfo:(id)locationInfo
 {
     NSInteger code = [[locationInfo objectForKey:@"status"] integerValue];
@@ -215,14 +265,9 @@ AW_SINGLETON_IMPL(LBSManager)
     [self.geocodeAPIManager cancelRequest];
     
     NSString* locationVal = [NSString stringWithFormat:@"%.06lf,%.06lf", location.coordinate.latitude, location.coordinate.longitude];
-    APIRequest* aRequest = APIRequestCreate(QQGeocodeAPI, RequestMethodGet, @{ @"location" : locationVal, @"key" : QQGeoCoderAPIKey, @"coord_type" : @(1)  });
+    APIRequest* aRequest = APIRequestCreate(QQGeocodeAPI, RequestMethodGet, @{ @"location" : locationVal, @"key" : QQLBSServiceAPIKey, @"coord_type" : @(1)  });
     
     [self.geocodeAPIManager sendRequest:aRequest];
-}
-
-- (NSString *)locationString
-{
-    return [NSString stringWithFormat:@"%.06lf,%.06lf", self.currentLocation.coordinate.longitude, self.currentLocation.coordinate.latitude];
 }
 
 @end
@@ -249,6 +294,15 @@ AW_SINGLETON_IMPL(LBSManager)
     self.placement = nil;
     
     [super dealloc];
+}
+
+@end
+
+@implementation Location (Wrapper)
+
+- (NSString *)locationString
+{
+    return [NSString stringWithFormat:@"%.06lf,%.06lf", self.coordinate.longitude, self.coordinate.latitude];
 }
 
 @end

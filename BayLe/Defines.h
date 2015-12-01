@@ -30,6 +30,7 @@
 #import "CompatibilityHandle.h"
 #import "UIScrollView+AWRefresh.h"
 #import "AWModalAlert.h"
+#import "NSStringAdditions.h"
 
 #pragma mark ------------------------------- 跟项目相关的宏定义 -------------------------------
 

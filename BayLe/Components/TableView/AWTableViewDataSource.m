@@ -56,11 +56,11 @@
 {
     NSAssert(!!self.cellClass, @"Cell类不能为空");
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:self.identifier];
-    NSAssert([cell conformsToProtocol:@protocol(AWTableDataConfig)], @"自定义Cell类必须实现AWTableDataConfig接口");
-    
     if ( cell == nil ) {
         cell = [[[NSClassFromString(self.cellClass) alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:self.identifier] autorelease];
     }
+    
+    NSAssert([cell conformsToProtocol:@protocol(AWTableDataConfig)], @"自定义Cell类必须实现AWTableDataConfig接口");
     
     // 配置数据到视图
     id data = [self.dataSource objectAtIndex:indexPath.row];
