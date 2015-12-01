@@ -21,6 +21,14 @@
     UITableView* _tableView;
 }
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    if ( self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil] ) {
+        self.shouldSearching = YES;
+    }
+    return self;
+}
+
 - (void)dealloc
 {
     self.dataSource = nil;
@@ -33,7 +41,7 @@
     
     self.title = @"搜索";
     
-    self.shouldSearching = YES;
+//    self.shouldSearching = YES;
     
     self.dataSource = AWTableViewDataSourceCreate(nil, @"POICell", @"poi.cell");
     
@@ -109,11 +117,13 @@
     location.coordinate = CLLocationCoordinate2DMake([[[adInfo objectForKey:@"location"] objectForKey:@"lat"] doubleValue],
                                                      [[[adInfo objectForKey:@"location"] objectForKey:@"lng"] doubleValue]);
     
-    [[DataManager sharedInstance] saveLocation:location];
-    
     if ( self.shouldSearching ) {
+        [[DataManager sharedInstance] saveLocation:location];
         [self gotoItemList];
     } else {
+        if ( [self.delegate respondsToSelector:@selector(didSelectLocation:)] ) {
+            [self.delegate didSelectLocation:location];
+        }
         [self close];
     }
 }

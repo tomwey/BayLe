@@ -92,7 +92,7 @@ AW_SINGLETON_IMPL(LBSManager)
     
     self.POISearchCompletionBlock = completion;
     
-    NSString *cityValue = [NSString stringWithFormat:@"region(%@,0)", self.currentLocation.city];
+    NSString *cityValue = [NSString stringWithFormat:@"region(%@,0)", self.currentLocation.city.length == 0 ? @"成都" : self.currentLocation.city];
     APIRequest* request = APIRequestCreate(QQPOISearchAPI, RequestMethodGet, @{@"keyword" : keyword,
                                                                                @"boundary" : cityValue,
                                                                                @"key" : QQLBSServiceAPIKey,

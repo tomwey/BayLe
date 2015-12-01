@@ -19,5 +19,6 @@
 #import "SelectLocationViewController.h"
 #import "SearchViewController.h"
 #import "ItemListViewController.h"
+#import "CatalogViewController.h"
 
 #endif /* Controllers_h */

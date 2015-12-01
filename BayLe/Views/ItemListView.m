@@ -113,6 +113,11 @@
         currentLocation = [[LBSManager sharedInstance] currentLocation];
     }
     
+    if ( !currentLocation ) {
+        [self.tableView headerRefreshViewEndRefreshing];
+        return;
+    }
+    
     [self.itemsAPIManager sendRequest:APIRequestCreate(API_LOAD_ITEMS, RequestMethodGet, @{@"location" : [currentLocation locationString],
                                                                                            @"tag_id" : @(_tagID)
                                                                                            })];

@@ -79,6 +79,8 @@
         }
         
     }];
+    
+    [self loadTagsData];
 }
 
 #pragma mark --- Target Action Methods ---

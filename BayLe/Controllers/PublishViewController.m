@@ -29,6 +29,11 @@
     
     UITextField* _currentField;
     UITextView*  _currentTextView;
+    
+    UILabel*     _catalogLabel;
+    UILabel*     _locationLabel;
+    
+    UILabel*     _introPlaceholderLabel;
 }
 
 - (void)viewDidLoad
@@ -142,9 +147,21 @@
         
         [self.itemData setObject:textFiled.text forKey:@"title"];
     } else if ( textFiled.tag == 1002 ) {
-        
+        if ( textFiled.text.length == 1 &&
+            [textFiled.text isEqualToString:@"0"]) {
+            textFiled.text = @"";
+            [AWModalAlert say:@"不正确的数字" message:@""];
+            return;
+        }
+        [self.itemData setObject:@([textFiled.text integerValue]) forKey:@"fee"];
     } else if ( textFiled.tag == 1003 ) {
-        
+        if ( textFiled.text.length == 1 &&
+            [textFiled.text isEqualToString:@"0"]) {
+            textFiled.text = @"";
+            [AWModalAlert say:@"不正确的数字" message:@""];
+            return;
+        }
+        [self.itemData setObject:@([textFiled.text integerValue]) forKey:@"deposit"];
     }
     
 }
@@ -162,6 +179,8 @@
 
 - (void)textViewDidChange:(UITextView *)textView
 {
+    
+    _introPlaceholderLabel.hidden = ( textView.text.length > 0 );
     if ( textView.text.length >= 200 ) {
         [AWModalAlert say:@"最多不超过200个字" message:@""];
         return;
@@ -178,17 +197,34 @@
 
 - (void)changeCategory
 {
-    
+    CatalogViewController* cvc = [[[CatalogViewController alloc] init] autorelease];
+    cvc.delegate = self;
+    [self presentViewController:cvc animated:YES completion:nil];
 }
 
 - (void)changeLocation
 {
-    
+    SelectLocationViewController* slvc = [[[SelectLocationViewController alloc] init] autorelease];
+    slvc.shouldSearching = NO;
+    slvc.delegate = self;
+    [self presentViewController:slvc animated:YES completion:nil];
 }
 
 - (void)addPhoto:(UIButton *)sender
 {
     
+}
+
+#pragma mark - Controller Delegate
+- (void)didSelectCatalog:(id)catalog
+{
+    _catalogLabel.text = [catalog objectForKey:@"name"];
+    [self.itemData setObject:@([[catalog objectForKey:@"id"] integerValue]) forKey:@"tag_id"];
+}
+
+- (void)didSelectLocation:(Location *)aLocation
+{
+    [self configLocation:aLocation];
 }
 
 #pragma mark - Override methods
@@ -260,11 +296,17 @@
     
     CGRect frame = introTextView.frame;
     frame.size.height = 30;
+    frame.origin.y += 4;
     UILabel* placeholder = AWCreateLabel(frame,
                                          @"描述一下您的宝贝",
                                          NSTextAlignmentLeft,
                                          titleField.font, line.backgroundColor);
     [_sectionView1 addSubview:placeholder];
+    
+    _introPlaceholderLabel = placeholder;
+    
+    introTextView.x -= 3;
+    introTextView.width += 6;
     
     // 添加图片
     UIButton* addPhoto = AWCreateTextButton(CGRectMake(titleField.left, introTextView.bottom + 5, 60, 60), @"添加图片",
@@ -352,6 +394,8 @@
                                        AWSystemFontWithSize(14, NO), [UIColor blackColor]);
     [_sectionView2 addSubview:selectTip];
     
+    _catalogLabel = selectTip;
+    
     UIImageView* arrowView = AWCreateImageView(@"cell_more_icon.png");
     [_sectionView2 addSubview:arrowView];
     arrowView.center = CGPointMake(_sectionView2.width - 15 - arrowView.width / 2, categoryLabel.midY);
@@ -394,6 +438,10 @@
                                            NSTextAlignmentLeft,
                                            AWSystemFontWithSize(14, NO), [UIColor blackColor]);
     [_sectionView3 addSubview:locationLabel];
+    _locationLabel = locationLabel;
+    
+    Location* loc = [[LBSManager sharedInstance] currentLocation];
+    [self configLocation:loc];
     
     UIImageView* arrowView = AWCreateImageView(@"cell_more_icon.png");
     [_sectionView3 addSubview:arrowView];
@@ -411,6 +459,15 @@
     _sectionView3.height = locationLabel.bottom + 5;
     
     _scrollView.contentSize = CGSizeMake(_scrollView.width, _sectionView3.bottom + SECTION_PADDING);
+}
+
+- (void)configLocation:(Location *)loc
+{
+    if ( loc ) {
+        _locationLabel.text = loc.placement;
+        [self.itemData setObject:[loc locationString] forKey:@"location"];
+        [self.itemData setObject:loc.placement forKey:@"placement"];
+    }
 }
 
 @end

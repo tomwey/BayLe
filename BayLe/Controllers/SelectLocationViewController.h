@@ -8,9 +8,19 @@
 
 #import "BaseViewController.h"
 
+@class Location;
+@protocol SelectLocationViewControllerDelegate <NSObject>
+
+@optional
+- (void)didSelectLocation:(Location *)aLocation;
+
+@end
+
 @interface SelectLocationViewController : BaseViewController
 
 /** 设置是否是搜索功能，默认为YES */
 @property (nonatomic, assign) BOOL shouldSearching;
+
+@property (nonatomic, assign) id delegate;
 
 @end

@@ -107,6 +107,8 @@
 		9930B60F1BFE0F7C00A109F2 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9930B60E1BFE0F7C00A109F2 /* libstdc++.6.0.9.dylib */; };
 		9930B6111BFE0FB000A109F2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9930B6101BFE0FB000A109F2 /* libz.dylib */; };
 		995545A71C0A8E3D00BE5309 /* RefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 995545A61C0A8E3D00BE5309 /* RefreshHeaderView.m */; };
+		99EC1CFB1C0DD55200733194 /* CatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99EC1CFA1C0DD55200733194 /* CatalogViewController.m */; };
+		99EC1CFE1C0DD71600733194 /* CatalogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99EC1CFD1C0DD71600733194 /* CatalogCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -314,6 +316,10 @@
 		9930B6101BFE0FB000A109F2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		995545A51C0A8E3D00BE5309 /* RefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshHeaderView.h; sourceTree = "<group>"; };
 		995545A61C0A8E3D00BE5309 /* RefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshHeaderView.m; sourceTree = "<group>"; };
+		99EC1CF91C0DD55200733194 /* CatalogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogViewController.h; sourceTree = "<group>"; };
+		99EC1CFA1C0DD55200733194 /* CatalogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogViewController.m; sourceTree = "<group>"; };
+		99EC1CFC1C0DD71600733194 /* CatalogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogCell.h; sourceTree = "<group>"; };
+		99EC1CFD1C0DD71600733194 /* CatalogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -448,6 +454,8 @@
 				971E5F951C0D269C00F637C6 /* SearchViewController.m */,
 				971E5FA51C0D5A3D00F637C6 /* ItemListViewController.h */,
 				971E5FA61C0D5A3D00F637C6 /* ItemListViewController.m */,
+				99EC1CF91C0DD55200733194 /* CatalogViewController.h */,
+				99EC1CFA1C0DD55200733194 /* CatalogViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -478,6 +486,8 @@
 				995545A61C0A8E3D00BE5309 /* RefreshHeaderView.m */,
 				971E5F9F1C0D408C00F637C6 /* POICell.h */,
 				971E5FA01C0D408C00F637C6 /* POICell.m */,
+				99EC1CFC1C0DD71600733194 /* CatalogCell.h */,
+				99EC1CFD1C0DD71600733194 /* CatalogCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -941,6 +951,7 @@
 				971E5F931C0D264F00F637C6 /* SelectLocationViewController.m in Sources */,
 				97BD120D1BFDCEF900641C79 /* UIProgressView+AFNetworking.m in Sources */,
 				9734C3111BFD650D005E0E5E /* NSObjectAdditions.m in Sources */,
+				99EC1CFE1C0DD71600733194 /* CatalogCell.m in Sources */,
 				97BD11D21BFDC5BA00641C79 /* SendMailCommand.m in Sources */,
 				971E5FA71C0D5A3D00F637C6 /* ItemListViewController.m in Sources */,
 				97BD11A01BFDAF6300641C79 /* UIWindowAdditions.m in Sources */,
@@ -995,6 +1006,7 @@
 				9734C2D01BFD5C5D005E0E5E /* main.m in Sources */,
 				97BD12051BFDCEF900641C79 /* AFURLConnectionOperation.m in Sources */,
 				97BD120C1BFDCEF900641C79 /* UIImageView+AFNetworking.m in Sources */,
+				99EC1CFB1C0DD55200733194 /* CatalogViewController.m in Sources */,
 				97BD11B31BFDC2D900641C79 /* AWBaseViewController.m in Sources */,
 				97BD121B1BFDCFC100641C79 /* MBProgressHUD.m in Sources */,
 				97BD12161BFDCF7800641C79 /* MACircleProgressIndicator.m in Sources */,
