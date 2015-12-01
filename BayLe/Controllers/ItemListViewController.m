@@ -22,7 +22,7 @@
 {
     [super viewDidLoad];
     
-    self.contentView.backgroundColor = AWColorFromRGB(251, 251, 251);
+    self.contentView.backgroundColor = MAIN_CONTENT_BG_COLOR;
     
     self.title = [[DataManager sharedInstance] currentLocation].placement;
     

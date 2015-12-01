@@ -45,6 +45,9 @@
 // 浅灰色
 #define MAIN_LIGHT_GRAY_COLOR [UIColor lightGrayColor]
 
+// 背景颜色
+#define MAIN_CONTENT_BG_COLOR AWColorFromRGB(247, 247, 247)
+
 // 高德地图API Key
 #define MAMAP_API_KEY @"14f062a0bc5bac1a8bfd247a8db0aac5"
 

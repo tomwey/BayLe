@@ -18,6 +18,7 @@
 		971E5FA11C0D408C00F637C6 /* POICell.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5FA01C0D408C00F637C6 /* POICell.m */; };
 		971E5FA41C0D564500F637C6 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5FA31C0D564500F637C6 /* DataManager.m */; };
 		971E5FA71C0D5A3D00F637C6 /* ItemListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5FA61C0D5A3D00F637C6 /* ItemListViewController.m */; };
+		971E5FAA1C0D7D6400F637C6 /* TextInputComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5FA91C0D7D6400F637C6 /* TextInputComponent.m */; };
 		9734C2D01BFD5C5D005E0E5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C2CF1BFD5C5D005E0E5E /* main.m */; };
 		9734C2D31BFD5C5D005E0E5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C2D21BFD5C5D005E0E5E /* AppDelegate.m */; };
 		9734C2DB1BFD5C5D005E0E5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9734C2DA1BFD5C5D005E0E5E /* Assets.xcassets */; };
@@ -132,6 +133,8 @@
 		971E5FA31C0D564500F637C6 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		971E5FA51C0D5A3D00F637C6 /* ItemListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemListViewController.h; sourceTree = "<group>"; };
 		971E5FA61C0D5A3D00F637C6 /* ItemListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemListViewController.m; sourceTree = "<group>"; };
+		971E5FA81C0D7D6400F637C6 /* TextInputComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextInputComponent.h; sourceTree = "<group>"; };
+		971E5FA91C0D7D6400F637C6 /* TextInputComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextInputComponent.m; sourceTree = "<group>"; };
 		9734C2CB1BFD5C5D005E0E5E /* BayLe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BayLe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9734C2CF1BFD5C5D005E0E5E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9734C2D11BFD5C5D005E0E5E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -461,6 +464,8 @@
 			isa = PBXGroup;
 			children = (
 				9734C2FE1BFD626D005E0E5E /* Views.h */,
+				971E5FA81C0D7D6400F637C6 /* TextInputComponent.h */,
+				971E5FA91C0D7D6400F637C6 /* TextInputComponent.m */,
 				97BD12221BFF024800641C79 /* HomeTitleView.h */,
 				97BD12231BFF024800641C79 /* HomeTitleView.m */,
 				97BD12281BFF1BEE00641C79 /* PagerTabStripper.h */,
@@ -1014,6 +1019,7 @@
 				97BD12021BFDCEF900641C79 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				97BD15341C03FDA900641C79 /* APIManager.m in Sources */,
 				97BD153A1C04011F00641C79 /* APIRequest.m in Sources */,
+				971E5FAA1C0D7D6400F637C6 /* TextInputComponent.m in Sources */,
 				97BD11C61BFDC2F300641C79 /* AWButton.m in Sources */,
 				97BD11C21BFDC2F300641C79 /* AWCustomNavBar.m in Sources */,
 				97D5F5F01C05AD79007D75D6 /* LoadNetworkData.m in Sources */,
