@@ -97,17 +97,24 @@
 
 - (void)keyboardWillHide:(NSNotification *)noti
 {
-    [UIView animateWithDuration:[[[noti userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue]
-                     animations:^{
-        _scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        _scrollView.contentOffset = CGPointMake(0, 0);
-    }];
+//    [UIView animateWithDuration:[[[noti userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue]
+//                     animations:^{
+//        _scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+//        _scrollView.contentOffset = CGPointMake(0, 0);
+//    }];
 }
 
 #pragma mark - UIScrollView delegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     [_currentTextView resignFirstResponder];
+    
+    if ( _currentField.tag == 1002 || _currentField.tag == 1003 ) {
+        [_currentField resignFirstResponder];
+        
+        _scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        _scrollView.contentOffset = CGPointMake(0, 0);
+    }
 }
 
 #pragma mark - UITextField delegate
@@ -291,6 +298,7 @@
                                                          tag:1002
                                                  placeholder:@"输入租金"
                                                       inView:_sectionView2];
+    priceField.keyboardType = UIKeyboardTypeNumberPad;
     
     // 加线
     UIView* line = AWCreateLine(CGSizeMake(_sectionView2.width - 15, .6), AWColorFromRGB(207, 207, 207));
@@ -315,6 +323,7 @@
                                                            tag:1003
                                                    placeholder:@"输入押金"
                                                         inView:_sectionView2];
+    depositField.keyboardType = UIKeyboardTypeNumberPad;
     
     // 加线
     line = AWCreateLine(CGSizeMake(_sectionView2.width - 15, .6), AWColorFromRGB(207, 207, 207));
