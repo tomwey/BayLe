@@ -89,7 +89,10 @@
                          animations:
          ^{
              _scrollView.contentInset = UIEdgeInsetsMake(0, 0, dt, 0);
-             _scrollView.contentOffset = CGPointMake(0, dt);
+             
+             CGPoint offset = _scrollView.contentOffset;
+             offset.y += dt;
+             _scrollView.contentOffset = offset;
         }];
     }
     
