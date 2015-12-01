@@ -13,6 +13,8 @@
 
 @property (nonatomic, assign) CGFloat topMargin;
 
+@property (nonatomic, retain) NSMutableDictionary* itemData;
+
 @end
 
 #define SECTION_PADDING 10
@@ -34,6 +36,8 @@
     [super viewDidLoad];
     
     self.title = @"发布";
+    
+    self.itemData = [NSMutableDictionary dictionary];
     
     UIButton* rightBtn = AWCreateTextButton(CGRectMake(0, 0, 40, 33), @"提交", [UIColor whiteColor], self, @selector(commit));
     [[rightBtn titleLabel] setFont:AWSystemFontWithSize(14, NO)];
@@ -118,10 +122,42 @@
     _currentField = textField;
 }
 
+- (void)textFieldDidChange:(UITextField *)textFiled
+{
+    if ( textFiled.tag == 1001 ) {
+        if ( textFiled.text.length > 50 ) {
+            [AWModalAlert say:@"最多不超过50个字" message:@""];
+            return;
+        }
+        
+        [self.itemData setObject:textFiled.text forKey:@"title"];
+    } else if ( textFiled.tag == 1002 ) {
+        
+    } else if ( textFiled.tag == 1003 ) {
+        
+    }
+    
+}
+
+- (void)textFieldTapReturn:(UITextField *)textFiled
+{
+    [textFiled resignFirstResponder];
+}
+
 #pragma mark - UITextView delegate
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
     _currentTextView = textView;
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    if ( textView.text.length >= 200 ) {
+        [AWModalAlert say:@"最多不超过200个字" message:@""];
+        return;
+    }
+    
+    [self.itemData setObject:textView.text forKey:@"intro"];
 }
 
 #pragma mark - Target Action methods
@@ -167,7 +203,7 @@
     [containerView addSubview:textField];
     [textField release];
     
-    textField.delegate = self;
+//    textField.delegate = self;
     textField.returnKeyType = UIReturnKeyDone;
     
     textField.tag = tag;
@@ -176,7 +212,10 @@
     
     textField.clearButtonMode = UITextFieldViewModeWhileEditing;
     
-    //    [textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    [textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    [textField addTarget:self action:@selector(textFieldTapReturn:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [textField addTarget:self action:@selector(textFieldDidBeginEditing:) forControlEvents:UIControlEventEditingDidBegin];
+    
     return textField;
 }
 
