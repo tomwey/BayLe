@@ -256,7 +256,8 @@
     
     // 添加位置切换按钮
     UIButton* changeLocationBtn = AWCreateImageButton(nil, self, @selector(changeLocation));
-    changeLocationBtn.frame = CGRectMake(0, 0, MIN(titleView.width, [_locationLabel textSizeForConstrainedSize:titleView.contentSize].width), titleView.height);
+    CGFloat width = MIN(titleView.width, [_locationLabel textSizeForConstrainedSize:titleView.boundsSize].width);
+    changeLocationBtn.frame = CGRectMake(0, 0, width, titleView.height);
     changeLocationBtn.center = CGPointMake(titleView.width / 2, titleView.height / 2);
     [titleView addSubview:changeLocationBtn];
     

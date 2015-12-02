@@ -14,7 +14,7 @@
 @property (nonatomic, assign) CGPoint position;
 
 /** 设置宽和高 */
-@property (nonatomic, assign) CGSize  contentSize;
+@property (nonatomic, assign) CGSize  boundsSize;
 
 /** 设置位置x坐标值 */
 @property (nonatomic, assign) CGFloat x;

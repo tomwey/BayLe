@@ -15,6 +15,12 @@
 
 @end
 
+@interface AWTableViewDataSource ()
+
+//@property (nonatomic, assign) UITableView* tableView;
+
+@end
+
 @implementation AWTableViewDataSource
 
 - (instancetype)initWithArray:(NSArray *)dataSource cellClass:(NSString *)className identifier:(NSString *)identifier
@@ -44,11 +50,14 @@
     self.cellClass  = nil;
     self.identifier = nil;
     
+    self.tableView = nil;
+    
     [super dealloc];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    self.tableView = tableView;
     return [self.dataSource count];
 }
 
@@ -67,6 +76,11 @@
     [cell configData:data];
     
     return cell;
+}
+
+- (void)notifyDataChanged
+{
+    [self.tableView reloadData];
 }
 
 @end

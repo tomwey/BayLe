@@ -10,7 +10,7 @@
 
 @implementation UIView (AWGeometry)
 
-@dynamic position, contentSize, x, y, width, height;
+@dynamic position, boundsSize, x, y, width, height;
 
 - (void)setPosition:(CGPoint)position
 {
@@ -21,14 +21,14 @@
 
 - (CGPoint)position { return self.frame.origin; }
 
-- (void)setContentSize:(CGSize)contentSize
+- (void)setBoundsSize:(CGSize)boundsSize
 {
     CGRect frame = self.frame;
-    frame.size = contentSize;
+    frame.size = boundsSize;
     self.frame = frame;
 }
 
-- (CGSize)contentSize { return self.frame.size; }
+- (CGSize)boundsSize { return self.frame.size; }
 
 - (void)setX:(CGFloat)x
 {
@@ -55,7 +55,7 @@
     self.frame = frame;
 }
 
-- (CGFloat)width { return self.contentSize.width; }
+- (CGFloat)width { return self.boundsSize.width; }
 
 - (void)setHeight:(CGFloat)height
 {
@@ -64,7 +64,7 @@
     self.frame = frame;
 }
 
-- (CGFloat)height { return self.contentSize.height; }
+- (CGFloat)height { return self.boundsSize.height; }
 
 - (CGFloat)minX { return self.x; }
 - (CGFloat)minY { return self.y; }

@@ -9,24 +9,21 @@
 #import "PublishViewController.h"
 #import "Defines.h"
 
-@interface PublishViewController () <UITextFieldDelegate, UITextViewDelegate, UIScrollViewDelegate>
-
-@property (nonatomic, assign) CGFloat topMargin;
+@interface PublishViewController () <UITextFieldDelegate, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, retain) NSMutableDictionary* itemData;
+
+@property (nonatomic, assign) CGPoint originContentOffset;
+@property (nonatomic, assign) UIEdgeInsets originContentInset;
 
 @end
 
 #define SECTION_PADDING 10
+#define NUMBER_OF_COLS_PER_ROW 4
 
 @implementation PublishViewController
 {
-    UIView* _sectionView1;
-    UIView* _sectionView2;
-    UIView* _sectionView3;
-    
-    UIScrollView* _scrollView;
-    
+
     UITextField* _currentField;
     UITextView*  _currentTextView;
     
@@ -34,6 +31,14 @@
     UILabel*     _locationLabel;
     
     UILabel*     _introPlaceholderLabel;
+    
+    UITableView* _tableView;
+    
+    UIView*      _thumbImagesContainer;
+    
+    UIButton*    _addPhotoButton;
+    
+    CGFloat      _currentThumbLeft;
 }
 
 - (void)viewDidLoad
@@ -42,25 +47,20 @@
     
     self.title = @"发布";
     
+    _currentThumbLeft = 0.0;
+    
     self.itemData = [NSMutableDictionary dictionary];
     
     UIButton* rightBtn = AWCreateTextButton(CGRectMake(0, 0, 40, 33), @"提交", [UIColor whiteColor], self, @selector(commit));
     [[rightBtn titleLabel] setFont:AWSystemFontWithSize(14, NO)];
     self.navBar.rightButton = rightBtn;
     
-    _scrollView = [[UIScrollView alloc] initWithFrame:self.contentView.bounds];
-    [self.contentView addSubview:_scrollView];
-    [_scrollView release];
+    [self initTableView];
     
-    _scrollView.delegate = self;
+    self.originContentOffset = _tableView.contentOffset;
+    self.originContentInset  = _tableView.contentInset;
     
-    self.contentView.backgroundColor = MAIN_CONTENT_BG_COLOR;
-    
-    [self initSection1];
-    
-    [self initSection2];
-    
-    [self initSection3];
+    [self resetForm];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -71,10 +71,6 @@
                                              selector:@selector(keyboardWillShow:)
                                                  name:UIKeyboardWillShowNotification
                                                object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -82,7 +78,6 @@
     [super viewWillDisappear:animated];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)keyboardWillShow:(NSNotification *)noti
@@ -93,23 +88,99 @@
         [UIView animateWithDuration:[[[noti userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue]
                          animations:
          ^{
-             _scrollView.contentInset = UIEdgeInsetsMake(0, 0, dt, 0);
+             _tableView.contentInset = UIEdgeInsetsMake(0, 0, dt, 0);
              
-             CGPoint offset = _scrollView.contentOffset;
+             CGPoint offset = _tableView.contentOffset;
              offset.y += dt;
-             _scrollView.contentOffset = offset;
-        }];
+             _tableView.contentOffset = offset;
+         }];
     }
     
 }
 
-- (void)keyboardWillHide:(NSNotification *)noti
+#pragma mark - UITableView datasource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-//    [UIView animateWithDuration:[[[noti userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue]
-//                     animations:^{
-//        _scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-//        _scrollView.contentOffset = CGPointMake(0, 0);
-//    }];
+    return 3;
+}
+
+static int rows[] = { 2, 3, 1 };
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return rows[section];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString* identifier = [NSString stringWithFormat:@"cell.id.%d", indexPath.section];
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if ( !cell ) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
+        
+        switch (indexPath.section) {
+            case 0:
+            {
+                [self initSection0:indexPath forCell:cell];
+            }
+                break;
+            case 1:
+            {
+                [self initSection1:indexPath forCell:cell];
+            }
+                break;
+            case 2:
+            {
+                [self initSection2:indexPath forCell:cell];
+            }
+                break;
+                
+            default:
+                break;
+        }
+        
+    }
+    
+    return cell;
+}
+
+#pragma mark - UITableView delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if ( indexPath.section != 0 ) {
+        if ( indexPath.section == 1 && indexPath.row == 2 ) {
+            [self changeCategory];
+        } else if ( indexPath.section == 2 ) {
+            [self changeLocation];
+        }
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ( indexPath.section == 0 ) {
+        if ( indexPath.row == 0 ) {
+            return 50;
+        }
+        
+        if ( _thumbImagesContainer.height == 0 ) {
+            return 88 + 65 + 15;
+        }
+        
+        return 88 + _thumbImagesContainer.height + 20;
+    }
+    
+    return 50;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if ( section == 0 ) {
+        return 0.1;
+    }
+    
+    return 10;
 }
 
 #pragma mark - UIScrollView delegate
@@ -120,8 +191,11 @@
     if ( _currentField.tag == 1002 || _currentField.tag == 1003 ) {
         [_currentField resignFirstResponder];
         
-        _scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        _scrollView.contentOffset = CGPointMake(0, 0);
+        [UIView animateWithDuration:.25 animations:^{
+            _tableView.contentInset = self.originContentInset;
+            _tableView.contentOffset = self.originContentOffset;
+        }];
+        
     }
 }
 
@@ -212,10 +286,38 @@
 
 - (void)addPhoto:(UIButton *)sender
 {
-    
+    AlbumListViewController* controller = [[[AlbumListViewController alloc] init] autorelease];
+    UINavigationController* nav = [[[UINavigationController alloc] initWithRootViewController:controller] autorelease];
+    controller.delegate = self;
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 #pragma mark - Controller Delegate
+- (void)didAddPhotos:(NSArray *)photos
+{
+    CGFloat width = [self thumbWidth];
+    
+    CGFloat top = SECTION_PADDING / 2;
+    
+    for (int i=0; i<[photos count]; i++) {
+        ThumbView* thumbView = [[[ThumbView alloc] init] autorelease];
+        [_thumbImagesContainer addSubview:thumbView];
+        thumbView.asset = [photos objectAtIndex:i];
+        
+        thumbView.frame = CGRectMake(( width + SECTION_PADDING / 2) * ( i % NUMBER_OF_COLS_PER_ROW ),
+                                     top + ( width + SECTION_PADDING / 2 ) * (int)(i / NUMBER_OF_COLS_PER_ROW),
+                                     width, width);
+        if ( i == [photos count] - 1 ) {
+            _addPhotoButton.frame = CGRectMake(thumbView.right + SECTION_PADDING / 2, thumbView.top + 11, thumbView.height - 11,
+                                               thumbView.height - 11);
+//            _addPhotoButton.x = thumbView.right + SECTION_PADDING / 2;
+            _thumbImagesContainer.height = thumbView.bottom + SECTION_PADDING / 2;
+        }
+    }
+    
+    [_tableView reloadData];
+}
+
 - (void)didSelectCatalog:(id)catalog
 {
     _catalogLabel.text = [catalog objectForKey:@"name"];
@@ -234,6 +336,161 @@
 }
 
 #pragma mark - Private Methods
+- (void)initTableView
+{
+    _tableView = AWCreateTableView(self.contentView.bounds,
+                                   UITableViewStylePlain,
+                                   self.contentView,
+                                   self);
+    _tableView.delegate = self;
+    _tableView.sectionHeaderHeight = 10;
+}
+
+- (void)initSection0:(NSIndexPath *)indexPath forCell:(UITableViewCell *)cell
+{
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if ( indexPath.row == 0 ) {
+        // 添加标题
+        [self createTextFieldWithFrame:CGRectMake(15, 7, _tableView.width - 30, 37)
+                                   tag:1001
+                           placeholder:@"标题"
+                                inView:cell.contentView];
+    } else {
+        // 添加描述
+        UITextView* introTextView = [[UITextView alloc] initWithFrame:CGRectMake(15, 7,
+                                                                                 _tableView.width - 30,
+                                                                                 88)];
+        [cell.contentView addSubview:introTextView];
+        [introTextView release];
+        
+        introTextView.delegate = self;
+        
+        introTextView.font = AWSystemFontWithSize(14, NO);
+        
+        CGRect frame = introTextView.frame;
+        frame.size.height = 30;
+        frame.origin.y += 2;
+        frame.origin.x += 2;
+        UILabel* placeholder = AWCreateLabel(frame,
+                                             @"描述一下您的宝贝",
+                                             NSTextAlignmentLeft,
+                                             introTextView.font,
+                                             _tableView.separatorColor);
+        [cell.contentView addSubview:placeholder];
+        
+        _introPlaceholderLabel = placeholder;
+        
+        introTextView.x -= 3;
+        introTextView.width += 6;
+        
+        _thumbImagesContainer = [[UIView alloc] initWithFrame:CGRectMake(introTextView.left,
+                                                                         introTextView.bottom + 5,
+                                                                         _tableView.width - introTextView.left * 2,
+                                                                         60)];
+        [cell.contentView addSubview:_thumbImagesContainer];
+        [_thumbImagesContainer release];
+        
+        
+        // 添加图片
+        UIButton* addPhoto = AWCreateTextButton(CGRectMake(0, 0, 60, 60),
+                                                @"添加图片",
+                                                MAIN_LIGHT_GRAY_COLOR,
+                                                self,
+                                                @selector(addPhoto:));
+        [[addPhoto titleLabel] setFont:AWSystemFontWithSize(14, NO)];
+        [_thumbImagesContainer addSubview:addPhoto];
+        
+        addPhoto.backgroundColor = MAIN_CONTENT_BG_COLOR;
+        
+        _addPhotoButton = addPhoto;
+    }
+}
+
+- (void)initSection1:(NSIndexPath *)indexPath forCell:(UITableViewCell *)cell
+{
+    if ( indexPath.row == 0 ) {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        // 租金
+        UILabel* priceLabel = AWCreateLabel(CGRectMake(15, 10, 36, 30),
+                                            @"租金",
+                                            NSTextAlignmentLeft,
+                                            AWSystemFontWithSize(14, NO), [UIColor blackColor]);
+        [cell.contentView addSubview:priceLabel];
+        
+        UITextField* priceField = [self createTextFieldWithFrame:CGRectMake(priceLabel.right + 10, priceLabel.top,
+                                                                            _tableView.width - priceLabel.right - 20,
+                                                                            priceLabel.height)
+                                                             tag:1002
+                                                     placeholder:@"输入租金"
+                                                          inView:cell.contentView];
+        priceField.keyboardType = UIKeyboardTypeNumberPad;
+        
+    } else if ( indexPath.row == 1 ) {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        // 押金
+        UILabel* depositLabel = AWCreateLabel(CGRectMake(15, 10, 36, 30),
+                                              @"押金",
+                                              NSTextAlignmentLeft,
+                                              AWSystemFontWithSize(14, NO), [UIColor blackColor]);
+        [cell.contentView addSubview:depositLabel];
+        
+        UITextField* depositField = [self createTextFieldWithFrame:CGRectMake(depositLabel.right + 10,
+                                                                              depositLabel.top,
+                                                                              _tableView.width - depositLabel.right - 20,
+                                                                              depositLabel.height)
+                                                               tag:1003
+                                                       placeholder:@"输入押金"
+                                                            inView:cell.contentView];
+        depositField.keyboardType = UIKeyboardTypeNumberPad;
+    } else if ( indexPath.row == 2 ) {
+        // 分类
+        UILabel* categoryLabel = AWCreateLabel(CGRectMake(15, 10, 36, 30),
+                                               @"分类",
+                                               NSTextAlignmentLeft,
+                                               AWSystemFontWithSize(14, NO), [UIColor blackColor]);
+        [cell.contentView addSubview:categoryLabel];
+        
+        UILabel* selectTip = AWCreateLabel(CGRectMake(categoryLabel.right + 10,
+                                                      categoryLabel.top,
+                                                      _tableView.width - categoryLabel.right - 20,
+                                                      categoryLabel.height),
+                                           @"请选择分类",
+                                           NSTextAlignmentLeft,
+                                           AWSystemFontWithSize(14, NO), [UIColor blackColor]);
+        [cell.contentView addSubview:selectTip];
+        
+        _catalogLabel = selectTip;
+        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+}
+
+- (void)initSection2:(NSIndexPath *)indexPath forCell:(UITableViewCell *)cell
+{
+    UILabel* adLabel = AWCreateLabel(CGRectMake(15, 10, 36, 30),
+                                     @"地址",
+                                     NSTextAlignmentLeft,
+                                     AWSystemFontWithSize(14, NO), [UIColor blackColor]);
+    [cell.contentView addSubview:adLabel];
+    
+    CGRect frame = adLabel.frame;
+    frame.origin.x = adLabel.right + 10;
+    frame.size.width = _tableView.width - adLabel.right - 20;
+    
+    UILabel* locationLabel = AWCreateLabel(frame,
+                                           @"绿地世纪城",
+                                           NSTextAlignmentLeft,
+                                           AWSystemFontWithSize(14, NO), [UIColor blackColor]);
+    [cell.contentView addSubview:locationLabel];
+    _locationLabel = locationLabel;
+    
+    Location* loc = [[LBSManager sharedInstance] currentLocation];
+    [self configLocation:loc];
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+}
+
 - (void)hideKeyboard
 {
     [_currentTextView resignFirstResponder];
@@ -265,202 +522,6 @@
     return textField;
 }
 
-- (void)initSection1
-{
-    _sectionView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.contentView.width, 100)];
-    [_scrollView addSubview:_sectionView1];
-    _sectionView1.backgroundColor = [UIColor whiteColor];
-    [_sectionView1 release];
-    
-    // 添加标题
-    UITextField* titleField = [self createTextFieldWithFrame:CGRectMake(15, 5, _sectionView1.width - 30, 37)
-                                                         tag:1001
-                                                 placeholder:@"标题"
-                                                      inView:_sectionView1];
-    
-    // 加线
-    UIView* line = AWCreateLine(CGSizeMake(_sectionView1.width - 15, .6), AWColorFromRGB(207, 207, 207));
-    [_sectionView1 addSubview:line];
-    line.y = titleField.bottom + 5;
-    line.x = 15;
-    
-    // 添加描述
-    UITextView* introTextView = [[UITextView alloc] initWithFrame:CGRectMake(15, titleField.bottom + 10, titleField.width,
-                                                                             88)];
-    [_sectionView1 addSubview:introTextView];
-    [introTextView release];
-    
-    introTextView.delegate = self;
-    
-    introTextView.font = titleField.font;
-    
-    CGRect frame = introTextView.frame;
-    frame.size.height = 30;
-    frame.origin.y += 4;
-    UILabel* placeholder = AWCreateLabel(frame,
-                                         @"描述一下您的宝贝",
-                                         NSTextAlignmentLeft,
-                                         titleField.font, line.backgroundColor);
-    [_sectionView1 addSubview:placeholder];
-    
-    _introPlaceholderLabel = placeholder;
-    
-    introTextView.x -= 3;
-    introTextView.width += 6;
-    
-    // 添加图片
-    UIButton* addPhoto = AWCreateTextButton(CGRectMake(titleField.left, introTextView.bottom + 5, 60, 60), @"添加图片",
-                                            MAIN_LIGHT_GRAY_COLOR,
-                                            self,
-                                            @selector(addPhoto:));
-    [[addPhoto titleLabel] setFont:AWSystemFontWithSize(14, NO)];
-    [_sectionView1 addSubview:addPhoto];
-    
-    addPhoto.backgroundColor = MAIN_CONTENT_BG_COLOR;
-    
-    _sectionView1.height = addPhoto.bottom + 5;
-    
-    _scrollView.contentSize = CGSizeMake(_scrollView.width, _sectionView1.height);
-}
-
-- (void)initSection2
-{
-    _sectionView2 = [[UIView alloc] initWithFrame:CGRectMake(0, _sectionView1.bottom + SECTION_PADDING, self.contentView.width, 100)];
-    [_scrollView addSubview:_sectionView2];
-    _sectionView2.backgroundColor = [UIColor whiteColor];
-    [_sectionView2 release];
-    
-    // 租金
-    UILabel* priceLabel = AWCreateLabel(CGRectMake(15, 5, 36, 30),
-                                        @"租金",
-                                        NSTextAlignmentLeft,
-                                        AWSystemFontWithSize(14, NO), [UIColor blackColor]);
-    [_sectionView2 addSubview:priceLabel];
-    
-    UITextField* priceField = [self createTextFieldWithFrame:CGRectMake(priceLabel.right + 10, priceLabel.top,
-                                                                        _sectionView2.width - priceLabel.right - 20,
-                                                                        priceLabel.height)
-                                                         tag:1002
-                                                 placeholder:@"输入租金"
-                                                      inView:_sectionView2];
-    priceField.keyboardType = UIKeyboardTypeNumberPad;
-    
-    // 加线
-    UIView* line = AWCreateLine(CGSizeMake(_sectionView2.width - 15, .6), AWColorFromRGB(207, 207, 207));
-    [_sectionView2 addSubview:line];
-    line.y = priceField.bottom + 5;
-    line.x = 15;
-    
-    // 押金
-    CGRect frame = priceLabel.frame;
-    frame.origin.y = line.bottom + 5;
-    
-    UILabel* depositLabel = AWCreateLabel(frame,
-                                          @"押金",
-                                          NSTextAlignmentLeft,
-                                          AWSystemFontWithSize(14, NO), [UIColor blackColor]);
-    [_sectionView2 addSubview:depositLabel];
-    
-    UITextField* depositField = [self createTextFieldWithFrame:CGRectMake(depositLabel.right + 10,
-                                                                          depositLabel.top,
-                                                                          _sectionView2.width - depositLabel.right - 20,
-                                                                          depositLabel.height)
-                                                           tag:1003
-                                                   placeholder:@"输入押金"
-                                                        inView:_sectionView2];
-    depositField.keyboardType = UIKeyboardTypeNumberPad;
-    
-    // 加线
-    line = AWCreateLine(CGSizeMake(_sectionView2.width - 15, .6), AWColorFromRGB(207, 207, 207));
-    [_sectionView2 addSubview:line];
-    line.y = depositField.bottom + 5;
-    line.x = 15;
-    
-    // 分类
-    frame.origin.y = line.bottom + 5;
-    UILabel* categoryLabel = AWCreateLabel(frame,
-                                           @"分类",
-                                           NSTextAlignmentLeft,
-                                           AWSystemFontWithSize(14, NO), [UIColor blackColor]);
-    [_sectionView2 addSubview:categoryLabel];
-    
-    CGRect frame2 = categoryLabel.frame;
-    frame2.origin.x = categoryLabel.right + 10;
-    frame2.size.width = depositField.width;
-    
-    UILabel* selectTip = AWCreateLabel(frame2,
-                                       @"请选择分类",
-                                       NSTextAlignmentLeft,
-                                       AWSystemFontWithSize(14, NO), [UIColor blackColor]);
-    [_sectionView2 addSubview:selectTip];
-    
-    _catalogLabel = selectTip;
-    
-    UIImageView* arrowView = AWCreateImageView(@"cell_more_icon.png");
-    [_sectionView2 addSubview:arrowView];
-    arrowView.center = CGPointMake(_sectionView2.width - 15 - arrowView.width / 2, categoryLabel.midY);
-    
-    // 添加点击按钮
-    CGRect frame3 = selectTip.frame;
-    frame3.origin.x = 0;
-    frame3.size.width = _sectionView2.width;
-    
-    UIButton* categoryBtn = AWCreateImageButton(nil, self, @selector(changeCategory));
-    categoryBtn.frame = frame3;
-    [_sectionView2 addSubview:categoryBtn];
-    
-    // 更新高度
-    _sectionView2.height = categoryLabel.bottom + 5;
-    
-    _scrollView.contentSize = CGSizeMake(_scrollView.width, _sectionView2.height);
-}
-
-- (void)initSection3
-{
-    _sectionView3 = [[UIView alloc] initWithFrame:CGRectMake(0, _sectionView2.bottom + SECTION_PADDING, self.contentView.width, 100)];
-    [_scrollView addSubview:_sectionView3];
-    _sectionView3.backgroundColor = [UIColor whiteColor];
-    [_sectionView3 release];
-    
-    // 地址
-    UILabel* adLabel = AWCreateLabel(CGRectMake(15, 5, 36, 30),
-                                     @"地址",
-                                     NSTextAlignmentLeft,
-                                     AWSystemFontWithSize(14, NO), [UIColor blackColor]);
-    [_sectionView3 addSubview:adLabel];
-    
-    CGRect frame = adLabel.frame;
-    frame.origin.x = adLabel.right + 10;
-    frame.size.width = _sectionView3.width - adLabel.right - 20;
-    
-    UILabel* locationLabel = AWCreateLabel(frame,
-                                           @"绿地世纪城",
-                                           NSTextAlignmentLeft,
-                                           AWSystemFontWithSize(14, NO), [UIColor blackColor]);
-    [_sectionView3 addSubview:locationLabel];
-    _locationLabel = locationLabel;
-    
-    Location* loc = [[LBSManager sharedInstance] currentLocation];
-    [self configLocation:loc];
-    
-    UIImageView* arrowView = AWCreateImageView(@"cell_more_icon.png");
-    [_sectionView3 addSubview:arrowView];
-    arrowView.center = CGPointMake(_sectionView3.width - 15 - arrowView.width / 2, adLabel.midY);
-    
-    // 添加按钮
-    CGRect frame3 = adLabel.frame;
-    frame3.origin.x = 0;
-    frame3.size.width = _sectionView3.width;
-    
-    UIButton* changeAdInfo = AWCreateImageButton(nil, self, @selector(changeLocation));
-    changeAdInfo.frame = frame3;
-    [_sectionView3 addSubview:changeAdInfo];
-    
-    _sectionView3.height = locationLabel.bottom + 5;
-    
-    _scrollView.contentSize = CGSizeMake(_scrollView.width, _sectionView3.bottom + SECTION_PADDING);
-}
-
 - (void)configLocation:(Location *)loc
 {
     if ( loc ) {
@@ -468,6 +529,16 @@
         [self.itemData setObject:[loc locationString] forKey:@"location"];
         [self.itemData setObject:loc.placement forKey:@"placement"];
     }
+}
+
+- (void)resetForm
+{
+    _addPhotoButton.frame = CGRectMake(0, 0, [self thumbWidth], [self thumbWidth]);
+}
+
+- (CGFloat)thumbWidth
+{
+    return ( _tableView.width - 30 - ( NUMBER_OF_COLS_PER_ROW - 1 ) * SECTION_PADDING / 2) / NUMBER_OF_COLS_PER_ROW;
 }
 
 @end

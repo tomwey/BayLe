@@ -12,7 +12,10 @@
                     数据存储类
  *******************************************************/
 
-@class Location;
+FOUNDATION_EXTERN NSString * const PhotoAssetDidAddNotification;
+FOUNDATION_EXTERN NSString * const PhotoAssetDidRemoveNotification;
+
+@class Location, ALAsset;
 @interface DataManager : NSObject
 
 + (id)sharedInstance;
@@ -22,5 +25,20 @@
 
 - (void)saveTags:(NSArray *)tags;
 - (NSArray *)currentTags;
+
+// 保存图片
+- (BOOL)addPhotoAsset:(ALAsset *)asset;
+- (void)removePhotoAsset:(ALAsset *)asset;
+
+- (NSArray *)currentPhotoAssets;
+- (void)clearAllPhotoAssets;
+
+- (void)addAllPhotos;
+
+/** 返回当前已经添加的图片最新位置 */
+@property (nonatomic, assign, readonly) NSInteger currentThumbPosition;
+
+/** 返回总共需要添加的图片数量 */
+@property (nonatomic, assign, readonly) NSUInteger totalThumbs;
 
 @end

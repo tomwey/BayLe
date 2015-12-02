@@ -40,6 +40,8 @@
 #define TITLE_HEIGHT_FOR_PER_ITEM       25
 #define PRICE_HEIGHT_FOR_PER_ITEM       20
 
+#define THUMB_CONTAINER_HEIGHT 64
+
 // App亮色
 #define MAIN_RED_COLOR AWColorFromRGB(251, 64, 78)
 // 浅灰色
@@ -75,5 +77,6 @@
 // 第三方库
 #import <MAMapKit/MAMapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 #endif /* Defines_h */

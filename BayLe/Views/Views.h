@@ -14,5 +14,6 @@
 #import "PagerTabStripper.h"
 #import "ItemListView.h"
 #import "RefreshHeaderView.h"
+#import "ThumbView.h"
 
 #endif /* Views_h */

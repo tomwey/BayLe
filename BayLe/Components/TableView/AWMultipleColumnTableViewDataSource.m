@@ -13,6 +13,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    [tableView resetForGridLayout];
     return [self numberOfRows];
 }
 
@@ -47,8 +48,10 @@
     
     // 由于cell重用的缘故，需要删除脏数据
     if ( numberOfCols < self.numberOfItemsPerRow ) {
-        UIView* view = [cell.contentView viewWithTag:1000 + self.numberOfItemsPerRow - 1];
-        [view removeFromSuperview];
+        for (int i=numberOfCols; i<self.numberOfItemsPerRow; i++) {
+            UIView* view = [cell.contentView viewWithTag:1000 + i];
+            [view removeFromSuperview];
+        }
     }
     
     // 添加每一行的内容
@@ -64,7 +67,7 @@
             view.frame = CGRectMake(self.itemMargin + (itemWidth + self.itemSpacing) * i,
                                     self.offsetY,
                                     itemWidth,
-                                    self.itemSize.height);
+                                    self.itemSize.height == 0 ? itemWidth : self.itemSize.height);
         }
         
         NSInteger index = indexPath.row * self.numberOfItemsPerRow + i;

@@ -26,8 +26,16 @@
 /** 设置cell重用标识 */
 @property (nonatomic, copy) NSString* identifier;
 
+/** 设置当前表视图 */
+@property (nonatomic, assign) UITableView* tableView;
+
 - (instancetype)initWithArray:(NSArray *)dataSource cellClass:(NSString *)cellClassName identifier:(NSString *)identifier;
 + (instancetype)dataSourceWithArray:(NSArray *)dataSource cellClass:(NSString *)cellClassName identifier:(NSString *)identifier;
+
+/**
+ * 通知表格刷新
+ */
+- (void)notifyDataChanged;
 
 @end
 

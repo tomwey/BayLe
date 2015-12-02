@@ -20,5 +20,7 @@
 #import "SearchViewController.h"
 #import "ItemListViewController.h"
 #import "CatalogViewController.h"
+#import "AlbumListViewController.h"
+#import "PhotoListViewController.h"
 
 #endif /* Controllers_h */
