@@ -133,6 +133,7 @@ static int rows[] = { 2, 3, 1 };
 {
     NSString* identifier = [NSString stringWithFormat:@"cell.id.%d - %d", indexPath.section, indexPath.row];
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    //[tableView dequeueReusableCellWithIdentifier:identifier];
     if ( !cell ) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
         
@@ -156,7 +157,18 @@ static int rows[] = { 2, 3, 1 };
             default:
                 break;
         }
-        
+    }
+    
+    int lastRow = rows[indexPath.section] - 1;
+    if ( lastRow == 0 || indexPath.row < lastRow ) {
+        UIView* line = [cell.contentView viewWithTag:10011];
+        if ( !line ) {
+            line = AWCreateLine(CGSizeMake(_tableView.width - 15, 0.6),
+                                AWColorFromRGB(224, 224, 224));
+            line.tag = 10011;
+            [cell.contentView addSubview:line];
+            line.position = CGPointMake(15, cell.contentView.height + 5);
+        }
     }
     
     return cell;
@@ -189,7 +201,7 @@ static int rows[] = { 2, 3, 1 };
         
         int rows = ( [[[PhotoManager sharedInstance] allPhotoAssets] count] + 1 + NUMBER_OF_COLS_PER_ROW - 1 ) / NUMBER_OF_COLS_PER_ROW;
         
-        return 88 + 10 + rows * 60 + (rows - 1) * SECTION_PADDING / 2 + 10 + 25;
+        return 88 + 10 + rows * 60 + (rows + 1) * SECTION_PADDING / 2 + 10 + 20;
     }
     
     return 50;
@@ -453,7 +465,8 @@ static int rows[] = { 2, 3, 1 };
                                    self.contentView,
                                    self);
     _tableView.delegate = self;
-    _tableView.sectionHeaderHeight = 10;
+    
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)initSection0:(NSIndexPath *)indexPath forCell:(UITableViewCell *)cell
