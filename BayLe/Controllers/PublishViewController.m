@@ -9,36 +9,52 @@
 #import "PublishViewController.h"
 #import "Defines.h"
 
-@interface PublishViewController () <UITextFieldDelegate, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface PublishViewController () <UITextFieldDelegate, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, APIManagerDelegate>
 
+// 保存填入的数据
 @property (nonatomic, retain) NSMutableDictionary* itemData;
 
+// 记录表视图的初始状态
 @property (nonatomic, assign) CGPoint originContentOffset;
 @property (nonatomic, assign) UIEdgeInsets originContentInset;
+
+// 提交数据对象
+@property (nonatomic, retain) APIManager* postAPIManager;
 
 @end
 
 #define SECTION_PADDING 10
 #define NUMBER_OF_COLS_PER_ROW 4
 
+static NSString * const kParamKeyTitle = @"title";
+static NSString * const kParamKeyIntro = @"intro";
+static NSString * const kParamKeyFee = @"fee";
+static NSString * const kParamKeyDeposit = @"deposit";
+static NSString * const kParamKeyTagID = @"tag_id";
+static NSString * const kParamKeyLocation = @"location";
+static NSString * const kParamKeyPlacement = @"placement";
+
 @implementation PublishViewController
 {
 
-    UITextField* _currentField;
-    UITextView*  _currentTextView;
+    UITextField* _currentField; // 当前输入框
+    UITextView*  _currentTextView; // 描述
     
-    UILabel*     _catalogLabel;
-    UILabel*     _locationLabel;
+    UITextField* _titleField; // 标题
     
-    UILabel*     _introPlaceholderLabel;
+    UILabel*     _catalogLabel;  // 分类
+    UILabel*     _locationLabel; // 位置
+    
+    UITextField* _priceField; // 租金
+    UITextField* _depositField; // 押金
+    
+    UILabel*     _introPlaceholderLabel; // 描述提示
     
     UITableView* _tableView;
     
-    UIView*      _thumbImagesContainer;
+    UIView*      _thumbImagesContainer; // 保存选择的图片容器
     
-    UIButton*    _addPhotoButton;
-    
-    CGFloat      _currentThumbLeft;
+    UIButton*    _addPhotoButton; // 添加图片按钮
 }
 
 - (void)viewDidLoad
@@ -46,8 +62,6 @@
     [super viewDidLoad];
     
     self.title = @"发布";
-    
-    _currentThumbLeft = 0.0;
     
     self.itemData = [NSMutableDictionary dictionary];
     
@@ -195,6 +209,7 @@ static int rows[] = { 2, 3, 1 };
     
     if ( _currentField.tag == 1002 || _currentField.tag == 1003 ) {
         [_currentField resignFirstResponder];
+        _currentField = nil;
         
         [UIView animateWithDuration:.25 animations:^{
             _tableView.contentInset = self.originContentInset;
@@ -224,7 +239,7 @@ static int rows[] = { 2, 3, 1 };
             return;
         }
         
-        [self.itemData setObject:textFiled.text forKey:@"title"];
+        [self.itemData setObject:textFiled.text forKey:kParamKeyTitle];
     } else if ( textFiled.tag == 1002 ) {
         if ( textFiled.text.length == 1 &&
             [textFiled.text isEqualToString:@"0"]) {
@@ -232,7 +247,7 @@ static int rows[] = { 2, 3, 1 };
             [AWModalAlert say:@"不正确的数字" message:@""];
             return;
         }
-        [self.itemData setObject:@([textFiled.text integerValue]) forKey:@"fee"];
+        [self.itemData setObject:@([textFiled.text integerValue]) forKey:kParamKeyFee];
     } else if ( textFiled.tag == 1003 ) {
         if ( textFiled.text.length == 1 &&
             [textFiled.text isEqualToString:@"0"]) {
@@ -240,7 +255,7 @@ static int rows[] = { 2, 3, 1 };
             [AWModalAlert say:@"不正确的数字" message:@""];
             return;
         }
-        [self.itemData setObject:@([textFiled.text integerValue]) forKey:@"deposit"];
+        [self.itemData setObject:@([textFiled.text integerValue]) forKey:kParamKeyDeposit];
     }
     
 }
@@ -265,13 +280,76 @@ static int rows[] = { 2, 3, 1 };
         return;
     }
     
-    [self.itemData setObject:textView.text forKey:@"intro"];
+    [self.itemData setObject:textView.text forKey:kParamKeyIntro];
+}
+
+#pragma mark - APIManager delegate
+/** 网络请求开始 */
+- (void)apiManagerDidStart:(APIManager *)manager
+{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
+/** 网络请求完成 */
+- (void)apiManagerDidFinish:(APIManager *)manager
+{
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+/** 网络请求成功回调 */
+- (void)apiManagerDidSuccess:(APIManager *)manager
+{
+    [AWToast showText:@"发布成功"];
+    
+    [self resetForm];
+}
+
+/** 网络请求失败回调 */
+- (void)apiManagerDidFailure:(APIManager *)manager
+{
+    [AWToast showText:manager.apiError.message];
 }
 
 #pragma mark - Target Action methods
 - (void)commit
 {
+    if ( ![self validateFormData] ) {
+        return;
+    }
     
+    if ( !self.postAPIManager ) {
+        self.postAPIManager = [APIManager apiManagerWithDelegate:self];
+    }
+    
+    [self.postAPIManager cancelRequest];
+    
+    [self.itemData setObject:[[[UserManager sharedInstance] currentUser] token] forKey:@"token"];
+    
+    APIRequest* request = APIRequestCreate(API_CREATE_ITEM, RequestMethodPost, self.itemData);
+    
+    int index = 0;
+    NSMutableArray* fileParams = [NSMutableArray array];
+    for (ALAsset* asset in [[PhotoManager sharedInstance] allPhotoAssets]) {
+        
+        ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
+        
+        UIImage *fullScreenImage = [UIImage imageWithCGImage:[assetRepresentation fullScreenImage]
+                                                       scale:[assetRepresentation scale]
+                                                 orientation:UIImageOrientationUp];
+        
+        NSString* name = [NSString stringWithFormat:@"photo%d", index];
+        APIFileParam* fileParam = APIFileParamCreate(UIImageJPEGRepresentation(fullScreenImage, 0.8),
+                                                     name,
+                                                     @"image.jpg",
+                                                     @"image/jpeg");
+        [fileParams addObject:fileParam];
+        
+        index++;
+    }
+    
+    request.fileParams = fileParams;
+    
+    [self.postAPIManager sendRequest:request];
 }
 
 - (void)changeCategory
@@ -343,7 +421,7 @@ static int rows[] = { 2, 3, 1 };
 - (void)didSelectCatalog:(id)catalog
 {
     _catalogLabel.text = [catalog objectForKey:@"name"];
-    [self.itemData setObject:@([[catalog objectForKey:@"id"] integerValue]) forKey:@"tag_id"];
+    [self.itemData setObject:@([[catalog objectForKey:@"id"] integerValue]) forKey:kParamKeyTagID];
 }
 
 - (void)didSelectLocation:(Location *)aLocation
@@ -374,10 +452,10 @@ static int rows[] = { 2, 3, 1 };
     
     if ( indexPath.row == 0 ) {
         // 添加标题
-        [self createTextFieldWithFrame:CGRectMake(15, 7, _tableView.width - 30, 37)
-                                   tag:1001
-                           placeholder:@"标题"
-                                inView:cell.contentView];
+        _titleField = [self createTextFieldWithFrame:CGRectMake(15, 7, _tableView.width - 30, 37)
+                                                 tag:1001
+                                         placeholder:@"标题"
+                                              inView:cell.contentView];
     } else {
         // 添加描述
         UITextView* introTextView = [[UITextView alloc] initWithFrame:CGRectMake(15, 7,
@@ -387,6 +465,8 @@ static int rows[] = { 2, 3, 1 };
         [introTextView release];
         
         introTextView.delegate = self;
+        
+        _currentTextView = introTextView;
         
         introTextView.font = AWSystemFontWithSize(14, NO);
         
@@ -448,6 +528,8 @@ static int rows[] = { 2, 3, 1 };
                                                           inView:cell.contentView];
         priceField.keyboardType = UIKeyboardTypeNumberPad;
         
+        _priceField = priceField;
+        
     } else if ( indexPath.row == 1 ) {
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         // 押金
@@ -465,6 +547,8 @@ static int rows[] = { 2, 3, 1 };
                                                        placeholder:@"输入押金"
                                                             inView:cell.contentView];
         depositField.keyboardType = UIKeyboardTypeNumberPad;
+        
+        _depositField = depositField;
     } else if ( indexPath.row == 2 ) {
         // 分类
         UILabel* categoryLabel = AWCreateLabel(CGRectMake(15, 10, 36, 30),
@@ -547,14 +631,73 @@ static int rows[] = { 2, 3, 1 };
 {
     if ( loc ) {
         _locationLabel.text = loc.placement;
-        [self.itemData setObject:[loc locationString] forKey:@"location"];
-        [self.itemData setObject:loc.placement forKey:@"placement"];
+        [self.itemData setObject:[loc locationString] forKey:kParamKeyLocation];
+        [self.itemData setObject:loc.placement forKey:kParamKeyPlacement];
     }
 }
 
 - (void)resetForm
 {
+    _titleField.text = @"";
+    _currentTextView.text = @"";
+    
+    _introPlaceholderLabel.hidden = NO;
+    
+    _priceField.text = @"";
+    _depositField.text = @"";
+    
+    _catalogLabel.text = @"请选择分类";
+    
+    _locationLabel.text = [[[LBSManager sharedInstance] currentLocation] placement];
+    
+    _thumbImagesContainer.frame = CGRectMake(_currentTextView.left,
+                                             _currentTextView.bottom + 5,
+                                             _tableView.width - _currentTextView.left * 2,
+                                             60);
     _addPhotoButton.frame = CGRectMake(0, 0, [self thumbWidth], [self thumbWidth]);
+    
+    [self.itemData removeAllObjects];
+    [[PhotoManager sharedInstance] clearAllPhotoAssets];
+}
+
+- (BOOL)validateFormData
+{
+    if ( [[[PhotoManager sharedInstance] allPhotoAssets] count] == 0  ) {
+        [AWToast showText:@"至少需要一张图片"];
+        return NO;
+    }
+    
+    if ( [[self.itemData objectForKey:kParamKeyTitle] length] == 0 ) {
+        [AWToast showText:@"标题不能为空"];
+        return NO;
+    }
+    
+    if ( ![self.itemData objectForKey:kParamKeyFee] ) {
+        [AWToast showText:@"租金不能为空"];
+        return NO;
+    }
+    
+    if ( ![self.itemData objectForKey:kParamKeyDeposit] ) {
+        [AWToast showText:@"押金不能为空"];
+        return NO;
+    }
+    
+    if ( [[self.itemData objectForKey:kParamKeyIntro] length] == 0 ) {
+        [AWToast showText:@"描述不能为空"];
+        return NO;
+    }
+    
+    if ( ![self.itemData objectForKey:kParamKeyTagID] ) {
+        [AWToast showText:@"必须选择一个分类"];
+        return NO;
+    }
+    
+    if ( ![self.itemData objectForKey:kParamKeyLocation] ) {
+        [AWToast showText:@"位置不能为空"];
+        return NO;
+    }
+    
+    return YES;
 }
 
 - (CGFloat)thumbWidth

@@ -34,7 +34,10 @@
     
     self.titleLabel.text = [data objectForKey:@"title"];
     self.priceLabel.text = [data objectForKey:@"fee"];
-    self.distanceLabel.text = @"300m";
+    
+    // 解析距离
+    self.distanceLabel.text = LBSDistanceStringBetweenTwoLocations([[LBSManager sharedInstance] currentCLLocation],
+                                                                   LBSParseLocationForCoordinate([data objectForKey:@"location"]));
 }
 
 - (void)layoutSubviews

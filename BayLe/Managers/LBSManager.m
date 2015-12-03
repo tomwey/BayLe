@@ -26,7 +26,8 @@
 
 @property (nonatomic, copy) void (^POISearchCompletionBlock)(NSArray* locations, NSError* error);
 
-@property (nonatomic, retain) CLLocation* currentCLLocation;
+/** 保存当前最新的位置 */
+@property (nonatomic, retain, readwrite) CLLocation* currentCLLocation;
 
 @end
 
@@ -272,37 +273,3 @@ AW_SINGLETON_IMPL(LBSManager)
 
 @end
 
-@implementation Location
-
-- (id)initWithCity:(NSString *)city placement:(NSString *)placement
-{
-    if ( self = [super init] ) {
-        self.city = city;
-        self.placement = placement;
-    }
-    return self;
-}
-
-+ (id)locationWithCity:(NSString *)city placement:(NSString *)placement
-{
-    return [[[Location alloc] initWithCity:city placement:placement] autorelease];
-}
-
-- (void)dealloc
-{
-    self.city = nil;
-    self.placement = nil;
-    
-    [super dealloc];
-}
-
-@end
-
-@implementation Location (Wrapper)
-
-- (NSString *)locationString
-{
-    return [NSString stringWithFormat:@"%.06lf,%.06lf", self.coordinate.longitude, self.coordinate.latitude];
-}
-
-@end

@@ -132,7 +132,7 @@
     id data = [manager fetchDataWithReformer:[[[APIDictionaryReformer alloc] init] autorelease]];
     
     if ( [data count] == 0 ) {
-        [self.tableView showErrorOrEmptyMessage:@"喔，没有数据哦，快去创建吧！！！" reloadDelegate:nil];
+        [self.tableView showErrorOrEmptyMessage:@"喔，没有数据哦，快去创建吧！！！" reloadDelegate:self];
     } else {
         self.tableViewDataSource = AWMultipleColumnTableViewDataSourceCreate(data, nil, ItemCellReuseIdentifier);
         self.tableViewDataSource.numberOfItemsPerRow = COLS_PER_ROW_FOR_HOME_ITEM_LIST;
@@ -154,7 +154,7 @@
 
 - (void)reloadDataForErrorOrEmpty
 {
-    [self loadDataIfNeeded];
+    [self.tableView headerRefreshViewBeginRefreshing];
 }
 
 @end

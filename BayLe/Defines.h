@@ -11,7 +11,7 @@
 
 #pragma mark ------------------------------- 导入共用组件库    -------------------------------
 
-// 共用宏
+// 公共库
 #import "AWMacros.h"
 #import "AWUIUtils.h"
 #import "AWCustomTabBarController.h"
@@ -31,6 +31,8 @@
 #import "UIScrollView+AWRefresh.h"
 #import "AWModalAlert.h"
 #import "NSStringAdditions.h"
+#import "AWToast.h"
+#import "MBProgressHUD.h"
 
 #pragma mark ------------------------------- 跟项目相关的宏定义 -------------------------------
 
@@ -59,6 +61,7 @@
 /** 服务器API接口 **/
 #define API_TAGS @"/v1/tags.json"
 #define API_LOAD_ITEMS @"/v1/items/nearby.json"
+#define API_CREATE_ITEM @"/v1/items/create.json"
 
 #pragma mark ------------------------------- 下面是项目相关的库 -------------------------------
 

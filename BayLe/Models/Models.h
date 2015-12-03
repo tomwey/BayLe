@@ -10,5 +10,7 @@
 #define Models_h
 
 // 导入项目中模型头文件
+#import "Location.h"
+#import "User.h"
 
 #endif /* Models_h */

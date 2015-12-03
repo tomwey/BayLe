@@ -48,26 +48,38 @@ FOUNDATION_EXTERN NSString * const LBSManagerUserLocationDidChangeNotification;
 /** 返回当前用户位置信息 */
 @property (nonatomic, retain, readonly) Location* currentLocation;
 
+/** 返回当前最新的位置 */
+@property (nonatomic, retain, readonly) CLLocation* currentCLLocation;
+
 /** 返回定位过程中的错误，包括解析错误 */
 @property (nonatomic, retain, readonly) NSError* locationError;
 
 @end
 
-@interface Location : NSObject
+/**
+ * 获取两点之间的距离字符串
+ */
+static inline NSString* LBSDistanceStringBetweenTwoLocations(CLLocation *oneLocation, CLLocation *otherLocation) {
+    double distance = [oneLocation distanceFromLocation:otherLocation];
+    
+    NSString* distanceString = nil;
+    if ( distance >= 1000 ) {
+        distanceString = [NSString stringWithFormat:@"%.2fkm", distance / 1000.0];
+    } else {
+        distanceString = [NSString stringWithFormat:@"%.1fm", distance];
+    }
+    
+    return distanceString;
+};
 
-@property (nonatomic, copy) NSString* city;
-@property (nonatomic, copy) NSString* placement;
-@property (nonatomic, copy) NSString* address;
-@property (nonatomic, assign) CLLocationCoordinate2D coordinate;
+/**
+ * 解析坐标字符串成一个CLLocation对象
+ * @param location 位置经纬度字符串，格式为120.234443,45.0349494
+ */
+static inline CLLocation* LBSParseLocationForCoordinate(NSString* coordinateString) {
+    NSArray* locations = [coordinateString componentsSeparatedByString:@","];
+    CLLocation* location = [[[CLLocation alloc] initWithLatitude:[[locations lastObject] doubleValue]
+                                                       longitude:[[locations firstObject] doubleValue]] autorelease];
+    return location;
+};
 
-- (id)initWithCity:(NSString *)city placement:(NSString *)placement;
-+ (id)locationWithCity:(NSString *)city placement:(NSString *)placement;
-
-@end
-
-@interface Location (Wrapper)
-
-/** 返回位置格式化字符串，格式为：120.344444,65.012345 */
-- (NSString *)locationString;
-
-@end
