@@ -131,7 +131,7 @@ static int rows[] = { 2, 3, 1 };
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString* identifier = [NSString stringWithFormat:@"cell.id.%d", indexPath.section];
+    NSString* identifier = [NSString stringWithFormat:@"cell.id.%d - %d", indexPath.section, indexPath.row];
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if ( !cell ) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
@@ -183,11 +183,13 @@ static int rows[] = { 2, 3, 1 };
             return 50;
         }
         
-        if ( _thumbImagesContainer.height == 0 ) {
-            return 88 + 65 + 15;
+        if ( [[[PhotoManager sharedInstance] allPhotoAssets] count] == 0 ) {
+            return 88 + 10 + 10 + 60;
         }
         
-        return 88 + _thumbImagesContainer.height + 20;
+        int rows = ( [[[PhotoManager sharedInstance] allPhotoAssets] count] + 1 + NUMBER_OF_COLS_PER_ROW - 1 ) / NUMBER_OF_COLS_PER_ROW;
+        
+        return 88 + 10 + rows * 60 + (rows - 1) * SECTION_PADDING / 2 + 10 + 25;
     }
     
     return 50;
@@ -338,7 +340,7 @@ static int rows[] = { 2, 3, 1 };
                                                  orientation:UIImageOrientationUp];
         
         NSString* name = [NSString stringWithFormat:@"photo%d", index];
-        APIFileParam* fileParam = APIFileParamCreate(UIImageJPEGRepresentation(fullScreenImage, 0.8),
+        APIFileParam* fileParam = APIFileParamCreate(UIImageJPEGRepresentation(fullScreenImage, 1.0),
                                                      name,
                                                      @"image.jpg",
                                                      @"image/jpeg");
@@ -413,6 +415,14 @@ static int rows[] = { 2, 3, 1 };
         _addPhotoButton.hidden = NO;
     } else {
         _addPhotoButton.hidden = YES;
+    }
+    
+    if ( [tempPhotos count] == 0 ) {
+        _addPhotoButton.frame = CGRectMake(0, 0, 60, 60);
+        _thumbImagesContainer.frame = CGRectMake(_currentTextView.left,
+                                                 _currentTextView.bottom + 5,
+                                                 _tableView.width - _currentTextView.left * 2, 60);
+        
     }
     
     [_tableView reloadData];
@@ -492,7 +502,7 @@ static int rows[] = { 2, 3, 1 };
                                                                          60)];
         [cell.contentView addSubview:_thumbImagesContainer];
         [_thumbImagesContainer release];
-        
+//        _thumbImagesContainer.backgroundColor = [UIColor redColor];
         
         // 添加图片
         UIButton* addPhoto = AWCreateTextButton(CGRectMake(0, 0, 60, 60),
@@ -650,14 +660,23 @@ static int rows[] = { 2, 3, 1 };
     
     _locationLabel.text = [[[LBSManager sharedInstance] currentLocation] placement];
     
+    for (UIView* view in _thumbImagesContainer.subviews) {
+        if ( ![view isKindOfClass:[UIButton class]] ) {
+            [view removeFromSuperview];
+        }
+    }
+    
     _thumbImagesContainer.frame = CGRectMake(_currentTextView.left,
                                              _currentTextView.bottom + 5,
                                              _tableView.width - _currentTextView.left * 2,
-                                             60);
-    _addPhotoButton.frame = CGRectMake(0, 0, [self thumbWidth], [self thumbWidth]);
+                                             60 + 15);
+    _addPhotoButton.frame = CGRectMake(0, 0, 60, 60);
     
     [self.itemData removeAllObjects];
+    
     [[PhotoManager sharedInstance] clearAllPhotoAssets];
+    
+    [_tableView reloadData];
 }
 
 - (BOOL)validateFormData
