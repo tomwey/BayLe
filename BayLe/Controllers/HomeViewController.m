@@ -141,7 +141,7 @@
 //    NSLog(@"result: %@", [manager fetchDataWithReformer:nil]);
     NSArray* tags = [manager fetchDataWithReformer:[[[APIDictionaryReformer alloc] init] autorelease]];
 
-    [[DataManager sharedInstance] saveTags:tags];
+    [[DataStoreManager sharedInstance] saveTags:tags];
     
     [self updateTabStripperData];
     
@@ -157,7 +157,7 @@
 #pragma mark --- Private Methods ---
 - (void)updateTabStripperData
 {
-    self.tags = [[DataManager sharedInstance] currentTags];
+    self.tags = [[DataStoreManager sharedInstance] currentTags];
     
     NSMutableArray* titles = [NSMutableArray array];
     for (id obj in self.tags) {
@@ -170,7 +170,7 @@
 
 - (void)loadTagsData
 {
-    if ( [[[DataManager sharedInstance] currentTags] count] > 0 ) {
+    if ( [[[DataStoreManager sharedInstance] currentTags] count] > 0 ) {
         
         [self updateTabStripperData];
         

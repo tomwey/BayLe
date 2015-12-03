@@ -50,6 +50,9 @@
 // 背景颜色
 #define MAIN_CONTENT_BG_COLOR AWColorFromRGB(247, 247, 247)
 
+// 最大的图片上传数
+#define UPLOAD_MAX_COUNT 10
+
 // 高德地图API Key
 #define MAMAP_API_KEY @"14f062a0bc5bac1a8bfd247a8db0aac5"
 

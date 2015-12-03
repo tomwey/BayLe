@@ -24,7 +24,7 @@
     
     self.contentView.backgroundColor = MAIN_CONTENT_BG_COLOR;
     
-    self.title = [[DataManager sharedInstance] currentLocation].placement;
+    self.title = [[DataStoreManager sharedInstance] currentLocation].placement;
     
     UIButton* leftBtn = AWCreateTextButton(CGRectMake(0, 0, 40, 30),
                                            @"返回",
@@ -81,9 +81,9 @@
         listView.frame = pageView.bounds;
     }
     
-    NSArray* tags = [[DataManager sharedInstance] currentTags];
+    NSArray* tags = [[DataStoreManager sharedInstance] currentTags];
     
-    listView.location = [[DataManager sharedInstance] currentLocation];
+    listView.location = [[DataStoreManager sharedInstance] currentLocation];
     listView.tagID = [[[tags objectAtIndex:index] objectForKey:@"id"] integerValue];
     
     return cell;
@@ -122,7 +122,7 @@
     
     _tabStripper.hidden = YES;
     
-    NSArray* tags = [[DataManager sharedInstance] currentTags];
+    NSArray* tags = [[DataStoreManager sharedInstance] currentTags];
     NSMutableArray* titles = [NSMutableArray array];
     
     for (id obj in tags) {

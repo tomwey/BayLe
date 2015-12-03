@@ -21,12 +21,6 @@
 
 @end
 
-@interface ALAsset (CustomProperty)
-
-@property (nonatomic, assign) BOOL selected;
-
-@end
-
 @implementation PhotoView
 
 @synthesize iconImageView = _iconImageView;
@@ -47,7 +41,7 @@
 {
     self.asset = data;
     
-    self.asset.selected = [[[DataManager sharedInstance] currentPhotoAssets] containsObject:self.asset];
+    self.asset.selected = [[[PhotoManager sharedInstance] currentPhotoAssets] containsObject:self.asset];
     
     self.iconImageView.image = [UIImage imageWithCGImage:[self.asset thumbnail]];
     
@@ -89,16 +83,18 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
+    self.asset = nil;
+    
     [super dealloc];
 }
 
 - (void)tap
 {
     if ( self.selected ) {
-        [[DataManager sharedInstance] removePhotoAsset:self.asset];
+        [[PhotoManager sharedInstance] removePhotoAsset:self.asset];
         self.selected = NO;
     } else {
-        self.selected = [[DataManager sharedInstance] addPhotoAsset:self.asset];
+        self.selected = [[PhotoManager sharedInstance] addPhotoAsset:self.asset];
     }
     
     self.asset.selected = self.selected;
@@ -125,27 +121,9 @@
 
 @end
 
-@implementation ALAsset (CustomProperty)
+@implementation ALAsset (OverrideMethod)
 
-static char kSelectedValueKey;
-
-@dynamic selected;
-
-- (void)setSelected:(BOOL)selected
-{
-    objc_setAssociatedObject(self, &kSelectedValueKey, @(selected), OBJC_ASSOCIATION_ASSIGN);
-}
-
-- (BOOL)selected
-{
-    id val = objc_getAssociatedObject(self, &kSelectedValueKey);
-    if ( !val ) {
-        return NO;
-    }
-    
-    return [val boolValue];
-}
-
+// 重写isEqual方法
 - (BOOL)isEqual:(id)object
 {
     if ( ![object isKindOfClass:[ALAsset class]] ) {

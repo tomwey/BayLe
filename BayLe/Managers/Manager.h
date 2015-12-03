@@ -11,6 +11,7 @@
 
 #import "LBSManager.h"
 #import "UserManager.h"
-#import "DataManager.h"
+#import "DataStoreManager.h"
+#import "PhotoManager.h"
 
 #endif /* Manager_h */

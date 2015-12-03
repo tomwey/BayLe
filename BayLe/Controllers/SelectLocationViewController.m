@@ -118,7 +118,7 @@
                                                      [[[adInfo objectForKey:@"location"] objectForKey:@"lng"] doubleValue]);
     
     if ( self.shouldSearching ) {
-        [[DataManager sharedInstance] saveLocation:location];
+        [[DataStoreManager sharedInstance] saveLocation:location];
         [self gotoItemList];
     } else {
         if ( [self.delegate respondsToSelector:@selector(didSelectLocation:)] ) {

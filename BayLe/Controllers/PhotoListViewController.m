@@ -67,19 +67,13 @@
 
 - (void)loadPhotoData
 {
-    
-    NSMutableArray* assets = [NSMutableArray array];
-    ALAssetsGroupEnumerationResultsBlock resultsBlock = ^(ALAsset* result, NSUInteger index, BOOL *stop) {
-        if ( result ) {
-            [assets addObject:result];
+    [[PhotoManager sharedInstance] loadPhotosForAlbum:self.assetsGroup completion:^(NSArray *assets, NSError *error) {
+        if ( !error ) {
+            self.dataSource.dataSource = assets;
+            
+            [self.dataSource notifyDataChanged];
         }
-    };
-    [self.assetsGroup setAssetsFilter:[ALAssetsFilter allPhotos]];
-    [self.assetsGroup enumerateAssetsUsingBlock:resultsBlock];
-    
-    self.dataSource.dataSource = assets;
-    
-    [self.dataSource notifyDataChanged];
+    }];
 }
 
 - (void)back

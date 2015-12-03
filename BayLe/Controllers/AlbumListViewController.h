@@ -11,7 +11,7 @@
 @protocol AlbumListViewControllerDelegate <NSObject>
 
 @optional
-- (void)didAddPhotos:(NSArray *)photos;
+- (void)didPushPhotosToUse;
 
 @end
 @interface AlbumListViewController : BaseViewController

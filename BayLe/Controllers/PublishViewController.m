@@ -71,6 +71,10 @@
                                              selector:@selector(keyboardWillShow:)
                                                  name:UIKeyboardWillShowNotification
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didPushPhotosToUse)
+                                                 name:PhotoAssetDidRemoveNotification
+                                               object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -78,6 +82,7 @@
     [super viewWillDisappear:animated];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:PhotoAssetDidRemoveNotification object:nil];
 }
 
 - (void)keyboardWillShow:(NSNotification *)noti
@@ -293,26 +298,43 @@ static int rows[] = { 2, 3, 1 };
 }
 
 #pragma mark - Controller Delegate
-- (void)didAddPhotos:(NSArray *)photos
+- (void)didPushPhotosToUse
 {
-    CGFloat width = [self thumbWidth];
+    // 移除旧数据
+    for (UIView* subview in [_thumbImagesContainer subviews]) {
+        if ( ![subview isKindOfClass:[UIButton class]] ) {
+            [subview removeFromSuperview];
+        }
+    }
     
+    // 添加新数据
+    CGFloat width = [self thumbWidth];
     CGFloat top = SECTION_PADDING / 2;
     
-    for (int i=0; i<[photos count]; i++) {
+    NSArray* tempPhotos = [[PhotoManager sharedInstance] allPhotoAssets];
+    
+    for (int i=0; i<[tempPhotos count]; i++) {
         ThumbView* thumbView = [[[ThumbView alloc] init] autorelease];
         [_thumbImagesContainer addSubview:thumbView];
-        thumbView.asset = [photos objectAtIndex:i];
+        thumbView.asset = [tempPhotos objectAtIndex:i];
         
-        thumbView.frame = CGRectMake(( width + SECTION_PADDING / 2) * ( i % NUMBER_OF_COLS_PER_ROW ),
-                                     top + ( width + SECTION_PADDING / 2 ) * (int)(i / NUMBER_OF_COLS_PER_ROW),
-                                     width, width);
-        if ( i == [photos count] - 1 ) {
-            _addPhotoButton.frame = CGRectMake(thumbView.right + SECTION_PADDING / 2, thumbView.top + 11, thumbView.height - 11,
-                                               thumbView.height - 11);
-//            _addPhotoButton.x = thumbView.right + SECTION_PADDING / 2;
-            _thumbImagesContainer.height = thumbView.bottom + SECTION_PADDING / 2;
+        CGFloat dtx = ( width + SECTION_PADDING / 2) * ( (int)( i % NUMBER_OF_COLS_PER_ROW ) );
+        CGFloat dty = ( top + ( width + SECTION_PADDING / 2 ) * (int)(i / NUMBER_OF_COLS_PER_ROW) );
+        thumbView.frame = CGRectMake(dtx, dty, width, width);
+        
+        if ( i == [tempPhotos count] - 1 ) {
+            CGFloat btx = ( width + SECTION_PADDING / 2) * ( (int)( ( i + 1 ) % NUMBER_OF_COLS_PER_ROW ) );
+            CGFloat bty = ( top + ( width + SECTION_PADDING / 2 ) * (int)( ( i + 1 ) / NUMBER_OF_COLS_PER_ROW) );
+            
+            _addPhotoButton.frame = CGRectMake(btx, bty + 11, thumbView.height - 11, thumbView.height - 11);
+            _thumbImagesContainer.height = _addPhotoButton.bottom + SECTION_PADDING / 2;
         }
+    }
+    
+    if ( [tempPhotos count] < UPLOAD_MAX_COUNT ) {
+        _addPhotoButton.hidden = NO;
+    } else {
+        _addPhotoButton.hidden = YES;
     }
     
     [_tableView reloadData];
@@ -506,7 +528,6 @@ static int rows[] = { 2, 3, 1 };
     [containerView addSubview:textField];
     [textField release];
     
-//    textField.delegate = self;
     textField.returnKeyType = UIReturnKeyDone;
     
     textField.tag = tag;

@@ -12,7 +12,6 @@
 @interface AlbumListViewController () <UITableViewDelegate>
 
 @property (nonatomic, retain) AWTableViewDataSource* dataSource;
-@property (nonatomic, retain) ALAssetsLibrary* assetsLibrary;
 
 @end
 @implementation AlbumListViewController
@@ -28,7 +27,6 @@
 - (void)dealloc
 {
     self.dataSource = nil;
-    self.assetsLibrary = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
@@ -96,6 +94,7 @@
 - (void)didRemovePhoto:(NSNotification *)noti
 {
     ALAsset* asset = (ALAsset *)noti.object;
+    
     [[_thumbsContainer viewWithTag:1000 + asset.index] removeFromSuperview];
     
     // 更新剩下元素的位置
@@ -116,8 +115,6 @@
     contentSize.width -= 65;
     _thumbsContainer.contentSize = contentSize;
     
-//    [_thumbsContainer scrollRectToVisible:[_thumbsContainer viewWithTag:1000 + _currentThumbPosition - 1].frame animated:YES];
-    
     [self updateTotalLabel];
 }
 
@@ -132,7 +129,7 @@
         _totalLabel.backgroundColor = [UIColor grayColor];
         _totalLabel.textColor = [UIColor whiteColor];
     }
-    _totalLabel.text = [NSString stringWithFormat:@"确定\n%d/%d", _currentThumbPosition, [[DataManager sharedInstance] totalThumbs]];
+    _totalLabel.text = [NSString stringWithFormat:@"确定\n%d/%d", _currentThumbPosition, [[PhotoManager sharedInstance] totalThumbs]];
 }
 
 - (void)initThumbsContainer
@@ -176,47 +173,25 @@
 
 - (void)addPhotos
 {
-    if ( [self.delegate respondsToSelector:@selector(didAddPhotos:)] ) {
-        [self.delegate didAddPhotos:[NSArray arrayWithArray:[[DataManager sharedInstance] currentPhotoAssets]]];
-    }
+    [[PhotoManager sharedInstance] pushPhotosToUse];
     
-    [[DataManager sharedInstance] addAllPhotos];
+    if ( [self.delegate respondsToSelector:@selector(didPushPhotosToUse)] ) {
+        [self.delegate didPushPhotosToUse];
+    }
     
     [self close];
 }
 
 - (void)loadAlbumData
 {
-    if ( !self.assetsLibrary ) {
-        self.assetsLibrary = [[[ALAssetsLibrary alloc] init] autorelease];
-    }
-    
-    ALAssetsLibraryAccessFailureBlock failureBlock = ^(NSError *error) {
-        if ( [error code] == ALAssetsLibraryAccessGloballyDeniedError ||
-            [error code] == ALAssetsLibraryAccessUserDeniedError ) {
+    [[PhotoManager sharedInstance] loadAlbumList:^(NSArray *groups, NSError *error) {
+        if (!error) {
+            self.dataSource.dataSource = groups;
+            [_tableView reloadData];
+        } else {
             [AWModalAlert say:@"没有访问权限，请到设置中打开权限。" message: @""];
         }
-        
-        NSLog(@"error: %@", error);
-    };
-    
-    NSMutableArray* groups = [NSMutableArray array];
-    ALAssetsLibraryGroupsEnumerationResultsBlock listGroupBlock = ^(ALAssetsGroup* group, BOOL *stop) {
-        ALAssetsFilter* onlyPhotosFilter = [ALAssetsFilter allPhotos];
-        [group setAssetsFilter:onlyPhotosFilter];
-        
-        if ( [group numberOfAssets] > 0 ) {
-            [groups addObject:group];
-        } else {
-            self.dataSource.dataSource = groups;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [_tableView reloadData];
-            });
-        }
-    };
-    
-    NSUInteger groupTypes = ALAssetsGroupAlbum | ALAssetsGroupSavedPhotos | ALAssetsGroupEvent | ALAssetsGroupFaces;
-    [self.assetsLibrary enumerateGroupsWithTypes:groupTypes usingBlock:listGroupBlock failureBlock:failureBlock];
+    }];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

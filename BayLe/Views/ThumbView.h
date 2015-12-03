@@ -15,8 +15,3 @@
 
 @end
 
-@interface ALAsset (Index)
-
-@property (nonatomic, assign) NSUInteger index;
-
-@end

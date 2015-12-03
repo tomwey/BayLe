@@ -16,7 +16,7 @@
 		971E5F961C0D269C00F637C6 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5F951C0D269C00F637C6 /* SearchViewController.m */; };
 		971E5F981C0D299800F637C6 /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 971E5F971C0D299800F637C6 /* AMap.bundle */; };
 		971E5FA11C0D408C00F637C6 /* POICell.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5FA01C0D408C00F637C6 /* POICell.m */; };
-		971E5FA41C0D564500F637C6 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5FA31C0D564500F637C6 /* DataManager.m */; };
+		971E5FA41C0D564500F637C6 /* DataStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5FA31C0D564500F637C6 /* DataStoreManager.m */; };
 		971E5FA71C0D5A3D00F637C6 /* ItemListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5FA61C0D5A3D00F637C6 /* ItemListViewController.m */; };
 		971E5FAA1C0D7D6400F637C6 /* TextInputComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5FA91C0D7D6400F637C6 /* TextInputComponent.m */; };
 		971E5FAD1C0E733E00F637C6 /* AlbumListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5FAC1C0E733E00F637C6 /* AlbumListViewController.m */; };
@@ -44,6 +44,7 @@
 		9734C32D1BFD750D005E0E5E /* AWCustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C32C1BFD750D005E0E5E /* AWCustomTabBarController.m */; };
 		9734C3301BFD895F005E0E5E /* UITabBarController+CustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C32F1BFD895F005E0E5E /* UITabBarController+CustomTabBar.m */; };
 		977666D81C0EC89000A44853 /* ThumbView.m in Sources */ = {isa = PBXBuildFile; fileRef = 977666D71C0EC89000A44853 /* ThumbView.m */; };
+		977666DB1C0FD05A00A44853 /* PhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 977666DA1C0FD05A00A44853 /* PhotoManager.m */; };
 		97BD119A1BFDAD5D00641C79 /* AWUIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11991BFDAD5D00641C79 /* AWUIUtils.m */; };
 		97BD11A01BFDAF6300641C79 /* UIWindowAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD119F1BFDAF6300641C79 /* UIWindowAdditions.m */; };
 		97BD11A71BFDB69100641C79 /* UIImageAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11A21BFDB69100641C79 /* UIImageAdditions.m */; };
@@ -136,8 +137,8 @@
 		971E5F971C0D299800F637C6 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap.bundle; sourceTree = "<group>"; };
 		971E5F9F1C0D408C00F637C6 /* POICell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POICell.h; sourceTree = "<group>"; };
 		971E5FA01C0D408C00F637C6 /* POICell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POICell.m; sourceTree = "<group>"; };
-		971E5FA21C0D564500F637C6 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
-		971E5FA31C0D564500F637C6 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		971E5FA21C0D564500F637C6 /* DataStoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStoreManager.h; sourceTree = "<group>"; };
+		971E5FA31C0D564500F637C6 /* DataStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStoreManager.m; sourceTree = "<group>"; };
 		971E5FA51C0D5A3D00F637C6 /* ItemListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemListViewController.h; sourceTree = "<group>"; };
 		971E5FA61C0D5A3D00F637C6 /* ItemListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemListViewController.m; sourceTree = "<group>"; };
 		971E5FA81C0D7D6400F637C6 /* TextInputComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextInputComponent.h; sourceTree = "<group>"; };
@@ -196,6 +197,8 @@
 		9734C32F1BFD895F005E0E5E /* UITabBarController+CustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+CustomTabBar.m"; sourceTree = "<group>"; };
 		977666D61C0EC89000A44853 /* ThumbView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbView.h; sourceTree = "<group>"; };
 		977666D71C0EC89000A44853 /* ThumbView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbView.m; sourceTree = "<group>"; };
+		977666D91C0FD05A00A44853 /* PhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoManager.h; sourceTree = "<group>"; };
+		977666DA1C0FD05A00A44853 /* PhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoManager.m; sourceTree = "<group>"; };
 		97BD11981BFDAD5D00641C79 /* AWUIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWUIUtils.h; sourceTree = "<group>"; };
 		97BD11991BFDAD5D00641C79 /* AWUIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWUIUtils.m; sourceTree = "<group>"; };
 		97BD119E1BFDAF6300641C79 /* UIWindowAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIWindowAdditions.h; sourceTree = "<group>"; };
@@ -368,13 +371,15 @@
 		971E5F861C0BE2FE00F637C6 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				971E5F8A1C0BE32600F637C6 /* Manager.h */,
 				971E5F871C0BE31C00F637C6 /* LBSManager.h */,
 				971E5F881C0BE31C00F637C6 /* LBSManager.m */,
-				971E5F8A1C0BE32600F637C6 /* Manager.h */,
 				971E5F8B1C0C2D7600F637C6 /* UserManager.h */,
 				971E5F8C1C0C2D7600F637C6 /* UserManager.m */,
-				971E5FA21C0D564500F637C6 /* DataManager.h */,
-				971E5FA31C0D564500F637C6 /* DataManager.m */,
+				971E5FA21C0D564500F637C6 /* DataStoreManager.h */,
+				971E5FA31C0D564500F637C6 /* DataStoreManager.m */,
+				977666D91C0FD05A00A44853 /* PhotoManager.h */,
+				977666DA1C0FD05A00A44853 /* PhotoManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1034,7 +1039,7 @@
 				97BD12071BFDCEF900641C79 /* AFURLResponseSerialization.m in Sources */,
 				9734C3051BFD638F005E0E5E /* AWLocale.m in Sources */,
 				9734C3121BFD650D005E0E5E /* NSStringAdditions.m in Sources */,
-				971E5FA41C0D564500F637C6 /* DataManager.m in Sources */,
+				971E5FA41C0D564500F637C6 /* DataStoreManager.m in Sources */,
 				971E5F891C0BE31C00F637C6 /* LBSManager.m in Sources */,
 				9930B5FF1BFE0A9300A109F2 /* BaseViewController.m in Sources */,
 				97BD12311C02BD6700641C79 /* AWPageView.m in Sources */,
@@ -1069,6 +1074,7 @@
 				97BD12021BFDCEF900641C79 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				97BD15341C03FDA900641C79 /* APIManager.m in Sources */,
 				97BD153A1C04011F00641C79 /* APIRequest.m in Sources */,
+				977666DB1C0FD05A00A44853 /* PhotoManager.m in Sources */,
 				971E5FAA1C0D7D6400F637C6 /* TextInputComponent.m in Sources */,
 				97BD11C61BFDC2F300641C79 /* AWButton.m in Sources */,
 				97BD11C21BFDC2F300641C79 /* AWCustomNavBar.m in Sources */,

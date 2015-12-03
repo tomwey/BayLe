@@ -42,7 +42,7 @@
     
     tableView.delegate = self;
     
-    NSArray* tags = [[DataManager sharedInstance] currentTags];
+    NSArray* tags = [[DataStoreManager sharedInstance] currentTags];
     self.dataSource.dataSource = tags;
     
     [tableView reloadData];
@@ -52,7 +52,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    id catalog = [[[DataManager sharedInstance] currentTags] objectAtIndex:indexPath.row];
+    id catalog = [[[DataStoreManager sharedInstance] currentTags] objectAtIndex:indexPath.row];
     
     if ( [self.delegate respondsToSelector:@selector(didSelectCatalog:)] ) {
         [self.delegate didSelectCatalog:catalog];

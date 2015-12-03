@@ -41,9 +41,9 @@
 
 - (void)delete
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"kThumbViewDidTap2Delete" object:self];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"kThumbViewDidTap2Delete" object:self];
     
-    [[DataManager sharedInstance] removePhotoAsset:self.asset];
+    [[PhotoManager sharedInstance] removePhotoAsset:self.asset];
 }
 
 - (void)layoutSubviews
@@ -56,27 +56,6 @@
                                   _deleteButton.center.y,
                                   self.width - _deleteButton.width / 2,
                                   self.height - _deleteButton.height / 2);
-}
-
-@end
-
-@implementation ALAsset (Index)
-
-static char kAssetIndexKey;
-
-- (void)setIndex:(NSUInteger)index
-{
-    objc_setAssociatedObject(self, &kAssetIndexKey, @(index), OBJC_ASSOCIATION_ASSIGN);
-}
-
-- (NSUInteger)index
-{
-    id obj = objc_getAssociatedObject(self, &kAssetIndexKey);
-    if ( !obj ) {
-        return 0;
-    }
-    
-    return [obj integerValue];
 }
 
 @end
