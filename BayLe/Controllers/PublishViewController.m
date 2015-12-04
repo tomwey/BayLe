@@ -65,7 +65,7 @@ static NSString * const kParamKeyPlacement = @"placement";
     
     self.itemData = [NSMutableDictionary dictionary];
     
-    UIButton* rightBtn = AWCreateTextButton(CGRectMake(0, 0, 40, 33), @"提交", [UIColor whiteColor], self, @selector(commit));
+    UIButton* rightBtn = AWCreateTextButton(CGRectMake(0, 0, 40, 33), @"提交", NAVBAR_HIGHLIGHT_TEXT_COLOR, self, @selector(commit));
     [[rightBtn titleLabel] setFont:AWSystemFontWithSize(14, NO)];
     self.navBar.rightButton = rightBtn;
     
@@ -160,7 +160,7 @@ static int rows[] = { 2, 3, 1 };
     }
     
     int lastRow = rows[indexPath.section] - 1;
-    if ( lastRow == 0 || indexPath.row < lastRow ) {
+    if ( indexPath.row < lastRow ) {
         UIView* line = [cell.contentView viewWithTag:10011];
         if ( !line ) {
             line = AWCreateLine(CGSizeMake(_tableView.width - 15, 0.6),
@@ -201,7 +201,7 @@ static int rows[] = { 2, 3, 1 };
         
         int rows = ( [[[PhotoManager sharedInstance] allPhotoAssets] count] + 1 + NUMBER_OF_COLS_PER_ROW - 1 ) / NUMBER_OF_COLS_PER_ROW;
         
-        return 88 + 10 + rows * 60 + (rows + 1) * SECTION_PADDING / 2 + 10 + 20;
+        return 88 + 10 + rows * 60 + (rows + 1) * SECTION_PADDING / 2 + 10 + 10;
     }
     
     return 50;
@@ -467,6 +467,8 @@ static int rows[] = { 2, 3, 1 };
     _tableView.delegate = self;
     
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    _tableView.backgroundColor = [UIColor clearColor];
 }
 
 - (void)initSection0:(NSIndexPath *)indexPath forCell:(UITableViewCell *)cell

@@ -46,11 +46,36 @@
 
 // App亮色
 #define MAIN_RED_COLOR AWColorFromRGB(251, 64, 78)
+
+#define MAIN_GRAY_COLOR AWColorFromRGB(69, 73, 76)
+
+#define IS_LIGHT_CONTENT_STATUS_BAR 1
+
+#if IS_LIGHT_CONTENT_STATUS_BAR
+
+#define NAVBAR_BG_COLOR             MAIN_RED_COLOR
+#define NAVBAR_TEXT_COLOR           [UIColor whiteColor]
+#define NAVBAR_HIGHLIGHT_TEXT_COLOR NAVBAR_TEXT_COLOR
+
+#else
+
+#define NAVBAR_BG_COLOR             [UIColor whiteColor]
+#define NAVBAR_TEXT_COLOR           MAIN_GRAY_COLOR
+#define NAVBAR_HIGHLIGHT_TEXT_COLOR MAIN_RED_COLOR
+
+#endif
+
 // 浅灰色
 #define MAIN_LIGHT_GRAY_COLOR [UIColor lightGrayColor]
 
 // 背景颜色
-#define MAIN_CONTENT_BG_COLOR AWColorFromRGB(247, 247, 247)
+#define MAIN_CONTENT_BG_COLOR AWColorFromRGB(235, 236, 237)
+
+// 主要的文字颜色
+#define MAIN_TITLE_TEXT_COLOR MAIN_GRAY_COLOR
+
+// 此主要的文字颜色
+#define MAIN_SUBTITLE_TEXT_COLOR AWColorFromRGB(111, 117, 117)
 
 // 最大的图片上传数
 #define UPLOAD_MAX_COUNT 10

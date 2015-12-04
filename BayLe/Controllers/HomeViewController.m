@@ -80,7 +80,7 @@
         
     }];
     
-    [self loadTagsData];
+//    [self loadTagsData];
 }
 
 #pragma mark --- Target Action Methods ---
@@ -152,6 +152,7 @@
 - (void)apiManagerDidFailure:(APIManager *)manager
 {
     NSLog(@"error: %@", manager.apiError);
+    [AWToast showText:manager.apiError.message];
 }
 
 #pragma mark --- Private Methods ---
@@ -208,7 +209,7 @@
     [self.contentView addSubview:tabStripper];
     tabStripper.frame = CGRectMake(0, 0, AWFullScreenWidth(), 37);
     
-    tabStripper.titleColor = MAIN_LIGHT_GRAY_COLOR;
+    tabStripper.titleColor = MAIN_TITLE_TEXT_COLOR;
     tabStripper.titleFont  = [UIFont systemFontOfSize:14];
     
     tabStripper.selectedIndicatorSize = 1.1;
@@ -226,7 +227,7 @@
 - (void)setupRightButton
 {
     self.navBar.rightButton = AWCreateImageButton(nil, self, @selector(gotoSearch));
-    self.navBar.rightButton.tintColor = [UIColor whiteColor];
+    self.navBar.rightButton.tintColor = NAVBAR_HIGHLIGHT_TEXT_COLOR;
     [self.navBar.rightButton setImage:
      [[UIImage imageNamed:@"tab_search_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [self.navBar.rightButton sizeToFit];
@@ -243,7 +244,7 @@
                                    nil,
                                    NSTextAlignmentCenter,
                                    AWSystemFontWithSize(15, YES),
-                                   [UIColor whiteColor]);
+                                   NAVBAR_TEXT_COLOR);
     [titleView addSubview:_locationLabel];
     
     _locationLabel.text = @"定位中...";
@@ -252,7 +253,9 @@
     _caret = [[[AWCaret alloc] init] autorelease];
     [titleView addSubview:_caret];
     _caret.frame = CGRectMake(0, 0, 8, 4);
+    _caret.fillColor = _locationLabel.textColor;
     _caret.center = CGPointMake(titleView.width / 2, _locationLabel.bottom - 5);
+//    _caret.fillColor = _locationLabel.textColor;
     
     // 添加位置切换按钮
     UIButton* changeLocationBtn = AWCreateImageButton(nil, self, @selector(changeLocation));

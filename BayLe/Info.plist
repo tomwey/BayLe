@@ -47,5 +47,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>privacy - location usage description</key>
+	<string>《贝乐》需要使用您的地理位置，以便使用里面的各项功能。</string>
 </dict>
 </plist>

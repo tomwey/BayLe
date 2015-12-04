@@ -51,6 +51,12 @@ AW_SINGLETON_IMPL(LBSManager)
 {
     if ( !self.locationManager ) {
         self.locationManager = [[[CLLocationManager alloc] init] autorelease];
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        self.locationManager.distanceFilter = kCLDistanceFilterNone;
+        if ( [self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)] ) {
+            [self.locationManager requestWhenInUseAuthorization];
+        }
+        [self.locationManager startMonitoringSignificantLocationChanges];
     }
     
     if ( !self.locationManager.delegate ) {

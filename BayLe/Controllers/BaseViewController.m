@@ -30,13 +30,14 @@
     
     self.navigationController.navigationBarHidden = YES;
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor =
+    self.contentView.backgroundColor = MAIN_CONTENT_BG_COLOR;
     
     // 添加自定义导航条
     if ( !self.navBarHidden ) {
         self.navBar = [[[AWCustomNavBar alloc] init] autorelease];
         [self.view addSubview:self.navBar];
-        self.navBar.backgroundColor = MAIN_RED_COLOR;
+        self.navBar.backgroundColor = NAVBAR_BG_COLOR;
     }
     
     // 添加内容视图
@@ -94,6 +95,7 @@
 - (void)setTitle:(NSString *)title
 {
     self.navBar.title = title;
+    self.navBar.titleLabel.textColor = NAVBAR_TEXT_COLOR;
 }
 
 + (UIViewController *)viewControllerWithClassName:(NSString *)className
