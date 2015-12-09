@@ -7,7 +7,7 @@
 //
 
 #import "AWMultipleColumnTableViewDataSource.h"
-#import "RemoveBackground.h"
+#import "UITableViewCell+RemoveBackground.h"
 
 @implementation AWMultipleColumnTableViewDataSource
 

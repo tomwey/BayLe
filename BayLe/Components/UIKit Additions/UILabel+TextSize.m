@@ -6,7 +6,7 @@
 //  Copyright © 2015年 tangwei1. All rights reserved.
 //
 
-#import "UILabelTextSize.h"
+#import "UILabel+TextSize.h"
 
 @implementation UILabel (TextSize)
 

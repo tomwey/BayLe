@@ -6,7 +6,7 @@
 //  Copyright © 2015年 tangwei1. All rights reserved.
 //
 
-#import "LoadEmptyOrErrorHandle.h"
+#import "UITableView+LoadEmptyOrErrorHandle.h"
 #import <objc/runtime.h>
 
 @implementation UITableView (LoadEmptyOrErrorHandle)

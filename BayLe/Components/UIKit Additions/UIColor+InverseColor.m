@@ -6,7 +6,7 @@
 //  Copyright © 2015年 tangwei1. All rights reserved.
 //
 
-#import "InverseColor.h"
+#import "UIColor+InverseColor.h"
 
 @implementation UIColor (InverseColor)
 

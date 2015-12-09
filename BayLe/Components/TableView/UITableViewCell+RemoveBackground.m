@@ -6,7 +6,7 @@
 //  Copyright © 2015年 tangwei1. All rights reserved.
 //
 
-#import "RemoveBackground.h"
+#import "UITableViewCell+RemoveBackground.h"
 
 @implementation UITableViewCell (RemoveBackground)
 
