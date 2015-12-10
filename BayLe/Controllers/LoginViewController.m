@@ -17,7 +17,12 @@
     
     self.title = @"快捷登录";
     
-    self.navBar.leftButton = AWCreateImageButton(@"cancel", self, @selector(back));
+    UIButton* leftBtn = AWCreateImageButton(nil, self, @selector(back));
+    UIImage* image = [[UIImage imageNamed:@"cancel"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [leftBtn setImage:image forState:UIControlStateNormal];
+    leftBtn.tintColor = NAVBAR_HIGHLIGHT_TEXT_COLOR;
+    self.navBar.leftButton = leftBtn;
+    
 }
 
 - (void)back

@@ -36,6 +36,13 @@ typedef UIImageView CustomTabBar;
  */
 - (BOOL)shouldShowViewController:(UIViewController *)viewController;
 
+/**
+ * 是否应该显示某个索引对应的页面，一般用于需要用户登录才能打开的页面
+ *
+ * @param index 需要显示的页面索引
+ */
+- (BOOL)shouldShowViewControllerForIndex:(NSInteger)index;
+
 @end
 
 @interface AWCustomTabBarController : UITabBarController

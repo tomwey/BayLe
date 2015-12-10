@@ -14,6 +14,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     [tableView resetForGridLayout];
+    self.tableView = tableView;
     return [self numberOfRows];
 }
 
@@ -55,7 +56,7 @@
     }
     
     // 添加每一行的内容
-    CGFloat itemWidth = ( CGRectGetWidth(cell.bounds) - ( self.itemMargin * 2 + ( self.numberOfItemsPerRow - 1 ) * self.itemSpacing ) ) / self.numberOfItemsPerRow;
+    CGFloat itemWidth = ( CGRectGetWidth(self.tableView.frame) - ( self.itemMargin * 2 + ( self.numberOfItemsPerRow - 1 ) * self.itemSpacing ) ) / self.numberOfItemsPerRow;
     for (int i=0; i<numberOfCols; i++) {
         
         UIView<AWTableDataConfig>* view = [cell.contentView viewWithTag:1000 + i];

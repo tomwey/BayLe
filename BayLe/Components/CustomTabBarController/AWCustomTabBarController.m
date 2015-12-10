@@ -175,8 +175,12 @@
 {
     BOOL allowShow = YES;
     
-    if ( [self.customTabBarDelegate respondsToSelector:@selector(shouldShowViewController:)] ) {
-        allowShow = [self.customTabBarDelegate shouldShowViewController:self.currentViewControllers[viewHolder.index]];
+    if ( [self.customTabBarDelegate respondsToSelector:@selector(customTabBar:didSelectAtIndex:)] ) {
+        [self.customTabBarDelegate customTabBar:self.customTabBar didSelectAtIndex:viewHolder.index];
+    }
+    
+    if ( [self.customTabBarDelegate respondsToSelector:@selector(shouldShowViewControllerForIndex:)] ) {
+        allowShow = [self.customTabBarDelegate shouldShowViewControllerForIndex:viewHolder.index];
     }
     
     if ( !allowShow ) {
@@ -190,10 +194,6 @@
     viewHolder.selected = YES;
     
     self.selectedIndex = viewHolder.index;
-    
-    if ( [self.customTabBarDelegate respondsToSelector:@selector(customTabBar:didSelectAtIndex:)] ) {
-        [self.customTabBarDelegate customTabBar:self.customTabBar didSelectAtIndex:viewHolder.index];
-    }
 }
 
 @end

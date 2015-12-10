@@ -18,7 +18,7 @@ AW_SINGLETON_IMPL(UserManager)
  */
 - (BOOL)isLogin
 {
-    return YES;//[[NSUserDefaults standardUserDefaults] boolForKey:@"user.login.v1"];
+    return NO;//[[NSUserDefaults standardUserDefaults] boolForKey:@"user.login.v1"];
 }
 
 /**

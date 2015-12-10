@@ -62,6 +62,7 @@
 //        refreshControl.tintColor = MAIN_RED_COLOR;
         
         self.dataSource = [NSMutableArray array];
+        
         self.tableViewDataSource = AWMultipleColumnTableViewDataSourceCreate(self.dataSource, nil, ItemCellReuseIdentifier);
         
         self.tableViewDataSource.numberOfItemsPerRow = COLS_PER_ROW_FOR_HOME_ITEM_LIST;

@@ -16,5 +16,6 @@
 #import "RefreshHeaderView.h"
 #import "LoadMoreFooterView.h"
 #import "ThumbView.h"
+#import "UserProfileView.h"
 
 #endif /* Views_h */

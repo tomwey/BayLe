@@ -42,7 +42,18 @@
 #define TITLE_HEIGHT_FOR_PER_ITEM       25
 #define PRICE_HEIGHT_FOR_PER_ITEM       20
 
-#define THUMB_CONTAINER_HEIGHT 64
+#define THUMB_CONTAINER_HEIGHT          64
+
+// 自定义字体
+//"PingFangTC-Medium",
+//"PingFangTC-Regular",
+//"PingFangTC-Light",
+//"PingFangTC-Ultralight",
+//"PingFangTC-Semibold",
+//"PingFangTC-Thin"
+//"CircularAir-Book",
+//"CircularAir-Light"
+#define CUSTOM_FONT_NAME @"CircularAir-Book"
 
 // App亮色
 #define MAIN_RED_COLOR AWColorFromRGB(251, 64, 78)

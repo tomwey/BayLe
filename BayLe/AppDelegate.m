@@ -37,6 +37,8 @@
     
     [self.window makeKeyAndVisible];
     
+    NSLog(@"fonts: %@", [UIFont fontNamesForFamilyName:@"Circular Air"]);
+    
     return YES;
 }
 
@@ -46,6 +48,8 @@
     
     tabBarController.itemTintColor = MAIN_LIGHT_GRAY_COLOR;
     tabBarController.selectedItemTintColor = MAIN_RED_COLOR;
+    
+    tabBarController.customTabBarDelegate = self;
     
     NSArray* controllerNames = @[@"Home", @"Favorites",@"Publish", @"Messages", @"User"];
     NSArray* images = @[@"discovery", @"wishlists", @"publish", @"inbox", @"more"];
@@ -69,6 +73,25 @@
     tabBarController.viewControllers = controllers;
     
     self.window.rootViewController = tabBarController;
+}
+
+- (BOOL)shouldShowViewControllerForIndex:(NSInteger)index
+{
+    if ( index == 0 || index == 4) {
+        return YES;
+    }
+    
+    return [[UserManager sharedInstance] isLogin];
+}
+
+- (void)customTabBar:(CustomTabBar *)tabBar didSelectAtIndex:(NSInteger)index
+{
+    if ( ![[UserManager sharedInstance] isLogin] ) {
+        if ( index != 0 && index != 4 ) {
+            UIViewController* controller = [BaseViewController viewControllerWithClassName:@"LoginViewController"];
+            [self.window.rootViewController presentViewController:controller animated:YES completion:nil];
+        }
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

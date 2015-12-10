@@ -76,7 +76,7 @@
         _titleLabel = AWCreateLabel(CGRectZero,
                                     nil,
                                     NSTextAlignmentLeft,
-                                    AWSystemFontWithSize(14, NO),
+                                    AWSystemFontWithSize(16, NO),
                                     MAIN_LIGHT_GRAY_COLOR);
         [self addSubview:_titleLabel];
         _titleLabel.numberOfLines = 2;
@@ -90,7 +90,7 @@
         _distanceLabel = AWCreateLabel(CGRectZero,
                                        nil,
                                        NSTextAlignmentRight,
-                                       AWSystemFontWithSize(10, NO),
+                                       AWSystemFontWithSize(14, NO),
                                        MAIN_LIGHT_GRAY_COLOR);
         [self addSubview:_distanceLabel];
     }
@@ -103,7 +103,7 @@
         _priceLabel = AWCreateLabel(CGRectZero,
                                     nil,
                                     NSTextAlignmentLeft,
-                                    AWSystemFontWithSize(15, NO),
+                                    AWSystemFontWithSize(16, NO),
                                     MAIN_RED_COLOR);
         [self addSubview:_priceLabel];
     }
