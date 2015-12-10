@@ -21,7 +21,20 @@ typedef UIImageView CustomTabBar;
 @protocol CustomTabBarDelegate <NSObject>
 
 @optional
+/** 
+ * 点击了某个tabbar执行的回调
+ * 
+ * @param tabBar 当前tabBar
+ * @param index 页面索引
+ */
 - (void)customTabBar:(CustomTabBar *)tabBar didSelectAtIndex:(NSInteger)index;
+
+/**
+ * 是否应该显示某个页面，一般用于需要用户登录才能打开的页面
+ *
+ * @param viewController 需要显示的页面
+ */
+- (BOOL)shouldShowViewController:(UIViewController *)viewController;
 
 @end
 
@@ -44,12 +57,6 @@ typedef UIImageView CustomTabBar;
 
 @end
 
-@interface UIViewController (CustomTabBarItem)
-
-@property (nonatomic, retain) CustomTabBarItem* customTabBarItem;
-
-@end
-
 /** 自定义TabBar Item */
 @interface CustomTabBarItem : NSObject
 
@@ -69,3 +76,9 @@ static inline CustomTabBarItem* AWCreateCustomTabBarItem(NSString* title, UIImag
 {
     return [[[CustomTabBarItem alloc] initWithTitle:title image:anImage selectedImage:selectedImage] autorelease];
 };
+
+@interface UIViewController (CustomTabBarItem)
+
+@property (nonatomic, retain) CustomTabBarItem* customTabBarItem;
+
+@end

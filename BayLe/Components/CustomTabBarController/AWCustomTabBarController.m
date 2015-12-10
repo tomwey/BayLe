@@ -21,6 +21,12 @@
 
 @end
 
+@interface AWCustomTabBarController ()
+
+@property (nonatomic, assign) NSArray* currentViewControllers;
+
+@end
+
 @implementation AWCustomTabBarController
 {
     CustomTabBar*   _customTabBar;
@@ -121,6 +127,8 @@
 {
     [super setViewControllers:viewControllers];
     
+    self.currentViewControllers = viewControllers;
+    
     [self addTabBarItem:viewControllers];
 }
 
@@ -165,6 +173,16 @@
 
 - (void)viewHolder:(ViewHolder *)viewHolder didSelectItem:(CustomTabBarItem *)item
 {
+    BOOL allowShow = YES;
+    
+    if ( [self.customTabBarDelegate respondsToSelector:@selector(shouldShowViewController:)] ) {
+        allowShow = [self.customTabBarDelegate shouldShowViewController:self.currentViewControllers[viewHolder.index]];
+    }
+    
+    if ( !allowShow ) {
+        return;
+    }
+    
     for (ViewHolder* holder in _viewHolderGroup) {
         holder.selected = NO;
     }
@@ -176,22 +194,6 @@
     if ( [self.customTabBarDelegate respondsToSelector:@selector(customTabBar:didSelectAtIndex:)] ) {
         [self.customTabBarDelegate customTabBar:self.customTabBar didSelectAtIndex:viewHolder.index];
     }
-}
-
-@end
-
-@implementation UIViewController (CustomTabBarItem)
-
-static char kCustomTabBarItemKey;
-
-- (void)setCustomTabBarItem:(CustomTabBarItem *)customTabBarItem
-{
-    objc_setAssociatedObject(self, &kCustomTabBarItemKey, customTabBarItem, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (CustomTabBarItem *)customTabBarItem
-{
-    return objc_getAssociatedObject(self, &kCustomTabBarItemKey);
 }
 
 @end
@@ -215,6 +217,22 @@ static char kCustomTabBarItemKey;
     self.image = nil;
     self.selectedImage = nil;
     [super dealloc];
+}
+
+@end
+
+@implementation UIViewController (CustomTabBarItem)
+
+static char kCustomTabBarItemKey;
+
+- (void)setCustomTabBarItem:(CustomTabBarItem *)customTabBarItem
+{
+    objc_setAssociatedObject(self, &kCustomTabBarItemKey, customTabBarItem, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (CustomTabBarItem *)customTabBarItem
+{
+    return objc_getAssociatedObject(self, &kCustomTabBarItemKey);
 }
 
 @end
