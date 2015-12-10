@@ -16,6 +16,10 @@
 
 @property (nonatomic, retain) AWMultipleColumnTableViewDataSource* tableViewDataSource;
 
+@property (nonatomic, retain) NSMutableArray* dataSource;
+
+@property (nonatomic, assign) NSUInteger currentPage; // 当前页
+
 @end
 
 #define ItemCellReuseIdentifier @"item.cell.identifier"
@@ -49,16 +53,35 @@
         
         self.tableView.showsVerticalScrollIndicator = NO;
         
+        self.currentPage = 1;
+        
 //        UIRefreshControl* refreshControl = [[[UIRefreshControl alloc] init] autorelease];
 //        [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
 //        [self.tableView addSubview:refreshControl];
 //        
 //        refreshControl.tintColor = MAIN_RED_COLOR;
         
+        self.dataSource = [NSMutableArray array];
+        self.tableViewDataSource = AWMultipleColumnTableViewDataSourceCreate(self.dataSource, nil, ItemCellReuseIdentifier);
+        
+        self.tableViewDataSource.numberOfItemsPerRow = COLS_PER_ROW_FOR_HOME_ITEM_LIST;
+        self.tableViewDataSource.itemClass = @"SimpleItemView";
+        self.tableViewDataSource.offsetY = SPACING_FOR_PER_ITEM;
+        self.tableViewDataSource.itemSpacing = SPACING_FOR_PER_ITEM;
+        self.tableViewDataSource.itemSize = CGSizeMake(0, self.tableView.rowHeight - SPACING_FOR_PER_ITEM);
+        self.tableView.dataSource = self.tableViewDataSource;
+        
+        self.tableView.dataSource = self.tableViewDataSource;
+        
         RefreshHeaderView* header = [[[RefreshHeaderView alloc] init] autorelease];
         __block ItemListView* me = self;
         [self.tableView addHeaderRefreshView:header withCallback:^{
-            [me loadDataIfNeeded];
+            [me refreshData];
+        }];
+        
+        LoadMoreFooterView* footer = [[[LoadMoreFooterView alloc] init] autorelease];
+        [self.tableView addFooterLoadMoreView:footer withCallback:^{
+            [me loadNextPage];
         }];
         
     }
@@ -69,12 +92,11 @@
 {
     [self.tableView removeHeaderRefreshView];
     
+    self.dataSource = nil;
+    
     self.tableView = nil;
-    
     self.itemsAPIManager = nil;
-    
     self.tableViewDataSource = nil;
-    
     self.location = nil;
     
     [super dealloc];
@@ -98,6 +120,15 @@
     [self.tableView headerRefreshViewBeginRefreshing];
 }
 
+- (void)refreshData
+{
+    self.currentPage = 1;
+    [self.dataSource removeAllObjects];
+    self.tableView.footerLoadMoreViewHidden = NO;
+    
+    [self loadDataIfNeeded];
+}
+
 - (void)loadDataIfNeeded
 {
     [self.tableView removeErrorOrEmptyTips];
@@ -119,8 +150,17 @@
     }
     
     [self.itemsAPIManager sendRequest:APIRequestCreate(API_LOAD_ITEMS, RequestMethodGet, @{@"location" : [currentLocation locationString],
-                                                                                           @"tag_id" : @(_tagID)
+                                                                                           @"tag_id" : @(_tagID),
+                                                                                           @"page" : @(self.currentPage),
+//                                                                                           @"size" : @(5),
                                                                                            })];
+}
+
+- (void)loadNextPage
+{
+    self.currentPage ++;
+    
+    [self loadDataIfNeeded];
 }
 
 /** 网络请求成功回调 */
@@ -128,19 +168,20 @@
 {
     [self.tableView headerRefreshViewEndRefreshing];
     
+    [self.tableView footerLoadMoreViewEndLoading];
+    
 //    NSLog(@"result: %@", [manager fetchDataWithReformer:nil]);
     id data = [manager fetchDataWithReformer:[[[APIDictionaryReformer alloc] init] autorelease]];
     
     if ( [data count] == 0 ) {
-        [self.tableView showErrorOrEmptyMessage:@"喔，没有数据哦，快去创建吧！！！" reloadDelegate:self];
+        if ( self.currentPage == 1 ) {
+            [self.tableView showErrorOrEmptyMessage:@"喔，没有数据哦，快去创建吧！！！" reloadDelegate:self];
+        } else {
+            self.tableView.footerLoadMoreViewHidden = YES;
+            [AWToast showText:@"没有更多数据了"];
+        }
     } else {
-        self.tableViewDataSource = AWMultipleColumnTableViewDataSourceCreate(data, nil, ItemCellReuseIdentifier);
-        self.tableViewDataSource.numberOfItemsPerRow = COLS_PER_ROW_FOR_HOME_ITEM_LIST;
-        self.tableViewDataSource.itemClass = @"SimpleItemView";
-        self.tableViewDataSource.offsetY = SPACING_FOR_PER_ITEM;
-        self.tableViewDataSource.itemSpacing = SPACING_FOR_PER_ITEM;
-        self.tableViewDataSource.itemSize = CGSizeMake(0, self.tableView.rowHeight - SPACING_FOR_PER_ITEM);
-        self.tableView.dataSource = self.tableViewDataSource;
+        [self.dataSource addObjectsFromArray:data];
         [self.tableView reloadData];
     }
 }
@@ -149,7 +190,11 @@
 - (void)apiManagerDidFailure:(APIManager *)manager
 {
     NSLog(@"Error: %@", manager.apiError);
-    [self.tableView showErrorOrEmptyMessage:@"喔唷，出错了！\n点击屏幕刷新" reloadDelegate:self];
+    if ( self.currentPage == 1 ) {
+        [self.tableView showErrorOrEmptyMessage:@"喔唷，出错了！\n点击屏幕刷新" reloadDelegate:self];
+    } else {
+        [AWToast showText:@"上拉加载失败，请稍后再试!"];
+    }
 }
 
 - (void)reloadDataForErrorOrEmpty

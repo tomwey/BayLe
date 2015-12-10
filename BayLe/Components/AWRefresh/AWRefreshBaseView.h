@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 /*****************************************************************
- 此类为刷新控件基类，是抽象类，子类需要重写state属性来做不同的实现
+ 此类为刷新控件基类，是抽象类，子类需要重写注释中提到的方法来自定义效果
  *****************************************************************/
 
 // 定义控件的状态
@@ -23,8 +23,8 @@ typedef NS_ENUM(NSInteger, AWRefreshState) {
 // 定义拖动刷新模式
 typedef NS_ENUM(NSInteger, AWRefreshMode) {
     AWRefreshModeUnKnown = -1,    // 未知模式
-    AWRefreshModePulldownRefresh, // 下拉刷新模式
-    AWRefreshModePullupLoadMore,  // 上拉加载更多模式
+    AWRefreshModePullDownRefresh, // 下拉刷新模式
+    AWRefreshModePullUpLoadMore,  // 上拉加载更多模式
 };
 
 /** 动画时间长度 */
@@ -58,17 +58,32 @@ FOUNDATION_EXTERN const CGFloat AWRefreshAnimationDuration;
 /////////////////////////////////////////////////////////////////
 #pragma mark - 下面的方法需要子类重写
 /////////////////////////////////////////////////////////////////
+/** 
+ * 默认状态，该组件被添加到视图中 
+ */
+- (void)originState;
+
+/** 松开刷新 */
 - (void)releaseToRefresh;
 
+/** 开始刷新 */
 - (void)changeToRefresh;
 
-- (void)didEndRefreshing;
-
+/** 下拉时调用 */
 - (void)updateOffset:(CGFloat)dty;
 
+/** 
+ * 回到正常状态时调用
+ *
+ * 注意：有2种情况会回调该方法，
+ * 1) 拖动组件，没有达到临界刷新点，没有刷新
+ * 2) 拖动组件，开始刷新，刷新结束
+ */
 - (void)backToNormalState;
 
-/** 子类重写此方法，返回正确的拖动刷新模式 */
+/** 
+ * 子类重写返回正确的刷新模式，比如下拉刷新或者上拉加载更多
+ */
 - (AWRefreshMode)refreshMode;
 
 @end

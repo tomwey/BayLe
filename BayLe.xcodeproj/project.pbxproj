@@ -23,6 +23,7 @@
 		971E5FB01C0E75DB00F637C6 /* AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5FAF1C0E75DB00F637C6 /* AlbumCell.m */; };
 		971E5FB41C0E829E00F637C6 /* PhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5FB31C0E829E00F637C6 /* PhotoListViewController.m */; };
 		971E5FB71C0E87D700F637C6 /* PhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E5FB61C0E87D700F637C6 /* PhotoView.m */; };
+		971E9C8B1C191D3800A52167 /* LoadMoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E9C8A1C191D3800A52167 /* LoadMoreFooterView.m */; };
 		9734C2D01BFD5C5D005E0E5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C2CF1BFD5C5D005E0E5E /* main.m */; };
 		9734C2D31BFD5C5D005E0E5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C2D21BFD5C5D005E0E5E /* AppDelegate.m */; };
 		9734C2DB1BFD5C5D005E0E5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9734C2DA1BFD5C5D005E0E5E /* Assets.xcassets */; };
@@ -149,6 +150,8 @@
 		971E5FB31C0E829E00F637C6 /* PhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoListViewController.m; sourceTree = "<group>"; };
 		971E5FB51C0E87D700F637C6 /* PhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoView.h; sourceTree = "<group>"; };
 		971E5FB61C0E87D700F637C6 /* PhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoView.m; sourceTree = "<group>"; };
+		971E9C891C191D3800A52167 /* LoadMoreFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMoreFooterView.h; sourceTree = "<group>"; };
+		971E9C8A1C191D3800A52167 /* LoadMoreFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreFooterView.m; sourceTree = "<group>"; };
 		9734C2CB1BFD5C5D005E0E5E /* BayLe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BayLe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9734C2CF1BFD5C5D005E0E5E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9734C2D11BFD5C5D005E0E5E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -520,6 +523,8 @@
 				97D5F5E81C058E93007D75D6 /* SimpleItemView.m */,
 				995545A51C0A8E3D00BE5309 /* RefreshHeaderView.h */,
 				995545A61C0A8E3D00BE5309 /* RefreshHeaderView.m */,
+				971E9C891C191D3800A52167 /* LoadMoreFooterView.h */,
+				971E9C8A1C191D3800A52167 /* LoadMoreFooterView.m */,
 				971E5FB51C0E87D700F637C6 /* PhotoView.h */,
 				971E5FB61C0E87D700F637C6 /* PhotoView.m */,
 				977666D61C0EC89000A44853 /* ThumbView.h */,
@@ -1055,6 +1060,7 @@
 				97BD11C61BFDC2F300641C79 /* AWButton.m in Sources */,
 				97BD11C21BFDC2F300641C79 /* AWCustomNavBar.m in Sources */,
 				97D5F5F01C05AD79007D75D6 /* UITableView+LoadNetworkData.m in Sources */,
+				971E9C8B1C191D3800A52167 /* LoadMoreFooterView.m in Sources */,
 				97BD119A1BFDAD5D00641C79 /* AWUIUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

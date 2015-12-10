@@ -37,7 +37,7 @@ static char AWLoadMoreFooterViewKey;
     return objc_getAssociatedObject(self, &AWRefreshHeaderViewKey);
 }
 
-- (void)setFooterLoadMoveView:(AWRefreshBaseView *)loadMoreView
+- (void)setFooterLoadMoreView:(AWRefreshBaseView *)loadMoreView
 {
     [self willChangeValueForKey:@"AWLoadMoreFooterViewKey"];
     objc_setAssociatedObject(self, &AWLoadMoreFooterViewKey, loadMoreView, OBJC_ASSOCIATION_ASSIGN);

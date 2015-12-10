@@ -47,7 +47,7 @@
 
 - (AWRefreshMode)refreshMode
 {
-    return AWRefreshModePulldownRefresh;
+    return AWRefreshModePullDownRefresh;
 }
 
 - (void)releaseToRefresh

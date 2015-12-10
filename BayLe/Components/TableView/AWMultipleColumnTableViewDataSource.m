@@ -40,7 +40,7 @@
 
 - (void)addContentsForCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    int numberOfCols = self.numberOfItemsPerRow;
+    NSInteger numberOfCols = self.numberOfItemsPerRow;
     if ( indexPath.row == [self numberOfRows] - 1 ) {
         // 计算最后一行的列数
         numberOfCols = [self.dataSource count] - indexPath.row * self.numberOfItemsPerRow;
@@ -48,7 +48,7 @@
     
     // 由于cell重用的缘故，需要删除脏数据
     if ( numberOfCols < self.numberOfItemsPerRow ) {
-        for (int i=numberOfCols; i<self.numberOfItemsPerRow; i++) {
+        for (NSInteger i=numberOfCols; i<self.numberOfItemsPerRow; i++) {
             UIView* view = [cell.contentView viewWithTag:1000 + i];
             [view removeFromSuperview];
         }
