@@ -17,5 +17,6 @@
 #import "LoadMoreFooterView.h"
 #import "ThumbView.h"
 #import "UserProfileView.h"
+#import "FormTextInput.h"
 
 #endif /* Views_h */

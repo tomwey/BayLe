@@ -12,5 +12,6 @@
 // 导入项目中模型头文件
 #import "Location.h"
 #import "User.h"
+#import "ValidationItem.h"
 
 #endif /* Models_h */

@@ -43,6 +43,8 @@
     
 //    self.shouldSearching = YES;
     
+    self.contentView.backgroundColor = [UIColor whiteColor];
+    
     self.dataSource = AWTableViewDataSourceCreate(nil, @"POICell", @"poi.cell");
     
     // 设置导航条按钮
@@ -98,7 +100,7 @@
     
     [_searchField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     
-    UIView* line = AWCreateLine(CGSizeMake(AWFullScreenWidth(), .6), AWColorFromRGB(241, 241, 241));
+    UIView* line = AWCreateLine(CGSizeMake(AWFullScreenWidth(), .6), AWColorFromRGB(201, 201, 201));
     [self.contentView addSubview:line];
     line.y = _searchField.bottom + 5;
 }

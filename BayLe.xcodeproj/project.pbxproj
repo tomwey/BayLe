@@ -50,6 +50,9 @@
 		9734C3291BFD6D30005E0E5E /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C3281BFD6D30005E0E5E /* PublishViewController.m */; };
 		9734C32D1BFD750D005E0E5E /* AWCustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C32C1BFD750D005E0E5E /* AWCustomTabBarController.m */; };
 		9734C3301BFD895F005E0E5E /* UITabBarController+CustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C32F1BFD895F005E0E5E /* UITabBarController+CustomTabBar.m */; };
+		976004CF1C1A6DB800192A6F /* FormTextInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 976004CE1C1A6DB800192A6F /* FormTextInput.m */; };
+		976004D21C1A7B6000192A6F /* UIButton+CustomTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 976004D11C1A7B6000192A6F /* UIButton+CustomTitleLabel.m */; };
+		976004D51C1A81C600192A6F /* ValidationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 976004D41C1A81C600192A6F /* ValidationItem.m */; };
 		977666D81C0EC89000A44853 /* ThumbView.m in Sources */ = {isa = PBXBuildFile; fileRef = 977666D71C0EC89000A44853 /* ThumbView.m */; };
 		977666DB1C0FD05A00A44853 /* PhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 977666DA1C0FD05A00A44853 /* PhotoManager.m */; };
 		97BD119A1BFDAD5D00641C79 /* AWUIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11991BFDAD5D00641C79 /* AWUIUtils.m */; };
@@ -209,6 +212,12 @@
 		9734C32C1BFD750D005E0E5E /* AWCustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWCustomTabBarController.m; sourceTree = "<group>"; };
 		9734C32E1BFD895F005E0E5E /* UITabBarController+CustomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+CustomTabBar.h"; sourceTree = "<group>"; };
 		9734C32F1BFD895F005E0E5E /* UITabBarController+CustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+CustomTabBar.m"; sourceTree = "<group>"; };
+		976004CD1C1A6DB800192A6F /* FormTextInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormTextInput.h; sourceTree = "<group>"; };
+		976004CE1C1A6DB800192A6F /* FormTextInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormTextInput.m; sourceTree = "<group>"; };
+		976004D01C1A7B6000192A6F /* UIButton+CustomTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CustomTitleLabel.h"; sourceTree = "<group>"; };
+		976004D11C1A7B6000192A6F /* UIButton+CustomTitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CustomTitleLabel.m"; sourceTree = "<group>"; };
+		976004D31C1A81C600192A6F /* ValidationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidationItem.h; sourceTree = "<group>"; };
+		976004D41C1A81C600192A6F /* ValidationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidationItem.m; sourceTree = "<group>"; };
 		977666D61C0EC89000A44853 /* ThumbView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbView.h; sourceTree = "<group>"; };
 		977666D71C0EC89000A44853 /* ThumbView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbView.m; sourceTree = "<group>"; };
 		977666D91C0FD05A00A44853 /* PhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoManager.h; sourceTree = "<group>"; };
@@ -526,6 +535,8 @@
 				97E82FAF1C0FE854004A9796 /* Location.m */,
 				97E82FB11C0FE8D4004A9796 /* User.h */,
 				97E82FB21C0FE8D4004A9796 /* User.m */,
+				976004D31C1A81C600192A6F /* ValidationItem.h */,
+				976004D41C1A81C600192A6F /* ValidationItem.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -554,6 +565,8 @@
 				977666D71C0EC89000A44853 /* ThumbView.m */,
 				971E9C8C1C196F0B00A52167 /* UserProfileView.h */,
 				971E9C8D1C196F0B00A52167 /* UserProfileView.m */,
+				976004CD1C1A6DB800192A6F /* FormTextInput.h */,
+				976004CE1C1A6DB800192A6F /* FormTextInput.m */,
 				971E5FB11C0E75E300F637C6 /* Cells */,
 			);
 			path = Views;
@@ -705,6 +718,8 @@
 				97BD12261BFF125900641C79 /* UILabel+TextSize.m */,
 				97D5F5D41C05459D007D75D6 /* UIColor+InverseColor.h */,
 				97D5F5D51C05459D007D75D6 /* UIColor+InverseColor.m */,
+				976004D01C1A7B6000192A6F /* UIButton+CustomTitleLabel.h */,
+				976004D11C1A7B6000192A6F /* UIButton+CustomTitleLabel.m */,
 			);
 			path = "UIKit Additions";
 			sourceTree = "<group>";
@@ -1005,6 +1020,7 @@
 				97E82FB01C0FE854004A9796 /* Location.m in Sources */,
 				97BD12011BFDCEF900641C79 /* AFHTTPSessionManager.m in Sources */,
 				971E5F931C0D264F00F637C6 /* SelectLocationViewController.m in Sources */,
+				976004D21C1A7B6000192A6F /* UIButton+CustomTitleLabel.m in Sources */,
 				97BD120D1BFDCEF900641C79 /* UIProgressView+AFNetworking.m in Sources */,
 				9734C3111BFD650D005E0E5E /* NSObjectAdditions.m in Sources */,
 				99EC1CFE1C0DD71600733194 /* CatalogCell.m in Sources */,
@@ -1024,6 +1040,7 @@
 				9734C3231BFD6CED005E0E5E /* MessagesViewController.m in Sources */,
 				971E5FB41C0E829E00F637C6 /* PhotoListViewController.m in Sources */,
 				97BD11D01BFDC5BA00641C79 /* Command.m in Sources */,
+				976004CF1C1A6DB800192A6F /* FormTextInput.m in Sources */,
 				97D5F5D91C054EB0007D75D6 /* AWTableViewDataSource.m in Sources */,
 				9734C2D31BFD5C5D005E0E5E /* AppDelegate.m in Sources */,
 				9734C3201BFD6CDA005E0E5E /* FavoritesViewController.m in Sources */,
@@ -1072,6 +1089,7 @@
 				97BD11C71BFDC2F300641C79 /* AWMaskView.m in Sources */,
 				977666D81C0EC89000A44853 /* ThumbView.m in Sources */,
 				97BD12171BFDCF7800641C79 /* UIImageView+ProgressIndicator.m in Sources */,
+				976004D51C1A81C600192A6F /* ValidationItem.m in Sources */,
 				97BD15401C04363400641C79 /* APIFileParam.m in Sources */,
 				971E5FB71C0E87D700F637C6 /* PhotoView.m in Sources */,
 				97D5F5D31C045A6F007D75D6 /* UITableView+LoadEmptyOrErrorHandle.m in Sources */,

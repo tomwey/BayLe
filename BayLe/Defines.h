@@ -29,6 +29,7 @@
 #import "UITableView+RemoveBlankCells.h"
 #import "UITableView+CompatibilityHandle.h"
 #import "UIScrollView+AWRefresh.h"
+#import "UIButton+CustomTitleLabel.h"
 #import "AWModalAlert.h"
 #import "NSStringAdditions.h"
 #import "AWToast.h"

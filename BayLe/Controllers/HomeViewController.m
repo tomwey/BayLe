@@ -97,7 +97,8 @@
 
 - (void)gotoSearch
 {
-    
+    UIViewController* searchController = [BaseViewController viewControllerWithClassName:@"SearchViewController"];
+    [[AWAppWindow() rootViewController] presentViewController:searchController animated:YES completion:nil];
 }
 
 #pragma mark --- AWPageView Delegate ---
@@ -207,10 +208,10 @@
 {
     PagerTabStripper* tabStripper = [[[PagerTabStripper alloc] init] autorelease];
     [self.contentView addSubview:tabStripper];
-    tabStripper.frame = CGRectMake(0, 0, AWFullScreenWidth(), 42);
+    tabStripper.frame = CGRectMake(0, 0, AWFullScreenWidth(), 44);
     
     tabStripper.titleColor = MAIN_TITLE_TEXT_COLOR;
-    tabStripper.titleFont  = [UIFont systemFontOfSize:16];
+    tabStripper.titleFont  = AWCustomFont(CUSTOM_FONT_NAME, 16);
     
     tabStripper.selectedIndicatorSize = 1.1;
     tabStripper.selectedTitleColor = tabStripper.selectedIndicatorColor = MAIN_RED_COLOR;
