@@ -210,6 +210,7 @@
                 self.apiError = [APIError apiErrorWithCode:code message:[responseObject objectForKey:@"message"]];
                 [self.delegate apiManagerDidFailure:self];
             }
+            [self finishRequesting];
             return;
         }
     }

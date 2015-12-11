@@ -53,6 +53,7 @@
 		976004CF1C1A6DB800192A6F /* FormTextInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 976004CE1C1A6DB800192A6F /* FormTextInput.m */; };
 		976004D21C1A7B6000192A6F /* UIButton+CustomTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 976004D11C1A7B6000192A6F /* UIButton+CustomTitleLabel.m */; };
 		976004D51C1A81C600192A6F /* ValidationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 976004D41C1A81C600192A6F /* ValidationItem.m */; };
+		976004D81C1AC09300192A6F /* UpdateProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 976004D71C1AC09300192A6F /* UpdateProfileViewController.m */; };
 		977666D81C0EC89000A44853 /* ThumbView.m in Sources */ = {isa = PBXBuildFile; fileRef = 977666D71C0EC89000A44853 /* ThumbView.m */; };
 		977666DB1C0FD05A00A44853 /* PhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 977666DA1C0FD05A00A44853 /* PhotoManager.m */; };
 		97BD119A1BFDAD5D00641C79 /* AWUIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BD11991BFDAD5D00641C79 /* AWUIUtils.m */; };
@@ -218,6 +219,8 @@
 		976004D11C1A7B6000192A6F /* UIButton+CustomTitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CustomTitleLabel.m"; sourceTree = "<group>"; };
 		976004D31C1A81C600192A6F /* ValidationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidationItem.h; sourceTree = "<group>"; };
 		976004D41C1A81C600192A6F /* ValidationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidationItem.m; sourceTree = "<group>"; };
+		976004D61C1AC09300192A6F /* UpdateProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateProfileViewController.h; sourceTree = "<group>"; };
+		976004D71C1AC09300192A6F /* UpdateProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateProfileViewController.m; sourceTree = "<group>"; };
 		977666D61C0EC89000A44853 /* ThumbView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbView.h; sourceTree = "<group>"; };
 		977666D71C0EC89000A44853 /* ThumbView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbView.m; sourceTree = "<group>"; };
 		977666D91C0FD05A00A44853 /* PhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoManager.h; sourceTree = "<group>"; };
@@ -523,6 +526,8 @@
 				971E5FAC1C0E733E00F637C6 /* AlbumListViewController.m */,
 				971E5FB21C0E829E00F637C6 /* PhotoListViewController.h */,
 				971E5FB31C0E829E00F637C6 /* PhotoListViewController.m */,
+				976004D61C1AC09300192A6F /* UpdateProfileViewController.h */,
+				976004D71C1AC09300192A6F /* UpdateProfileViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1066,6 +1071,7 @@
 				9734C3101BFD650D005E0E5E /* NSDateAdditions.m in Sources */,
 				97BD12031BFDCEF900641C79 /* AFNetworkReachabilityManager.m in Sources */,
 				971E5F511C06DDCE00F637C6 /* UIScrollView+AWRefresh.m in Sources */,
+				976004D81C1AC09300192A6F /* UpdateProfileViewController.m in Sources */,
 				97BD12061BFDCEF900641C79 /* AFURLRequestSerialization.m in Sources */,
 				9734C31D1BFD6CC8005E0E5E /* HomeViewController.m in Sources */,
 				97BD12071BFDCEF900641C79 /* AFURLResponseSerialization.m in Sources */,

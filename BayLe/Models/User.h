@@ -15,6 +15,10 @@
 @property (nonatomic, copy) NSString* nickname;
 @property (nonatomic, copy) NSString* avatar;
 
+@property (nonatomic, assign) NSUInteger balance;
+
+@property (nonatomic, copy) NSString* code;
+
 @end
 
 @class ValidationItem;

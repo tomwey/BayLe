@@ -96,9 +96,14 @@
 #define MAMAP_API_KEY @"14f062a0bc5bac1a8bfd247a8db0aac5"
 
 /** 服务器API接口 **/
-#define API_TAGS @"/v1/tags.json"
-#define API_LOAD_ITEMS @"/v1/items/nearby.json"
+#define API_TAGS        @"/v1/tags.json"
+#define API_LOAD_ITEMS  @"/v1/items/nearby.json"
 #define API_CREATE_ITEM @"/v1/items/create.json"
+
+#define API_USER_LOGIN  @"/v1/account/login"
+#define API_FETCH_CODE  @"/v1/auth_codes/fetch"
+#define API_LOAD_USER   @"/v1/user/me"
+#define API_UPDATE_USER @"/v1/user/update_profile"
 
 #pragma mark ------------------------------- 下面是项目相关的库 -------------------------------
 

@@ -18,4 +18,6 @@
 
 @property (nonatomic, retain, readonly) UIView*      bottomLine;
 
+- (void)addTarget:(id)target forAction:(SEL)action;
+
 @end

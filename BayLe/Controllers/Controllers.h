@@ -22,5 +22,6 @@
 #import "CatalogViewController.h"
 #import "AlbumListViewController.h"
 #import "PhotoListViewController.h"
+#import "UpdateProfileViewController.h"
 
 #endif /* Controllers_h */

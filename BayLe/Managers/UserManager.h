@@ -6,10 +6,13 @@
 //  Copyright © 2015年 tangwei1. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @class User;
 @interface UserManager : NSObject
+
+/** 返回最新的用户资料 */
+@property (nonatomic, retain, readonly) User* currentUser;
 
 + (instancetype)sharedInstance;
 
@@ -21,21 +24,32 @@
 /**
  * 用户登录
  */
-- (void)login:(User *)aUser completion:(void (^)(User* aUser, NSError* error))completion;
+- (void)login:(User *)aUser completion:(void (^)(id result, NSError* error))completion;
+
+/**
+ * 退出登录
+ */
+- (void)logout:(User *)aUser completion:(void (^)(id result, NSError* error))completion;
+
+/**
+ * 获取验证码
+ */
+- (void)fetchCode:(User *)aUser completion:(void (^)(id result, NSError* error))completion;
 
 /**
  * 更新用户资料
  */
-- (void)updateUser:(User *)aUser completion:(void (^)(User* aUser, NSError* error))completion;
+- (void)updateUser:(User *)aUser avatar:(UIImage *)anImage completion:(void (^)(id result, NSError* error))completion;
 
 /**
  * 加载用户资料
  */
-- (void)loadUserWithToken:(NSString *)token completion:(void (^)(User* aUser, NSError* error))completion;
+- (void)loadUserWithToken:(NSString *)token completion:(void (^)(id result, NSError* error))completion;
 
-/**
- * 返回当前用户
- */
-- (User *)currentUser;
+@end
+
+#import "APIReformer.h"
+@interface UserReformer : NSObject <APIReformer>
+
 
 @end

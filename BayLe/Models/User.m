@@ -19,6 +19,8 @@
     self.nickname = nil;
     self.avatar = nil;
     
+    self.code = nil;
+    
     [self removeAllValidationItems];
     
     [super dealloc];

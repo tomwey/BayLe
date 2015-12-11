@@ -10,6 +10,10 @@
 #import "Defines.h"
 
 @implementation FormTextInput
+{
+    id  _target;
+    SEL _action;
+}
 
 @synthesize nameLabel = _nameLabel;
 @synthesize textField = _textField;
@@ -79,9 +83,17 @@
     self.bottomLine.frame = CGRectMake(0, self.height - 0.6, self.width, 0.6);
 }
 
+- (void)addTarget:(id)target forAction:(SEL)action
+{
+    _target = target;
+    _action = action;
+}
+
 - (void)textFieldDidChange:(UITextField *)sender
 {
-    
+    if ( [_target respondsToSelector:_action] ) {
+        [_target performSelector:_action withObject:self];
+    }
 }
 
 @end
