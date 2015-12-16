@@ -10,4 +10,6 @@
 
 @interface UpdateProfileViewController : BaseViewController
 
+@property (nonatomic, assign) BOOL firstLogin;
+
 @end

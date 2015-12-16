@@ -154,10 +154,16 @@
 
 - (void)updateProfile:(UserProfileView *)sender
 {
-    self.customTabBar.hidden = YES;
+    if ( [[UserManager sharedInstance] isLogin] ) {
+        self.customTabBar.hidden = YES;
+        
+        UIViewController* controller = [[[UpdateProfileViewController alloc] init] autorelease];
+        [self.navigationController pushViewController:controller animated:YES];
+    } else {
+        UIViewController* controller = [BaseViewController viewControllerWithClassName:@"LoginViewController"];
+        [self presentViewController:controller animated:YES completion:nil];
+    }
     
-    UIViewController* controller = [[[UpdateProfileViewController alloc] init] autorelease];
-    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)fetchMoney

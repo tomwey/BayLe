@@ -54,6 +54,8 @@
     
     tableView.tableFooterView = [[[UIView alloc] init] autorelease];
     
+    tableView.contentInset = UIEdgeInsetsMake(0, 0, self.customTabBar.height, 0);
+    
     UIImageView* iconView = AWCreateImageView(@"logo.png");
 //    iconView.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"logo.png" ofType:nil]];
     iconView.frame = CGRectMake(CGRectGetWidth(self.view.bounds) / 2 - 33, 29, 66, 66);

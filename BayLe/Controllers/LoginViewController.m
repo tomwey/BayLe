@@ -142,8 +142,13 @@
         if ( error ) {
             [AWToast showText:error.domain];
         } else {
-            UIViewController* controller = [[[UpdateProfileViewController alloc] init] autorelease];
-            [me.navigationController pushViewController:controller animated:YES];
+            if ( [[UserManager sharedInstance] currentUser].avatar.length == 0 ) {
+                UpdateProfileViewController* controller = [[[UpdateProfileViewController alloc] init] autorelease];
+                controller.firstLogin = YES;
+                [me.navigationController pushViewController:controller animated:YES];
+            } else {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
         }
         
     }];

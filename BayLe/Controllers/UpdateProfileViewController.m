@@ -18,8 +18,6 @@
 
 @property (nonatomic, retain) User* user;
 
-@property (nonatomic, assign) BOOL firstLogin;
-
 @end
 
 @implementation UpdateProfileViewController
@@ -43,13 +41,13 @@
         self.user.token = @"85d7444b0da976341c3a";
     }
     
-    self.firstLogin = ( [self.user.avatar length] == 0 );
-    
     UITableView* tableView = [[UITableView alloc] initWithFrame:self.contentView.bounds style:UITableViewStylePlain];
     [self.contentView addSubview:tableView];
     [tableView release];
     tableView.height = 120;
     tableView.top = 10;
+    
+    tableView.scrollEnabled = NO;
     
     tableView.dataSource = self;
     tableView.delegate = self;

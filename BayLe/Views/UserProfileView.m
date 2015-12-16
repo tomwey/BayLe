@@ -54,7 +54,11 @@
     [_user release];
     _user = [user retain];
     
-    [_avatarView setImageWithURL:[NSURL URLWithString:user.avatar]];
+    if ( user.avatar.length == 0 ) {
+        _avatarView.image = nil;
+    } else {
+        [_avatarView setImageWithURL:[NSURL URLWithString:user.avatar]];
+    }
     
     if ( [[UserManager sharedInstance] isLogin] ) {
         _nicknameLabel.text = user.nickname;
