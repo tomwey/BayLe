@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface User : NSObject
+@interface User : NSObject <NSCopying>
 
 @property (nonatomic, copy) NSString* mobile;
 @property (nonatomic, copy) NSString* token;

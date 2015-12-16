@@ -30,6 +30,10 @@
 		971E9C951C197D7E00A52167 /* TBfangzheng.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 971E9C941C197D7E00A52167 /* TBfangzheng.TTF */; };
 		971E9C981C197EAA00A52167 /* circular_book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 971E9C961C197EAA00A52167 /* circular_book.ttf */; };
 		971E9C991C197EAA00A52167 /* circular_light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 971E9C971C197EAA00A52167 /* circular_light.ttf */; };
+		9724CD5F1C210F59001BD442 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9724CD5E1C210F59001BD442 /* SettingsViewController.m */; };
+		9724CD621C211067001BD442 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9724CD611C211067001BD442 /* FeedbackViewController.m */; };
+		9724CD661C21108A001BD442 /* agreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 9724CD631C21108A001BD442 /* agreement.html */; };
+		9724CD671C21108A001BD442 /* AgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9724CD651C21108A001BD442 /* AgreementViewController.m */; };
 		9734C2D01BFD5C5D005E0E5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C2CF1BFD5C5D005E0E5E /* main.m */; };
 		9734C2D31BFD5C5D005E0E5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C2D21BFD5C5D005E0E5E /* AppDelegate.m */; };
 		9734C2DB1BFD5C5D005E0E5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9734C2DA1BFD5C5D005E0E5E /* Assets.xcassets */; };
@@ -169,6 +173,13 @@
 		971E9C941C197D7E00A52167 /* TBfangzheng.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = TBfangzheng.TTF; sourceTree = "<group>"; };
 		971E9C961C197EAA00A52167 /* circular_book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = circular_book.ttf; sourceTree = "<group>"; };
 		971E9C971C197EAA00A52167 /* circular_light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = circular_light.ttf; sourceTree = "<group>"; };
+		9724CD5D1C210F59001BD442 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		9724CD5E1C210F59001BD442 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		9724CD601C211067001BD442 /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		9724CD611C211067001BD442 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
+		9724CD631C21108A001BD442 /* agreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = agreement.html; sourceTree = "<group>"; };
+		9724CD641C21108A001BD442 /* AgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgreementViewController.h; sourceTree = "<group>"; };
+		9724CD651C21108A001BD442 /* AgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgreementViewController.m; sourceTree = "<group>"; };
 		9734C2CB1BFD5C5D005E0E5E /* BayLe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BayLe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9734C2CF1BFD5C5D005E0E5E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9734C2D11BFD5C5D005E0E5E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -528,6 +539,13 @@
 				971E5FB31C0E829E00F637C6 /* PhotoListViewController.m */,
 				976004D61C1AC09300192A6F /* UpdateProfileViewController.h */,
 				976004D71C1AC09300192A6F /* UpdateProfileViewController.m */,
+				9724CD5D1C210F59001BD442 /* SettingsViewController.h */,
+				9724CD5E1C210F59001BD442 /* SettingsViewController.m */,
+				9724CD601C211067001BD442 /* FeedbackViewController.h */,
+				9724CD611C211067001BD442 /* FeedbackViewController.m */,
+				9724CD631C21108A001BD442 /* agreement.html */,
+				9724CD641C21108A001BD442 /* AgreementViewController.h */,
+				9724CD651C21108A001BD442 /* AgreementViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1002,6 +1020,7 @@
 				971E9C951C197D7E00A52167 /* TBfangzheng.TTF in Resources */,
 				971E5F981C0D299800F637C6 /* AMap.bundle in Resources */,
 				9930B60B1BFE0F2C00A109F2 /* PushConfig.plist in Resources */,
+				9724CD661C21108A001BD442 /* agreement.html in Resources */,
 				9734C3021BFD6365005E0E5E /* AWLocalize.bundle in Resources */,
 				9734C2DB1BFD5C5D005E0E5E /* Assets.xcassets in Resources */,
 				9734C2F61BFD5F35005E0E5E /* Default-568h@2x.png in Resources */,
@@ -1034,6 +1053,7 @@
 				97BD11A01BFDAF6300641C79 /* UIWindowAdditions.m in Sources */,
 				97BD153D1C04012B00641C79 /* APIError.m in Sources */,
 				97BD120F1BFDCEF900641C79 /* UIWebView+AFNetworking.m in Sources */,
+				9724CD621C211067001BD442 /* FeedbackViewController.m in Sources */,
 				97BD15431C04484A00641C79 /* APIEntityReformer.m in Sources */,
 				97BD11D71BFDC61800641C79 /* AWToast.m in Sources */,
 				97BD12271BFF125900641C79 /* UILabel+TextSize.m in Sources */,
@@ -1068,6 +1088,7 @@
 				9734C3291BFD6D30005E0E5E /* PublishViewController.m in Sources */,
 				97BD122A1BFF1BEE00641C79 /* PagerTabStripper.m in Sources */,
 				97BD11D81BFDC61800641C79 /* AWModalAlert.m in Sources */,
+				9724CD5F1C210F59001BD442 /* SettingsViewController.m in Sources */,
 				9734C3101BFD650D005E0E5E /* NSDateAdditions.m in Sources */,
 				97BD12031BFDCEF900641C79 /* AFNetworkReachabilityManager.m in Sources */,
 				971E5F511C06DDCE00F637C6 /* UIScrollView+AWRefresh.m in Sources */,
@@ -1078,6 +1099,7 @@
 				9734C3051BFD638F005E0E5E /* AWLocale.m in Sources */,
 				9734C3121BFD650D005E0E5E /* NSStringAdditions.m in Sources */,
 				971E5FA41C0D564500F637C6 /* DataStoreManager.m in Sources */,
+				9724CD671C21108A001BD442 /* AgreementViewController.m in Sources */,
 				971E5F891C0BE31C00F637C6 /* LBSManager.m in Sources */,
 				9930B5FF1BFE0A9300A109F2 /* BaseViewController.m in Sources */,
 				97BD12311C02BD6700641C79 /* AWPageView.m in Sources */,

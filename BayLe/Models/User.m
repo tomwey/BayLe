@@ -26,6 +26,19 @@
     [super dealloc];
 }
 
+- (id)copyWithZone:(nullable NSZone *)zone
+{
+    User* newUser = [[User alloc] init];
+    newUser.mobile = self.mobile;
+    newUser.token = self.token;
+    newUser.nickname = self.nickname;
+    newUser.avatar = self.avatar;
+    newUser.code = self.code;
+    newUser.balance = self.balance;
+    
+    return newUser;
+}
+
 @end
 
 @implementation User (Validation)

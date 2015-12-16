@@ -23,5 +23,8 @@
 #import "AlbumListViewController.h"
 #import "PhotoListViewController.h"
 #import "UpdateProfileViewController.h"
+#import "FeedbackViewController.h"
+#import "AgreementViewController.h"
+#import "SettingsViewController.h"
 
 #endif /* Controllers_h */

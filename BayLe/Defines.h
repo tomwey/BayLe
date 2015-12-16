@@ -77,6 +77,8 @@
 
 #endif
 
+#define APP_ID @""
+
 // 浅灰色
 #define MAIN_LIGHT_GRAY_COLOR [UIColor lightGrayColor]
 

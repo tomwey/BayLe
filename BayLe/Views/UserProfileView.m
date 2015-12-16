@@ -13,6 +13,10 @@
 {
     UIImageView* _avatarView;
     UILabel*     _nicknameLabel;
+    UILabel*     _balanceLabel; // 余额
+    
+    id  _target;
+    SEL _action;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -32,6 +36,15 @@
                                        AWCustomFont(CUSTOM_FONT_NAME, 16),
                                        NAVBAR_HIGHLIGHT_TEXT_COLOR);
         [self addSubview:_nicknameLabel];
+        
+        _balanceLabel = AWCreateLabel(CGRectZero,
+                                      nil,
+                                      NSTextAlignmentCenter,
+                                      _nicknameLabel.font,
+                                      _nicknameLabel.textColor);
+        [self addSubview:_balanceLabel];
+        
+        [self addGestureRecognizer:[[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)] autorelease]];
     }
     return self;
 }
@@ -45,8 +58,10 @@
     
     if ( [[UserManager sharedInstance] isLogin] ) {
         _nicknameLabel.text = user.nickname;
+        _balanceLabel.text = [NSString stringWithFormat:@"余额:￥%d", user.balance];
     } else {
         _nicknameLabel.text = @"立即登录";
+        _balanceLabel.text = nil;
     }
     
     [_nicknameLabel sizeToFit];
@@ -59,6 +74,25 @@
     
     _avatarView.center = CGPointMake(self.width / 2, _avatarView.height / 2);
     _nicknameLabel.center = CGPointMake(self.width / 2, self.height - _nicknameLabel.height / 2);
+    
+    _balanceLabel.frame = _nicknameLabel.frame;
+    _balanceLabel.width = 200;
+    _balanceLabel.center = _nicknameLabel.center;
+    _balanceLabel.top = _nicknameLabel.bottom;
+    _balanceLabel.font = AWCustomFont(CUSTOM_FONT_NAME, 14);
+}
+
+- (void)addTarget:(id)target action:(SEL)action
+{
+    _target = target;
+    _action = action;
+}
+
+- (void)tap
+{
+    if ( [_target respondsToSelector:_action] ) {
+        [_target performSelector:_action withObject:self];
+    }
 }
 
 - (void)dealloc

@@ -346,3 +346,15 @@ static char kCustomTabBarItemKey;
 }
 
 @end
+
+@implementation UIViewController (CustomTabBar)
+
+@dynamic customTabBar;
+
+- (CustomTabBar *)customTabBar
+{
+    AWCustomTabBarController* tabBarController = (AWCustomTabBarController *)self.tabBarController;
+    return tabBarController.customTabBar;
+}
+
+@end

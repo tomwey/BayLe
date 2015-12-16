@@ -89,3 +89,9 @@ static inline CustomTabBarItem* AWCreateCustomTabBarItem(NSString* title, UIImag
 @property (nonatomic, retain) CustomTabBarItem* customTabBarItem;
 
 @end
+
+@interface UIViewController (CustomTabBar)
+
+@property (nonatomic, retain, readonly) CustomTabBar* customTabBar;
+
+@end

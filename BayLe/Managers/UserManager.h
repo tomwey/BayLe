@@ -42,9 +42,9 @@
 - (void)updateUser:(User *)aUser avatar:(UIImage *)anImage completion:(void (^)(id result, NSError* error))completion;
 
 /**
- * 加载用户资料
+ * 加载我的个人资料
  */
-- (void)loadUserWithToken:(NSString *)token completion:(void (^)(id result, NSError* error))completion;
+- (void)loadMe:(void (^)(id result, NSError* error))completion;
 
 @end
 

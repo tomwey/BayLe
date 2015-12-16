@@ -57,7 +57,7 @@
     for (int i=0; i<[controllerNames count]; i++) {
         UIViewController* controller = [[[NSClassFromString([NSString stringWithFormat:@"%@ViewController", controllerNames[i]]) alloc] init] autorelease];
         
-        if ( i == 0 ) {
+        if ( i == 0 || i == [controllerNames count] - 1 ) {
             controller = [[[UINavigationController alloc] initWithRootViewController:controller] autorelease];
         }
         

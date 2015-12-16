@@ -15,6 +15,9 @@
 
 @end
 @implementation UserViewController
+{
+    UserProfileView* _userProfileView;
+}
 
 - (void)viewDidLoad
 {
@@ -24,9 +27,13 @@
     
     self.dataSource = @[@[@"我的乐币记录"],@[@"我发布的", @"我出租的", @"我租借的"],@[@"设置"]];
     
-    UITableView* tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    UITableView* tableView = [[UITableView alloc] initWithFrame:self.view.bounds
+                                                          style:UITableViewStyleGrouped];
     [self.view addSubview:tableView];
     [tableView release];
+    
+    CGFloat tabBarHeight = [(AWCustomTabBarController *)self.tabBarController customTabBar].height;
+    tableView.height -= tabBarHeight;
     
     tableView.dataSource = self;
     tableView.delegate   = self;
@@ -34,6 +41,24 @@
     [self createTableHeader:tableView];
     
     tableView.backgroundColor = [UIColor clearColor];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if ( [[UserManager sharedInstance] isLogin] ) {
+        [[UserManager sharedInstance] loadMe:^(id result, NSError *error) {
+            if ( !error ) {
+                _userProfileView.user = [[[[UserManager sharedInstance] currentUser] copy] autorelease];
+            }
+        }];
+    } else {
+        _userProfileView.user = nil;
+    }
+    
+    self.customTabBar.hidden = NO;
+    self.customTabBar.userInteractionEnabled = YES;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -65,7 +90,11 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    
+    if ( indexPath.section == 2 && indexPath.row == 0 ) {
+        UIViewController* settings = [[[SettingsViewController alloc] init] autorelease];
+        [self.navigationController pushViewController:settings animated:YES];
+        self.customTabBar.hidden = YES;
+    }
 }
 
 - (void)createTableHeader:(UITableView *)tableView
@@ -79,9 +108,15 @@
     
     [headerView addSubview:bgView];
     
+    bgView.userInteractionEnabled = YES;
+    
     UserProfileView* upv = [[[UserProfileView alloc] init] autorelease];
     [bgView addSubview:upv];
     [upv setUser:nil];
+    
+    [upv addTarget:self action:@selector(updateProfile:)];
+    
+    _userProfileView = upv;
     
     headerView.frame = CGRectMake(0, 0, AWFullScreenWidth(), bgView.height + 50);
     
@@ -115,6 +150,14 @@
 - (void)pay
 {
     
+}
+
+- (void)updateProfile:(UserProfileView *)sender
+{
+    self.customTabBar.hidden = YES;
+    
+    UIViewController* controller = [[[UpdateProfileViewController alloc] init] autorelease];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)fetchMoney

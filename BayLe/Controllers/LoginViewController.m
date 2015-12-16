@@ -132,7 +132,7 @@
     }
     
     [_currentField resignFirstResponder];
-    [self endUpdateTime];
+//    [self endUpdateTime];
     
     [MBProgressHUD showHUDAddedTo:self.contentView animated:YES];
     __block LoginViewController* me = self;

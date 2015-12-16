@@ -54,6 +54,7 @@ AW_SINGLETON_IMPL(UserManager)
 {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"user.token"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    self.currentUser = nil;
 }
 
 - (void)fetchCode:(User *)aUser completion:(void (^)(id result, NSError* error))completion
@@ -92,11 +93,12 @@ AW_SINGLETON_IMPL(UserManager)
 /**
  * 加载用户资料
  */
-- (void)loadUserWithToken:(NSString *)token completion:(void (^)(id result, NSError* error))completion
+- (void)loadMe:(void (^)(id result, NSError* error))completion
 {
     self.loadUserCompletionBlock = completion;
     [self.apiManager cancelRequest];
     
+    NSString* token = [[NSUserDefaults standardUserDefaults] objectForKey:@"user.token"];
     APIRequest* request = APIRequestCreate(API_LOAD_USER, RequestMethodGet, @{ @"token" : token });
     [self.apiManager sendRequest:request];
 }
