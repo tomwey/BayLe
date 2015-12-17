@@ -28,6 +28,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "UITableView+RemoveBlankCells.h"
 #import "UITableView+CompatibilityHandle.h"
+#import "UITableViewCell+RemoveBackground.h"
 #import "UIScrollView+AWRefresh.h"
 #import "UIButton+CustomTitleLabel.h"
 #import "AWModalAlert.h"

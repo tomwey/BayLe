@@ -72,8 +72,10 @@
     NSAssert([cell conformsToProtocol:@protocol(AWTableDataConfig)], @"自定义Cell类必须实现AWTableDataConfig接口");
     
     // 配置数据到视图
-    id data = [self.dataSource objectAtIndex:indexPath.row];
-    [cell configData:data];
+    if ( indexPath.row < [self.dataSource count] ) {
+        id data = [self.dataSource objectAtIndex:indexPath.row];
+        [cell configData:data];
+    }
     
     return cell;
 }

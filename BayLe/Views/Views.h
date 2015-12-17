@@ -18,5 +18,6 @@
 #import "ThumbView.h"
 #import "UserProfileView.h"
 #import "FormTextInput.h"
+#import "ItemCell.h"
 
 #endif /* Views_h */

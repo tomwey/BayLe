@@ -14,7 +14,7 @@
 @property (nonatomic, retain) UITableView* tableView;
 @property (nonatomic, retain) APIManager*  itemsAPIManager;
 
-@property (nonatomic, retain) AWMultipleColumnTableViewDataSource* tableViewDataSource;
+@property (nonatomic, retain) AWTableViewDataSource* tableViewDataSource;
 
 @property (nonatomic, retain) NSMutableArray* dataSource;
 
@@ -63,16 +63,19 @@
         
         self.dataSource = [NSMutableArray array];
         
-        self.tableViewDataSource = AWMultipleColumnTableViewDataSourceCreate(self.dataSource, nil, ItemCellReuseIdentifier);
+        self.tableViewDataSource = AWTableViewDataSourceCreate(self.dataSource, @"ItemCell", ItemCellReuseIdentifier);//AWMultipleColumnTableViewDataSourceCreate(self.dataSource, nil, ItemCellReuseIdentifier);
         
-        self.tableViewDataSource.numberOfItemsPerRow = COLS_PER_ROW_FOR_HOME_ITEM_LIST;
-        self.tableViewDataSource.itemClass = @"SimpleItemView";
-        self.tableViewDataSource.offsetY = SPACING_FOR_PER_ITEM;
-        self.tableViewDataSource.itemSpacing = SPACING_FOR_PER_ITEM;
-        self.tableViewDataSource.itemSize = CGSizeMake(0, self.tableView.rowHeight - SPACING_FOR_PER_ITEM);
+//        self.tableViewDataSource.numberOfItemsPerRow = COLS_PER_ROW_FOR_HOME_ITEM_LIST;
+//        self.tableViewDataSource.itemClass = @"SimpleItemView";
+//        self.tableViewDataSource.offsetY = SPACING_FOR_PER_ITEM;
+//        self.tableViewDataSource.itemSpacing = SPACING_FOR_PER_ITEM;
+//        self.tableViewDataSource.itemSize = CGSizeMake(0, self.tableView.rowHeight - SPACING_FOR_PER_ITEM);
         self.tableView.dataSource = self.tableViewDataSource;
         
-        self.tableView.dataSource = self.tableViewDataSource;
+        self.tableView.rowHeight = [ItemCell cellRowHeight];
+        
+        self.tableViewDataSource.tableView = self.tableView;
+//        self.tableView.dataSource = self.tableViewDataSource;
         
         RefreshHeaderView* header = [[[RefreshHeaderView alloc] init] autorelease];
         __block ItemListView* me = self;
