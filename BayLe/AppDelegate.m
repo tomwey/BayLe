@@ -77,7 +77,7 @@
 
 - (BOOL)shouldShowViewControllerForIndex:(NSInteger)index
 {
-    if ( index == 0 || index == 4) {
+    if ( index == 0 || index == 4) { // 跳过登录
         return YES;
     }
     

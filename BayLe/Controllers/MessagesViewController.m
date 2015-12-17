@@ -17,9 +17,4 @@
     self.title = @"消息";
 }
 
-- (BOOL)shouldCheckLogin
-{
-    return YES;
-}
-
 @end
