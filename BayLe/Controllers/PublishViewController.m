@@ -61,11 +61,11 @@ static NSString * const kParamKeyPlacement = @"placement";
 {
     [super viewDidLoad];
     
-    self.title = @"发布";
+    self.title = @"添加宝贝";
     
     self.itemData = [NSMutableDictionary dictionary];
     
-    UIButton* rightBtn = AWCreateTextButton(CGRectMake(0, 0, 40, 33), @"提交", NAVBAR_HIGHLIGHT_TEXT_COLOR, self, @selector(commit));
+    UIButton* rightBtn = AWCreateTextButton(CGRectMake(0, 0, 40, 33), @"发布", NAVBAR_HIGHLIGHT_TEXT_COLOR, self, @selector(commit));
     [[rightBtn titleLabel] setFont:AWSystemFontWithSize(14, NO)];
     self.navBar.rightButton = rightBtn;
     

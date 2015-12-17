@@ -37,7 +37,7 @@
     
     [self.window makeKeyAndVisible];
     
-    NSLog(@"fonts: %@", [UIFont fontNamesForFamilyName:@"Circular Air"]);
+    NSLog(@"fonts: %@", [UIFont fontNamesForFamilyName:@"Campton"]);
     
     return YES;
 }

@@ -54,7 +54,11 @@
 //"PingFangTC-Thin"
 //"CircularAir-Book",
 //"CircularAir-Light"
-#define CUSTOM_FONT_NAME @"CircularAir-Book"
+
+//"Campton-LightDEMO",
+//"Campton-BoldDEMO"
+
+#define CUSTOM_FONT_NAME @"Campton-LightDEMO" //@"CircularAir-Book"
 
 // App亮色
 #define MAIN_RED_COLOR AWColorFromRGB(251, 64, 78)

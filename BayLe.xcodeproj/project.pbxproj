@@ -54,6 +54,8 @@
 		9734C3291BFD6D30005E0E5E /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C3281BFD6D30005E0E5E /* PublishViewController.m */; };
 		9734C32D1BFD750D005E0E5E /* AWCustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C32C1BFD750D005E0E5E /* AWCustomTabBarController.m */; };
 		9734C3301BFD895F005E0E5E /* UITabBarController+CustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9734C32F1BFD895F005E0E5E /* UITabBarController+CustomTabBar.m */; };
+		97531CE61C2298AA00EBEC86 /* Campton-BoldDEMO.otf in Resources */ = {isa = PBXBuildFile; fileRef = 97531CE41C2298AA00EBEC86 /* Campton-BoldDEMO.otf */; };
+		97531CE71C2298AA00EBEC86 /* Campton-LightDEMO.otf in Resources */ = {isa = PBXBuildFile; fileRef = 97531CE51C2298AA00EBEC86 /* Campton-LightDEMO.otf */; };
 		976004CF1C1A6DB800192A6F /* FormTextInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 976004CE1C1A6DB800192A6F /* FormTextInput.m */; };
 		976004D21C1A7B6000192A6F /* UIButton+CustomTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 976004D11C1A7B6000192A6F /* UIButton+CustomTitleLabel.m */; };
 		976004D51C1A81C600192A6F /* ValidationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 976004D41C1A81C600192A6F /* ValidationItem.m */; };
@@ -224,6 +226,8 @@
 		9734C32C1BFD750D005E0E5E /* AWCustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWCustomTabBarController.m; sourceTree = "<group>"; };
 		9734C32E1BFD895F005E0E5E /* UITabBarController+CustomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+CustomTabBar.h"; sourceTree = "<group>"; };
 		9734C32F1BFD895F005E0E5E /* UITabBarController+CustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+CustomTabBar.m"; sourceTree = "<group>"; };
+		97531CE41C2298AA00EBEC86 /* Campton-BoldDEMO.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Campton-BoldDEMO.otf"; sourceTree = "<group>"; };
+		97531CE51C2298AA00EBEC86 /* Campton-LightDEMO.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Campton-LightDEMO.otf"; sourceTree = "<group>"; };
 		976004CD1C1A6DB800192A6F /* FormTextInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormTextInput.h; sourceTree = "<group>"; };
 		976004CE1C1A6DB800192A6F /* FormTextInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormTextInput.m; sourceTree = "<group>"; };
 		976004D01C1A7B6000192A6F /* UIButton+CustomTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CustomTitleLabel.h"; sourceTree = "<group>"; };
@@ -434,6 +438,8 @@
 		971E9C931C197D7400A52167 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				97531CE41C2298AA00EBEC86 /* Campton-BoldDEMO.otf */,
+				97531CE51C2298AA00EBEC86 /* Campton-LightDEMO.otf */,
 				971E9C961C197EAA00A52167 /* circular_book.ttf */,
 				971E9C971C197EAA00A52167 /* circular_light.ttf */,
 				971E9C941C197D7E00A52167 /* TBfangzheng.TTF */,
@@ -1023,6 +1029,8 @@
 				9724CD661C21108A001BD442 /* agreement.html in Resources */,
 				9734C3021BFD6365005E0E5E /* AWLocalize.bundle in Resources */,
 				9734C2DB1BFD5C5D005E0E5E /* Assets.xcassets in Resources */,
+				97531CE61C2298AA00EBEC86 /* Campton-BoldDEMO.otf in Resources */,
+				97531CE71C2298AA00EBEC86 /* Campton-LightDEMO.otf in Resources */,
 				9734C2F61BFD5F35005E0E5E /* Default-568h@2x.png in Resources */,
 				971E9C991C197EAA00A52167 /* circular_light.ttf in Resources */,
 				971E9C911C1973CE00A52167 /* Default-375w-667h@2x.png in Resources */,
