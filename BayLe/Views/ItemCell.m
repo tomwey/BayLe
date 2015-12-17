@@ -59,7 +59,7 @@ nicknameLabel = _nicknameLabel;
         _containerView.backgroundColor = [UIColor whiteColor];
         
         _containerView.layer.shadowColor = [[UIColor blackColor] CGColor];
-        _containerView.layer.shadowOffset = CGSizeMake(0, 1);
+        _containerView.layer.shadowOffset = CGSizeMake(0, 0);
         _containerView.layer.shadowOpacity = .3;
         _containerView.layer.shadowRadius = 1.0;
         
@@ -74,7 +74,8 @@ nicknameLabel = _nicknameLabel;
     
     CGFloat width = self.width - LEFT_MARGIN * 2;
     
-    CGFloat imageHeight = width * HEIGHT_FACTOR;
+    CGFloat imageWidth = width ;//- TOP_MARGIN * 2;
+    CGFloat imageHeight = imageWidth * HEIGHT_FACTOR;
     
     _containerView.frame = CGRectMake(LEFT_MARGIN,
                                       TOP_MARGIN,
@@ -86,7 +87,8 @@ nicknameLabel = _nicknameLabel;
     
     self.feeLabel.center = CGPointMake(_containerView.width - TOP_MARGIN - self.feeLabel.width / 2, self.avatarView.center.y);
     
-    self.thumbView.frame = CGRectMake(0, self.avatarView.bottom + TOP_MARGIN, width, imageHeight);
+    self.thumbView.frame = CGRectMake(_containerView.width / 2 - imageWidth / 2,
+                                      self.avatarView.bottom + TOP_MARGIN, imageWidth, imageHeight);
     
     self.titleLabel.frame = CGRectMake(self.avatarView.left, self.thumbView.bottom,
                                        _containerView.width - self.avatarView.left * 2,

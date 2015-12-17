@@ -64,9 +64,9 @@ static inline NSString* LBSDistanceStringBetweenTwoLocations(CLLocation *oneLoca
     
     NSString* distanceString = nil;
     if ( distance >= 1000 ) {
-        distanceString = [NSString stringWithFormat:@"%.2fkm", distance / 1000.0];
+        distanceString = [NSString stringWithFormat:@"%.1fkm", distance / 1000.0];
     } else {
-        distanceString = [NSString stringWithFormat:@"%.1fm", distance];
+        distanceString = [NSString stringWithFormat:@"%dm", (int)distance];
     }
     
     return distanceString;
