@@ -26,7 +26,7 @@
 
 @end
 
-#define LEFT_MARGIN           15 // 左间距
+#define LEFT_MARGIN           10 // 左间距
 #define TOP_MARGIN            8  // 顶部间距
 #define AVATAR_HEIGHT         50 // 头像高度
 #define TITLE_LABEL_HEIGHT    32 // 标题显示高度
