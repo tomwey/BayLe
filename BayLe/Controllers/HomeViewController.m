@@ -211,7 +211,7 @@
     tabStripper.frame = CGRectMake(0, 0, AWFullScreenWidth(), 44);
     
     tabStripper.titleColor = MAIN_TITLE_TEXT_COLOR;
-    tabStripper.titleFont  = AWCustomFont(CUSTOM_FONT_NAME, 16);
+    tabStripper.titleFont  = AWCustomFont(CUSTOM_FONT_NAME, 15);
     
     tabStripper.selectedIndicatorSize = 1.1;
     tabStripper.selectedTitleColor = tabStripper.selectedIndicatorColor = MAIN_RED_COLOR;
@@ -244,7 +244,7 @@
     _locationLabel = AWCreateLabel(CGRectMake(0, 0, titleView.width, 37),
                                    nil,
                                    NSTextAlignmentCenter,
-                                   AWSystemFontWithSize(15, YES),
+                                   AWCustomFont(CUSTOM_BOLD_FONT_NAME, 15),
                                    NAVBAR_TEXT_COLOR);
     [titleView addSubview:_locationLabel];
     

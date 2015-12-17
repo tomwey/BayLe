@@ -58,6 +58,7 @@
 //"Campton-LightDEMO",
 //"Campton-BoldDEMO"
 
+#define CUSTOM_BOLD_FONT_NAME @"Campton-BoldDEMO"
 #define CUSTOM_FONT_NAME @"Campton-LightDEMO" //@"CircularAir-Book"
 
 // App亮色

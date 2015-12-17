@@ -54,6 +54,7 @@
 {
     self.navBar.title = title;
     self.navBar.titleLabel.textColor = NAVBAR_TEXT_COLOR;
+    self.navBar.titleLabel.font = AWCustomFont(CUSTOM_BOLD_FONT_NAME, 18);
 }
 
 - (NSString *)title { return self.navBar.title; }
